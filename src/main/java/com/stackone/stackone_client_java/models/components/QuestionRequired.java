@@ -79,8 +79,8 @@ public class QuestionRequired {
 
         public _Deserializer() {
             super(QuestionRequired.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<QuestionRequired2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<QuestionRequired2>() {}, JsonShape.DEFAULT));
         }
     }
     

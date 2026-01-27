@@ -1,5 +1,4 @@
 # Accounting
-(*accounting()*)
 
 ## Overview
 
@@ -50,6 +49,7 @@ public class Application {
                 .filter(AccountingListCompaniesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -123,6 +123,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,base_currency,fiscal_year_start_month,fiscal_year_start_day,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AccountingGetCompanyResponse res = sdk.accounting().getCompany()
@@ -198,6 +199,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,company_id,remote_company_id,code,name,type,active,unified_custom_fields")
                 .filter(JsonNullable.of(null))
+                .prefer("heartbeat")
                 .build();
 
 
@@ -272,6 +274,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .fields("id,remote_id,company_id,remote_company_id,code,name,type,active,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AccountingGetCompanyAccountResponse res = sdk.accounting().getCompanyAccount()
@@ -348,6 +351,7 @@ public class Application {
                 .filter(AccountingListCompanyTaxRatesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -422,6 +426,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .fields("id,remote_id,company_id,remote_company_id,name,code,percentage,active,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AccountingGetCompanyTaxRateResponse res = sdk.accounting().getCompanyTaxRate()
@@ -495,6 +500,7 @@ public class Application {
         AccountingBatchCreateCompanyJournalsResponse res = sdk.accounting().batchCreateCompanyJournals()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .accountingJournalBatchCreateRequestDto(AccountingJournalBatchCreateRequestDto.builder()
                     .items(List.of())
                     .build())
@@ -509,11 +515,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                                | *String*                                                                                                    | :heavy_check_mark:                                                                                          | The account identifier                                                                                      |
-| `id`                                                                                                        | *String*                                                                                                    | :heavy_check_mark:                                                                                          | N/A                                                                                                         |
-| `accountingJournalBatchCreateRequestDto`                                                                    | [AccountingJournalBatchCreateRequestDto](../../models/components/AccountingJournalBatchCreateRequestDto.md) | :heavy_check_mark:                                                                                          | N/A                                                                                                         |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `accountingJournalBatchCreateRequestDto`                                                                                                                                 | [AccountingJournalBatchCreateRequestDto](../../models/components/AccountingJournalBatchCreateRequestDto.md)                                                              | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -571,6 +578,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,company_id,remote_company_id,reference,memo,transaction_date,status,lines,created_at,updated_at,posted_at,unified_custom_fields")
                 .filter(JsonNullable.of(null))
+                .prefer("heartbeat")
                 .build();
 
 
@@ -644,6 +652,7 @@ public class Application {
         AccountingCreateCompanyJournalResponse res = sdk.accounting().createCompanyJournal()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .accountingJournalCreateRequestDto(AccountingJournalCreateRequestDto.builder()
                     .reference("JRN-2024-001")
                     .memo("Monthly closing entries")
@@ -673,11 +682,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                      | *String*                                                                                          | :heavy_check_mark:                                                                                | The account identifier                                                                            |
-| `id`                                                                                              | *String*                                                                                          | :heavy_check_mark:                                                                                | N/A                                                                                               |
-| `accountingJournalCreateRequestDto`                                                               | [AccountingJournalCreateRequestDto](../../models/components/AccountingJournalCreateRequestDto.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `accountingJournalCreateRequestDto`                                                                                                                                      | [AccountingJournalCreateRequestDto](../../models/components/AccountingJournalCreateRequestDto.md)                                                                        | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -734,6 +744,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .fields("id,remote_id,company_id,remote_company_id,reference,memo,transaction_date,status,lines,created_at,updated_at,posted_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AccountingGetCompanyJournalResponse res = sdk.accounting().getCompanyJournal()

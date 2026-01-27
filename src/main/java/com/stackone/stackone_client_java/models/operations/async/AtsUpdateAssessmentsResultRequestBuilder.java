@@ -21,6 +21,7 @@ public class AtsUpdateAssessmentsResultRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -39,6 +40,18 @@ public class AtsUpdateAssessmentsResultRequestBuilder {
     public AtsUpdateAssessmentsResultRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public AtsUpdateAssessmentsResultRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public AtsUpdateAssessmentsResultRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -65,6 +78,7 @@ public class AtsUpdateAssessmentsResultRequestBuilder {
 
         AtsUpdateAssessmentsResultRequest request = new AtsUpdateAssessmentsResultRequest(xAccountId,
             id,
+            prefer,
             atsUpdateCandidatesAssessmentsResultsRequestDto);
 
         return request;

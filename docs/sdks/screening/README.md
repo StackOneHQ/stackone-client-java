@@ -1,5 +1,4 @@
 # Screening
-(*screening()*)
 
 ## Overview
 
@@ -44,6 +43,7 @@ public class Application {
                 .filter(ScreeningListScreeningPackagesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -117,6 +117,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,description,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         ScreeningGetScreeningPackageResponse res = sdk.screening().getScreeningPackage()
@@ -189,6 +190,7 @@ public class Application {
 
         ScreeningWebhookScreeningResultResponse res = sdk.screening().webhookScreeningResult()
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .screeningResultWebhook(ScreeningResultWebhook.builder()
                     .event(Event.SCREENING_RESULTS_COMPLETED)
                     .data(ScreeningResult.builder()
@@ -222,10 +224,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `xAccountId`                                                                | *String*                                                                    | :heavy_check_mark:                                                          | The account identifier                                                      |
-| `screeningResultWebhook`                                                    | [ScreeningResultWebhook](../../models/components/ScreeningResultWebhook.md) | :heavy_check_mark:                                                          | N/A                                                                         |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `screeningResultWebhook`                                                                                                                                                 | [ScreeningResultWebhook](../../models/components/ScreeningResultWebhook.md)                                                                                              | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -279,6 +282,7 @@ public class Application {
 
         ScreeningCreateScreeningOrderResponse res = sdk.screening().createScreeningOrder()
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .screeningCreateOrderRequestDto(ScreeningCreateOrderRequestDto.builder()
                     .packageId("54321")
                     .candidate(ScreeningOrderCandidate.builder()
@@ -303,10 +307,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                | *String*                                                                                    | :heavy_check_mark:                                                                          | The account identifier                                                                      |
-| `screeningCreateOrderRequestDto`                                                            | [ScreeningCreateOrderRequestDto](../../models/components/ScreeningCreateOrderRequestDto.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `screeningCreateOrderRequestDto`                                                                                                                                         | [ScreeningCreateOrderRequestDto](../../models/components/ScreeningCreateOrderRequestDto.md)                                                                              | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 

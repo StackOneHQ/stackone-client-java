@@ -22,7 +22,6 @@ import com.stackone.stackone_client_java.models.components.AtsUpdateBackgroundCh
 import com.stackone.stackone_client_java.models.components.AtsUpdateCandidateRequestDto;
 import com.stackone.stackone_client_java.models.components.AtsUpdateCandidatesAssessmentsResultsRequestDto;
 import com.stackone.stackone_client_java.models.components.AtsUpdateJobRequestDto;
-import com.stackone.stackone_client_java.models.components.AtsUpdateNotesRequestDto;
 import com.stackone.stackone_client_java.models.operations.AtsCreateApplicationNoteRequest;
 import com.stackone.stackone_client_java.models.operations.AtsCreateApplicationRequest;
 import com.stackone.stackone_client_java.models.operations.AtsCreateBackgroundCheckPackageRequest;
@@ -408,24 +407,28 @@ public class AsyncAts {
      * @return {@code CompletableFuture<AtsCreateApplicationResponse>} - The async response
      */
     public CompletableFuture<AtsCreateApplicationResponse> createApplication(String xAccountId, AtsCreateApplicationRequestDto atsCreateApplicationRequestDto) {
-        return createApplication(xAccountId, atsCreateApplicationRequestDto, Optional.empty());
+        return createApplication(
+                xAccountId, Optional.empty(), atsCreateApplicationRequestDto,
+                Optional.empty());
     }
 
     /**
      * Create Application
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateApplicationRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsCreateApplicationResponse>} - The async response
      */
     public CompletableFuture<AtsCreateApplicationResponse> createApplication(
-            String xAccountId, AtsCreateApplicationRequestDto atsCreateApplicationRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            AtsCreateApplicationRequestDto atsCreateApplicationRequestDto, Optional<Options> options) {
         AtsCreateApplicationRequest request =
             AtsCreateApplicationRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .atsCreateApplicationRequestDto(atsCreateApplicationRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateApplicationRequest, AtsCreateApplicationResponse> operation
@@ -494,8 +497,8 @@ public class AsyncAts {
             String xAccountId, String id,
             AtsUpdateApplicationRequestDto atsUpdateApplicationRequestDto) {
         return updateApplication(
-                xAccountId, id, atsUpdateApplicationRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                atsUpdateApplicationRequestDto, Optional.empty());
     }
 
     /**
@@ -503,18 +506,21 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsUpdateApplicationRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsUpdateApplicationResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateApplicationResponse> updateApplication(
             String xAccountId, String id,
-            AtsUpdateApplicationRequestDto atsUpdateApplicationRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsUpdateApplicationRequestDto atsUpdateApplicationRequestDto,
+            Optional<Options> options) {
         AtsUpdateApplicationRequest request =
             AtsUpdateApplicationRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsUpdateApplicationRequestDto(atsUpdateApplicationRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateApplicationRequest, AtsUpdateApplicationResponse> operation
@@ -583,8 +589,8 @@ public class AsyncAts {
             String xAccountId, String id,
             AtsMoveApplicationRequestDto atsMoveApplicationRequestDto) {
         return moveApplication(
-                xAccountId, id, atsMoveApplicationRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                atsMoveApplicationRequestDto, Optional.empty());
     }
 
     /**
@@ -592,18 +598,21 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsMoveApplicationRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsMoveApplicationResponse>} - The async response
      */
     public CompletableFuture<AtsMoveApplicationResponse> moveApplication(
             String xAccountId, String id,
-            AtsMoveApplicationRequestDto atsMoveApplicationRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsMoveApplicationRequestDto atsMoveApplicationRequestDto,
+            Optional<Options> options) {
         AtsMoveApplicationRequest request =
             AtsMoveApplicationRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsMoveApplicationRequestDto(atsMoveApplicationRequestDto)
                 .build();
         AsyncRequestOperation<AtsMoveApplicationRequest, AtsMoveApplicationResponse> operation
@@ -636,8 +645,8 @@ public class AsyncAts {
             String xAccountId, String id,
             AtsRejectApplicationRequestDto atsRejectApplicationRequestDto) {
         return rejectApplication(
-                xAccountId, id, atsRejectApplicationRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                atsRejectApplicationRequestDto, Optional.empty());
     }
 
     /**
@@ -645,18 +654,21 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsRejectApplicationRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsRejectApplicationResponse>} - The async response
      */
     public CompletableFuture<AtsRejectApplicationResponse> rejectApplication(
             String xAccountId, String id,
-            AtsRejectApplicationRequestDto atsRejectApplicationRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsRejectApplicationRequestDto atsRejectApplicationRequestDto,
+            Optional<Options> options) {
         AtsRejectApplicationRequest request =
             AtsRejectApplicationRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsRejectApplicationRequestDto(atsRejectApplicationRequestDto)
                 .build();
         AsyncRequestOperation<AtsRejectApplicationRequest, AtsRejectApplicationResponse> operation
@@ -869,8 +881,8 @@ public class AsyncAts {
             String xAccountId, String id,
             AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
         return createApplicationNote(
-                xAccountId, id, atsCreateNotesRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                atsCreateNotesRequestDto, Optional.empty());
     }
 
     /**
@@ -878,18 +890,21 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateNotesRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsCreateApplicationNoteResponse>} - The async response
      */
     public CompletableFuture<AtsCreateApplicationNoteResponse> createApplicationNote(
             String xAccountId, String id,
-            AtsCreateNotesRequestDto atsCreateNotesRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsCreateNotesRequestDto atsCreateNotesRequestDto,
+            Optional<Options> options) {
         AtsCreateApplicationNoteRequest request =
             AtsCreateApplicationNoteRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsCreateNotesRequestDto(atsCreateNotesRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateApplicationNoteRequest, AtsCreateApplicationNoteResponse> operation
@@ -949,42 +964,21 @@ public class AsyncAts {
     /**
      * Update Application Note
      * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param atsUpdateNotesRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<AtsUpdateApplicationNoteResponse>} - The async response
      */
-    public CompletableFuture<AtsUpdateApplicationNoteResponse> updateApplicationNote(
-            String xAccountId, String id,
-            String subResourceId, AtsUpdateNotesRequestDto atsUpdateNotesRequestDto) {
-        return updateApplicationNote(
-                xAccountId, id, subResourceId,
-                atsUpdateNotesRequestDto, Optional.empty());
+    public CompletableFuture<AtsUpdateApplicationNoteResponse> updateApplicationNote(AtsUpdateApplicationNoteRequest request) {
+        return updateApplicationNote(request, Optional.empty());
     }
 
     /**
      * Update Application Note
      * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param atsUpdateNotesRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return {@code CompletableFuture<AtsUpdateApplicationNoteResponse>} - The async response
      */
-    public CompletableFuture<AtsUpdateApplicationNoteResponse> updateApplicationNote(
-            String xAccountId, String id,
-            String subResourceId, AtsUpdateNotesRequestDto atsUpdateNotesRequestDto,
-            Optional<Options> options) {
-        AtsUpdateApplicationNoteRequest request =
-            AtsUpdateApplicationNoteRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .id(id)
-                .subResourceId(subResourceId)
-                .atsUpdateNotesRequestDto(atsUpdateNotesRequestDto)
-                .build();
+    public CompletableFuture<AtsUpdateApplicationNoteResponse> updateApplicationNote(AtsUpdateApplicationNoteRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsUpdateApplicationNoteRequest, AtsUpdateApplicationNoteResponse> operation
               = new AtsUpdateApplicationNote.Async(
                                     sdkConfiguration, options, sdkConfiguration.retryScheduler(),
@@ -1087,8 +1081,8 @@ public class AsyncAts {
             String xAccountId, String id,
             AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto) {
         return uploadApplicationDocument(
-                xAccountId, id, atsDocumentsUploadRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                atsDocumentsUploadRequestDto, Optional.empty());
     }
 
     /**
@@ -1096,18 +1090,21 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsDocumentsUploadRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsUploadApplicationDocumentResponse>} - The async response
      */
     public CompletableFuture<AtsUploadApplicationDocumentResponse> uploadApplicationDocument(
             String xAccountId, String id,
-            AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto,
+            Optional<Options> options) {
         AtsUploadApplicationDocumentRequest request =
             AtsUploadApplicationDocumentRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsDocumentsUploadRequestDto(atsDocumentsUploadRequestDto)
                 .build();
         AsyncRequestOperation<AtsUploadApplicationDocumentRequest, AtsUploadApplicationDocumentResponse> operation
@@ -1280,24 +1277,28 @@ public class AsyncAts {
      * @return {@code CompletableFuture<AtsCreateCandidateResponse>} - The async response
      */
     public CompletableFuture<AtsCreateCandidateResponse> createCandidate(String xAccountId, AtsCreateCandidateRequestDto atsCreateCandidateRequestDto) {
-        return createCandidate(xAccountId, atsCreateCandidateRequestDto, Optional.empty());
+        return createCandidate(
+                xAccountId, Optional.empty(), atsCreateCandidateRequestDto,
+                Optional.empty());
     }
 
     /**
      * Create Candidate
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateCandidateRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsCreateCandidateResponse>} - The async response
      */
     public CompletableFuture<AtsCreateCandidateResponse> createCandidate(
-            String xAccountId, AtsCreateCandidateRequestDto atsCreateCandidateRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            AtsCreateCandidateRequestDto atsCreateCandidateRequestDto, Optional<Options> options) {
         AtsCreateCandidateRequest request =
             AtsCreateCandidateRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .atsCreateCandidateRequestDto(atsCreateCandidateRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateCandidateRequest, AtsCreateCandidateResponse> operation
@@ -1366,8 +1367,8 @@ public class AsyncAts {
             String xAccountId, String id,
             AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto) {
         return updateCandidate(
-                xAccountId, id, atsUpdateCandidateRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                atsUpdateCandidateRequestDto, Optional.empty());
     }
 
     /**
@@ -1375,18 +1376,21 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsUpdateCandidateRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsUpdateCandidateResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateCandidateResponse> updateCandidate(
             String xAccountId, String id,
-            AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto,
+            Optional<Options> options) {
         AtsUpdateCandidateRequest request =
             AtsUpdateCandidateRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsUpdateCandidateRequestDto(atsUpdateCandidateRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateCandidateRequest, AtsUpdateCandidateResponse> operation
@@ -1455,8 +1459,8 @@ public class AsyncAts {
             String xAccountId, String id,
             AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
         return createCandidateNote(
-                xAccountId, id, atsCreateNotesRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                atsCreateNotesRequestDto, Optional.empty());
     }
 
     /**
@@ -1464,18 +1468,21 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateNotesRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsCreateCandidateNoteResponse>} - The async response
      */
     public CompletableFuture<AtsCreateCandidateNoteResponse> createCandidateNote(
             String xAccountId, String id,
-            AtsCreateNotesRequestDto atsCreateNotesRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsCreateNotesRequestDto atsCreateNotesRequestDto,
+            Optional<Options> options) {
         AtsCreateCandidateNoteRequest request =
             AtsCreateCandidateNoteRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsCreateNotesRequestDto(atsCreateNotesRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateCandidateNoteRequest, AtsCreateCandidateNoteResponse> operation
@@ -2060,8 +2067,8 @@ public class AsyncAts {
             String xAccountId, String id,
             AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
         return createInterviewNote(
-                xAccountId, id, atsCreateNotesRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                atsCreateNotesRequestDto, Optional.empty());
     }
 
     /**
@@ -2069,18 +2076,21 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateNotesRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsCreateInterviewNoteResponse>} - The async response
      */
     public CompletableFuture<AtsCreateInterviewNoteResponse> createInterviewNote(
             String xAccountId, String id,
-            AtsCreateNotesRequestDto atsCreateNotesRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsCreateNotesRequestDto atsCreateNotesRequestDto,
+            Optional<Options> options) {
         AtsCreateInterviewNoteRequest request =
             AtsCreateInterviewNoteRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsCreateNotesRequestDto(atsCreateNotesRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateInterviewNoteRequest, AtsCreateInterviewNoteResponse> operation
@@ -2104,42 +2114,21 @@ public class AsyncAts {
     /**
      * Update Interview Note
      * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param atsUpdateNotesRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<AtsUpdateInterviewNoteResponse>} - The async response
      */
-    public CompletableFuture<AtsUpdateInterviewNoteResponse> updateInterviewNote(
-            String xAccountId, String id,
-            String subResourceId, AtsUpdateNotesRequestDto atsUpdateNotesRequestDto) {
-        return updateInterviewNote(
-                xAccountId, id, subResourceId,
-                atsUpdateNotesRequestDto, Optional.empty());
+    public CompletableFuture<AtsUpdateInterviewNoteResponse> updateInterviewNote(AtsUpdateInterviewNoteRequest request) {
+        return updateInterviewNote(request, Optional.empty());
     }
 
     /**
      * Update Interview Note
      * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param atsUpdateNotesRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return {@code CompletableFuture<AtsUpdateInterviewNoteResponse>} - The async response
      */
-    public CompletableFuture<AtsUpdateInterviewNoteResponse> updateInterviewNote(
-            String xAccountId, String id,
-            String subResourceId, AtsUpdateNotesRequestDto atsUpdateNotesRequestDto,
-            Optional<Options> options) {
-        AtsUpdateInterviewNoteRequest request =
-            AtsUpdateInterviewNoteRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .id(id)
-                .subResourceId(subResourceId)
-                .atsUpdateNotesRequestDto(atsUpdateNotesRequestDto)
-                .build();
+    public CompletableFuture<AtsUpdateInterviewNoteResponse> updateInterviewNote(AtsUpdateInterviewNoteRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsUpdateInterviewNoteRequest, AtsUpdateInterviewNoteResponse> operation
               = new AtsUpdateInterviewNote.Async(
                                     sdkConfiguration, options, sdkConfiguration.retryScheduler(),
@@ -2202,24 +2191,28 @@ public class AsyncAts {
      * @return {@code CompletableFuture<AtsCreateJobResponse>} - The async response
      */
     public CompletableFuture<AtsCreateJobResponse> createJob(String xAccountId, AtsCreateJobRequestDto atsCreateJobRequestDto) {
-        return createJob(xAccountId, atsCreateJobRequestDto, Optional.empty());
+        return createJob(
+                xAccountId, Optional.empty(), atsCreateJobRequestDto,
+                Optional.empty());
     }
 
     /**
      * Create Job
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateJobRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsCreateJobResponse>} - The async response
      */
     public CompletableFuture<AtsCreateJobResponse> createJob(
-            String xAccountId, AtsCreateJobRequestDto atsCreateJobRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            AtsCreateJobRequestDto atsCreateJobRequestDto, Optional<Options> options) {
         AtsCreateJobRequest request =
             AtsCreateJobRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .atsCreateJobRequestDto(atsCreateJobRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateJobRequest, AtsCreateJobResponse> operation
@@ -2324,8 +2317,8 @@ public class AsyncAts {
             String xAccountId, String id,
             AtsUpdateJobRequestDto atsUpdateJobRequestDto) {
         return updateJob(
-                xAccountId, id, atsUpdateJobRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                atsUpdateJobRequestDto, Optional.empty());
     }
 
     /**
@@ -2333,18 +2326,21 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsUpdateJobRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsUpdateJobResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateJobResponse> updateJob(
             String xAccountId, String id,
-            AtsUpdateJobRequestDto atsUpdateJobRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsUpdateJobRequestDto atsUpdateJobRequestDto,
+            Optional<Options> options) {
         AtsUpdateJobRequest request =
             AtsUpdateJobRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsUpdateJobRequestDto(atsUpdateJobRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateJobRequest, AtsUpdateJobResponse> operation
@@ -2805,24 +2801,28 @@ public class AsyncAts {
      * @return {@code CompletableFuture<AtsCreateOfferResponse>} - The async response
      */
     public CompletableFuture<AtsCreateOfferResponse> createOffer(String xAccountId, AtsCreateOfferRequestDto atsCreateOfferRequestDto) {
-        return createOffer(xAccountId, atsCreateOfferRequestDto, Optional.empty());
+        return createOffer(
+                xAccountId, Optional.empty(), atsCreateOfferRequestDto,
+                Optional.empty());
     }
 
     /**
      * Create Offer
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateOfferRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsCreateOfferResponse>} - The async response
      */
     public CompletableFuture<AtsCreateOfferResponse> createOffer(
-            String xAccountId, AtsCreateOfferRequestDto atsCreateOfferRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            AtsCreateOfferRequestDto atsCreateOfferRequestDto, Optional<Options> options) {
         AtsCreateOfferRequest request =
             AtsCreateOfferRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .atsCreateOfferRequestDto(atsCreateOfferRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateOfferRequest, AtsCreateOfferResponse> operation
@@ -2959,24 +2959,28 @@ public class AsyncAts {
      * @return {@code CompletableFuture<AtsOrderAssessmentsRequestResponse>} - The async response
      */
     public CompletableFuture<AtsOrderAssessmentsRequestResponse> orderAssessmentsRequest(String xAccountId, AtsCreateCandidatesAssessmentsRequestDto atsCreateCandidatesAssessmentsRequestDto) {
-        return orderAssessmentsRequest(xAccountId, atsCreateCandidatesAssessmentsRequestDto, Optional.empty());
+        return orderAssessmentsRequest(
+                xAccountId, Optional.empty(), atsCreateCandidatesAssessmentsRequestDto,
+                Optional.empty());
     }
 
     /**
      * Order Assessments Request
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateCandidatesAssessmentsRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsOrderAssessmentsRequestResponse>} - The async response
      */
     public CompletableFuture<AtsOrderAssessmentsRequestResponse> orderAssessmentsRequest(
-            String xAccountId, AtsCreateCandidatesAssessmentsRequestDto atsCreateCandidatesAssessmentsRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            AtsCreateCandidatesAssessmentsRequestDto atsCreateCandidatesAssessmentsRequestDto, Optional<Options> options) {
         AtsOrderAssessmentsRequestRequest request =
             AtsOrderAssessmentsRequestRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .atsCreateCandidatesAssessmentsRequestDto(atsCreateCandidatesAssessmentsRequestDto)
                 .build();
         AsyncRequestOperation<AtsOrderAssessmentsRequestRequest, AtsOrderAssessmentsRequestResponse> operation
@@ -3009,8 +3013,8 @@ public class AsyncAts {
             String xAccountId, String id,
             AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto) {
         return updateAssessmentsResult(
-                xAccountId, id, atsUpdateCandidatesAssessmentsResultsRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                atsUpdateCandidatesAssessmentsResultsRequestDto, Optional.empty());
     }
 
     /**
@@ -3018,18 +3022,21 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsUpdateCandidatesAssessmentsResultsRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsUpdateAssessmentsResultResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateAssessmentsResultResponse> updateAssessmentsResult(
             String xAccountId, String id,
-            AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto,
+            Optional<Options> options) {
         AtsUpdateAssessmentsResultRequest request =
             AtsUpdateAssessmentsResultRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsUpdateCandidatesAssessmentsResultsRequestDto(atsUpdateCandidatesAssessmentsResultsRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateAssessmentsResultRequest, AtsUpdateAssessmentsResultResponse> operation
@@ -3094,24 +3101,28 @@ public class AsyncAts {
      * @return {@code CompletableFuture<AtsCreateBackgroundCheckPackageResponse>} - The async response
      */
     public CompletableFuture<AtsCreateBackgroundCheckPackageResponse> createBackgroundCheckPackage(String xAccountId, AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto) {
-        return createBackgroundCheckPackage(xAccountId, atsCreateBackgroundCheckPackagesRequestDto, Optional.empty());
+        return createBackgroundCheckPackage(
+                xAccountId, Optional.empty(), atsCreateBackgroundCheckPackagesRequestDto,
+                Optional.empty());
     }
 
     /**
      * Create Background Check Package
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateBackgroundCheckPackagesRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsCreateBackgroundCheckPackageResponse>} - The async response
      */
     public CompletableFuture<AtsCreateBackgroundCheckPackageResponse> createBackgroundCheckPackage(
-            String xAccountId, AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto, Optional<Options> options) {
         AtsCreateBackgroundCheckPackageRequest request =
             AtsCreateBackgroundCheckPackageRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .atsCreateBackgroundCheckPackagesRequestDto(atsCreateBackgroundCheckPackagesRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateBackgroundCheckPackageRequest, AtsCreateBackgroundCheckPackageResponse> operation
@@ -3160,52 +3171,6 @@ public class AsyncAts {
 
 
     /**
-     * Delete Background Check Package
-     * 
-     * @return The async call builder
-     */
-    public AtsDeleteBackgroundCheckPackageRequestBuilder deleteBackgroundCheckPackage() {
-        return new AtsDeleteBackgroundCheckPackageRequestBuilder(sdkConfiguration);
-    }
-
-    /**
-     * Delete Background Check Package
-     * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @return {@code CompletableFuture<AtsDeleteBackgroundCheckPackageResponse>} - The async response
-     */
-    public CompletableFuture<AtsDeleteBackgroundCheckPackageResponse> deleteBackgroundCheckPackage(String xAccountId, String id) {
-        return deleteBackgroundCheckPackage(xAccountId, id, Optional.empty());
-    }
-
-    /**
-     * Delete Background Check Package
-     * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param options additional options
-     * @return {@code CompletableFuture<AtsDeleteBackgroundCheckPackageResponse>} - The async response
-     */
-    public CompletableFuture<AtsDeleteBackgroundCheckPackageResponse> deleteBackgroundCheckPackage(
-            String xAccountId, String id,
-            Optional<Options> options) {
-        AtsDeleteBackgroundCheckPackageRequest request =
-            AtsDeleteBackgroundCheckPackageRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .id(id)
-                .build();
-        AsyncRequestOperation<AtsDeleteBackgroundCheckPackageRequest, AtsDeleteBackgroundCheckPackageResponse> operation
-              = new AtsDeleteBackgroundCheckPackage.Async(
-                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
-                                    _headers);
-        return operation.doRequest(request)
-            .thenCompose(operation::handleResponse);
-    }
-
-
-    /**
      * Update Background Check Package
      * 
      * @return The async call builder
@@ -3226,8 +3191,8 @@ public class AsyncAts {
             String xAccountId, String id,
             AtsUpdateBackgroundCheckPackagesRequestDto atsUpdateBackgroundCheckPackagesRequestDto) {
         return updateBackgroundCheckPackage(
-                xAccountId, id, atsUpdateBackgroundCheckPackagesRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                atsUpdateBackgroundCheckPackagesRequestDto, Optional.empty());
     }
 
     /**
@@ -3235,22 +3200,75 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsUpdateBackgroundCheckPackagesRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsUpdateBackgroundCheckPackageResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateBackgroundCheckPackageResponse> updateBackgroundCheckPackage(
             String xAccountId, String id,
-            AtsUpdateBackgroundCheckPackagesRequestDto atsUpdateBackgroundCheckPackagesRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsUpdateBackgroundCheckPackagesRequestDto atsUpdateBackgroundCheckPackagesRequestDto,
+            Optional<Options> options) {
         AtsUpdateBackgroundCheckPackageRequest request =
             AtsUpdateBackgroundCheckPackageRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsUpdateBackgroundCheckPackagesRequestDto(atsUpdateBackgroundCheckPackagesRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateBackgroundCheckPackageRequest, AtsUpdateBackgroundCheckPackageResponse> operation
               = new AtsUpdateBackgroundCheckPackage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
+        return operation.doRequest(request)
+            .thenCompose(operation::handleResponse);
+    }
+
+
+    /**
+     * Delete Background Check Package
+     * 
+     * @return The async call builder
+     */
+    public AtsDeleteBackgroundCheckPackageRequestBuilder deleteBackgroundCheckPackage() {
+        return new AtsDeleteBackgroundCheckPackageRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Delete Background Check Package
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @return {@code CompletableFuture<AtsDeleteBackgroundCheckPackageResponse>} - The async response
+     */
+    public CompletableFuture<AtsDeleteBackgroundCheckPackageResponse> deleteBackgroundCheckPackage(String xAccountId, String id) {
+        return deleteBackgroundCheckPackage(
+                xAccountId, id, Optional.empty(),
+                Optional.empty());
+    }
+
+    /**
+     * Delete Background Check Package
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     * @param options additional options
+     * @return {@code CompletableFuture<AtsDeleteBackgroundCheckPackageResponse>} - The async response
+     */
+    public CompletableFuture<AtsDeleteBackgroundCheckPackageResponse> deleteBackgroundCheckPackage(
+            String xAccountId, String id,
+            Optional<String> prefer, Optional<Options> options) {
+        AtsDeleteBackgroundCheckPackageRequest request =
+            AtsDeleteBackgroundCheckPackageRequest
+                .builder()
+                .xAccountId(xAccountId)
+                .id(id)
+                .prefer(prefer)
+                .build();
+        AsyncRequestOperation<AtsDeleteBackgroundCheckPackageRequest, AtsDeleteBackgroundCheckPackageResponse> operation
+              = new AtsDeleteBackgroundCheckPackage.Async(
                                     sdkConfiguration, options, sdkConfiguration.retryScheduler(),
                                     _headers);
         return operation.doRequest(request)
@@ -3275,24 +3293,28 @@ public class AsyncAts {
      * @return {@code CompletableFuture<AtsOrderBackgroundCheckRequestResponse>} - The async response
      */
     public CompletableFuture<AtsOrderBackgroundCheckRequestResponse> orderBackgroundCheckRequest(String xAccountId, AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto) {
-        return orderBackgroundCheckRequest(xAccountId, atsCreateBackgroundCheckOrderRequestDto, Optional.empty());
+        return orderBackgroundCheckRequest(
+                xAccountId, Optional.empty(), atsCreateBackgroundCheckOrderRequestDto,
+                Optional.empty());
     }
 
     /**
      * Order Background Check Request
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateBackgroundCheckOrderRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsOrderBackgroundCheckRequestResponse>} - The async response
      */
     public CompletableFuture<AtsOrderBackgroundCheckRequestResponse> orderBackgroundCheckRequest(
-            String xAccountId, AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto, Optional<Options> options) {
         AtsOrderBackgroundCheckRequestRequest request =
             AtsOrderBackgroundCheckRequestRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .atsCreateBackgroundCheckOrderRequestDto(atsCreateBackgroundCheckOrderRequestDto)
                 .build();
         AsyncRequestOperation<AtsOrderBackgroundCheckRequestRequest, AtsOrderBackgroundCheckRequestResponse> operation
@@ -3325,8 +3347,8 @@ public class AsyncAts {
             String xAccountId, String id,
             AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto) {
         return updateBackgroundCheckResult(
-                xAccountId, id, atsUpdateBackgroundCheckResultRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                atsUpdateBackgroundCheckResultRequestDto, Optional.empty());
     }
 
     /**
@@ -3334,18 +3356,21 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsUpdateBackgroundCheckResultRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsUpdateBackgroundCheckResultResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateBackgroundCheckResultResponse> updateBackgroundCheckResult(
             String xAccountId, String id,
-            AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto,
+            Optional<Options> options) {
         AtsUpdateBackgroundCheckResultRequest request =
             AtsUpdateBackgroundCheckResultRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsUpdateBackgroundCheckResultRequestDto(atsUpdateBackgroundCheckResultRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateBackgroundCheckResultRequest, AtsUpdateBackgroundCheckResultResponse> operation

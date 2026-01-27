@@ -18,6 +18,7 @@ import java.util.Optional;
 public class MessagingCreateConversationRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private MessagingCreateConversationRequestDto messagingCreateConversationRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -30,6 +31,18 @@ public class MessagingCreateConversationRequestBuilder {
     public MessagingCreateConversationRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public MessagingCreateConversationRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public MessagingCreateConversationRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -55,6 +68,7 @@ public class MessagingCreateConversationRequestBuilder {
     private MessagingCreateConversationRequest buildRequest() {
 
         MessagingCreateConversationRequest request = new MessagingCreateConversationRequest(xAccountId,
+            prefer,
             messagingCreateConversationRequestDto);
 
         return request;

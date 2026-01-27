@@ -20,6 +20,7 @@ import java.util.concurrent.CompletableFuture;
 public class AtsCreateJobRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private AtsCreateJobRequestDto atsCreateJobRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -32,6 +33,18 @@ public class AtsCreateJobRequestBuilder {
     public AtsCreateJobRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public AtsCreateJobRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public AtsCreateJobRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -57,6 +70,7 @@ public class AtsCreateJobRequestBuilder {
     private AtsCreateJobRequest buildRequest() {
 
         AtsCreateJobRequest request = new AtsCreateJobRequest(xAccountId,
+            prefer,
             atsCreateJobRequestDto);
 
         return request;

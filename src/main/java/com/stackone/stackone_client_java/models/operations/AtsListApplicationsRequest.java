@@ -15,6 +15,7 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.Map;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -112,6 +113,13 @@ public class AtsListApplicationsRequest {
     @Deprecated
     private JsonNullable<String> jobId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public AtsListApplicationsRequest(
             String xAccountId,
@@ -126,7 +134,8 @@ public class AtsListApplicationsRequest {
             JsonNullable<String> syncToken,
             JsonNullable<String> expand,
             JsonNullable<String> include,
-            JsonNullable<String> jobId) {
+            JsonNullable<String> jobId,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(raw, "raw");
         Utils.checkNotNull(proxy, "proxy");
@@ -140,6 +149,7 @@ public class AtsListApplicationsRequest {
         Utils.checkNotNull(expand, "expand");
         Utils.checkNotNull(include, "include");
         Utils.checkNotNull(jobId, "jobId");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.raw = raw;
         this.proxy = proxy;
@@ -153,6 +163,7 @@ public class AtsListApplicationsRequest {
         this.expand = expand;
         this.include = include;
         this.jobId = jobId;
+        this.prefer = prefer;
     }
     
     public AtsListApplicationsRequest(
@@ -161,7 +172,7 @@ public class AtsListApplicationsRequest {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), Optional.empty());
     }
 
     /**
@@ -283,6 +294,15 @@ public class AtsListApplicationsRequest {
     @JsonIgnore
     public JsonNullable<String> jobId() {
         return jobId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -545,6 +565,27 @@ public class AtsListApplicationsRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsListApplicationsRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsListApplicationsRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -567,7 +608,8 @@ public class AtsListApplicationsRequest {
             Utils.enhancedDeepEquals(this.syncToken, other.syncToken) &&
             Utils.enhancedDeepEquals(this.expand, other.expand) &&
             Utils.enhancedDeepEquals(this.include, other.include) &&
-            Utils.enhancedDeepEquals(this.jobId, other.jobId);
+            Utils.enhancedDeepEquals(this.jobId, other.jobId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
@@ -577,7 +619,7 @@ public class AtsListApplicationsRequest {
             fields, filter, page,
             pageSize, next, updatedAfter,
             syncToken, expand, include,
-            jobId);
+            jobId, prefer);
     }
     
     @Override
@@ -595,7 +637,8 @@ public class AtsListApplicationsRequest {
                 "syncToken", syncToken,
                 "expand", expand,
                 "include", include,
-                "jobId", jobId);
+                "jobId", jobId,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -630,6 +673,8 @@ public class AtsListApplicationsRequest {
 
         @Deprecated
         private JsonNullable<String> jobId = JsonNullable.undefined();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -903,6 +948,27 @@ public class AtsListApplicationsRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public AtsListApplicationsRequest build() {
 
             return new AtsListApplicationsRequest(
@@ -910,7 +976,7 @@ public class AtsListApplicationsRequest {
                 fields, filter, page,
                 pageSize, next, updatedAfter,
                 syncToken, expand, include,
-                jobId);
+                jobId, prefer);
         }
 
     }

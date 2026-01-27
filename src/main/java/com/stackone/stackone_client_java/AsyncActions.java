@@ -5,14 +5,22 @@ package com.stackone.stackone_client_java;
 
 import static com.stackone.stackone_client_java.operations.Operations.AsyncRequestOperation;
 
+import com.stackone.stackone_client_java.models.components.ActionBuildDto;
+import com.stackone.stackone_client_java.models.components.ActionSearchDto;
 import com.stackone.stackone_client_java.models.components.ActionsRpcRequestDto;
 import com.stackone.stackone_client_java.models.operations.StackoneListActionsMetaRequest;
+import com.stackone.stackone_client_java.models.operations.async.StackoneBuildActionEmbeddingsRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.async.StackoneBuildActionEmbeddingsResponse;
 import com.stackone.stackone_client_java.models.operations.async.StackoneListActionsMetaRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.async.StackoneListActionsMetaResponse;
 import com.stackone.stackone_client_java.models.operations.async.StackoneRpcActionRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.async.StackoneRpcActionResponse;
+import com.stackone.stackone_client_java.models.operations.async.StackoneSearchActionsRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.async.StackoneSearchActionsResponse;
+import com.stackone.stackone_client_java.operations.StackoneBuildActionEmbeddings;
 import com.stackone.stackone_client_java.operations.StackoneListActionsMeta;
 import com.stackone.stackone_client_java.operations.StackoneRpcAction;
+import com.stackone.stackone_client_java.operations.StackoneSearchActions;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.util.Optional;
@@ -76,6 +84,78 @@ public class AsyncActions {
     public CompletableFuture<StackoneListActionsMetaResponse> listActionsMeta(StackoneListActionsMetaRequest request, Optional<Options> options) {
         AsyncRequestOperation<StackoneListActionsMetaRequest, StackoneListActionsMetaResponse> operation
               = new StackoneListActionsMeta.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
+        return operation.doRequest(request)
+            .thenCompose(operation::handleResponse);
+    }
+
+
+    /**
+     * Search connector actions by semantic similarity
+     * 
+     * @return The async call builder
+     */
+    public StackoneSearchActionsRequestBuilder searchActions() {
+        return new StackoneSearchActionsRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Search connector actions by semantic similarity
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return {@code CompletableFuture<StackoneSearchActionsResponse>} - The async response
+     */
+    public CompletableFuture<StackoneSearchActionsResponse> searchActions(ActionSearchDto request) {
+        return searchActions(request, Optional.empty());
+    }
+
+    /**
+     * Search connector actions by semantic similarity
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return {@code CompletableFuture<StackoneSearchActionsResponse>} - The async response
+     */
+    public CompletableFuture<StackoneSearchActionsResponse> searchActions(ActionSearchDto request, Optional<Options> options) {
+        AsyncRequestOperation<ActionSearchDto, StackoneSearchActionsResponse> operation
+              = new StackoneSearchActions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
+        return operation.doRequest(request)
+            .thenCompose(operation::handleResponse);
+    }
+
+
+    /**
+     * Rebuild action embeddings for semantic search
+     * 
+     * @return The async call builder
+     */
+    public StackoneBuildActionEmbeddingsRequestBuilder buildActionEmbeddings() {
+        return new StackoneBuildActionEmbeddingsRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Rebuild action embeddings for semantic search
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return {@code CompletableFuture<StackoneBuildActionEmbeddingsResponse>} - The async response
+     */
+    public CompletableFuture<StackoneBuildActionEmbeddingsResponse> buildActionEmbeddings(ActionBuildDto request) {
+        return buildActionEmbeddings(request, Optional.empty());
+    }
+
+    /**
+     * Rebuild action embeddings for semantic search
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return {@code CompletableFuture<StackoneBuildActionEmbeddingsResponse>} - The async response
+     */
+    public CompletableFuture<StackoneBuildActionEmbeddingsResponse> buildActionEmbeddings(ActionBuildDto request, Optional<Options> options) {
+        AsyncRequestOperation<ActionBuildDto, StackoneBuildActionEmbeddingsResponse> operation
+              = new StackoneBuildActionEmbeddings.Async(
                                     sdkConfiguration, options, sdkConfiguration.retryScheduler(),
                                     _headers);
         return operation.doRequest(request)

@@ -13,6 +13,7 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -58,6 +59,13 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=expand")
     private JsonNullable<String> expand;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public HrisGetEmployeeTimeOffBalanceRequest(
             String xAccountId,
@@ -66,7 +74,8 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
             JsonNullable<Boolean> raw,
             JsonNullable<? extends Map<String, Object>> proxy,
             JsonNullable<String> fields,
-            JsonNullable<String> expand) {
+            JsonNullable<String> expand,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(subResourceId, "subResourceId");
@@ -74,6 +83,7 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
         Utils.checkNotNull(proxy, "proxy");
         Utils.checkNotNull(fields, "fields");
         Utils.checkNotNull(expand, "expand");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.id = id;
         this.subResourceId = subResourceId;
@@ -81,6 +91,7 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
         this.proxy = proxy;
         this.fields = fields;
         this.expand = expand;
+        this.prefer = prefer;
     }
     
     public HrisGetEmployeeTimeOffBalanceRequest(
@@ -89,7 +100,7 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
             String subResourceId) {
         this(xAccountId, id, subResourceId,
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), Optional.empty());
     }
 
     /**
@@ -144,6 +155,15 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
     @JsonIgnore
     public JsonNullable<String> expand() {
         return expand;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -250,6 +270,27 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisGetEmployeeTimeOffBalanceRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisGetEmployeeTimeOffBalanceRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -266,7 +307,8 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
             Utils.enhancedDeepEquals(this.raw, other.raw) &&
             Utils.enhancedDeepEquals(this.proxy, other.proxy) &&
             Utils.enhancedDeepEquals(this.fields, other.fields) &&
-            Utils.enhancedDeepEquals(this.expand, other.expand);
+            Utils.enhancedDeepEquals(this.expand, other.expand) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
@@ -274,7 +316,7 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
         return Utils.enhancedHash(
             xAccountId, id, subResourceId,
             raw, proxy, fields,
-            expand);
+            expand, prefer);
     }
     
     @Override
@@ -286,7 +328,8 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
                 "raw", raw,
                 "proxy", proxy,
                 "fields", fields,
-                "expand", expand);
+                "expand", expand,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -305,6 +348,8 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
         private JsonNullable<String> fields = JsonNullable.undefined();
 
         private JsonNullable<String> expand = JsonNullable.undefined();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -416,12 +461,33 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public HrisGetEmployeeTimeOffBalanceRequest build() {
 
             return new HrisGetEmployeeTimeOffBalanceRequest(
                 xAccountId, id, subResourceId,
                 raw, proxy, fields,
-                expand);
+                expand, prefer);
         }
 
     }

@@ -6,23 +6,18 @@ package com.stackone.stackone_client_java.models.operations.async;
 import static com.stackone.stackone_client_java.operations.Operations.AsyncRequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.models.components.UpdateTaskRequestDto;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTaskRequest;
 import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeTask;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.String;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class HrisUpdateEmployeeTaskRequestBuilder {
 
-    private String xAccountId;
-    private String id;
-    private String subResourceId;
-    private UpdateTaskRequestDto updateTaskRequestDto;
+    private HrisUpdateEmployeeTaskRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
@@ -31,27 +26,9 @@ public class HrisUpdateEmployeeTaskRequestBuilder {
         this.sdkConfiguration = sdkConfiguration;
     }
 
-    public HrisUpdateEmployeeTaskRequestBuilder xAccountId(String xAccountId) {
-        Utils.checkNotNull(xAccountId, "xAccountId");
-        this.xAccountId = xAccountId;
-        return this;
-    }
-
-    public HrisUpdateEmployeeTaskRequestBuilder id(String id) {
-        Utils.checkNotNull(id, "id");
-        this.id = id;
-        return this;
-    }
-
-    public HrisUpdateEmployeeTaskRequestBuilder subResourceId(String subResourceId) {
-        Utils.checkNotNull(subResourceId, "subResourceId");
-        this.subResourceId = subResourceId;
-        return this;
-    }
-
-    public HrisUpdateEmployeeTaskRequestBuilder updateTaskRequestDto(UpdateTaskRequestDto updateTaskRequestDto) {
-        Utils.checkNotNull(updateTaskRequestDto, "updateTaskRequestDto");
-        this.updateTaskRequestDto = updateTaskRequestDto;
+    public HrisUpdateEmployeeTaskRequestBuilder request(HrisUpdateEmployeeTaskRequest request) {
+        Utils.checkNotNull(request, "request");
+        this.request = request;
         return this;
     }
                 
@@ -67,17 +44,6 @@ public class HrisUpdateEmployeeTaskRequestBuilder {
         return this;
     }
 
-
-    private HrisUpdateEmployeeTaskRequest buildRequest() {
-
-        HrisUpdateEmployeeTaskRequest request = new HrisUpdateEmployeeTaskRequest(xAccountId,
-            id,
-            subResourceId,
-            updateTaskRequestDto);
-
-        return request;
-    }
-
     public CompletableFuture<HrisUpdateEmployeeTaskResponse> call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
@@ -87,7 +53,6 @@ public class HrisUpdateEmployeeTaskRequestBuilder {
               = new HrisUpdateEmployeeTask.Async(
                                     sdkConfiguration, options, sdkConfiguration.retryScheduler(),
                                     _headers);
-        HrisUpdateEmployeeTaskRequest request = buildRequest();
 
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);

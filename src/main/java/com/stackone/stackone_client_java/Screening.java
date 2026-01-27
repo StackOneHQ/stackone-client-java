@@ -134,25 +134,28 @@ public class Screening {
      * @throws RuntimeException subclass if the API call fails
      */
     public ScreeningWebhookScreeningResultResponse webhookScreeningResult(String xAccountId, ScreeningResultWebhook screeningResultWebhook) {
-        return webhookScreeningResult(xAccountId, screeningResultWebhook, Optional.empty());
+        return webhookScreeningResult(xAccountId, Optional.empty(), screeningResultWebhook,
+            Optional.empty());
     }
 
     /**
      * Webhook Screening Result
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param screeningResultWebhook 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public ScreeningWebhookScreeningResultResponse webhookScreeningResult(
-            String xAccountId, ScreeningResultWebhook screeningResultWebhook,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            ScreeningResultWebhook screeningResultWebhook, Optional<Options> options) {
         ScreeningWebhookScreeningResultRequest request =
             ScreeningWebhookScreeningResultRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .screeningResultWebhook(screeningResultWebhook)
                 .build();
         RequestOperation<ScreeningWebhookScreeningResultRequest, ScreeningWebhookScreeningResultResponse> operation
@@ -178,25 +181,28 @@ public class Screening {
      * @throws RuntimeException subclass if the API call fails
      */
     public ScreeningCreateScreeningOrderResponse createScreeningOrder(String xAccountId, ScreeningCreateOrderRequestDto screeningCreateOrderRequestDto) {
-        return createScreeningOrder(xAccountId, screeningCreateOrderRequestDto, Optional.empty());
+        return createScreeningOrder(xAccountId, Optional.empty(), screeningCreateOrderRequestDto,
+            Optional.empty());
     }
 
     /**
      * Create Screening Order
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param screeningCreateOrderRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public ScreeningCreateScreeningOrderResponse createScreeningOrder(
-            String xAccountId, ScreeningCreateOrderRequestDto screeningCreateOrderRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            ScreeningCreateOrderRequestDto screeningCreateOrderRequestDto, Optional<Options> options) {
         ScreeningCreateScreeningOrderRequest request =
             ScreeningCreateScreeningOrderRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .screeningCreateOrderRequestDto(screeningCreateOrderRequestDto)
                 .build();
         RequestOperation<ScreeningCreateScreeningOrderRequest, ScreeningCreateScreeningOrderResponse> operation

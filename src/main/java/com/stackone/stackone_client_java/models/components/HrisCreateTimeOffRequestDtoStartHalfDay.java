@@ -84,8 +84,8 @@ public class HrisCreateTimeOffRequestDtoStartHalfDay {
 
         public _Deserializer() {
             super(HrisCreateTimeOffRequestDtoStartHalfDay.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<HrisCreateTimeOffRequestDtoStartHalfDay2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<HrisCreateTimeOffRequestDtoStartHalfDay2>() {}, JsonShape.DEFAULT));
         }
     }
     

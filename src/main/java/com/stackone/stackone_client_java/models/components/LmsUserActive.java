@@ -84,8 +84,8 @@ public class LmsUserActive {
 
         public _Deserializer() {
             super(LmsUserActive.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<LmsUserActive2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<LmsUserActive2>() {}, JsonShape.DEFAULT));
         }
     }
     

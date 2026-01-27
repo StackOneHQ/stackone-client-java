@@ -20,6 +20,7 @@ import java.util.concurrent.CompletableFuture;
 public class MessagingSendMessageRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private MessagingMessageSendRequestDto messagingMessageSendRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -32,6 +33,18 @@ public class MessagingSendMessageRequestBuilder {
     public MessagingSendMessageRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public MessagingSendMessageRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public MessagingSendMessageRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -57,6 +70,7 @@ public class MessagingSendMessageRequestBuilder {
     private MessagingSendMessageRequest buildRequest() {
 
         MessagingSendMessageRequest request = new MessagingSendMessageRequest(xAccountId,
+            prefer,
             messagingMessageSendRequestDto);
 
         return request;

@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class HrisUpdateEmployeeTimeOffRequestRequest {
@@ -27,6 +28,13 @@ public class HrisUpdateEmployeeTimeOffRequestRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subResourceId")
     private String subResourceId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto;
@@ -36,15 +44,27 @@ public class HrisUpdateEmployeeTimeOffRequestRequest {
             String xAccountId,
             String id,
             String subResourceId,
+            Optional<String> prefer,
             HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(subResourceId, "subResourceId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(hrisCreateTimeOffRequestDto, "hrisCreateTimeOffRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
         this.subResourceId = subResourceId;
+        this.prefer = prefer;
         this.hrisCreateTimeOffRequestDto = hrisCreateTimeOffRequestDto;
+    }
+    
+    public HrisUpdateEmployeeTimeOffRequestRequest(
+            String xAccountId,
+            String id,
+            String subResourceId,
+            HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) {
+        this(xAccountId, id, subResourceId,
+            Optional.empty(), hrisCreateTimeOffRequestDto);
     }
 
     /**
@@ -63,6 +83,15 @@ public class HrisUpdateEmployeeTimeOffRequestRequest {
     @JsonIgnore
     public String subResourceId() {
         return subResourceId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -96,6 +125,27 @@ public class HrisUpdateEmployeeTimeOffRequestRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisUpdateEmployeeTimeOffRequestRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisUpdateEmployeeTimeOffRequestRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public HrisUpdateEmployeeTimeOffRequestRequest withHrisCreateTimeOffRequestDto(HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) {
         Utils.checkNotNull(hrisCreateTimeOffRequestDto, "hrisCreateTimeOffRequestDto");
         this.hrisCreateTimeOffRequestDto = hrisCreateTimeOffRequestDto;
@@ -115,6 +165,7 @@ public class HrisUpdateEmployeeTimeOffRequestRequest {
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
             Utils.enhancedDeepEquals(this.subResourceId, other.subResourceId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.hrisCreateTimeOffRequestDto, other.hrisCreateTimeOffRequestDto);
     }
     
@@ -122,7 +173,7 @@ public class HrisUpdateEmployeeTimeOffRequestRequest {
     public int hashCode() {
         return Utils.enhancedHash(
             xAccountId, id, subResourceId,
-            hrisCreateTimeOffRequestDto);
+            prefer, hrisCreateTimeOffRequestDto);
     }
     
     @Override
@@ -131,6 +182,7 @@ public class HrisUpdateEmployeeTimeOffRequestRequest {
                 "xAccountId", xAccountId,
                 "id", id,
                 "subResourceId", subResourceId,
+                "prefer", prefer,
                 "hrisCreateTimeOffRequestDto", hrisCreateTimeOffRequestDto);
     }
 
@@ -142,6 +194,8 @@ public class HrisUpdateEmployeeTimeOffRequestRequest {
         private String id;
 
         private String subResourceId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto;
 
@@ -174,6 +228,27 @@ public class HrisUpdateEmployeeTimeOffRequestRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder hrisCreateTimeOffRequestDto(HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) {
             Utils.checkNotNull(hrisCreateTimeOffRequestDto, "hrisCreateTimeOffRequestDto");
             this.hrisCreateTimeOffRequestDto = hrisCreateTimeOffRequestDto;
@@ -184,7 +259,7 @@ public class HrisUpdateEmployeeTimeOffRequestRequest {
 
             return new HrisUpdateEmployeeTimeOffRequestRequest(
                 xAccountId, id, subResourceId,
-                hrisCreateTimeOffRequestDto);
+                prefer, hrisCreateTimeOffRequestDto);
         }
 
     }

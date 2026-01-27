@@ -140,50 +140,6 @@ public class Iam {
     }
 
     /**
-     * Delete User
-     * 
-     * @return The call builder
-     */
-    public IamDeleteUserRequestBuilder deleteUser() {
-        return new IamDeleteUserRequestBuilder(sdkConfiguration);
-    }
-
-    /**
-     * Delete User
-     * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @return The response from the API call
-     * @throws RuntimeException subclass if the API call fails
-     */
-    public IamDeleteUserResponse deleteUser(String xAccountId, String id) {
-        return deleteUser(xAccountId, id, Optional.empty());
-    }
-
-    /**
-     * Delete User
-     * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param options additional options
-     * @return The response from the API call
-     * @throws RuntimeException subclass if the API call fails
-     */
-    public IamDeleteUserResponse deleteUser(
-            String xAccountId, String id,
-            Optional<Options> options) {
-        IamDeleteUserRequest request =
-            IamDeleteUserRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .id(id)
-                .build();
-        RequestOperation<IamDeleteUserRequest, IamDeleteUserResponse> operation
-              = new IamDeleteUser.Sync(sdkConfiguration, options, _headers);
-        return operation.handleResponse(operation.doRequest(request));
-    }
-
-    /**
      * Update User
      * 
      * @return The call builder
@@ -204,8 +160,8 @@ public class Iam {
     public IamUpdateUserResponse updateUser(
             String xAccountId, String id,
             IamUpdateUserRequestDto iamUpdateUserRequestDto) {
-        return updateUser(xAccountId, id, iamUpdateUserRequestDto,
-            Optional.empty());
+        return updateUser(xAccountId, id, Optional.empty(),
+            iamUpdateUserRequestDto, Optional.empty());
     }
 
     /**
@@ -213,6 +169,7 @@ public class Iam {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param iamUpdateUserRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -220,16 +177,65 @@ public class Iam {
      */
     public IamUpdateUserResponse updateUser(
             String xAccountId, String id,
-            IamUpdateUserRequestDto iamUpdateUserRequestDto, Optional<Options> options) {
+            Optional<String> prefer, IamUpdateUserRequestDto iamUpdateUserRequestDto,
+            Optional<Options> options) {
         IamUpdateUserRequest request =
             IamUpdateUserRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .iamUpdateUserRequestDto(iamUpdateUserRequestDto)
                 .build();
         RequestOperation<IamUpdateUserRequest, IamUpdateUserResponse> operation
               = new IamUpdateUser.Sync(sdkConfiguration, options, _headers);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * Delete User
+     * 
+     * @return The call builder
+     */
+    public IamDeleteUserRequestBuilder deleteUser() {
+        return new IamDeleteUserRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Delete User
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public IamDeleteUserResponse deleteUser(String xAccountId, String id) {
+        return deleteUser(xAccountId, id, Optional.empty(),
+            Optional.empty());
+    }
+
+    /**
+     * Delete User
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     * @param options additional options
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public IamDeleteUserResponse deleteUser(
+            String xAccountId, String id,
+            Optional<String> prefer, Optional<Options> options) {
+        IamDeleteUserRequest request =
+            IamDeleteUserRequest
+                .builder()
+                .xAccountId(xAccountId)
+                .id(id)
+                .prefer(prefer)
+                .build();
+        RequestOperation<IamDeleteUserRequest, IamDeleteUserResponse> operation
+              = new IamDeleteUser.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

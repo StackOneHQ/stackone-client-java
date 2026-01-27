@@ -19,6 +19,7 @@ public class AtsUploadApplicationDocumentRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -37,6 +38,18 @@ public class AtsUploadApplicationDocumentRequestBuilder {
     public AtsUploadApplicationDocumentRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public AtsUploadApplicationDocumentRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public AtsUploadApplicationDocumentRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -63,6 +76,7 @@ public class AtsUploadApplicationDocumentRequestBuilder {
 
         AtsUploadApplicationDocumentRequest request = new AtsUploadApplicationDocumentRequest(xAccountId,
             id,
+            prefer,
             atsDocumentsUploadRequestDto);
 
         return request;

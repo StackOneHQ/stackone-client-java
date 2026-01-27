@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class HrisCancelEmployeeTimeOffRequestRequest {
@@ -26,17 +27,35 @@ public class HrisCancelEmployeeTimeOffRequestRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subResourceId")
     private String subResourceId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public HrisCancelEmployeeTimeOffRequestRequest(
             String xAccountId,
             String id,
-            String subResourceId) {
+            String subResourceId,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(subResourceId, "subResourceId");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.id = id;
         this.subResourceId = subResourceId;
+        this.prefer = prefer;
+    }
+    
+    public HrisCancelEmployeeTimeOffRequestRequest(
+            String xAccountId,
+            String id,
+            String subResourceId) {
+        this(xAccountId, id, subResourceId,
+            Optional.empty());
     }
 
     /**
@@ -55,6 +74,15 @@ public class HrisCancelEmployeeTimeOffRequestRequest {
     @JsonIgnore
     public String subResourceId() {
         return subResourceId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -83,6 +111,27 @@ public class HrisCancelEmployeeTimeOffRequestRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisCancelEmployeeTimeOffRequestRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisCancelEmployeeTimeOffRequestRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,13 +144,15 @@ public class HrisCancelEmployeeTimeOffRequestRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
-            Utils.enhancedDeepEquals(this.subResourceId, other.subResourceId);
+            Utils.enhancedDeepEquals(this.subResourceId, other.subResourceId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, subResourceId);
+            xAccountId, id, subResourceId,
+            prefer);
     }
     
     @Override
@@ -109,7 +160,8 @@ public class HrisCancelEmployeeTimeOffRequestRequest {
         return Utils.toString(HrisCancelEmployeeTimeOffRequestRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
-                "subResourceId", subResourceId);
+                "subResourceId", subResourceId,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -120,6 +172,8 @@ public class HrisCancelEmployeeTimeOffRequestRequest {
         private String id;
 
         private String subResourceId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -149,10 +203,32 @@ public class HrisCancelEmployeeTimeOffRequestRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public HrisCancelEmployeeTimeOffRequestRequest build() {
 
             return new HrisCancelEmployeeTimeOffRequestRequest(
-                xAccountId, id, subResourceId);
+                xAccountId, id, subResourceId,
+                prefer);
         }
 
     }

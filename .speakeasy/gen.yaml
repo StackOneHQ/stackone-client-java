@@ -13,6 +13,7 @@ generation:
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: false
     sharedErrorComponentsApr2025: false
+    sharedNestedComponentsJan2026: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
@@ -20,12 +21,13 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  persistentEdits: {}
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 java:
-  version: 0.19.0
+  version: 0.19.1
   additionalDependencies: []
   additionalPlugins: []
   artifactID: stackone-client-java
@@ -40,6 +42,7 @@ java:
   enableSlf4jLogging: false
   enableStreamingUploads: false
   flattenGlobalSecurity: true
+  forwardCompatibleEnumsByDefault: false
   generateOptionalUnionAccessors: false
   generateSpringBootStarter: true
   githubURL: github.com/owner/repo

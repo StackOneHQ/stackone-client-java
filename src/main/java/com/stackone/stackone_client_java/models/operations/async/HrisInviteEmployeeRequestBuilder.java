@@ -21,6 +21,7 @@ public class HrisInviteEmployeeRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -39,6 +40,18 @@ public class HrisInviteEmployeeRequestBuilder {
     public HrisInviteEmployeeRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public HrisInviteEmployeeRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public HrisInviteEmployeeRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -65,6 +78,7 @@ public class HrisInviteEmployeeRequestBuilder {
 
         HrisInviteEmployeeRequest request = new HrisInviteEmployeeRequest(xAccountId,
             id,
+            prefer,
             hrisInviteEmployeeRequestDto);
 
         return request;

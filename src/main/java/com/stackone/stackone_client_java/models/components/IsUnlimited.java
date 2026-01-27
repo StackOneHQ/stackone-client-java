@@ -84,8 +84,8 @@ public class IsUnlimited {
 
         public _Deserializer() {
             super(IsUnlimited.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<IsUnlimited2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<IsUnlimited2>() {}, JsonShape.DEFAULT));
         }
     }
     

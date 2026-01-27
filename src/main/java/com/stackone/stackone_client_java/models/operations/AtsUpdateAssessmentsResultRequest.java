@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class AtsUpdateAssessmentsResultRequest {
@@ -23,6 +24,13 @@ public class AtsUpdateAssessmentsResultRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto;
@@ -31,13 +39,24 @@ public class AtsUpdateAssessmentsResultRequest {
     public AtsUpdateAssessmentsResultRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(atsUpdateCandidatesAssessmentsResultsRequestDto, "atsUpdateCandidatesAssessmentsResultsRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.atsUpdateCandidatesAssessmentsResultsRequestDto = atsUpdateCandidatesAssessmentsResultsRequestDto;
+    }
+    
+    public AtsUpdateAssessmentsResultRequest(
+            String xAccountId,
+            String id,
+            AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            atsUpdateCandidatesAssessmentsResultsRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class AtsUpdateAssessmentsResultRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class AtsUpdateAssessmentsResultRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsUpdateAssessmentsResultRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsUpdateAssessmentsResultRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public AtsUpdateAssessmentsResultRequest withAtsUpdateCandidatesAssessmentsResultsRequestDto(AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto) {
         Utils.checkNotNull(atsUpdateCandidatesAssessmentsResultsRequestDto, "atsUpdateCandidatesAssessmentsResultsRequestDto");
         this.atsUpdateCandidatesAssessmentsResultsRequestDto = atsUpdateCandidatesAssessmentsResultsRequestDto;
@@ -96,13 +145,15 @@ public class AtsUpdateAssessmentsResultRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.atsUpdateCandidatesAssessmentsResultsRequestDto, other.atsUpdateCandidatesAssessmentsResultsRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, atsUpdateCandidatesAssessmentsResultsRequestDto);
+            xAccountId, id, prefer,
+            atsUpdateCandidatesAssessmentsResultsRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class AtsUpdateAssessmentsResultRequest {
         return Utils.toString(AtsUpdateAssessmentsResultRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "atsUpdateCandidatesAssessmentsResultsRequestDto", atsUpdateCandidatesAssessmentsResultsRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class AtsUpdateAssessmentsResultRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto;
 
@@ -144,6 +198,27 @@ public class AtsUpdateAssessmentsResultRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder atsUpdateCandidatesAssessmentsResultsRequestDto(AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto) {
             Utils.checkNotNull(atsUpdateCandidatesAssessmentsResultsRequestDto, "atsUpdateCandidatesAssessmentsResultsRequestDto");
             this.atsUpdateCandidatesAssessmentsResultsRequestDto = atsUpdateCandidatesAssessmentsResultsRequestDto;
@@ -153,7 +228,8 @@ public class AtsUpdateAssessmentsResultRequest {
         public AtsUpdateAssessmentsResultRequest build() {
 
             return new AtsUpdateAssessmentsResultRequest(
-                xAccountId, id, atsUpdateCandidatesAssessmentsResultsRequestDto);
+                xAccountId, id, prefer,
+                atsUpdateCandidatesAssessmentsResultsRequestDto);
         }
 
     }

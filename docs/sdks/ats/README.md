@@ -1,5 +1,4 @@
 # Ats
-(*ats()*)
 
 ## Overview
 
@@ -75,8 +74,8 @@
 * [listBackgroundCheckPackages](#listbackgroundcheckpackages) - List Background Check Packages
 * [createBackgroundCheckPackage](#createbackgroundcheckpackage) - Create Background Check Package
 * [getBackgroundCheckPackage](#getbackgroundcheckpackage) - Get Background Check Package
-* [deleteBackgroundCheckPackage](#deletebackgroundcheckpackage) - Delete Background Check Package
 * [updateBackgroundCheckPackage](#updatebackgroundcheckpackage) - Update Background Check Package
+* [deleteBackgroundCheckPackage](#deletebackgroundcheckpackage) - Delete Background Check Package
 * [orderBackgroundCheckRequest](#orderbackgroundcheckrequest) - Order Background Check Request
 * [updateBackgroundCheckResult](#updatebackgroundcheckresult) - Update Background Check Result
 * [listApplicationDocumentCategories](#listapplicationdocumentcategories) - List Application Document Categories
@@ -119,6 +118,7 @@ public class Application {
                     .build())
                 .expand("documents")
                 .include("attachments,custom_fields")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -193,6 +193,7 @@ public class Application {
 
         AtsCreateApplicationResponse res = sdk.ats().createApplication()
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .atsCreateApplicationRequestDto(AtsCreateApplicationRequestDto.builder()
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
@@ -265,10 +266,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                | *String*                                                                                    | :heavy_check_mark:                                                                          | The account identifier                                                                      |
-| `atsCreateApplicationRequestDto`                                                            | [AtsCreateApplicationRequestDto](../../models/components/AtsCreateApplicationRequestDto.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsCreateApplicationRequestDto`                                                                                                                                         | [AtsCreateApplicationRequestDto](../../models/components/AtsCreateApplicationRequestDto.md)                                                                              | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -326,6 +328,7 @@ public class Application {
                 .fields("id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,application_stage,application_stage_id,remote_application_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate,unified_custom_fields")
                 .expand("documents")
                 .include("attachments,custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetApplicationResponse res = sdk.ats().getApplication()
@@ -399,6 +402,7 @@ public class Application {
         AtsUpdateApplicationResponse res = sdk.ats().updateApplication()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .atsUpdateApplicationRequestDto(AtsUpdateApplicationRequestDto.builder()
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
@@ -431,11 +435,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                | *String*                                                                                    | :heavy_check_mark:                                                                          | The account identifier                                                                      |
-| `id`                                                                                        | *String*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
-| `atsUpdateApplicationRequestDto`                                                            | [AtsUpdateApplicationRequestDto](../../models/components/AtsUpdateApplicationRequestDto.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsUpdateApplicationRequestDto`                                                                                                                                         | [AtsUpdateApplicationRequestDto](../../models/components/AtsUpdateApplicationRequestDto.md)                                                                              | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -494,6 +499,7 @@ public class Application {
                 .filter(AtsListApplicationsOffersQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -567,6 +573,7 @@ public class Application {
         AtsMoveApplicationResponse res = sdk.ats().moveApplication()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .atsMoveApplicationRequestDto(AtsMoveApplicationRequestDto.builder()
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
@@ -583,11 +590,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                            | *String*                                                                                | :heavy_check_mark:                                                                      | The account identifier                                                                  |
-| `id`                                                                                    | *String*                                                                                | :heavy_check_mark:                                                                      | N/A                                                                                     |
-| `atsMoveApplicationRequestDto`                                                          | [AtsMoveApplicationRequestDto](../../models/components/AtsMoveApplicationRequestDto.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsMoveApplicationRequestDto`                                                                                                                                           | [AtsMoveApplicationRequestDto](../../models/components/AtsMoveApplicationRequestDto.md)                                                                                  | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -643,6 +651,7 @@ public class Application {
         AtsRejectApplicationResponse res = sdk.ats().rejectApplication()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .atsRejectApplicationRequestDto(AtsRejectApplicationRequestDto.builder()
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
@@ -659,11 +668,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                | *String*                                                                                    | :heavy_check_mark:                                                                          | The account identifier                                                                      |
-| `id`                                                                                        | *String*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
-| `atsRejectApplicationRequestDto`                                                            | [AtsRejectApplicationRequestDto](../../models/components/AtsRejectApplicationRequestDto.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsRejectApplicationRequestDto`                                                                                                                                         | [AtsRejectApplicationRequestDto](../../models/components/AtsRejectApplicationRequestDto.md)                                                                              | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -720,6 +730,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .fields("id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetApplicationOfferResponse res = sdk.ats().getApplicationOffer()
@@ -796,6 +807,7 @@ public class Application {
                 .filter(AtsListApplicationScorecardsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -870,6 +882,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .fields("id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetApplicationScorecardResponse res = sdk.ats().getApplicationScorecard()
@@ -946,6 +959,7 @@ public class Application {
                 .filter(AtsListApplicationChangesQueryParamFilter.builder()
                     .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1022,6 +1036,7 @@ public class Application {
                 .filter(AtsListApplicationNotesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1095,6 +1110,7 @@ public class Application {
         AtsCreateApplicationNoteResponse res = sdk.ats().createApplicationNote()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .atsCreateNotesRequestDto(AtsCreateNotesRequestDto.builder()
                     .content(List.of(
                         NoteContentApiModel.builder()
@@ -1119,11 +1135,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `xAccountId`                                                                    | *String*                                                                        | :heavy_check_mark:                                                              | The account identifier                                                          |
-| `id`                                                                            | *String*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
-| `atsCreateNotesRequestDto`                                                      | [AtsCreateNotesRequestDto](../../models/components/AtsCreateNotesRequestDto.md) | :heavy_check_mark:                                                              | N/A                                                                             |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsCreateNotesRequestDto`                                                                                                                                               | [AtsCreateNotesRequestDto](../../models/components/AtsCreateNotesRequestDto.md)                                                                                          | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -1180,6 +1197,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .fields("id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetApplicationNoteResponse res = sdk.ats().getApplicationNote()
@@ -1234,6 +1252,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.*;
 import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.AtsUpdateApplicationNoteRequest;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateApplicationNoteResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -1250,7 +1269,7 @@ public class Application {
                     .build())
             .build();
 
-        AtsUpdateApplicationNoteResponse res = sdk.ats().updateApplicationNote()
+        AtsUpdateApplicationNoteRequest req = AtsUpdateApplicationNoteRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
@@ -1267,6 +1286,11 @@ public class Application {
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
                     .build())
+                .prefer("heartbeat")
+                .build();
+
+        AtsUpdateApplicationNoteResponse res = sdk.ats().updateApplicationNote()
+                .request(req)
                 .call();
 
         if (res.updateResult().isPresent()) {
@@ -1278,12 +1302,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `xAccountId`                                                                    | *String*                                                                        | :heavy_check_mark:                                                              | The account identifier                                                          |
-| `id`                                                                            | *String*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
-| `subResourceId`                                                                 | *String*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
-| `atsUpdateNotesRequestDto`                                                      | [AtsUpdateNotesRequestDto](../../models/components/AtsUpdateNotesRequestDto.md) | :heavy_check_mark:                                                              | N/A                                                                             |
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `request`                                                                                     | [AtsUpdateApplicationNoteRequest](../../models/operations/AtsUpdateApplicationNoteRequest.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
 
 ### Response
 
@@ -1342,6 +1363,7 @@ public class Application {
                 .filter(AtsListApplicationsScheduledInterviewsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1416,6 +1438,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .fields("id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,application_stage,application_stage_id,remote_application_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetApplicationScheduledInterviewResponse res = sdk.ats().getApplicationScheduledInterview()
@@ -1488,6 +1511,7 @@ public class Application {
         AtsUploadApplicationDocumentResponse res = sdk.ats().uploadApplicationDocument()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .atsDocumentsUploadRequestDto(AtsDocumentsUploadRequestDto.builder()
                     .name("weather-forecast")
                     .fileFormat(JsonNullable.of(null))
@@ -1512,11 +1536,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                            | *String*                                                                                | :heavy_check_mark:                                                                      | The account identifier                                                                  |
-| `id`                                                                                    | *String*                                                                                | :heavy_check_mark:                                                                      | N/A                                                                                     |
-| `atsDocumentsUploadRequestDto`                                                          | [AtsDocumentsUploadRequestDto](../../models/components/AtsDocumentsUploadRequestDto.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsDocumentsUploadRequestDto`                                                                                                                                           | [AtsDocumentsUploadRequestDto](../../models/components/AtsDocumentsUploadRequestDto.md)                                                                                  | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -1574,6 +1599,7 @@ public class Application {
                 .subResourceId("<id>")
                 .format("base64")
                 .exportFormat("text/plain")
+                .prefer("heartbeat")
                 .build();
 
         AtsDownloadApplicationDocumentResponse res = sdk.ats().downloadApplicationDocument()
@@ -1650,6 +1676,7 @@ public class Application {
                 .filter(AtsListApplicationDocumentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1724,6 +1751,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .fields("id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetApplicationDocumentResponse res = sdk.ats().getApplicationDocument()
@@ -1801,6 +1829,7 @@ public class Application {
                     .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .include("custom_fields")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1874,6 +1903,7 @@ public class Application {
 
         AtsCreateCandidateResponse res = sdk.ats().createCandidate()
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .atsCreateCandidateRequestDto(AtsCreateCandidateRequestDto.builder()
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
@@ -1918,10 +1948,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                            | *String*                                                                                | :heavy_check_mark:                                                                      | The account identifier                                                                  |
-| `atsCreateCandidateRequestDto`                                                          | [AtsCreateCandidateRequestDto](../../models/components/AtsCreateCandidateRequestDto.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsCreateCandidateRequestDto`                                                                                                                                           | [AtsCreateCandidateRequestDto](../../models/components/AtsCreateCandidateRequestDto.md)                                                                                  | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -1978,6 +2009,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,tags,created_at,updated_at,unified_custom_fields")
                 .include("custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetCandidateResponse res = sdk.ats().getCandidate()
@@ -2053,6 +2085,7 @@ public class Application {
         AtsUpdateCandidateResponse res = sdk.ats().updateCandidate()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .atsUpdateCandidateRequestDto(AtsUpdateCandidateRequestDto.builder()
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
@@ -2097,11 +2130,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                            | *String*                                                                                | :heavy_check_mark:                                                                      | The account identifier                                                                  |
-| `id`                                                                                    | *String*                                                                                | :heavy_check_mark:                                                                      | N/A                                                                                     |
-| `atsUpdateCandidateRequestDto`                                                          | [AtsUpdateCandidateRequestDto](../../models/components/AtsUpdateCandidateRequestDto.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsUpdateCandidateRequestDto`                                                                                                                                           | [AtsUpdateCandidateRequestDto](../../models/components/AtsUpdateCandidateRequestDto.md)                                                                                  | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -2160,6 +2194,7 @@ public class Application {
                 .filter(AtsListCandidateNotesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -2233,6 +2268,7 @@ public class Application {
         AtsCreateCandidateNoteResponse res = sdk.ats().createCandidateNote()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .atsCreateNotesRequestDto(AtsCreateNotesRequestDto.builder()
                     .content(List.of(
                         NoteContentApiModel.builder()
@@ -2257,11 +2293,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `xAccountId`                                                                    | *String*                                                                        | :heavy_check_mark:                                                              | The account identifier                                                          |
-| `id`                                                                            | *String*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
-| `atsCreateNotesRequestDto`                                                      | [AtsCreateNotesRequestDto](../../models/components/AtsCreateNotesRequestDto.md) | :heavy_check_mark:                                                              | N/A                                                                             |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsCreateNotesRequestDto`                                                                                                                                               | [AtsCreateNotesRequestDto](../../models/components/AtsCreateNotesRequestDto.md)                                                                                          | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -2318,6 +2355,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .fields("id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetCandidateNoteResponse res = sdk.ats().getCandidateNote()
@@ -2392,6 +2430,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,description,type,options,unified_custom_fields")
                 .filter(JsonNullable.of(null))
+                .prefer("heartbeat")
                 .build();
 
 
@@ -2467,6 +2506,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,name,description,type,options,unified_custom_fields")
                 .filter(JsonNullable.of(null))
+                .prefer("heartbeat")
                 .build();
 
         AtsGetApplicationCustomFieldDefinitionResponse res = sdk.ats().getApplicationCustomFieldDefinition()
@@ -2542,6 +2582,7 @@ public class Application {
                 .filter(AtsListCandidateCustomFieldDefinitionsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -2618,6 +2659,7 @@ public class Application {
                 .filter(AtsGetCandidateCustomFieldDefinitionQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
         AtsGetCandidateCustomFieldDefinitionResponse res = sdk.ats().getCandidateCustomFieldDefinition()
@@ -2693,6 +2735,7 @@ public class Application {
                 .filter(AtsListJobCustomFieldDefinitionsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -2769,6 +2812,7 @@ public class Application {
                 .filter(AtsGetJobCustomFieldDefinitionQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
         AtsGetJobCustomFieldDefinitionResponse res = sdk.ats().getJobCustomFieldDefinition()
@@ -2844,6 +2888,7 @@ public class Application {
                 .filter(AtsListDepartmentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -2917,6 +2962,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetDepartmentResponse res = sdk.ats().getDepartment()
@@ -2994,6 +3040,7 @@ public class Application {
                 .filter(AtsListInterviewStagesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -3069,6 +3116,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,order,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetInterviewStageResponse res = sdk.ats().getInterviewStage()
@@ -3144,6 +3192,7 @@ public class Application {
                 .filter(AtsListApplicationStagesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -3217,6 +3266,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,order,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetApplicationStageResponse res = sdk.ats().getApplicationStage()
@@ -3293,6 +3343,7 @@ public class Application {
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -3366,6 +3417,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetInterviewResponse res = sdk.ats().getInterview()
@@ -3439,6 +3491,7 @@ public class Application {
         AtsCreateInterviewNoteResponse res = sdk.ats().createInterviewNote()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .atsCreateNotesRequestDto(AtsCreateNotesRequestDto.builder()
                     .content(List.of(
                         NoteContentApiModel.builder()
@@ -3463,11 +3516,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `xAccountId`                                                                    | *String*                                                                        | :heavy_check_mark:                                                              | The account identifier                                                          |
-| `id`                                                                            | *String*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
-| `atsCreateNotesRequestDto`                                                      | [AtsCreateNotesRequestDto](../../models/components/AtsCreateNotesRequestDto.md) | :heavy_check_mark:                                                              | N/A                                                                             |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsCreateNotesRequestDto`                                                                                                                                               | [AtsCreateNotesRequestDto](../../models/components/AtsCreateNotesRequestDto.md)                                                                                          | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -3504,6 +3558,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.*;
 import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.AtsUpdateInterviewNoteRequest;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateInterviewNoteResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -3520,7 +3575,7 @@ public class Application {
                     .build())
             .build();
 
-        AtsUpdateInterviewNoteResponse res = sdk.ats().updateInterviewNote()
+        AtsUpdateInterviewNoteRequest req = AtsUpdateInterviewNoteRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
@@ -3537,6 +3592,11 @@ public class Application {
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
                     .build())
+                .prefer("heartbeat")
+                .build();
+
+        AtsUpdateInterviewNoteResponse res = sdk.ats().updateInterviewNote()
+                .request(req)
                 .call();
 
         if (res.updateResult().isPresent()) {
@@ -3548,12 +3608,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `xAccountId`                                                                    | *String*                                                                        | :heavy_check_mark:                                                              | The account identifier                                                          |
-| `id`                                                                            | *String*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
-| `subResourceId`                                                                 | *String*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
-| `atsUpdateNotesRequestDto`                                                      | [AtsUpdateNotesRequestDto](../../models/components/AtsUpdateNotesRequestDto.md) | :heavy_check_mark:                                                              | N/A                                                                             |
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `request`                                                                                 | [AtsUpdateInterviewNoteRequest](../../models/operations/AtsUpdateInterviewNoteRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
 
 ### Response
 
@@ -3614,6 +3671,7 @@ public class Application {
                     .build())
                 .expand("job_postings,interview_stages")
                 .include("custom_fields")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -3687,6 +3745,7 @@ public class Application {
 
         AtsCreateJobResponse res = sdk.ats().createJob()
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .atsCreateJobRequestDto(AtsCreateJobRequestDto.builder()
                     .unifiedCustomFields(Map.ofEntries(
                         Map.entry("my_project_custom_field_1", "REF-1236"),
@@ -3748,10 +3807,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `xAccountId`                                                                | *String*                                                                    | :heavy_check_mark:                                                          | The account identifier                                                      |
-| `atsCreateJobRequestDto`                                                    | [AtsCreateJobRequestDto](../../models/components/AtsCreateJobRequestDto.md) | :heavy_check_mark:                                                          | N/A                                                                         |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsCreateJobRequestDto`                                                                                                                                                 | [AtsCreateJobRequestDto](../../models/components/AtsCreateJobRequestDto.md)                                                                                              | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -3810,6 +3870,7 @@ public class Application {
                 .filter(AtsListJobApplicationStagesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -3885,6 +3946,7 @@ public class Application {
                 .fields("id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at,unified_custom_fields")
                 .expand("job_postings,interview_stages")
                 .include("custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetJobResponse res = sdk.ats().getJob()
@@ -3959,6 +4021,7 @@ public class Application {
         AtsUpdateJobResponse res = sdk.ats().updateJob()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .atsUpdateJobRequestDto(AtsUpdateJobRequestDto.builder()
                     .unifiedCustomFields(Map.ofEntries(
                         Map.entry("my_project_custom_field_1", "REF-1236"),
@@ -4003,11 +4066,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `xAccountId`                                                                | *String*                                                                    | :heavy_check_mark:                                                          | The account identifier                                                      |
-| `id`                                                                        | *String*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
-| `atsUpdateJobRequestDto`                                                    | [AtsUpdateJobRequestDto](../../models/components/AtsUpdateJobRequestDto.md) | :heavy_check_mark:                                                          | N/A                                                                         |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsUpdateJobRequestDto`                                                                                                                                                 | [AtsUpdateJobRequestDto](../../models/components/AtsUpdateJobRequestDto.md)                                                                                              | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -4064,6 +4128,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .fields("id,remote_id,name,order,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetJobApplicationStageResponse res = sdk.ats().getJobApplicationStage()
@@ -4138,6 +4203,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,created_at,updated_at,items,type,unified_custom_fields")
                 .filter(JsonNullable.of(null))
+                .prefer("heartbeat")
                 .build();
 
 
@@ -4211,6 +4277,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,created_at,updated_at,items,type,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetListResponse res = sdk.ats().getList()
@@ -4286,6 +4353,7 @@ public class Application {
                 .filter(AtsListLocationsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -4359,6 +4427,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetLocationResponse res = sdk.ats().getLocation()
@@ -4434,6 +4503,7 @@ public class Application {
                 .filter(AtsListRejectedReasonsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -4507,6 +4577,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,label,type,rejected_reason_type,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetRejectedReasonResponse res = sdk.ats().getRejectedReason()
@@ -4581,6 +4652,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,first_name,last_name,name,email,phone,unified_custom_fields")
                 .filter(JsonNullable.of(null))
+                .prefer("heartbeat")
                 .build();
 
 
@@ -4654,6 +4726,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,first_name,last_name,name,email,phone,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetUserResponse res = sdk.ats().getUser()
@@ -4731,6 +4804,7 @@ public class Application {
                     .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .include("questionnaires")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -4805,6 +4879,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at,unified_custom_fields")
                 .include("questionnaires")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetJobPostingResponse res = sdk.ats().getJobPosting()
@@ -4880,6 +4955,7 @@ public class Application {
                 .filter(AtsListOffersQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -4953,6 +5029,7 @@ public class Application {
 
         AtsCreateOfferResponse res = sdk.ats().createOffer()
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .atsCreateOfferRequestDto(AtsCreateOfferRequestDto.builder()
                     .startDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
                     .offerStatus(AtsCreateOfferRequestDtoOfferStatus.builder()
@@ -4979,10 +5056,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `xAccountId`                                                                    | *String*                                                                        | :heavy_check_mark:                                                              | The account identifier                                                          |
-| `atsCreateOfferRequestDto`                                                      | [AtsCreateOfferRequestDto](../../models/components/AtsCreateOfferRequestDto.md) | :heavy_check_mark:                                                              | N/A                                                                             |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsCreateOfferRequestDto`                                                                                                                                               | [AtsCreateOfferRequestDto](../../models/components/AtsCreateOfferRequestDto.md)                                                                                          | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -5038,6 +5116,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetOfferResponse res = sdk.ats().getOffer()
@@ -5112,6 +5191,7 @@ public class Application {
                 .filter(AtsListAssessmentsPackagesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -5184,6 +5264,7 @@ public class Application {
         AtsGetAssessmentsPackageRequest req = AtsGetAssessmentsPackageRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetAssessmentsPackageResponse res = sdk.ats().getAssessmentsPackage()
@@ -5256,6 +5337,7 @@ public class Application {
 
         AtsOrderAssessmentsRequestResponse res = sdk.ats().orderAssessmentsRequest()
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .atsCreateCandidatesAssessmentsRequestDto(AtsCreateCandidatesAssessmentsRequestDto.builder()
                     .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                     .package_(AtsCreateCandidatesAssessmentsRequestDtoPackage.builder()
@@ -5327,10 +5409,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                       | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
-| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                                    | *String*                                                                                                        | :heavy_check_mark:                                                                                              | The account identifier                                                                                          |
-| `atsCreateCandidatesAssessmentsRequestDto`                                                                      | [AtsCreateCandidatesAssessmentsRequestDto](../../models/components/AtsCreateCandidatesAssessmentsRequestDto.md) | :heavy_check_mark:                                                                                              | N/A                                                                                                             |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsCreateCandidatesAssessmentsRequestDto`                                                                                                                               | [AtsCreateCandidatesAssessmentsRequestDto](../../models/components/AtsCreateCandidatesAssessmentsRequestDto.md)                                                          | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -5388,6 +5471,7 @@ public class Application {
         AtsUpdateAssessmentsResultResponse res = sdk.ats().updateAssessmentsResult()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .atsUpdateCandidatesAssessmentsResultsRequestDto(AtsUpdateCandidatesAssessmentsResultsRequestDto.builder()
                     .score(JsonNullable.of(null))
                     .startDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
@@ -5424,11 +5508,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                     | Type                                                                                                                          | Required                                                                                                                      | Description                                                                                                                   |
-| ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                                                  | *String*                                                                                                                      | :heavy_check_mark:                                                                                                            | The account identifier                                                                                                        |
-| `id`                                                                                                                          | *String*                                                                                                                      | :heavy_check_mark:                                                                                                            | N/A                                                                                                                           |
-| `atsUpdateCandidatesAssessmentsResultsRequestDto`                                                                             | [AtsUpdateCandidatesAssessmentsResultsRequestDto](../../models/components/AtsUpdateCandidatesAssessmentsResultsRequestDto.md) | :heavy_check_mark:                                                                                                            | N/A                                                                                                                           |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsUpdateCandidatesAssessmentsResultsRequestDto`                                                                                                                        | [AtsUpdateCandidatesAssessmentsResultsRequestDto](../../models/components/AtsUpdateCandidatesAssessmentsResultsRequestDto.md)                                            | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -5486,6 +5571,7 @@ public class Application {
                 .filter(AtsListBackgroundCheckPackagesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -5558,6 +5644,7 @@ public class Application {
 
         AtsCreateBackgroundCheckPackageResponse res = sdk.ats().createBackgroundCheckPackage()
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .atsCreateBackgroundCheckPackagesRequestDto(AtsCreateBackgroundCheckPackagesRequestDto.builder()
                     .name("Test 1")
                     .description("Skills test to gauge a candidate's proficiency in job-specific skills")
@@ -5580,10 +5667,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                                        | *String*                                                                                                            | :heavy_check_mark:                                                                                                  | The account identifier                                                                                              |
-| `atsCreateBackgroundCheckPackagesRequestDto`                                                                        | [AtsCreateBackgroundCheckPackagesRequestDto](../../models/components/AtsCreateBackgroundCheckPackagesRequestDto.md) | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsCreateBackgroundCheckPackagesRequestDto`                                                                                                                             | [AtsCreateBackgroundCheckPackagesRequestDto](../../models/components/AtsCreateBackgroundCheckPackagesRequestDto.md)                                                      | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -5639,6 +5727,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,description,tests,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetBackgroundCheckPackageResponse res = sdk.ats().getBackgroundCheckPackage()
@@ -5661,74 +5750,6 @@ public class Application {
 ### Response
 
 **[AtsGetBackgroundCheckPackageResponse](../../models/operations/AtsGetBackgroundCheckPackageResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## deleteBackgroundCheckPackage
-
-Delete Background Check Package
-
-### Example Usage
-
-<!-- UsageSnippet language="java" operationID="ats_delete_background_check_package" method="delete" path="/unified/ats/background_checks/packages/{id}" -->
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsDeleteBackgroundCheckPackageResponse;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        AtsDeleteBackgroundCheckPackageResponse res = sdk.ats().deleteBackgroundCheckPackage()
-                .xAccountId("<id>")
-                .id("<id>")
-                .call();
-
-        if (res.deleteResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter              | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `xAccountId`           | *String*               | :heavy_check_mark:     | The account identifier |
-| `id`                   | *String*               | :heavy_check_mark:     | N/A                    |
-
-### Response
-
-**[AtsDeleteBackgroundCheckPackageResponse](../../models/operations/AtsDeleteBackgroundCheckPackageResponse.md)**
 
 ### Errors
 
@@ -5780,6 +5801,7 @@ public class Application {
         AtsUpdateBackgroundCheckPackageResponse res = sdk.ats().updateBackgroundCheckPackage()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .atsUpdateBackgroundCheckPackagesRequestDto(AtsUpdateBackgroundCheckPackagesRequestDto.builder()
                     .name("Test 1")
                     .description("Skills test to gauge a candidate's proficiency in job-specific skills")
@@ -5803,15 +5825,86 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                                        | *String*                                                                                                            | :heavy_check_mark:                                                                                                  | The account identifier                                                                                              |
-| `id`                                                                                                                | *String*                                                                                                            | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
-| `atsUpdateBackgroundCheckPackagesRequestDto`                                                                        | [AtsUpdateBackgroundCheckPackagesRequestDto](../../models/components/AtsUpdateBackgroundCheckPackagesRequestDto.md) | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsUpdateBackgroundCheckPackagesRequestDto`                                                                                                                             | [AtsUpdateBackgroundCheckPackagesRequestDto](../../models/components/AtsUpdateBackgroundCheckPackagesRequestDto.md)                                                      | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
 **[AtsUpdateBackgroundCheckPackageResponse](../../models/operations/AtsUpdateBackgroundCheckPackageResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## deleteBackgroundCheckPackage
+
+Delete Background Check Package
+
+### Example Usage
+
+<!-- UsageSnippet language="java" operationID="ats_delete_background_check_package" method="delete" path="/unified/ats/background_checks/packages/{id}" -->
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.AtsDeleteBackgroundCheckPackageResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        AtsDeleteBackgroundCheckPackageResponse res = sdk.ats().deleteBackgroundCheckPackage()
+                .xAccountId("<id>")
+                .id("<id>")
+                .prefer("heartbeat")
+                .call();
+
+        if (res.deleteResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+
+### Response
+
+**[AtsDeleteBackgroundCheckPackageResponse](../../models/operations/AtsDeleteBackgroundCheckPackageResponse.md)**
 
 ### Errors
 
@@ -5864,6 +5957,7 @@ public class Application {
 
         AtsOrderBackgroundCheckRequestResponse res = sdk.ats().orderBackgroundCheckRequest()
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .atsCreateBackgroundCheckOrderRequestDto(AtsCreateBackgroundCheckOrderRequestDto.builder()
                     .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                     .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -5928,10 +6022,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
-| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                                  | *String*                                                                                                      | :heavy_check_mark:                                                                                            | The account identifier                                                                                        |
-| `atsCreateBackgroundCheckOrderRequestDto`                                                                     | [AtsCreateBackgroundCheckOrderRequestDto](../../models/components/AtsCreateBackgroundCheckOrderRequestDto.md) | :heavy_check_mark:                                                                                            | N/A                                                                                                           |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsCreateBackgroundCheckOrderRequestDto`                                                                                                                                | [AtsCreateBackgroundCheckOrderRequestDto](../../models/components/AtsCreateBackgroundCheckOrderRequestDto.md)                                                            | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -5988,6 +6083,7 @@ public class Application {
         AtsUpdateBackgroundCheckResultResponse res = sdk.ats().updateBackgroundCheckResult()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .atsUpdateBackgroundCheckResultRequestDto(AtsUpdateBackgroundCheckResultRequestDto.builder()
                     .score(AtsUpdateBackgroundCheckResultRequestDtoScore.builder()
                         .label("Percentage")
@@ -6029,11 +6125,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                       | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
-| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                                    | *String*                                                                                                        | :heavy_check_mark:                                                                                              | The account identifier                                                                                          |
-| `id`                                                                                                            | *String*                                                                                                        | :heavy_check_mark:                                                                                              | N/A                                                                                                             |
-| `atsUpdateBackgroundCheckResultRequestDto`                                                                      | [AtsUpdateBackgroundCheckResultRequestDto](../../models/components/AtsUpdateBackgroundCheckResultRequestDto.md) | :heavy_check_mark:                                                                                              | N/A                                                                                                             |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `atsUpdateBackgroundCheckResultRequestDto`                                                                                                                               | [AtsUpdateBackgroundCheckResultRequestDto](../../models/components/AtsUpdateBackgroundCheckResultRequestDto.md)                                                          | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -6091,6 +6188,7 @@ public class Application {
                 .filter(AtsListApplicationDocumentCategoriesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -6164,6 +6262,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,active,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         AtsGetApplicationDocumentCategoryResponse res = sdk.ats().getApplicationDocumentCategory()

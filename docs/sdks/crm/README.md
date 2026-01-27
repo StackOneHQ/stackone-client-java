@@ -1,5 +1,4 @@
 # Crm
-(*crm()*)
 
 ## Overview
 
@@ -51,6 +50,7 @@ public class Application {
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .include("custom_fields")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -123,6 +123,7 @@ public class Application {
 
         CrmCreateContactResponse res = sdk.crm().createContact()
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .crmCreateContactRequestDto(CrmCreateContactRequestDto.builder()
                     .firstName("Steve")
                     .lastName("Wozniak")
@@ -160,10 +161,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `xAccountId`                                                                        | *String*                                                                            | :heavy_check_mark:                                                                  | The account identifier                                                              |
-| `crmCreateContactRequestDto`                                                        | [CrmCreateContactRequestDto](../../models/components/CrmCreateContactRequestDto.md) | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `crmCreateContactRequestDto`                                                                                                                                             | [CrmCreateContactRequestDto](../../models/components/CrmCreateContactRequestDto.md)                                                                                      | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -220,6 +222,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at,unified_custom_fields")
                 .include("custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         CrmGetContactResponse res = sdk.crm().getContact()
@@ -293,6 +296,7 @@ public class Application {
         CrmUpdateContactResponse res = sdk.crm().updateContact()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .crmCreateContactRequestDto(CrmCreateContactRequestDto.builder()
                     .firstName("Steve")
                     .lastName("Wozniak")
@@ -330,11 +334,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `xAccountId`                                                                        | *String*                                                                            | :heavy_check_mark:                                                                  | The account identifier                                                              |
-| `id`                                                                                | *String*                                                                            | :heavy_check_mark:                                                                  | N/A                                                                                 |
-| `crmCreateContactRequestDto`                                                        | [CrmCreateContactRequestDto](../../models/components/CrmCreateContactRequestDto.md) | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `crmCreateContactRequestDto`                                                                                                                                             | [CrmCreateContactRequestDto](../../models/components/CrmCreateContactRequestDto.md)                                                                                      | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -392,6 +397,7 @@ public class Application {
                 .filter(CrmListAccountsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -465,6 +471,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         CrmGetAccountResponse res = sdk.crm().getAccount()
@@ -540,6 +547,7 @@ public class Application {
                 .filter(CrmListListsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -613,6 +621,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,created_at,updated_at,items,type,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         CrmGetListResponse res = sdk.crm().getList()
@@ -688,6 +697,7 @@ public class Application {
                 .filter(CrmListContactCustomFieldDefinitionsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -764,6 +774,7 @@ public class Application {
                 .filter(CrmGetContactCustomFieldDefinitionQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
         CrmGetContactCustomFieldDefinitionResponse res = sdk.crm().getContactCustomFieldDefinition()

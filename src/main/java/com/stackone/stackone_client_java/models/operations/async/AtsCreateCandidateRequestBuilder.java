@@ -20,6 +20,7 @@ import java.util.concurrent.CompletableFuture;
 public class AtsCreateCandidateRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private AtsCreateCandidateRequestDto atsCreateCandidateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -32,6 +33,18 @@ public class AtsCreateCandidateRequestBuilder {
     public AtsCreateCandidateRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public AtsCreateCandidateRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public AtsCreateCandidateRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -57,6 +70,7 @@ public class AtsCreateCandidateRequestBuilder {
     private AtsCreateCandidateRequest buildRequest() {
 
         AtsCreateCandidateRequest request = new AtsCreateCandidateRequest(xAccountId,
+            prefer,
             atsCreateCandidateRequestDto);
 
         return request;

@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class StackoneProxyRequestRequest {
@@ -20,6 +21,13 @@ public class StackoneProxyRequestRequest {
     private String xAccountId;
 
     /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
+    /**
      * The request body
      */
     @SpeakeasyMetadata("request:mediaType=application/json")
@@ -28,11 +36,20 @@ public class StackoneProxyRequestRequest {
     @JsonCreator
     public StackoneProxyRequestRequest(
             String xAccountId,
+            Optional<String> prefer,
             ProxyRequestBody proxyRequestBody) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(proxyRequestBody, "proxyRequestBody");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.proxyRequestBody = proxyRequestBody;
+    }
+    
+    public StackoneProxyRequestRequest(
+            String xAccountId,
+            ProxyRequestBody proxyRequestBody) {
+        this(xAccountId, Optional.empty(), proxyRequestBody);
     }
 
     /**
@@ -41,6 +58,15 @@ public class StackoneProxyRequestRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     /**
@@ -66,6 +92,27 @@ public class StackoneProxyRequestRequest {
     }
 
     /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public StackoneProxyRequestRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public StackoneProxyRequestRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
+    /**
      * The request body
      */
     public StackoneProxyRequestRequest withProxyRequestBody(ProxyRequestBody proxyRequestBody) {
@@ -85,19 +132,21 @@ public class StackoneProxyRequestRequest {
         StackoneProxyRequestRequest other = (StackoneProxyRequestRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.proxyRequestBody, other.proxyRequestBody);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, proxyRequestBody);
+            xAccountId, prefer, proxyRequestBody);
     }
     
     @Override
     public String toString() {
         return Utils.toString(StackoneProxyRequestRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "proxyRequestBody", proxyRequestBody);
     }
 
@@ -105,6 +154,8 @@ public class StackoneProxyRequestRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private ProxyRequestBody proxyRequestBody;
 
@@ -124,6 +175,27 @@ public class StackoneProxyRequestRequest {
 
 
         /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
+        /**
          * The request body
          */
         public Builder proxyRequestBody(ProxyRequestBody proxyRequestBody) {
@@ -135,7 +207,7 @@ public class StackoneProxyRequestRequest {
         public StackoneProxyRequestRequest build() {
 
             return new StackoneProxyRequestRequest(
-                xAccountId, proxyRequestBody);
+                xAccountId, prefer, proxyRequestBody);
         }
 
     }

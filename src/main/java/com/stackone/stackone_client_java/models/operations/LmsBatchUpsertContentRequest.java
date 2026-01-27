@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class LmsBatchUpsertContentRequest {
@@ -19,6 +20,13 @@ public class LmsBatchUpsertContentRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto;
@@ -26,11 +34,20 @@ public class LmsBatchUpsertContentRequest {
     @JsonCreator
     public LmsBatchUpsertContentRequest(
             String xAccountId,
+            Optional<String> prefer,
             LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(lmsBatchUpsertContentRequestDto, "lmsBatchUpsertContentRequestDto");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.lmsBatchUpsertContentRequestDto = lmsBatchUpsertContentRequestDto;
+    }
+    
+    public LmsBatchUpsertContentRequest(
+            String xAccountId,
+            LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto) {
+        this(xAccountId, Optional.empty(), lmsBatchUpsertContentRequestDto);
     }
 
     /**
@@ -39,6 +56,15 @@ public class LmsBatchUpsertContentRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -60,6 +86,27 @@ public class LmsBatchUpsertContentRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public LmsBatchUpsertContentRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public LmsBatchUpsertContentRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public LmsBatchUpsertContentRequest withLmsBatchUpsertContentRequestDto(LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto) {
         Utils.checkNotNull(lmsBatchUpsertContentRequestDto, "lmsBatchUpsertContentRequestDto");
         this.lmsBatchUpsertContentRequestDto = lmsBatchUpsertContentRequestDto;
@@ -77,19 +124,21 @@ public class LmsBatchUpsertContentRequest {
         LmsBatchUpsertContentRequest other = (LmsBatchUpsertContentRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.lmsBatchUpsertContentRequestDto, other.lmsBatchUpsertContentRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, lmsBatchUpsertContentRequestDto);
+            xAccountId, prefer, lmsBatchUpsertContentRequestDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(LmsBatchUpsertContentRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "lmsBatchUpsertContentRequestDto", lmsBatchUpsertContentRequestDto);
     }
 
@@ -97,6 +146,8 @@ public class LmsBatchUpsertContentRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto;
 
@@ -115,6 +166,27 @@ public class LmsBatchUpsertContentRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder lmsBatchUpsertContentRequestDto(LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto) {
             Utils.checkNotNull(lmsBatchUpsertContentRequestDto, "lmsBatchUpsertContentRequestDto");
             this.lmsBatchUpsertContentRequestDto = lmsBatchUpsertContentRequestDto;
@@ -124,7 +196,7 @@ public class LmsBatchUpsertContentRequest {
         public LmsBatchUpsertContentRequest build() {
 
             return new LmsBatchUpsertContentRequest(
-                xAccountId, lmsBatchUpsertContentRequestDto);
+                xAccountId, prefer, lmsBatchUpsertContentRequestDto);
         }
 
     }

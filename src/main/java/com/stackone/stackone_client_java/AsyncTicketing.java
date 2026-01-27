@@ -173,7 +173,9 @@ public class AsyncTicketing {
      * @return {@code CompletableFuture<TicketingCreateTicketResponse>} - The async response
      */
     public CompletableFuture<TicketingCreateTicketResponse> createTicket(String xAccountId, TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto) {
-        return createTicket(xAccountId, ticketingTicketCreateRequestDto, Optional.empty());
+        return createTicket(
+                xAccountId, Optional.empty(), ticketingTicketCreateRequestDto,
+                Optional.empty());
     }
 
     /**
@@ -182,17 +184,19 @@ public class AsyncTicketing {
      * <p>Create a new ticket record.
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param ticketingTicketCreateRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<TicketingCreateTicketResponse>} - The async response
      */
     public CompletableFuture<TicketingCreateTicketResponse> createTicket(
-            String xAccountId, TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto, Optional<Options> options) {
         TicketingCreateTicketRequest request =
             TicketingCreateTicketRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .ticketingTicketCreateRequestDto(ticketingTicketCreateRequestDto)
                 .build();
         AsyncRequestOperation<TicketingCreateTicketRequest, TicketingCreateTicketResponse> operation
@@ -271,8 +275,8 @@ public class AsyncTicketing {
             String xAccountId, String id,
             TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto) {
         return updateTicket(
-                xAccountId, id, ticketingTicketUpdateRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                ticketingTicketUpdateRequestDto, Optional.empty());
     }
 
     /**
@@ -282,18 +286,21 @@ public class AsyncTicketing {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param ticketingTicketUpdateRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<TicketingUpdateTicketResponse>} - The async response
      */
     public CompletableFuture<TicketingUpdateTicketResponse> updateTicket(
             String xAccountId, String id,
-            TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto, Optional<Options> options) {
+            Optional<String> prefer, TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto,
+            Optional<Options> options) {
         TicketingUpdateTicketRequest request =
             TicketingUpdateTicketRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .ticketingTicketUpdateRequestDto(ticketingTicketUpdateRequestDto)
                 .build();
         AsyncRequestOperation<TicketingUpdateTicketRequest, TicketingUpdateTicketResponse> operation

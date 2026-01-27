@@ -5,14 +5,22 @@ package com.stackone.stackone_client_java;
 
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
+import com.stackone.stackone_client_java.models.components.ActionBuildDto;
+import com.stackone.stackone_client_java.models.components.ActionSearchDto;
 import com.stackone.stackone_client_java.models.components.ActionsRpcRequestDto;
+import com.stackone.stackone_client_java.models.operations.StackoneBuildActionEmbeddingsRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.StackoneBuildActionEmbeddingsResponse;
 import com.stackone.stackone_client_java.models.operations.StackoneListActionsMetaRequest;
 import com.stackone.stackone_client_java.models.operations.StackoneListActionsMetaRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.StackoneListActionsMetaResponse;
 import com.stackone.stackone_client_java.models.operations.StackoneRpcActionRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.StackoneRpcActionResponse;
+import com.stackone.stackone_client_java.models.operations.StackoneSearchActionsRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.StackoneSearchActionsResponse;
+import com.stackone.stackone_client_java.operations.StackoneBuildActionEmbeddings;
 import com.stackone.stackone_client_java.operations.StackoneListActionsMeta;
 import com.stackone.stackone_client_java.operations.StackoneRpcAction;
+import com.stackone.stackone_client_java.operations.StackoneSearchActions;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.util.Optional;
@@ -76,6 +84,74 @@ public class Actions {
     public StackoneListActionsMetaResponse listActionsMeta(StackoneListActionsMetaRequest request, Optional<Options> options) {
         RequestOperation<StackoneListActionsMetaRequest, StackoneListActionsMetaResponse> operation
               = new StackoneListActionsMeta.Sync(sdkConfiguration, options, _headers);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * Search connector actions by semantic similarity
+     * 
+     * @return The call builder
+     */
+    public StackoneSearchActionsRequestBuilder searchActions() {
+        return new StackoneSearchActionsRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Search connector actions by semantic similarity
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public StackoneSearchActionsResponse searchActions(ActionSearchDto request) {
+        return searchActions(request, Optional.empty());
+    }
+
+    /**
+     * Search connector actions by semantic similarity
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public StackoneSearchActionsResponse searchActions(ActionSearchDto request, Optional<Options> options) {
+        RequestOperation<ActionSearchDto, StackoneSearchActionsResponse> operation
+              = new StackoneSearchActions.Sync(sdkConfiguration, options, _headers);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * Rebuild action embeddings for semantic search
+     * 
+     * @return The call builder
+     */
+    public StackoneBuildActionEmbeddingsRequestBuilder buildActionEmbeddings() {
+        return new StackoneBuildActionEmbeddingsRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Rebuild action embeddings for semantic search
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public StackoneBuildActionEmbeddingsResponse buildActionEmbeddings(ActionBuildDto request) {
+        return buildActionEmbeddings(request, Optional.empty());
+    }
+
+    /**
+     * Rebuild action embeddings for semantic search
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public StackoneBuildActionEmbeddingsResponse buildActionEmbeddings(ActionBuildDto request, Optional<Options> options) {
+        RequestOperation<ActionBuildDto, StackoneBuildActionEmbeddingsResponse> operation
+              = new StackoneBuildActionEmbeddings.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

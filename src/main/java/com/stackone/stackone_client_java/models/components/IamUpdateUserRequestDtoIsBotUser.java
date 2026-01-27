@@ -84,8 +84,8 @@ public class IamUpdateUserRequestDtoIsBotUser {
 
         public _Deserializer() {
             super(IamUpdateUserRequestDtoIsBotUser.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<IamUpdateUserRequestDtoIsBotUser2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<IamUpdateUserRequestDtoIsBotUser2>() {}, JsonShape.DEFAULT));
         }
     }
     

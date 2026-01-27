@@ -84,8 +84,8 @@ public class HasContent {
 
         public _Deserializer() {
             super(HasContent.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<HasContent2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<HasContent2>() {}, JsonShape.DEFAULT));
         }
     }
     

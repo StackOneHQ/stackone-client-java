@@ -21,6 +21,7 @@ public class LmsCreateUserCompletionRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -39,6 +40,18 @@ public class LmsCreateUserCompletionRequestBuilder {
     public LmsCreateUserCompletionRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public LmsCreateUserCompletionRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public LmsCreateUserCompletionRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -65,6 +78,7 @@ public class LmsCreateUserCompletionRequestBuilder {
 
         LmsCreateUserCompletionRequest request = new LmsCreateUserCompletionRequest(xAccountId,
             id,
+            prefer,
             lmsCreateCompletionRequestDto);
 
         return request;

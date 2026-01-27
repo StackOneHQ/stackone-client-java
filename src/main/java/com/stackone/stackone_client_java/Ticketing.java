@@ -170,7 +170,8 @@ public class Ticketing {
      * @throws RuntimeException subclass if the API call fails
      */
     public TicketingCreateTicketResponse createTicket(String xAccountId, TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto) {
-        return createTicket(xAccountId, ticketingTicketCreateRequestDto, Optional.empty());
+        return createTicket(xAccountId, Optional.empty(), ticketingTicketCreateRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -179,18 +180,20 @@ public class Ticketing {
      * <p>Create a new ticket record.
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param ticketingTicketCreateRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public TicketingCreateTicketResponse createTicket(
-            String xAccountId, TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto, Optional<Options> options) {
         TicketingCreateTicketRequest request =
             TicketingCreateTicketRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .ticketingTicketCreateRequestDto(ticketingTicketCreateRequestDto)
                 .build();
         RequestOperation<TicketingCreateTicketRequest, TicketingCreateTicketResponse> operation
@@ -263,8 +266,8 @@ public class Ticketing {
     public TicketingUpdateTicketResponse updateTicket(
             String xAccountId, String id,
             TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto) {
-        return updateTicket(xAccountId, id, ticketingTicketUpdateRequestDto,
-            Optional.empty());
+        return updateTicket(xAccountId, id, Optional.empty(),
+            ticketingTicketUpdateRequestDto, Optional.empty());
     }
 
     /**
@@ -274,6 +277,7 @@ public class Ticketing {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param ticketingTicketUpdateRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -281,12 +285,14 @@ public class Ticketing {
      */
     public TicketingUpdateTicketResponse updateTicket(
             String xAccountId, String id,
-            TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto, Optional<Options> options) {
+            Optional<String> prefer, TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto,
+            Optional<Options> options) {
         TicketingUpdateTicketRequest request =
             TicketingUpdateTicketRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .ticketingTicketUpdateRequestDto(ticketingTicketUpdateRequestDto)
                 .build();
         RequestOperation<TicketingUpdateTicketRequest, TicketingUpdateTicketResponse> operation

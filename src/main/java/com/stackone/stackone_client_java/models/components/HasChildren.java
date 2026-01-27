@@ -84,8 +84,8 @@ public class HasChildren {
 
         public _Deserializer() {
             super(HasChildren.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<HasChildren2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<HasChildren2>() {}, JsonShape.DEFAULT));
         }
     }
     

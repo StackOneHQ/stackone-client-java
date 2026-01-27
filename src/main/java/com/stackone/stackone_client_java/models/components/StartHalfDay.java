@@ -84,8 +84,8 @@ public class StartHalfDay {
 
         public _Deserializer() {
             super(StartHalfDay.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<StartHalfDay2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<StartHalfDay2>() {}, JsonShape.DEFAULT));
         }
     }
     

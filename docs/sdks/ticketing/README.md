@@ -1,5 +1,4 @@
 # Ticketing
-(*ticketing()*)
 
 ## Overview
 
@@ -59,6 +58,7 @@ public class Application {
                 .filter(TicketingListTicketsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -131,6 +131,7 @@ public class Application {
 
         TicketingCreateTicketResponse res = sdk.ticketing().createTicket()
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .ticketingTicketCreateRequestDto(TicketingTicketCreateRequestDto.builder()
                     .unifiedCustomFields(Map.ofEntries(
                         Map.entry("my_project_custom_field_1", "REF-1236"),
@@ -173,10 +174,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                  | *String*                                                                                      | :heavy_check_mark:                                                                            | The account identifier                                                                        |
-| `ticketingTicketCreateRequestDto`                                                             | [TicketingTicketCreateRequestDto](../../models/components/TicketingTicketCreateRequestDto.md) | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `ticketingTicketCreateRequestDto`                                                                                                                                        | [TicketingTicketCreateRequestDto](../../models/components/TicketingTicketCreateRequestDto.md)                                                                            | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -232,6 +234,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,type,ticket_number,title,creator_id,remote_creator_id,reporters,assignees,content,parent_id,remote_parent_id,closed_at,ticket_url,status,priority,tags,projects,components,organization,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         TicketingGetTicketResponse res = sdk.ticketing().getTicket()
@@ -305,6 +308,7 @@ public class Application {
         TicketingUpdateTicketResponse res = sdk.ticketing().updateTicket()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .ticketingTicketUpdateRequestDto(TicketingTicketUpdateRequestDto.builder()
                     .unifiedCustomFields(Map.ofEntries(
                         Map.entry("my_project_custom_field_1", "REF-1236"),
@@ -352,11 +356,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                  | *String*                                                                                      | :heavy_check_mark:                                                                            | The account identifier                                                                        |
-| `id`                                                                                          | *String*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `ticketingTicketUpdateRequestDto`                                                             | [TicketingTicketUpdateRequestDto](../../models/components/TicketingTicketUpdateRequestDto.md) | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `ticketingTicketUpdateRequestDto`                                                                                                                                        | [TicketingTicketUpdateRequestDto](../../models/components/TicketingTicketUpdateRequestDto.md)                                                                            | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -414,6 +419,7 @@ public class Application {
                 .filter(TicketingListUsersQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -487,6 +493,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,type,name,primary_email,primary_phone,username,active,first_name,last_name,customer_account_reference,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         TicketingGetUserResponse res = sdk.ticketing().getUser()
@@ -563,6 +570,7 @@ public class Application {
                 .filter(TicketingListCommentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -637,6 +645,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .fields("id,remote_id,ticket_id,remote_ticket_id,content,user_id,remote_user_id,internal,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         TicketingGetCommentResponse res = sdk.ticketing().getComment()
@@ -712,6 +721,7 @@ public class Application {
                 .subResourceId("<id>")
                 .format("base64")
                 .exportFormat("text/plain")
+                .prefer("heartbeat")
                 .build();
 
         TicketingDownloadTicketingAttachmentResponse res = sdk.ticketing().downloadTicketingAttachment()
@@ -788,6 +798,7 @@ public class Application {
                 .filter(TicketingListAttachmentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -862,6 +873,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .fields("id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_format,file_url,size,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         TicketingGetAttachmentResponse res = sdk.ticketing().getAttachment()
@@ -937,6 +949,7 @@ public class Application {
                 .filter(TicketingListTicketTypesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1010,6 +1023,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,project_id,remote_project_id,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         TicketingGetTicketTypeResponse res = sdk.ticketing().getTicketType()
@@ -1085,6 +1099,7 @@ public class Application {
                 .filter(TicketingListProjectsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1158,6 +1173,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,organization_id,remote_organization_id,name,description,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         TicketingGetProjectResponse res = sdk.ticketing().getProject()
@@ -1233,6 +1249,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,organization_id,remote_organization_id,project_id,remote_project_id,name,description,created_at,updated_at,unified_custom_fields")
                 .filter(JsonNullable.of(null))
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1307,6 +1324,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .fields("id,remote_id,organization_id,remote_organization_id,project_id,remote_project_id,name,description,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         TicketingGetProjectComponentResponse res = sdk.ticketing().getProjectComponent()
@@ -1383,6 +1401,7 @@ public class Application {
                 .filter(TicketingListProjectTicketTypesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1458,6 +1477,7 @@ public class Application {
                 .filter(TicketingListTicketStatusesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 

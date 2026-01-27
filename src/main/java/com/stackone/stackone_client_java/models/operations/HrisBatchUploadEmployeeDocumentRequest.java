@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class HrisBatchUploadEmployeeDocumentRequest {
@@ -23,6 +24,13 @@ public class HrisBatchUploadEmployeeDocumentRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto;
@@ -31,13 +39,24 @@ public class HrisBatchUploadEmployeeDocumentRequest {
     public HrisBatchUploadEmployeeDocumentRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(hrisBatchDocumentUploadRequestDto, "hrisBatchDocumentUploadRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.hrisBatchDocumentUploadRequestDto = hrisBatchDocumentUploadRequestDto;
+    }
+    
+    public HrisBatchUploadEmployeeDocumentRequest(
+            String xAccountId,
+            String id,
+            HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            hrisBatchDocumentUploadRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class HrisBatchUploadEmployeeDocumentRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class HrisBatchUploadEmployeeDocumentRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisBatchUploadEmployeeDocumentRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisBatchUploadEmployeeDocumentRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public HrisBatchUploadEmployeeDocumentRequest withHrisBatchDocumentUploadRequestDto(HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto) {
         Utils.checkNotNull(hrisBatchDocumentUploadRequestDto, "hrisBatchDocumentUploadRequestDto");
         this.hrisBatchDocumentUploadRequestDto = hrisBatchDocumentUploadRequestDto;
@@ -96,13 +145,15 @@ public class HrisBatchUploadEmployeeDocumentRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.hrisBatchDocumentUploadRequestDto, other.hrisBatchDocumentUploadRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, hrisBatchDocumentUploadRequestDto);
+            xAccountId, id, prefer,
+            hrisBatchDocumentUploadRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class HrisBatchUploadEmployeeDocumentRequest {
         return Utils.toString(HrisBatchUploadEmployeeDocumentRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "hrisBatchDocumentUploadRequestDto", hrisBatchDocumentUploadRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class HrisBatchUploadEmployeeDocumentRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto;
 
@@ -144,6 +198,27 @@ public class HrisBatchUploadEmployeeDocumentRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder hrisBatchDocumentUploadRequestDto(HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto) {
             Utils.checkNotNull(hrisBatchDocumentUploadRequestDto, "hrisBatchDocumentUploadRequestDto");
             this.hrisBatchDocumentUploadRequestDto = hrisBatchDocumentUploadRequestDto;
@@ -153,7 +228,8 @@ public class HrisBatchUploadEmployeeDocumentRequest {
         public HrisBatchUploadEmployeeDocumentRequest build() {
 
             return new HrisBatchUploadEmployeeDocumentRequest(
-                xAccountId, id, hrisBatchDocumentUploadRequestDto);
+                xAccountId, id, prefer,
+                hrisBatchDocumentUploadRequestDto);
         }
 
     }

@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class AtsCreateApplicationRequest {
@@ -19,6 +20,13 @@ public class AtsCreateApplicationRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsCreateApplicationRequestDto atsCreateApplicationRequestDto;
@@ -26,11 +34,20 @@ public class AtsCreateApplicationRequest {
     @JsonCreator
     public AtsCreateApplicationRequest(
             String xAccountId,
+            Optional<String> prefer,
             AtsCreateApplicationRequestDto atsCreateApplicationRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(atsCreateApplicationRequestDto, "atsCreateApplicationRequestDto");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.atsCreateApplicationRequestDto = atsCreateApplicationRequestDto;
+    }
+    
+    public AtsCreateApplicationRequest(
+            String xAccountId,
+            AtsCreateApplicationRequestDto atsCreateApplicationRequestDto) {
+        this(xAccountId, Optional.empty(), atsCreateApplicationRequestDto);
     }
 
     /**
@@ -39,6 +56,15 @@ public class AtsCreateApplicationRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -60,6 +86,27 @@ public class AtsCreateApplicationRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsCreateApplicationRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsCreateApplicationRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public AtsCreateApplicationRequest withAtsCreateApplicationRequestDto(AtsCreateApplicationRequestDto atsCreateApplicationRequestDto) {
         Utils.checkNotNull(atsCreateApplicationRequestDto, "atsCreateApplicationRequestDto");
         this.atsCreateApplicationRequestDto = atsCreateApplicationRequestDto;
@@ -77,19 +124,21 @@ public class AtsCreateApplicationRequest {
         AtsCreateApplicationRequest other = (AtsCreateApplicationRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.atsCreateApplicationRequestDto, other.atsCreateApplicationRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, atsCreateApplicationRequestDto);
+            xAccountId, prefer, atsCreateApplicationRequestDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(AtsCreateApplicationRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "atsCreateApplicationRequestDto", atsCreateApplicationRequestDto);
     }
 
@@ -97,6 +146,8 @@ public class AtsCreateApplicationRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private AtsCreateApplicationRequestDto atsCreateApplicationRequestDto;
 
@@ -115,6 +166,27 @@ public class AtsCreateApplicationRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder atsCreateApplicationRequestDto(AtsCreateApplicationRequestDto atsCreateApplicationRequestDto) {
             Utils.checkNotNull(atsCreateApplicationRequestDto, "atsCreateApplicationRequestDto");
             this.atsCreateApplicationRequestDto = atsCreateApplicationRequestDto;
@@ -124,7 +196,7 @@ public class AtsCreateApplicationRequest {
         public AtsCreateApplicationRequest build() {
 
             return new AtsCreateApplicationRequest(
-                xAccountId, atsCreateApplicationRequestDto);
+                xAccountId, prefer, atsCreateApplicationRequestDto);
         }
 
     }

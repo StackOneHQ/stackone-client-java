@@ -25,7 +25,7 @@ public class ConnectSessionTokenAuthLink {
 
 
     @JsonProperty("organization_id")
-    private double organizationId;
+    private OrganizationId organizationId;
 
 
     @JsonProperty("project_id")
@@ -108,7 +108,7 @@ public class ConnectSessionTokenAuthLink {
     @JsonCreator
     public ConnectSessionTokenAuthLink(
             @JsonProperty("id") double id,
-            @JsonProperty("organization_id") double organizationId,
+            @JsonProperty("organization_id") OrganizationId organizationId,
             @JsonProperty("project_id") String projectId,
             @JsonProperty("categories") JsonNullable<? extends List<ConnectSessionTokenAuthLinkCategories>> categories,
             @JsonProperty("provider") JsonNullable<String> provider,
@@ -162,7 +162,7 @@ public class ConnectSessionTokenAuthLink {
     
     public ConnectSessionTokenAuthLink(
             double id,
-            double organizationId,
+            OrganizationId organizationId,
             String projectId,
             String originOwnerId,
             String originOwnerName,
@@ -183,7 +183,7 @@ public class ConnectSessionTokenAuthLink {
     }
 
     @JsonIgnore
-    public double organizationId() {
+    public OrganizationId organizationId() {
         return organizationId;
     }
 
@@ -289,7 +289,7 @@ public class ConnectSessionTokenAuthLink {
         return this;
     }
 
-    public ConnectSessionTokenAuthLink withOrganizationId(double organizationId) {
+    public ConnectSessionTokenAuthLink withOrganizationId(OrganizationId organizationId) {
         Utils.checkNotNull(organizationId, "organizationId");
         this.organizationId = organizationId;
         return this;
@@ -532,7 +532,7 @@ public class ConnectSessionTokenAuthLink {
 
         private Double id;
 
-        private Double organizationId;
+        private OrganizationId organizationId;
 
         private String projectId;
 
@@ -576,7 +576,7 @@ public class ConnectSessionTokenAuthLink {
         }
 
 
-        public Builder organizationId(double organizationId) {
+        public Builder organizationId(OrganizationId organizationId) {
             Utils.checkNotNull(organizationId, "organizationId");
             this.organizationId = organizationId;
             return this;

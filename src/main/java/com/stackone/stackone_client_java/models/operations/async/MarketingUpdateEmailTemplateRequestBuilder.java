@@ -21,6 +21,7 @@ public class MarketingUpdateEmailTemplateRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -39,6 +40,18 @@ public class MarketingUpdateEmailTemplateRequestBuilder {
     public MarketingUpdateEmailTemplateRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public MarketingUpdateEmailTemplateRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public MarketingUpdateEmailTemplateRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -65,6 +78,7 @@ public class MarketingUpdateEmailTemplateRequestBuilder {
 
         MarketingUpdateEmailTemplateRequest request = new MarketingUpdateEmailTemplateRequest(xAccountId,
             id,
+            prefer,
             marketingCreateEmailTemplateRequestDto);
 
         return request;

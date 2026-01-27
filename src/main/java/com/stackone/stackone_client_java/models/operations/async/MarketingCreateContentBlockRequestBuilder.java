@@ -20,6 +20,7 @@ import java.util.concurrent.CompletableFuture;
 public class MarketingCreateContentBlockRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -32,6 +33,18 @@ public class MarketingCreateContentBlockRequestBuilder {
     public MarketingCreateContentBlockRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public MarketingCreateContentBlockRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public MarketingCreateContentBlockRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -57,6 +70,7 @@ public class MarketingCreateContentBlockRequestBuilder {
     private MarketingCreateContentBlockRequest buildRequest() {
 
         MarketingCreateContentBlockRequest request = new MarketingCreateContentBlockRequest(xAccountId,
+            prefer,
             marketingCreateContentBlocksRequestDto);
 
         return request;

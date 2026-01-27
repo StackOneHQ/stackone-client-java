@@ -148,6 +148,13 @@ public class LmsUpsertContentRequestDto {
     private JsonNullable<OffsetDateTime> createdAt;
 
     /**
+     * Value to pass through to the provider
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("passthrough")
+    private JsonNullable<? extends Map<String, Object>> passthrough;
+
+    /**
      * The external ID associated with this content
      */
     @JsonProperty("external_reference")
@@ -193,6 +200,7 @@ public class LmsUpsertContentRequestDto {
             @JsonProperty("authors") JsonNullable<? extends List<AuthorModel>> authors,
             @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt,
             @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
+            @JsonProperty("passthrough") JsonNullable<? extends Map<String, Object>> passthrough,
             @JsonProperty("external_reference") String externalReference,
             @JsonProperty("categories") JsonNullable<? extends List<CreateCategoriesApiModel>> categories,
             @JsonProperty("additional_data") JsonNullable<? extends List<AdditionalData>> additionalData,
@@ -214,6 +222,7 @@ public class LmsUpsertContentRequestDto {
         Utils.checkNotNull(authors, "authors");
         Utils.checkNotNull(updatedAt, "updatedAt");
         Utils.checkNotNull(createdAt, "createdAt");
+        Utils.checkNotNull(passthrough, "passthrough");
         Utils.checkNotNull(externalReference, "externalReference");
         Utils.checkNotNull(categories, "categories");
         Utils.checkNotNull(additionalData, "additionalData");
@@ -235,6 +244,7 @@ public class LmsUpsertContentRequestDto {
         this.authors = authors;
         this.updatedAt = updatedAt;
         this.createdAt = createdAt;
+        this.passthrough = passthrough;
         this.externalReference = externalReference;
         this.categories = categories;
         this.additionalData = additionalData;
@@ -248,8 +258,9 @@ public class LmsUpsertContentRequestDto {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), externalReference,
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            externalReference, JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -399,6 +410,15 @@ public class LmsUpsertContentRequestDto {
     @JsonIgnore
     public JsonNullable<OffsetDateTime> createdAt() {
         return createdAt;
+    }
+
+    /**
+     * Value to pass through to the provider
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<Map<String, Object>> passthrough() {
+        return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
     /**
@@ -760,6 +780,24 @@ public class LmsUpsertContentRequestDto {
     }
 
     /**
+     * Value to pass through to the provider
+     */
+    public LmsUpsertContentRequestDto withPassthrough(Map<String, Object> passthrough) {
+        Utils.checkNotNull(passthrough, "passthrough");
+        this.passthrough = JsonNullable.of(passthrough);
+        return this;
+    }
+
+    /**
+     * Value to pass through to the provider
+     */
+    public LmsUpsertContentRequestDto withPassthrough(JsonNullable<? extends Map<String, Object>> passthrough) {
+        Utils.checkNotNull(passthrough, "passthrough");
+        this.passthrough = passthrough;
+        return this;
+    }
+
+    /**
      * The external ID associated with this content
      */
     public LmsUpsertContentRequestDto withExternalReference(String externalReference) {
@@ -849,6 +887,7 @@ public class LmsUpsertContentRequestDto {
             Utils.enhancedDeepEquals(this.authors, other.authors) &&
             Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt) &&
             Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough) &&
             Utils.enhancedDeepEquals(this.externalReference, other.externalReference) &&
             Utils.enhancedDeepEquals(this.categories, other.categories) &&
             Utils.enhancedDeepEquals(this.additionalData, other.additionalData) &&
@@ -863,8 +902,9 @@ public class LmsUpsertContentRequestDto {
             coverUrl, active, duration,
             skills, order, shortDescription,
             localizations, tags, authors,
-            updatedAt, createdAt, externalReference,
-            categories, additionalData, contentType);
+            updatedAt, createdAt, passthrough,
+            externalReference, categories, additionalData,
+            contentType);
     }
     
     @Override
@@ -887,6 +927,7 @@ public class LmsUpsertContentRequestDto {
                 "authors", authors,
                 "updatedAt", updatedAt,
                 "createdAt", createdAt,
+                "passthrough", passthrough,
                 "externalReference", externalReference,
                 "categories", categories,
                 "additionalData", additionalData,
@@ -930,6 +971,8 @@ public class LmsUpsertContentRequestDto {
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
 
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
+
+        private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
 
         private String externalReference;
 
@@ -1280,6 +1323,25 @@ public class LmsUpsertContentRequestDto {
 
 
         /**
+         * Value to pass through to the provider
+         */
+        public Builder passthrough(Map<String, Object> passthrough) {
+            Utils.checkNotNull(passthrough, "passthrough");
+            this.passthrough = JsonNullable.of(passthrough);
+            return this;
+        }
+
+        /**
+         * Value to pass through to the provider
+         */
+        public Builder passthrough(JsonNullable<? extends Map<String, Object>> passthrough) {
+            Utils.checkNotNull(passthrough, "passthrough");
+            this.passthrough = passthrough;
+            return this;
+        }
+
+
+        /**
          * The external ID associated with this content
          */
         public Builder externalReference(String externalReference) {
@@ -1353,8 +1415,9 @@ public class LmsUpsertContentRequestDto {
                 coverUrl, active, duration,
                 skills, order, shortDescription,
                 localizations, tags, authors,
-                updatedAt, createdAt, externalReference,
-                categories, additionalData, contentType);
+                updatedAt, createdAt, passthrough,
+                externalReference, categories, additionalData,
+                contentType);
         }
 
     }

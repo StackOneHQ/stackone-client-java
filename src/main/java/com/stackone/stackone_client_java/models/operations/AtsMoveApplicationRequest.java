@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class AtsMoveApplicationRequest {
@@ -23,6 +24,13 @@ public class AtsMoveApplicationRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsMoveApplicationRequestDto atsMoveApplicationRequestDto;
@@ -31,13 +39,24 @@ public class AtsMoveApplicationRequest {
     public AtsMoveApplicationRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             AtsMoveApplicationRequestDto atsMoveApplicationRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(atsMoveApplicationRequestDto, "atsMoveApplicationRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.atsMoveApplicationRequestDto = atsMoveApplicationRequestDto;
+    }
+    
+    public AtsMoveApplicationRequest(
+            String xAccountId,
+            String id,
+            AtsMoveApplicationRequestDto atsMoveApplicationRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            atsMoveApplicationRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class AtsMoveApplicationRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class AtsMoveApplicationRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsMoveApplicationRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsMoveApplicationRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public AtsMoveApplicationRequest withAtsMoveApplicationRequestDto(AtsMoveApplicationRequestDto atsMoveApplicationRequestDto) {
         Utils.checkNotNull(atsMoveApplicationRequestDto, "atsMoveApplicationRequestDto");
         this.atsMoveApplicationRequestDto = atsMoveApplicationRequestDto;
@@ -96,13 +145,15 @@ public class AtsMoveApplicationRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.atsMoveApplicationRequestDto, other.atsMoveApplicationRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, atsMoveApplicationRequestDto);
+            xAccountId, id, prefer,
+            atsMoveApplicationRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class AtsMoveApplicationRequest {
         return Utils.toString(AtsMoveApplicationRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "atsMoveApplicationRequestDto", atsMoveApplicationRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class AtsMoveApplicationRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private AtsMoveApplicationRequestDto atsMoveApplicationRequestDto;
 
@@ -144,6 +198,27 @@ public class AtsMoveApplicationRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder atsMoveApplicationRequestDto(AtsMoveApplicationRequestDto atsMoveApplicationRequestDto) {
             Utils.checkNotNull(atsMoveApplicationRequestDto, "atsMoveApplicationRequestDto");
             this.atsMoveApplicationRequestDto = atsMoveApplicationRequestDto;
@@ -153,7 +228,8 @@ public class AtsMoveApplicationRequest {
         public AtsMoveApplicationRequest build() {
 
             return new AtsMoveApplicationRequest(
-                xAccountId, id, atsMoveApplicationRequestDto);
+                xAccountId, id, prefer,
+                atsMoveApplicationRequestDto);
         }
 
     }

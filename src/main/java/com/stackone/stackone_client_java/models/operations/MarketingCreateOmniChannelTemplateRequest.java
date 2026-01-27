@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class MarketingCreateOmniChannelTemplateRequest {
@@ -19,6 +20,13 @@ public class MarketingCreateOmniChannelTemplateRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto;
@@ -26,11 +34,20 @@ public class MarketingCreateOmniChannelTemplateRequest {
     @JsonCreator
     public MarketingCreateOmniChannelTemplateRequest(
             String xAccountId,
+            Optional<String> prefer,
             MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(marketingCreateTemplateRequestDto, "marketingCreateTemplateRequestDto");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.marketingCreateTemplateRequestDto = marketingCreateTemplateRequestDto;
+    }
+    
+    public MarketingCreateOmniChannelTemplateRequest(
+            String xAccountId,
+            MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto) {
+        this(xAccountId, Optional.empty(), marketingCreateTemplateRequestDto);
     }
 
     /**
@@ -39,6 +56,15 @@ public class MarketingCreateOmniChannelTemplateRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -60,6 +86,27 @@ public class MarketingCreateOmniChannelTemplateRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public MarketingCreateOmniChannelTemplateRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public MarketingCreateOmniChannelTemplateRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public MarketingCreateOmniChannelTemplateRequest withMarketingCreateTemplateRequestDto(MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto) {
         Utils.checkNotNull(marketingCreateTemplateRequestDto, "marketingCreateTemplateRequestDto");
         this.marketingCreateTemplateRequestDto = marketingCreateTemplateRequestDto;
@@ -77,19 +124,21 @@ public class MarketingCreateOmniChannelTemplateRequest {
         MarketingCreateOmniChannelTemplateRequest other = (MarketingCreateOmniChannelTemplateRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.marketingCreateTemplateRequestDto, other.marketingCreateTemplateRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, marketingCreateTemplateRequestDto);
+            xAccountId, prefer, marketingCreateTemplateRequestDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(MarketingCreateOmniChannelTemplateRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "marketingCreateTemplateRequestDto", marketingCreateTemplateRequestDto);
     }
 
@@ -97,6 +146,8 @@ public class MarketingCreateOmniChannelTemplateRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto;
 
@@ -115,6 +166,27 @@ public class MarketingCreateOmniChannelTemplateRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder marketingCreateTemplateRequestDto(MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto) {
             Utils.checkNotNull(marketingCreateTemplateRequestDto, "marketingCreateTemplateRequestDto");
             this.marketingCreateTemplateRequestDto = marketingCreateTemplateRequestDto;
@@ -124,7 +196,7 @@ public class MarketingCreateOmniChannelTemplateRequest {
         public MarketingCreateOmniChannelTemplateRequest build() {
 
             return new MarketingCreateOmniChannelTemplateRequest(
-                xAccountId, marketingCreateTemplateRequestDto);
+                xAccountId, prefer, marketingCreateTemplateRequestDto);
         }
 
     }

@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class TicketingCreateTicketRequest {
@@ -19,6 +20,13 @@ public class TicketingCreateTicketRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto;
@@ -26,11 +34,20 @@ public class TicketingCreateTicketRequest {
     @JsonCreator
     public TicketingCreateTicketRequest(
             String xAccountId,
+            Optional<String> prefer,
             TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(ticketingTicketCreateRequestDto, "ticketingTicketCreateRequestDto");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.ticketingTicketCreateRequestDto = ticketingTicketCreateRequestDto;
+    }
+    
+    public TicketingCreateTicketRequest(
+            String xAccountId,
+            TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto) {
+        this(xAccountId, Optional.empty(), ticketingTicketCreateRequestDto);
     }
 
     /**
@@ -39,6 +56,15 @@ public class TicketingCreateTicketRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -60,6 +86,27 @@ public class TicketingCreateTicketRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public TicketingCreateTicketRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public TicketingCreateTicketRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public TicketingCreateTicketRequest withTicketingTicketCreateRequestDto(TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto) {
         Utils.checkNotNull(ticketingTicketCreateRequestDto, "ticketingTicketCreateRequestDto");
         this.ticketingTicketCreateRequestDto = ticketingTicketCreateRequestDto;
@@ -77,19 +124,21 @@ public class TicketingCreateTicketRequest {
         TicketingCreateTicketRequest other = (TicketingCreateTicketRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.ticketingTicketCreateRequestDto, other.ticketingTicketCreateRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, ticketingTicketCreateRequestDto);
+            xAccountId, prefer, ticketingTicketCreateRequestDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(TicketingCreateTicketRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "ticketingTicketCreateRequestDto", ticketingTicketCreateRequestDto);
     }
 
@@ -97,6 +146,8 @@ public class TicketingCreateTicketRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto;
 
@@ -115,6 +166,27 @@ public class TicketingCreateTicketRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder ticketingTicketCreateRequestDto(TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto) {
             Utils.checkNotNull(ticketingTicketCreateRequestDto, "ticketingTicketCreateRequestDto");
             this.ticketingTicketCreateRequestDto = ticketingTicketCreateRequestDto;
@@ -124,7 +196,7 @@ public class TicketingCreateTicketRequest {
         public TicketingCreateTicketRequest build() {
 
             return new TicketingCreateTicketRequest(
-                xAccountId, ticketingTicketCreateRequestDto);
+                xAccountId, prefer, ticketingTicketCreateRequestDto);
         }
 
     }

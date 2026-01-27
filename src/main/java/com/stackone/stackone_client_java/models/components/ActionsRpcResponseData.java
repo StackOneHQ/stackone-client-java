@@ -87,8 +87,8 @@ public class ActionsRpcResponseData {
 
         public _Deserializer() {
             super(ActionsRpcResponseData.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<List<Map<String, Object>>>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Map<String, Object>>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Map<String, Object>>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<List<Map<String, Object>>>() {}, JsonShape.DEFAULT));
         }
     }
     

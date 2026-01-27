@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class HrisUpdateEmployeeRequest {
@@ -23,6 +24,13 @@ public class HrisUpdateEmployeeRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto;
@@ -31,13 +39,24 @@ public class HrisUpdateEmployeeRequest {
     public HrisUpdateEmployeeRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(hrisUpdateEmployeeRequestDto, "hrisUpdateEmployeeRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.hrisUpdateEmployeeRequestDto = hrisUpdateEmployeeRequestDto;
+    }
+    
+    public HrisUpdateEmployeeRequest(
+            String xAccountId,
+            String id,
+            HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            hrisUpdateEmployeeRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class HrisUpdateEmployeeRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class HrisUpdateEmployeeRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisUpdateEmployeeRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisUpdateEmployeeRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public HrisUpdateEmployeeRequest withHrisUpdateEmployeeRequestDto(HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto) {
         Utils.checkNotNull(hrisUpdateEmployeeRequestDto, "hrisUpdateEmployeeRequestDto");
         this.hrisUpdateEmployeeRequestDto = hrisUpdateEmployeeRequestDto;
@@ -96,13 +145,15 @@ public class HrisUpdateEmployeeRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.hrisUpdateEmployeeRequestDto, other.hrisUpdateEmployeeRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, hrisUpdateEmployeeRequestDto);
+            xAccountId, id, prefer,
+            hrisUpdateEmployeeRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class HrisUpdateEmployeeRequest {
         return Utils.toString(HrisUpdateEmployeeRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "hrisUpdateEmployeeRequestDto", hrisUpdateEmployeeRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class HrisUpdateEmployeeRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto;
 
@@ -144,6 +198,27 @@ public class HrisUpdateEmployeeRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder hrisUpdateEmployeeRequestDto(HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto) {
             Utils.checkNotNull(hrisUpdateEmployeeRequestDto, "hrisUpdateEmployeeRequestDto");
             this.hrisUpdateEmployeeRequestDto = hrisUpdateEmployeeRequestDto;
@@ -153,7 +228,8 @@ public class HrisUpdateEmployeeRequest {
         public HrisUpdateEmployeeRequest build() {
 
             return new HrisUpdateEmployeeRequest(
-                xAccountId, id, hrisUpdateEmployeeRequestDto);
+                xAccountId, id, prefer,
+                hrisUpdateEmployeeRequestDto);
         }
 
     }

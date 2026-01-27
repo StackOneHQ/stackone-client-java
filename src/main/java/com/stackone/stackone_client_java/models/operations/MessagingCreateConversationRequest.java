@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class MessagingCreateConversationRequest {
@@ -19,6 +20,13 @@ public class MessagingCreateConversationRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private MessagingCreateConversationRequestDto messagingCreateConversationRequestDto;
@@ -26,11 +34,20 @@ public class MessagingCreateConversationRequest {
     @JsonCreator
     public MessagingCreateConversationRequest(
             String xAccountId,
+            Optional<String> prefer,
             MessagingCreateConversationRequestDto messagingCreateConversationRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(messagingCreateConversationRequestDto, "messagingCreateConversationRequestDto");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.messagingCreateConversationRequestDto = messagingCreateConversationRequestDto;
+    }
+    
+    public MessagingCreateConversationRequest(
+            String xAccountId,
+            MessagingCreateConversationRequestDto messagingCreateConversationRequestDto) {
+        this(xAccountId, Optional.empty(), messagingCreateConversationRequestDto);
     }
 
     /**
@@ -39,6 +56,15 @@ public class MessagingCreateConversationRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -60,6 +86,27 @@ public class MessagingCreateConversationRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public MessagingCreateConversationRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public MessagingCreateConversationRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public MessagingCreateConversationRequest withMessagingCreateConversationRequestDto(MessagingCreateConversationRequestDto messagingCreateConversationRequestDto) {
         Utils.checkNotNull(messagingCreateConversationRequestDto, "messagingCreateConversationRequestDto");
         this.messagingCreateConversationRequestDto = messagingCreateConversationRequestDto;
@@ -77,19 +124,21 @@ public class MessagingCreateConversationRequest {
         MessagingCreateConversationRequest other = (MessagingCreateConversationRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.messagingCreateConversationRequestDto, other.messagingCreateConversationRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, messagingCreateConversationRequestDto);
+            xAccountId, prefer, messagingCreateConversationRequestDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(MessagingCreateConversationRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "messagingCreateConversationRequestDto", messagingCreateConversationRequestDto);
     }
 
@@ -97,6 +146,8 @@ public class MessagingCreateConversationRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private MessagingCreateConversationRequestDto messagingCreateConversationRequestDto;
 
@@ -115,6 +166,27 @@ public class MessagingCreateConversationRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder messagingCreateConversationRequestDto(MessagingCreateConversationRequestDto messagingCreateConversationRequestDto) {
             Utils.checkNotNull(messagingCreateConversationRequestDto, "messagingCreateConversationRequestDto");
             this.messagingCreateConversationRequestDto = messagingCreateConversationRequestDto;
@@ -124,7 +196,7 @@ public class MessagingCreateConversationRequest {
         public MessagingCreateConversationRequest build() {
 
             return new MessagingCreateConversationRequest(
-                xAccountId, messagingCreateConversationRequestDto);
+                xAccountId, prefer, messagingCreateConversationRequestDto);
         }
 
     }

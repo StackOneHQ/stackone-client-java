@@ -21,6 +21,7 @@ public class AccountingCreateCompanyJournalRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private AccountingJournalCreateRequestDto accountingJournalCreateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -39,6 +40,18 @@ public class AccountingCreateCompanyJournalRequestBuilder {
     public AccountingCreateCompanyJournalRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public AccountingCreateCompanyJournalRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public AccountingCreateCompanyJournalRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -65,6 +78,7 @@ public class AccountingCreateCompanyJournalRequestBuilder {
 
         AccountingCreateCompanyJournalRequest request = new AccountingCreateCompanyJournalRequest(xAccountId,
             id,
+            prefer,
             accountingJournalCreateRequestDto);
 
         return request;

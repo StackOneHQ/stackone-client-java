@@ -15,6 +15,7 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.Map;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -85,6 +86,13 @@ public class TicketingListTicketStatusesRequest {
     @Deprecated
     private JsonNullable<OffsetDateTime> updatedAfter;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public TicketingListTicketStatusesRequest(
             String xAccountId,
@@ -96,7 +104,8 @@ public class TicketingListTicketStatusesRequest {
             JsonNullable<String> page,
             JsonNullable<String> pageSize,
             JsonNullable<String> next,
-            JsonNullable<OffsetDateTime> updatedAfter) {
+            JsonNullable<OffsetDateTime> updatedAfter,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(raw, "raw");
@@ -107,6 +116,7 @@ public class TicketingListTicketStatusesRequest {
         Utils.checkNotNull(pageSize, "pageSize");
         Utils.checkNotNull(next, "next");
         Utils.checkNotNull(updatedAfter, "updatedAfter");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.id = id;
         this.raw = raw;
@@ -117,6 +127,7 @@ public class TicketingListTicketStatusesRequest {
         this.pageSize = pageSize;
         this.next = next;
         this.updatedAfter = updatedAfter;
+        this.prefer = prefer;
     }
     
     public TicketingListTicketStatusesRequest(
@@ -125,7 +136,7 @@ public class TicketingListTicketStatusesRequest {
         this(xAccountId, id, JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), Optional.empty());
     }
 
     /**
@@ -213,6 +224,15 @@ public class TicketingListTicketStatusesRequest {
     @JsonIgnore
     public JsonNullable<OffsetDateTime> updatedAfter() {
         return updatedAfter;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -395,6 +415,27 @@ public class TicketingListTicketStatusesRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public TicketingListTicketStatusesRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public TicketingListTicketStatusesRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -414,7 +455,8 @@ public class TicketingListTicketStatusesRequest {
             Utils.enhancedDeepEquals(this.page, other.page) &&
             Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
             Utils.enhancedDeepEquals(this.next, other.next) &&
-            Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter);
+            Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
@@ -423,7 +465,7 @@ public class TicketingListTicketStatusesRequest {
             xAccountId, id, raw,
             proxy, fields, filter,
             page, pageSize, next,
-            updatedAfter);
+            updatedAfter, prefer);
     }
     
     @Override
@@ -438,7 +480,8 @@ public class TicketingListTicketStatusesRequest {
                 "page", page,
                 "pageSize", pageSize,
                 "next", next,
-                "updatedAfter", updatedAfter);
+                "updatedAfter", updatedAfter,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -465,6 +508,8 @@ public class TicketingListTicketStatusesRequest {
 
         @Deprecated
         private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -655,13 +700,34 @@ public class TicketingListTicketStatusesRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public TicketingListTicketStatusesRequest build() {
 
             return new TicketingListTicketStatusesRequest(
                 xAccountId, id, raw,
                 proxy, fields, filter,
                 page, pageSize, next,
-                updatedAfter);
+                updatedAfter, prefer);
         }
 
     }

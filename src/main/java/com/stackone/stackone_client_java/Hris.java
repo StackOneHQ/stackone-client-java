@@ -14,8 +14,6 @@ import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibi
 import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDto;
 import com.stackone.stackone_client_java.models.components.HrisInviteEmployeeRequestDto;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDto;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmploymentRequestDto;
-import com.stackone.stackone_client_java.models.components.UpdateTaskRequestDto;
 import com.stackone.stackone_client_java.models.operations.HrisBatchUploadEmployeeDocumentRequest;
 import com.stackone.stackone_client_java.models.operations.HrisBatchUploadEmployeeDocumentRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisBatchUploadEmployeeDocumentResponse;
@@ -526,25 +524,28 @@ public class Hris {
      * @throws RuntimeException subclass if the API call fails
      */
     public HrisCreateEmployeeResponse createEmployee(String xAccountId, HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto) {
-        return createEmployee(xAccountId, hrisCreateEmployeeRequestDto, Optional.empty());
+        return createEmployee(xAccountId, Optional.empty(), hrisCreateEmployeeRequestDto,
+            Optional.empty());
     }
 
     /**
      * Create Employee
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisCreateEmployeeRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public HrisCreateEmployeeResponse createEmployee(
-            String xAccountId, HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto, Optional<Options> options) {
         HrisCreateEmployeeRequest request =
             HrisCreateEmployeeRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .hrisCreateEmployeeRequestDto(hrisCreateEmployeeRequestDto)
                 .build();
         RequestOperation<HrisCreateEmployeeRequest, HrisCreateEmployeeResponse> operation
@@ -607,8 +608,8 @@ public class Hris {
     public HrisUpdateEmployeeResponse updateEmployee(
             String xAccountId, String id,
             HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto) {
-        return updateEmployee(xAccountId, id, hrisUpdateEmployeeRequestDto,
-            Optional.empty());
+        return updateEmployee(xAccountId, id, Optional.empty(),
+            hrisUpdateEmployeeRequestDto, Optional.empty());
     }
 
     /**
@@ -616,6 +617,7 @@ public class Hris {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisUpdateEmployeeRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -623,12 +625,14 @@ public class Hris {
      */
     public HrisUpdateEmployeeResponse updateEmployee(
             String xAccountId, String id,
-            HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto, Optional<Options> options) {
+            Optional<String> prefer, HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto,
+            Optional<Options> options) {
         HrisUpdateEmployeeRequest request =
             HrisUpdateEmployeeRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .hrisUpdateEmployeeRequestDto(hrisUpdateEmployeeRequestDto)
                 .build();
         RequestOperation<HrisUpdateEmployeeRequest, HrisUpdateEmployeeResponse> operation
@@ -657,8 +661,8 @@ public class Hris {
     public HrisInviteEmployeeResponse inviteEmployee(
             String xAccountId, String id,
             HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto) {
-        return inviteEmployee(xAccountId, id, hrisInviteEmployeeRequestDto,
-            Optional.empty());
+        return inviteEmployee(xAccountId, id, Optional.empty(),
+            hrisInviteEmployeeRequestDto, Optional.empty());
     }
 
     /**
@@ -666,6 +670,7 @@ public class Hris {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisInviteEmployeeRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -673,12 +678,14 @@ public class Hris {
      */
     public HrisInviteEmployeeResponse inviteEmployee(
             String xAccountId, String id,
-            HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto, Optional<Options> options) {
+            Optional<String> prefer, HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto,
+            Optional<Options> options) {
         HrisInviteEmployeeRequest request =
             HrisInviteEmployeeRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .hrisInviteEmployeeRequestDto(hrisInviteEmployeeRequestDto)
                 .build();
         RequestOperation<HrisInviteEmployeeRequest, HrisInviteEmployeeResponse> operation
@@ -809,8 +816,8 @@ public class Hris {
     public HrisCreateEmployeeTimeOffRequestResponse createEmployeeTimeOffRequest(
             String xAccountId, String id,
             HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) {
-        return createEmployeeTimeOffRequest(xAccountId, id, hrisCreateTimeOffRequestDto,
-            Optional.empty());
+        return createEmployeeTimeOffRequest(xAccountId, id, Optional.empty(),
+            hrisCreateTimeOffRequestDto, Optional.empty());
     }
 
     /**
@@ -818,6 +825,7 @@ public class Hris {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisCreateTimeOffRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -825,12 +833,14 @@ public class Hris {
      */
     public HrisCreateEmployeeTimeOffRequestResponse createEmployeeTimeOffRequest(
             String xAccountId, String id,
-            HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto, Optional<Options> options) {
+            Optional<String> prefer, HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto,
+            Optional<Options> options) {
         HrisCreateEmployeeTimeOffRequestRequest request =
             HrisCreateEmployeeTimeOffRequestRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .hrisCreateTimeOffRequestDto(hrisCreateTimeOffRequestDto)
                 .build();
         RequestOperation<HrisCreateEmployeeTimeOffRequestRequest, HrisCreateEmployeeTimeOffRequestResponse> operation
@@ -873,6 +883,40 @@ public class Hris {
     }
 
     /**
+     * Update Employee Time Off Request
+     * 
+     * @return The call builder
+     */
+    public HrisUpdateEmployeeTimeOffRequestRequestBuilder updateEmployeeTimeOffRequest() {
+        return new HrisUpdateEmployeeTimeOffRequestRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Update Employee Time Off Request
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public HrisUpdateEmployeeTimeOffRequestResponse updateEmployeeTimeOffRequest(HrisUpdateEmployeeTimeOffRequestRequest request) {
+        return updateEmployeeTimeOffRequest(request, Optional.empty());
+    }
+
+    /**
+     * Update Employee Time Off Request
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public HrisUpdateEmployeeTimeOffRequestResponse updateEmployeeTimeOffRequest(HrisUpdateEmployeeTimeOffRequestRequest request, Optional<Options> options) {
+        RequestOperation<HrisUpdateEmployeeTimeOffRequestRequest, HrisUpdateEmployeeTimeOffRequestResponse> operation
+              = new HrisUpdateEmployeeTimeOffRequest.Sync(sdkConfiguration, options, _headers);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
      * Cancel Employee Time Off Request
      * 
      * @return The call builder
@@ -894,7 +938,7 @@ public class Hris {
             String xAccountId, String id,
             String subResourceId) {
         return cancelEmployeeTimeOffRequest(xAccountId, id, subResourceId,
-            Optional.empty());
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -903,76 +947,25 @@ public class Hris {
      * @param xAccountId The account identifier
      * @param id 
      * @param subResourceId 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public HrisCancelEmployeeTimeOffRequestResponse cancelEmployeeTimeOffRequest(
             String xAccountId, String id,
-            String subResourceId, Optional<Options> options) {
+            String subResourceId, Optional<String> prefer,
+            Optional<Options> options) {
         HrisCancelEmployeeTimeOffRequestRequest request =
             HrisCancelEmployeeTimeOffRequestRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
                 .subResourceId(subResourceId)
+                .prefer(prefer)
                 .build();
         RequestOperation<HrisCancelEmployeeTimeOffRequestRequest, HrisCancelEmployeeTimeOffRequestResponse> operation
               = new HrisCancelEmployeeTimeOffRequest.Sync(sdkConfiguration, options, _headers);
-        return operation.handleResponse(operation.doRequest(request));
-    }
-
-    /**
-     * Update Employee Time Off Request
-     * 
-     * @return The call builder
-     */
-    public HrisUpdateEmployeeTimeOffRequestRequestBuilder updateEmployeeTimeOffRequest() {
-        return new HrisUpdateEmployeeTimeOffRequestRequestBuilder(sdkConfiguration);
-    }
-
-    /**
-     * Update Employee Time Off Request
-     * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param hrisCreateTimeOffRequestDto 
-     * @return The response from the API call
-     * @throws RuntimeException subclass if the API call fails
-     */
-    public HrisUpdateEmployeeTimeOffRequestResponse updateEmployeeTimeOffRequest(
-            String xAccountId, String id,
-            String subResourceId, HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) {
-        return updateEmployeeTimeOffRequest(xAccountId, id, subResourceId,
-            hrisCreateTimeOffRequestDto, Optional.empty());
-    }
-
-    /**
-     * Update Employee Time Off Request
-     * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param hrisCreateTimeOffRequestDto 
-     * @param options additional options
-     * @return The response from the API call
-     * @throws RuntimeException subclass if the API call fails
-     */
-    public HrisUpdateEmployeeTimeOffRequestResponse updateEmployeeTimeOffRequest(
-            String xAccountId, String id,
-            String subResourceId, HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto,
-            Optional<Options> options) {
-        HrisUpdateEmployeeTimeOffRequestRequest request =
-            HrisUpdateEmployeeTimeOffRequestRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .id(id)
-                .subResourceId(subResourceId)
-                .hrisCreateTimeOffRequestDto(hrisCreateTimeOffRequestDto)
-                .build();
-        RequestOperation<HrisUpdateEmployeeTimeOffRequestRequest, HrisUpdateEmployeeTimeOffRequestResponse> operation
-              = new HrisUpdateEmployeeTimeOffRequest.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -997,8 +990,8 @@ public class Hris {
     public HrisBatchUploadEmployeeDocumentResponse batchUploadEmployeeDocument(
             String xAccountId, String id,
             HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto) {
-        return batchUploadEmployeeDocument(xAccountId, id, hrisBatchDocumentUploadRequestDto,
-            Optional.empty());
+        return batchUploadEmployeeDocument(xAccountId, id, Optional.empty(),
+            hrisBatchDocumentUploadRequestDto, Optional.empty());
     }
 
     /**
@@ -1006,6 +999,7 @@ public class Hris {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisBatchDocumentUploadRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -1013,12 +1007,14 @@ public class Hris {
      */
     public HrisBatchUploadEmployeeDocumentResponse batchUploadEmployeeDocument(
             String xAccountId, String id,
-            HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto, Optional<Options> options) {
+            Optional<String> prefer, HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto,
+            Optional<Options> options) {
         HrisBatchUploadEmployeeDocumentRequest request =
             HrisBatchUploadEmployeeDocumentRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .hrisBatchDocumentUploadRequestDto(hrisBatchDocumentUploadRequestDto)
                 .build();
         RequestOperation<HrisBatchUploadEmployeeDocumentRequest, HrisBatchUploadEmployeeDocumentResponse> operation
@@ -1047,8 +1043,8 @@ public class Hris {
     public HrisUploadEmployeeDocumentResponse uploadEmployeeDocument(
             String xAccountId, String id,
             HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto) {
-        return uploadEmployeeDocument(xAccountId, id, hrisDocumentsUploadRequestDto,
-            Optional.empty());
+        return uploadEmployeeDocument(xAccountId, id, Optional.empty(),
+            hrisDocumentsUploadRequestDto, Optional.empty());
     }
 
     /**
@@ -1056,6 +1052,7 @@ public class Hris {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisDocumentsUploadRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -1063,12 +1060,14 @@ public class Hris {
      */
     public HrisUploadEmployeeDocumentResponse uploadEmployeeDocument(
             String xAccountId, String id,
-            HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto, Optional<Options> options) {
+            Optional<String> prefer, HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto,
+            Optional<Options> options) {
         HrisUploadEmployeeDocumentRequest request =
             HrisUploadEmployeeDocumentRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .hrisDocumentsUploadRequestDto(hrisDocumentsUploadRequestDto)
                 .build();
         RequestOperation<HrisUploadEmployeeDocumentRequest, HrisUploadEmployeeDocumentResponse> operation
@@ -1301,8 +1300,8 @@ public class Hris {
     public HrisCreateEmployeeWorkEligibilityRequestResponse createEmployeeWorkEligibilityRequest(
             String id, String xAccountId,
             HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto) {
-        return createEmployeeWorkEligibilityRequest(id, xAccountId, hrisCreateWorkEligibilityRequestDto,
-            Optional.empty());
+        return createEmployeeWorkEligibilityRequest(id, xAccountId, Optional.empty(),
+            hrisCreateWorkEligibilityRequestDto, Optional.empty());
     }
 
     /**
@@ -1310,6 +1309,7 @@ public class Hris {
      * 
      * @param id 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisCreateWorkEligibilityRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -1317,12 +1317,14 @@ public class Hris {
      */
     public HrisCreateEmployeeWorkEligibilityRequestResponse createEmployeeWorkEligibilityRequest(
             String id, String xAccountId,
-            HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto, Optional<Options> options) {
+            Optional<String> prefer, HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto,
+            Optional<Options> options) {
         HrisCreateEmployeeWorkEligibilityRequestRequest request =
             HrisCreateEmployeeWorkEligibilityRequestRequest
                 .builder()
                 .id(id)
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .hrisCreateWorkEligibilityRequestDto(hrisCreateWorkEligibilityRequestDto)
                 .build();
         RequestOperation<HrisCreateEmployeeWorkEligibilityRequestRequest, HrisCreateEmployeeWorkEligibilityRequestResponse> operation
@@ -1376,43 +1378,23 @@ public class Hris {
     /**
      * Update Employee Work Eligibility Request
      * 
-     * @param id 
-     * @param subResourceId 
-     * @param xAccountId The account identifier
-     * @param hrisCreateWorkEligibilityRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
-    public HrisUpdateEmployeeWorkEligibilityRequestResponse updateEmployeeWorkEligibilityRequest(
-            String id, String subResourceId,
-            String xAccountId, HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto) {
-        return updateEmployeeWorkEligibilityRequest(id, subResourceId, xAccountId,
-            hrisCreateWorkEligibilityRequestDto, Optional.empty());
+    public HrisUpdateEmployeeWorkEligibilityRequestResponse updateEmployeeWorkEligibilityRequest(HrisUpdateEmployeeWorkEligibilityRequestRequest request) {
+        return updateEmployeeWorkEligibilityRequest(request, Optional.empty());
     }
 
     /**
      * Update Employee Work Eligibility Request
      * 
-     * @param id 
-     * @param subResourceId 
-     * @param xAccountId The account identifier
-     * @param hrisCreateWorkEligibilityRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
-    public HrisUpdateEmployeeWorkEligibilityRequestResponse updateEmployeeWorkEligibilityRequest(
-            String id, String subResourceId,
-            String xAccountId, HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto,
-            Optional<Options> options) {
-        HrisUpdateEmployeeWorkEligibilityRequestRequest request =
-            HrisUpdateEmployeeWorkEligibilityRequestRequest
-                .builder()
-                .id(id)
-                .subResourceId(subResourceId)
-                .xAccountId(xAccountId)
-                .hrisCreateWorkEligibilityRequestDto(hrisCreateWorkEligibilityRequestDto)
-                .build();
+    public HrisUpdateEmployeeWorkEligibilityRequestResponse updateEmployeeWorkEligibilityRequest(HrisUpdateEmployeeWorkEligibilityRequestRequest request, Optional<Options> options) {
         RequestOperation<HrisUpdateEmployeeWorkEligibilityRequestRequest, HrisUpdateEmployeeWorkEligibilityRequestResponse> operation
               = new HrisUpdateEmployeeWorkEligibilityRequest.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -1609,8 +1591,8 @@ public class Hris {
     public HrisCreateEmployeeEmploymentResponse createEmployeeEmployment(
             String xAccountId, String id,
             HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto) {
-        return createEmployeeEmployment(xAccountId, id, hrisCreateEmploymentRequestDto,
-            Optional.empty());
+        return createEmployeeEmployment(xAccountId, id, Optional.empty(),
+            hrisCreateEmploymentRequestDto, Optional.empty());
     }
 
     /**
@@ -1618,6 +1600,7 @@ public class Hris {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisCreateEmploymentRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -1625,12 +1608,14 @@ public class Hris {
      */
     public HrisCreateEmployeeEmploymentResponse createEmployeeEmployment(
             String xAccountId, String id,
-            HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto, Optional<Options> options) {
+            Optional<String> prefer, HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto,
+            Optional<Options> options) {
         HrisCreateEmployeeEmploymentRequest request =
             HrisCreateEmployeeEmploymentRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .hrisCreateEmploymentRequestDto(hrisCreateEmploymentRequestDto)
                 .build();
         RequestOperation<HrisCreateEmployeeEmploymentRequest, HrisCreateEmployeeEmploymentResponse> operation
@@ -1684,43 +1669,23 @@ public class Hris {
     /**
      * Update Employee Employment
      * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param hrisUpdateEmploymentRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
-    public HrisUpdateEmployeeEmploymentResponse updateEmployeeEmployment(
-            String xAccountId, String id,
-            String subResourceId, HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto) {
-        return updateEmployeeEmployment(xAccountId, id, subResourceId,
-            hrisUpdateEmploymentRequestDto, Optional.empty());
+    public HrisUpdateEmployeeEmploymentResponse updateEmployeeEmployment(HrisUpdateEmployeeEmploymentRequest request) {
+        return updateEmployeeEmployment(request, Optional.empty());
     }
 
     /**
      * Update Employee Employment
      * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param hrisUpdateEmploymentRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
-    public HrisUpdateEmployeeEmploymentResponse updateEmployeeEmployment(
-            String xAccountId, String id,
-            String subResourceId, HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto,
-            Optional<Options> options) {
-        HrisUpdateEmployeeEmploymentRequest request =
-            HrisUpdateEmployeeEmploymentRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .id(id)
-                .subResourceId(subResourceId)
-                .hrisUpdateEmploymentRequestDto(hrisUpdateEmploymentRequestDto)
-                .build();
+    public HrisUpdateEmployeeEmploymentResponse updateEmployeeEmployment(HrisUpdateEmployeeEmploymentRequest request, Optional<Options> options) {
         RequestOperation<HrisUpdateEmployeeEmploymentRequest, HrisUpdateEmployeeEmploymentResponse> operation
               = new HrisUpdateEmployeeEmployment.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -2847,8 +2812,8 @@ public class Hris {
     public HrisCreateEmployeeSkillResponse createEmployeeSkill(
             String xAccountId, String id,
             EntitySkillsCreateRequestDto entitySkillsCreateRequestDto) {
-        return createEmployeeSkill(xAccountId, id, entitySkillsCreateRequestDto,
-            Optional.empty());
+        return createEmployeeSkill(xAccountId, id, Optional.empty(),
+            entitySkillsCreateRequestDto, Optional.empty());
     }
 
     /**
@@ -2856,6 +2821,7 @@ public class Hris {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param entitySkillsCreateRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -2863,12 +2829,14 @@ public class Hris {
      */
     public HrisCreateEmployeeSkillResponse createEmployeeSkill(
             String xAccountId, String id,
-            EntitySkillsCreateRequestDto entitySkillsCreateRequestDto, Optional<Options> options) {
+            Optional<String> prefer, EntitySkillsCreateRequestDto entitySkillsCreateRequestDto,
+            Optional<Options> options) {
         HrisCreateEmployeeSkillRequest request =
             HrisCreateEmployeeSkillRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .entitySkillsCreateRequestDto(entitySkillsCreateRequestDto)
                 .build();
         RequestOperation<HrisCreateEmployeeSkillRequest, HrisCreateEmployeeSkillResponse> operation
@@ -2990,43 +2958,23 @@ public class Hris {
     /**
      * Update Employee Task
      * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param updateTaskRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
-    public HrisUpdateEmployeeTaskResponse updateEmployeeTask(
-            String xAccountId, String id,
-            String subResourceId, UpdateTaskRequestDto updateTaskRequestDto) {
-        return updateEmployeeTask(xAccountId, id, subResourceId,
-            updateTaskRequestDto, Optional.empty());
+    public HrisUpdateEmployeeTaskResponse updateEmployeeTask(HrisUpdateEmployeeTaskRequest request) {
+        return updateEmployeeTask(request, Optional.empty());
     }
 
     /**
      * Update Employee Task
      * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param updateTaskRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
-    public HrisUpdateEmployeeTaskResponse updateEmployeeTask(
-            String xAccountId, String id,
-            String subResourceId, UpdateTaskRequestDto updateTaskRequestDto,
-            Optional<Options> options) {
-        HrisUpdateEmployeeTaskRequest request =
-            HrisUpdateEmployeeTaskRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .id(id)
-                .subResourceId(subResourceId)
-                .updateTaskRequestDto(updateTaskRequestDto)
-                .build();
+    public HrisUpdateEmployeeTaskResponse updateEmployeeTask(HrisUpdateEmployeeTaskRequest request, Optional<Options> options) {
         RequestOperation<HrisUpdateEmployeeTaskRequest, HrisUpdateEmployeeTaskResponse> operation
               = new HrisUpdateEmployeeTask.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));

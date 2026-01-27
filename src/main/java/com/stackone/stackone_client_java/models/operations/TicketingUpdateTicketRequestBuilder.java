@@ -19,6 +19,7 @@ public class TicketingUpdateTicketRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -37,6 +38,18 @@ public class TicketingUpdateTicketRequestBuilder {
     public TicketingUpdateTicketRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public TicketingUpdateTicketRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public TicketingUpdateTicketRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -63,6 +76,7 @@ public class TicketingUpdateTicketRequestBuilder {
 
         TicketingUpdateTicketRequest request = new TicketingUpdateTicketRequest(xAccountId,
             id,
+            prefer,
             ticketingTicketUpdateRequestDto);
 
         return request;

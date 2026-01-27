@@ -20,6 +20,7 @@ import java.util.concurrent.CompletableFuture;
 public class TicketingCreateTicketRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -32,6 +33,18 @@ public class TicketingCreateTicketRequestBuilder {
     public TicketingCreateTicketRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public TicketingCreateTicketRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public TicketingCreateTicketRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -57,6 +70,7 @@ public class TicketingCreateTicketRequestBuilder {
     private TicketingCreateTicketRequest buildRequest() {
 
         TicketingCreateTicketRequest request = new TicketingCreateTicketRequest(xAccountId,
+            prefer,
             ticketingTicketCreateRequestDto);
 
         return request;

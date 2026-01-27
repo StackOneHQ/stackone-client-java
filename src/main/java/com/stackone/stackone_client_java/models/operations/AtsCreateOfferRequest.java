@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class AtsCreateOfferRequest {
@@ -19,6 +20,13 @@ public class AtsCreateOfferRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsCreateOfferRequestDto atsCreateOfferRequestDto;
@@ -26,11 +34,20 @@ public class AtsCreateOfferRequest {
     @JsonCreator
     public AtsCreateOfferRequest(
             String xAccountId,
+            Optional<String> prefer,
             AtsCreateOfferRequestDto atsCreateOfferRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(atsCreateOfferRequestDto, "atsCreateOfferRequestDto");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.atsCreateOfferRequestDto = atsCreateOfferRequestDto;
+    }
+    
+    public AtsCreateOfferRequest(
+            String xAccountId,
+            AtsCreateOfferRequestDto atsCreateOfferRequestDto) {
+        this(xAccountId, Optional.empty(), atsCreateOfferRequestDto);
     }
 
     /**
@@ -39,6 +56,15 @@ public class AtsCreateOfferRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -60,6 +86,27 @@ public class AtsCreateOfferRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsCreateOfferRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsCreateOfferRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public AtsCreateOfferRequest withAtsCreateOfferRequestDto(AtsCreateOfferRequestDto atsCreateOfferRequestDto) {
         Utils.checkNotNull(atsCreateOfferRequestDto, "atsCreateOfferRequestDto");
         this.atsCreateOfferRequestDto = atsCreateOfferRequestDto;
@@ -77,19 +124,21 @@ public class AtsCreateOfferRequest {
         AtsCreateOfferRequest other = (AtsCreateOfferRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.atsCreateOfferRequestDto, other.atsCreateOfferRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, atsCreateOfferRequestDto);
+            xAccountId, prefer, atsCreateOfferRequestDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(AtsCreateOfferRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "atsCreateOfferRequestDto", atsCreateOfferRequestDto);
     }
 
@@ -97,6 +146,8 @@ public class AtsCreateOfferRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private AtsCreateOfferRequestDto atsCreateOfferRequestDto;
 
@@ -115,6 +166,27 @@ public class AtsCreateOfferRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder atsCreateOfferRequestDto(AtsCreateOfferRequestDto atsCreateOfferRequestDto) {
             Utils.checkNotNull(atsCreateOfferRequestDto, "atsCreateOfferRequestDto");
             this.atsCreateOfferRequestDto = atsCreateOfferRequestDto;
@@ -124,7 +196,7 @@ public class AtsCreateOfferRequest {
         public AtsCreateOfferRequest build() {
 
             return new AtsCreateOfferRequest(
-                xAccountId, atsCreateOfferRequestDto);
+                xAccountId, prefer, atsCreateOfferRequestDto);
         }
 
     }

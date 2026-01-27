@@ -15,6 +15,7 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.Map;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -95,6 +96,13 @@ public class AtsListApplicationsScheduledInterviewsRequest {
     @Deprecated
     private JsonNullable<String> syncToken;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public AtsListApplicationsScheduledInterviewsRequest(
             String xAccountId,
@@ -107,7 +115,8 @@ public class AtsListApplicationsScheduledInterviewsRequest {
             JsonNullable<String> pageSize,
             JsonNullable<String> next,
             JsonNullable<OffsetDateTime> updatedAfter,
-            JsonNullable<String> syncToken) {
+            JsonNullable<String> syncToken,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(raw, "raw");
@@ -119,6 +128,7 @@ public class AtsListApplicationsScheduledInterviewsRequest {
         Utils.checkNotNull(next, "next");
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         Utils.checkNotNull(syncToken, "syncToken");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.id = id;
         this.raw = raw;
@@ -130,6 +140,7 @@ public class AtsListApplicationsScheduledInterviewsRequest {
         this.next = next;
         this.updatedAfter = updatedAfter;
         this.syncToken = syncToken;
+        this.prefer = prefer;
     }
     
     public AtsListApplicationsScheduledInterviewsRequest(
@@ -138,7 +149,7 @@ public class AtsListApplicationsScheduledInterviewsRequest {
         this(xAccountId, id, JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty());
     }
 
     /**
@@ -238,6 +249,15 @@ public class AtsListApplicationsScheduledInterviewsRequest {
     @JsonIgnore
     public JsonNullable<String> syncToken() {
         return syncToken;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -446,6 +466,27 @@ public class AtsListApplicationsScheduledInterviewsRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsListApplicationsScheduledInterviewsRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsListApplicationsScheduledInterviewsRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -466,7 +507,8 @@ public class AtsListApplicationsScheduledInterviewsRequest {
             Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
             Utils.enhancedDeepEquals(this.next, other.next) &&
             Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
-            Utils.enhancedDeepEquals(this.syncToken, other.syncToken);
+            Utils.enhancedDeepEquals(this.syncToken, other.syncToken) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
@@ -475,7 +517,7 @@ public class AtsListApplicationsScheduledInterviewsRequest {
             xAccountId, id, raw,
             proxy, fields, filter,
             page, pageSize, next,
-            updatedAfter, syncToken);
+            updatedAfter, syncToken, prefer);
     }
     
     @Override
@@ -491,7 +533,8 @@ public class AtsListApplicationsScheduledInterviewsRequest {
                 "pageSize", pageSize,
                 "next", next,
                 "updatedAfter", updatedAfter,
-                "syncToken", syncToken);
+                "syncToken", syncToken,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -521,6 +564,8 @@ public class AtsListApplicationsScheduledInterviewsRequest {
 
         @Deprecated
         private JsonNullable<String> syncToken = JsonNullable.undefined();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -738,13 +783,34 @@ public class AtsListApplicationsScheduledInterviewsRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public AtsListApplicationsScheduledInterviewsRequest build() {
 
             return new AtsListApplicationsScheduledInterviewsRequest(
                 xAccountId, id, raw,
                 proxy, fields, filter,
                 page, pageSize, next,
-                updatedAfter, syncToken);
+                updatedAfter, syncToken, prefer);
         }
 
     }

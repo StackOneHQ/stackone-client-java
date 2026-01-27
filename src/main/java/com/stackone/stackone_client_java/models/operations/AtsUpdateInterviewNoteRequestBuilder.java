@@ -6,21 +6,16 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.models.components.AtsUpdateNotesRequestDto;
 import com.stackone.stackone_client_java.operations.AtsUpdateInterviewNote;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.String;
 import java.util.Optional;
 
 public class AtsUpdateInterviewNoteRequestBuilder {
 
-    private String xAccountId;
-    private String id;
-    private String subResourceId;
-    private AtsUpdateNotesRequestDto atsUpdateNotesRequestDto;
+    private AtsUpdateInterviewNoteRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
@@ -29,27 +24,9 @@ public class AtsUpdateInterviewNoteRequestBuilder {
         this.sdkConfiguration = sdkConfiguration;
     }
 
-    public AtsUpdateInterviewNoteRequestBuilder xAccountId(String xAccountId) {
-        Utils.checkNotNull(xAccountId, "xAccountId");
-        this.xAccountId = xAccountId;
-        return this;
-    }
-
-    public AtsUpdateInterviewNoteRequestBuilder id(String id) {
-        Utils.checkNotNull(id, "id");
-        this.id = id;
-        return this;
-    }
-
-    public AtsUpdateInterviewNoteRequestBuilder subResourceId(String subResourceId) {
-        Utils.checkNotNull(subResourceId, "subResourceId");
-        this.subResourceId = subResourceId;
-        return this;
-    }
-
-    public AtsUpdateInterviewNoteRequestBuilder atsUpdateNotesRequestDto(AtsUpdateNotesRequestDto atsUpdateNotesRequestDto) {
-        Utils.checkNotNull(atsUpdateNotesRequestDto, "atsUpdateNotesRequestDto");
-        this.atsUpdateNotesRequestDto = atsUpdateNotesRequestDto;
+    public AtsUpdateInterviewNoteRequestBuilder request(AtsUpdateInterviewNoteRequest request) {
+        Utils.checkNotNull(request, "request");
+        this.request = request;
         return this;
     }
                 
@@ -65,17 +42,6 @@ public class AtsUpdateInterviewNoteRequestBuilder {
         return this;
     }
 
-
-    private AtsUpdateInterviewNoteRequest buildRequest() {
-
-        AtsUpdateInterviewNoteRequest request = new AtsUpdateInterviewNoteRequest(xAccountId,
-            id,
-            subResourceId,
-            atsUpdateNotesRequestDto);
-
-        return request;
-    }
-
     public AtsUpdateInterviewNoteResponse call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
@@ -83,7 +49,6 @@ public class AtsUpdateInterviewNoteRequestBuilder {
 
         RequestOperation<AtsUpdateInterviewNoteRequest, AtsUpdateInterviewNoteResponse> operation
               = new AtsUpdateInterviewNote.Sync(sdkConfiguration, options, _headers);
-        AtsUpdateInterviewNoteRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));
     }

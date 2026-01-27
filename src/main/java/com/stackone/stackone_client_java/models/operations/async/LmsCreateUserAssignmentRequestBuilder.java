@@ -21,6 +21,7 @@ public class LmsCreateUserAssignmentRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -39,6 +40,18 @@ public class LmsCreateUserAssignmentRequestBuilder {
     public LmsCreateUserAssignmentRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public LmsCreateUserAssignmentRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public LmsCreateUserAssignmentRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -65,6 +78,7 @@ public class LmsCreateUserAssignmentRequestBuilder {
 
         LmsCreateUserAssignmentRequest request = new LmsCreateUserAssignmentRequest(xAccountId,
             id,
+            prefer,
             lmsCreateAssignmentRequestDto);
 
         return request;

@@ -13,6 +13,7 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -54,6 +55,13 @@ public class AtsGetCandidateRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=include")
     private JsonNullable<String> include;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public AtsGetCandidateRequest(
             String xAccountId,
@@ -61,26 +69,30 @@ public class AtsGetCandidateRequest {
             JsonNullable<Boolean> raw,
             JsonNullable<? extends Map<String, Object>> proxy,
             JsonNullable<String> fields,
-            JsonNullable<String> include) {
+            JsonNullable<String> include,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(raw, "raw");
         Utils.checkNotNull(proxy, "proxy");
         Utils.checkNotNull(fields, "fields");
         Utils.checkNotNull(include, "include");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.id = id;
         this.raw = raw;
         this.proxy = proxy;
         this.fields = fields;
         this.include = include;
+        this.prefer = prefer;
     }
     
     public AtsGetCandidateRequest(
             String xAccountId,
             String id) {
         this(xAccountId, id, JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            Optional.empty());
     }
 
     /**
@@ -130,6 +142,15 @@ public class AtsGetCandidateRequest {
     @JsonIgnore
     public JsonNullable<String> include() {
         return include;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -230,6 +251,27 @@ public class AtsGetCandidateRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsGetCandidateRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsGetCandidateRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -245,14 +287,16 @@ public class AtsGetCandidateRequest {
             Utils.enhancedDeepEquals(this.raw, other.raw) &&
             Utils.enhancedDeepEquals(this.proxy, other.proxy) &&
             Utils.enhancedDeepEquals(this.fields, other.fields) &&
-            Utils.enhancedDeepEquals(this.include, other.include);
+            Utils.enhancedDeepEquals(this.include, other.include) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
             xAccountId, id, raw,
-            proxy, fields, include);
+            proxy, fields, include,
+            prefer);
     }
     
     @Override
@@ -263,7 +307,8 @@ public class AtsGetCandidateRequest {
                 "raw", raw,
                 "proxy", proxy,
                 "fields", fields,
-                "include", include);
+                "include", include,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -280,6 +325,8 @@ public class AtsGetCandidateRequest {
         private JsonNullable<String> fields = JsonNullable.undefined();
 
         private JsonNullable<String> include = JsonNullable.undefined();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -384,11 +431,33 @@ public class AtsGetCandidateRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public AtsGetCandidateRequest build() {
 
             return new AtsGetCandidateRequest(
                 xAccountId, id, raw,
-                proxy, fields, include);
+                proxy, fields, include,
+                prefer);
         }
 
     }

@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class ScreeningWebhookScreeningResultRequest {
@@ -19,6 +20,13 @@ public class ScreeningWebhookScreeningResultRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private ScreeningResultWebhook screeningResultWebhook;
@@ -26,11 +34,20 @@ public class ScreeningWebhookScreeningResultRequest {
     @JsonCreator
     public ScreeningWebhookScreeningResultRequest(
             String xAccountId,
+            Optional<String> prefer,
             ScreeningResultWebhook screeningResultWebhook) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(screeningResultWebhook, "screeningResultWebhook");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.screeningResultWebhook = screeningResultWebhook;
+    }
+    
+    public ScreeningWebhookScreeningResultRequest(
+            String xAccountId,
+            ScreeningResultWebhook screeningResultWebhook) {
+        this(xAccountId, Optional.empty(), screeningResultWebhook);
     }
 
     /**
@@ -39,6 +56,15 @@ public class ScreeningWebhookScreeningResultRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -60,6 +86,27 @@ public class ScreeningWebhookScreeningResultRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public ScreeningWebhookScreeningResultRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public ScreeningWebhookScreeningResultRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public ScreeningWebhookScreeningResultRequest withScreeningResultWebhook(ScreeningResultWebhook screeningResultWebhook) {
         Utils.checkNotNull(screeningResultWebhook, "screeningResultWebhook");
         this.screeningResultWebhook = screeningResultWebhook;
@@ -77,19 +124,21 @@ public class ScreeningWebhookScreeningResultRequest {
         ScreeningWebhookScreeningResultRequest other = (ScreeningWebhookScreeningResultRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.screeningResultWebhook, other.screeningResultWebhook);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, screeningResultWebhook);
+            xAccountId, prefer, screeningResultWebhook);
     }
     
     @Override
     public String toString() {
         return Utils.toString(ScreeningWebhookScreeningResultRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "screeningResultWebhook", screeningResultWebhook);
     }
 
@@ -97,6 +146,8 @@ public class ScreeningWebhookScreeningResultRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private ScreeningResultWebhook screeningResultWebhook;
 
@@ -115,6 +166,27 @@ public class ScreeningWebhookScreeningResultRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder screeningResultWebhook(ScreeningResultWebhook screeningResultWebhook) {
             Utils.checkNotNull(screeningResultWebhook, "screeningResultWebhook");
             this.screeningResultWebhook = screeningResultWebhook;
@@ -124,7 +196,7 @@ public class ScreeningWebhookScreeningResultRequest {
         public ScreeningWebhookScreeningResultRequest build() {
 
             return new ScreeningWebhookScreeningResultRequest(
-                xAccountId, screeningResultWebhook);
+                xAccountId, prefer, screeningResultWebhook);
         }
 
     }

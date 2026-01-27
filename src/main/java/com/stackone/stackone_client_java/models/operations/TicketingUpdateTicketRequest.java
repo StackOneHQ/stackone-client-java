@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class TicketingUpdateTicketRequest {
@@ -23,6 +24,13 @@ public class TicketingUpdateTicketRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto;
@@ -31,13 +39,24 @@ public class TicketingUpdateTicketRequest {
     public TicketingUpdateTicketRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(ticketingTicketUpdateRequestDto, "ticketingTicketUpdateRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.ticketingTicketUpdateRequestDto = ticketingTicketUpdateRequestDto;
+    }
+    
+    public TicketingUpdateTicketRequest(
+            String xAccountId,
+            String id,
+            TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            ticketingTicketUpdateRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class TicketingUpdateTicketRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class TicketingUpdateTicketRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public TicketingUpdateTicketRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public TicketingUpdateTicketRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public TicketingUpdateTicketRequest withTicketingTicketUpdateRequestDto(TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto) {
         Utils.checkNotNull(ticketingTicketUpdateRequestDto, "ticketingTicketUpdateRequestDto");
         this.ticketingTicketUpdateRequestDto = ticketingTicketUpdateRequestDto;
@@ -96,13 +145,15 @@ public class TicketingUpdateTicketRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.ticketingTicketUpdateRequestDto, other.ticketingTicketUpdateRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, ticketingTicketUpdateRequestDto);
+            xAccountId, id, prefer,
+            ticketingTicketUpdateRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class TicketingUpdateTicketRequest {
         return Utils.toString(TicketingUpdateTicketRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "ticketingTicketUpdateRequestDto", ticketingTicketUpdateRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class TicketingUpdateTicketRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto;
 
@@ -144,6 +198,27 @@ public class TicketingUpdateTicketRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder ticketingTicketUpdateRequestDto(TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto) {
             Utils.checkNotNull(ticketingTicketUpdateRequestDto, "ticketingTicketUpdateRequestDto");
             this.ticketingTicketUpdateRequestDto = ticketingTicketUpdateRequestDto;
@@ -153,7 +228,8 @@ public class TicketingUpdateTicketRequest {
         public TicketingUpdateTicketRequest build() {
 
             return new TicketingUpdateTicketRequest(
-                xAccountId, id, ticketingTicketUpdateRequestDto);
+                xAccountId, id, prefer,
+                ticketingTicketUpdateRequestDto);
         }
 
     }

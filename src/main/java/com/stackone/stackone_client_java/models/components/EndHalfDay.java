@@ -84,8 +84,8 @@ public class EndHalfDay {
 
         public _Deserializer() {
             super(EndHalfDay.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<EndHalfDay2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<EndHalfDay2>() {}, JsonShape.DEFAULT));
         }
     }
     

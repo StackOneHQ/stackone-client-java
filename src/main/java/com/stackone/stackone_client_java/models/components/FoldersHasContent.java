@@ -84,8 +84,8 @@ public class FoldersHasContent {
 
         public _Deserializer() {
             super(FoldersHasContent.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<FoldersHasContent2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<FoldersHasContent2>() {}, JsonShape.DEFAULT));
         }
     }
     

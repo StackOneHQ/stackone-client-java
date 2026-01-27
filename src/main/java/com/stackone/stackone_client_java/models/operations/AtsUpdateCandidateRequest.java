@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class AtsUpdateCandidateRequest {
@@ -23,6 +24,13 @@ public class AtsUpdateCandidateRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto;
@@ -31,13 +39,24 @@ public class AtsUpdateCandidateRequest {
     public AtsUpdateCandidateRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(atsUpdateCandidateRequestDto, "atsUpdateCandidateRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.atsUpdateCandidateRequestDto = atsUpdateCandidateRequestDto;
+    }
+    
+    public AtsUpdateCandidateRequest(
+            String xAccountId,
+            String id,
+            AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            atsUpdateCandidateRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class AtsUpdateCandidateRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class AtsUpdateCandidateRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsUpdateCandidateRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsUpdateCandidateRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public AtsUpdateCandidateRequest withAtsUpdateCandidateRequestDto(AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto) {
         Utils.checkNotNull(atsUpdateCandidateRequestDto, "atsUpdateCandidateRequestDto");
         this.atsUpdateCandidateRequestDto = atsUpdateCandidateRequestDto;
@@ -96,13 +145,15 @@ public class AtsUpdateCandidateRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.atsUpdateCandidateRequestDto, other.atsUpdateCandidateRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, atsUpdateCandidateRequestDto);
+            xAccountId, id, prefer,
+            atsUpdateCandidateRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class AtsUpdateCandidateRequest {
         return Utils.toString(AtsUpdateCandidateRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "atsUpdateCandidateRequestDto", atsUpdateCandidateRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class AtsUpdateCandidateRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto;
 
@@ -144,6 +198,27 @@ public class AtsUpdateCandidateRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder atsUpdateCandidateRequestDto(AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto) {
             Utils.checkNotNull(atsUpdateCandidateRequestDto, "atsUpdateCandidateRequestDto");
             this.atsUpdateCandidateRequestDto = atsUpdateCandidateRequestDto;
@@ -153,7 +228,8 @@ public class AtsUpdateCandidateRequest {
         public AtsUpdateCandidateRequest build() {
 
             return new AtsUpdateCandidateRequest(
-                xAccountId, id, atsUpdateCandidateRequestDto);
+                xAccountId, id, prefer,
+                atsUpdateCandidateRequestDto);
         }
 
     }

@@ -15,6 +15,7 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.Map;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -97,6 +98,13 @@ public class AtsListJobPostingsRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=include")
     private JsonNullable<String> include;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public AtsListJobPostingsRequest(
             String xAccountId,
@@ -109,7 +117,8 @@ public class AtsListJobPostingsRequest {
             JsonNullable<String> next,
             JsonNullable<OffsetDateTime> updatedAfter,
             JsonNullable<String> syncToken,
-            JsonNullable<String> include) {
+            JsonNullable<String> include,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(raw, "raw");
         Utils.checkNotNull(proxy, "proxy");
@@ -121,6 +130,7 @@ public class AtsListJobPostingsRequest {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         Utils.checkNotNull(syncToken, "syncToken");
         Utils.checkNotNull(include, "include");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.raw = raw;
         this.proxy = proxy;
@@ -132,6 +142,7 @@ public class AtsListJobPostingsRequest {
         this.updatedAfter = updatedAfter;
         this.syncToken = syncToken;
         this.include = include;
+        this.prefer = prefer;
     }
     
     public AtsListJobPostingsRequest(
@@ -139,7 +150,7 @@ public class AtsListJobPostingsRequest {
         this(xAccountId, JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty());
     }
 
     /**
@@ -242,6 +253,15 @@ public class AtsListJobPostingsRequest {
     @JsonIgnore
     public JsonNullable<String> include() {
         return include;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -462,6 +482,27 @@ public class AtsListJobPostingsRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsListJobPostingsRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsListJobPostingsRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -482,7 +523,8 @@ public class AtsListJobPostingsRequest {
             Utils.enhancedDeepEquals(this.next, other.next) &&
             Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
             Utils.enhancedDeepEquals(this.syncToken, other.syncToken) &&
-            Utils.enhancedDeepEquals(this.include, other.include);
+            Utils.enhancedDeepEquals(this.include, other.include) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
@@ -491,7 +533,7 @@ public class AtsListJobPostingsRequest {
             xAccountId, raw, proxy,
             fields, filter, page,
             pageSize, next, updatedAfter,
-            syncToken, include);
+            syncToken, include, prefer);
     }
     
     @Override
@@ -507,7 +549,8 @@ public class AtsListJobPostingsRequest {
                 "next", next,
                 "updatedAfter", updatedAfter,
                 "syncToken", syncToken,
-                "include", include);
+                "include", include,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -537,6 +580,8 @@ public class AtsListJobPostingsRequest {
         private JsonNullable<String> syncToken = JsonNullable.undefined();
 
         private JsonNullable<String> include = JsonNullable.undefined();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -766,13 +811,34 @@ public class AtsListJobPostingsRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public AtsListJobPostingsRequest build() {
 
             return new AtsListJobPostingsRequest(
                 xAccountId, raw, proxy,
                 fields, filter, page,
                 pageSize, next, updatedAfter,
-                syncToken, include);
+                syncToken, include, prefer);
         }
 
     }

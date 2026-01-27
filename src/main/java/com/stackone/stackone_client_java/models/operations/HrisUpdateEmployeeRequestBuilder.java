@@ -19,6 +19,7 @@ public class HrisUpdateEmployeeRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -37,6 +38,18 @@ public class HrisUpdateEmployeeRequestBuilder {
     public HrisUpdateEmployeeRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public HrisUpdateEmployeeRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public HrisUpdateEmployeeRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -63,6 +76,7 @@ public class HrisUpdateEmployeeRequestBuilder {
 
         HrisUpdateEmployeeRequest request = new HrisUpdateEmployeeRequest(xAccountId,
             id,
+            prefer,
             hrisUpdateEmployeeRequestDto);
 
         return request;

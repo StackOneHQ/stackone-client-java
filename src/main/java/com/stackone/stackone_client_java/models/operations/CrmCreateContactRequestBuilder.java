@@ -18,6 +18,7 @@ import java.util.Optional;
 public class CrmCreateContactRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private CrmCreateContactRequestDto crmCreateContactRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -30,6 +31,18 @@ public class CrmCreateContactRequestBuilder {
     public CrmCreateContactRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public CrmCreateContactRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public CrmCreateContactRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -55,6 +68,7 @@ public class CrmCreateContactRequestBuilder {
     private CrmCreateContactRequest buildRequest() {
 
         CrmCreateContactRequest request = new CrmCreateContactRequest(xAccountId,
+            prefer,
             crmCreateContactRequestDto);
 
         return request;

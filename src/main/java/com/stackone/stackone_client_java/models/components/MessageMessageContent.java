@@ -85,9 +85,9 @@ public class MessageMessageContent {
 
         public _Deserializer() {
             super(MessageMessageContent.class, false,
+                  TypeReferenceWithShape.of(new TypeReference<MessageContentSmsMessageContents>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<MessageContentEmailMessageContents>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<MessageContentPushMessageContents>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<MessageContentSmsMessageContents>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<MessageContentPushMessageContents>() {}, JsonShape.DEFAULT));
         }
     }
     

@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class CrmUpdateContactRequest {
@@ -23,6 +24,13 @@ public class CrmUpdateContactRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private CrmCreateContactRequestDto crmCreateContactRequestDto;
@@ -31,13 +39,24 @@ public class CrmUpdateContactRequest {
     public CrmUpdateContactRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             CrmCreateContactRequestDto crmCreateContactRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(crmCreateContactRequestDto, "crmCreateContactRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.crmCreateContactRequestDto = crmCreateContactRequestDto;
+    }
+    
+    public CrmUpdateContactRequest(
+            String xAccountId,
+            String id,
+            CrmCreateContactRequestDto crmCreateContactRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            crmCreateContactRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class CrmUpdateContactRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class CrmUpdateContactRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public CrmUpdateContactRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public CrmUpdateContactRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public CrmUpdateContactRequest withCrmCreateContactRequestDto(CrmCreateContactRequestDto crmCreateContactRequestDto) {
         Utils.checkNotNull(crmCreateContactRequestDto, "crmCreateContactRequestDto");
         this.crmCreateContactRequestDto = crmCreateContactRequestDto;
@@ -96,13 +145,15 @@ public class CrmUpdateContactRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.crmCreateContactRequestDto, other.crmCreateContactRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, crmCreateContactRequestDto);
+            xAccountId, id, prefer,
+            crmCreateContactRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class CrmUpdateContactRequest {
         return Utils.toString(CrmUpdateContactRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "crmCreateContactRequestDto", crmCreateContactRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class CrmUpdateContactRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private CrmCreateContactRequestDto crmCreateContactRequestDto;
 
@@ -144,6 +198,27 @@ public class CrmUpdateContactRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder crmCreateContactRequestDto(CrmCreateContactRequestDto crmCreateContactRequestDto) {
             Utils.checkNotNull(crmCreateContactRequestDto, "crmCreateContactRequestDto");
             this.crmCreateContactRequestDto = crmCreateContactRequestDto;
@@ -153,7 +228,8 @@ public class CrmUpdateContactRequest {
         public CrmUpdateContactRequest build() {
 
             return new CrmUpdateContactRequest(
-                xAccountId, id, crmCreateContactRequestDto);
+                xAccountId, id, prefer,
+                crmCreateContactRequestDto);
         }
 
     }

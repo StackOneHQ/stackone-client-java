@@ -84,8 +84,8 @@ public class IsRoot {
 
         public _Deserializer() {
             super(IsRoot.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<IsRoot2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<IsRoot2>() {}, JsonShape.DEFAULT));
         }
     }
     

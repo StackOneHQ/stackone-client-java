@@ -18,6 +18,7 @@ public class AtsDeleteBackgroundCheckPackageRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
@@ -38,6 +39,18 @@ public class AtsDeleteBackgroundCheckPackageRequestBuilder {
         return this;
     }
                 
+    public AtsDeleteBackgroundCheckPackageRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public AtsDeleteBackgroundCheckPackageRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+                
     public AtsDeleteBackgroundCheckPackageRequestBuilder retryConfig(RetryConfig retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = Optional.of(retryConfig);
@@ -54,7 +67,8 @@ public class AtsDeleteBackgroundCheckPackageRequestBuilder {
     private AtsDeleteBackgroundCheckPackageRequest buildRequest() {
 
         AtsDeleteBackgroundCheckPackageRequest request = new AtsDeleteBackgroundCheckPackageRequest(xAccountId,
-            id);
+            id,
+            prefer);
 
         return request;
     }

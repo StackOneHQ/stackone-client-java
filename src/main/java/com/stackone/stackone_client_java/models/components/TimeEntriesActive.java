@@ -84,8 +84,8 @@ public class TimeEntriesActive {
 
         public _Deserializer() {
             super(TimeEntriesActive.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<TimeEntriesActive2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<TimeEntriesActive2>() {}, JsonShape.DEFAULT));
         }
     }
     

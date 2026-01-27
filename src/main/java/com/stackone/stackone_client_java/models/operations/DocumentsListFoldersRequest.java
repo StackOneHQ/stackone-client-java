@@ -17,6 +17,7 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.Map;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -103,6 +104,13 @@ public class DocumentsListFoldersRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=include")
     private JsonNullable<String> include;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public DocumentsListFoldersRequest(
             String xAccountId,
@@ -116,7 +124,8 @@ public class DocumentsListFoldersRequest {
             JsonNullable<OffsetDateTime> updatedAfter,
             JsonNullable<String> folderId,
             JsonNullable<String> nestedItems,
-            JsonNullable<String> include) {
+            JsonNullable<String> include,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(raw, "raw");
         Utils.checkNotNull(proxy, "proxy");
@@ -129,6 +138,7 @@ public class DocumentsListFoldersRequest {
         Utils.checkNotNull(folderId, "folderId");
         Utils.checkNotNull(nestedItems, "nestedItems");
         Utils.checkNotNull(include, "include");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.raw = raw;
         this.proxy = proxy;
@@ -141,6 +151,7 @@ public class DocumentsListFoldersRequest {
         this.folderId = folderId;
         this.nestedItems = nestedItems;
         this.include = include;
+        this.prefer = prefer;
     }
     
     public DocumentsListFoldersRequest(
@@ -148,7 +159,8 @@ public class DocumentsListFoldersRequest {
         this(xAccountId, JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            Optional.empty());
     }
 
     /**
@@ -257,6 +269,15 @@ public class DocumentsListFoldersRequest {
     @JsonIgnore
     public JsonNullable<String> include() {
         return include;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -491,6 +512,27 @@ public class DocumentsListFoldersRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public DocumentsListFoldersRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public DocumentsListFoldersRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -512,7 +554,8 @@ public class DocumentsListFoldersRequest {
             Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
             Utils.enhancedDeepEquals(this.folderId, other.folderId) &&
             Utils.enhancedDeepEquals(this.nestedItems, other.nestedItems) &&
-            Utils.enhancedDeepEquals(this.include, other.include);
+            Utils.enhancedDeepEquals(this.include, other.include) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
@@ -521,7 +564,8 @@ public class DocumentsListFoldersRequest {
             xAccountId, raw, proxy,
             fields, filter, page,
             pageSize, next, updatedAfter,
-            folderId, nestedItems, include);
+            folderId, nestedItems, include,
+            prefer);
     }
     
     @Override
@@ -538,7 +582,8 @@ public class DocumentsListFoldersRequest {
                 "updatedAfter", updatedAfter,
                 "folderId", folderId,
                 "nestedItems", nestedItems,
-                "include", include);
+                "include", include,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -569,6 +614,8 @@ public class DocumentsListFoldersRequest {
         private JsonNullable<String> nestedItems;
 
         private JsonNullable<String> include = JsonNullable.undefined();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -813,6 +860,27 @@ public class DocumentsListFoldersRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public DocumentsListFoldersRequest build() {
             if (nestedItems == null) {
                 nestedItems = _SINGLETON_VALUE_NestedItems.value();
@@ -822,7 +890,8 @@ public class DocumentsListFoldersRequest {
                 xAccountId, raw, proxy,
                 fields, filter, page,
                 pageSize, next, updatedAfter,
-                folderId, nestedItems, include);
+                folderId, nestedItems, include,
+                prefer);
         }
 
 

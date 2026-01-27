@@ -84,8 +84,8 @@ public class EntitySkillsActive {
 
         public _Deserializer() {
             super(EntitySkillsActive.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<Active2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Active2>() {}, JsonShape.DEFAULT));
         }
     }
     

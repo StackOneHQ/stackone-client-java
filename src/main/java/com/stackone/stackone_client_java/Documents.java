@@ -115,8 +115,8 @@ public class Documents {
      * @throws RuntimeException subclass if the API call fails
      */
     public DocumentsUploadFileResponse uploadFile(String xAccountId, UnifiedUploadRequestDto unifiedUploadRequestDto) {
-        return uploadFile(xAccountId, Optional.empty(), unifiedUploadRequestDto,
-            Optional.empty());
+        return uploadFile(xAccountId, Optional.empty(), Optional.empty(),
+            unifiedUploadRequestDto, Optional.empty());
     }
 
     /**
@@ -124,6 +124,7 @@ public class Documents {
      * 
      * @param xAccountId The account identifier
      * @param xStackoneApiSessionToken The session token
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param unifiedUploadRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -131,12 +132,14 @@ public class Documents {
      */
     public DocumentsUploadFileResponse uploadFile(
             String xAccountId, Optional<String> xStackoneApiSessionToken,
-            UnifiedUploadRequestDto unifiedUploadRequestDto, Optional<Options> options) {
+            Optional<String> prefer, UnifiedUploadRequestDto unifiedUploadRequestDto,
+            Optional<Options> options) {
         DocumentsUploadFileRequest request =
             DocumentsUploadFileRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .xStackoneApiSessionToken(xStackoneApiSessionToken)
+                .prefer(prefer)
                 .unifiedUploadRequestDto(unifiedUploadRequestDto)
                 .build();
         RequestOperation<DocumentsUploadFileRequest, DocumentsUploadFileResponse> operation

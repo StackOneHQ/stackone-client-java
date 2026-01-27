@@ -15,6 +15,7 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.Map;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -87,6 +88,13 @@ public class HrisListPositionsRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=status")
     private JsonNullable<? extends QueryParamStatus> status;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public HrisListPositionsRequest(
             String xAccountId,
@@ -98,7 +106,8 @@ public class HrisListPositionsRequest {
             JsonNullable<String> pageSize,
             JsonNullable<String> next,
             JsonNullable<OffsetDateTime> updatedAfter,
-            JsonNullable<? extends QueryParamStatus> status) {
+            JsonNullable<? extends QueryParamStatus> status,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(raw, "raw");
         Utils.checkNotNull(proxy, "proxy");
@@ -109,6 +118,7 @@ public class HrisListPositionsRequest {
         Utils.checkNotNull(next, "next");
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         Utils.checkNotNull(status, "status");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.raw = raw;
         this.proxy = proxy;
@@ -119,6 +129,7 @@ public class HrisListPositionsRequest {
         this.next = next;
         this.updatedAfter = updatedAfter;
         this.status = status;
+        this.prefer = prefer;
     }
     
     public HrisListPositionsRequest(
@@ -126,7 +137,7 @@ public class HrisListPositionsRequest {
         this(xAccountId, JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), Optional.empty());
     }
 
     /**
@@ -218,6 +229,15 @@ public class HrisListPositionsRequest {
     @JsonIgnore
     public JsonNullable<QueryParamStatus> status() {
         return (JsonNullable<QueryParamStatus>) status;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -412,6 +432,27 @@ public class HrisListPositionsRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisListPositionsRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisListPositionsRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -431,7 +472,8 @@ public class HrisListPositionsRequest {
             Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
             Utils.enhancedDeepEquals(this.next, other.next) &&
             Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
-            Utils.enhancedDeepEquals(this.status, other.status);
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
@@ -440,7 +482,7 @@ public class HrisListPositionsRequest {
             xAccountId, raw, proxy,
             fields, filter, page,
             pageSize, next, updatedAfter,
-            status);
+            status, prefer);
     }
     
     @Override
@@ -455,7 +497,8 @@ public class HrisListPositionsRequest {
                 "pageSize", pageSize,
                 "next", next,
                 "updatedAfter", updatedAfter,
-                "status", status);
+                "status", status,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -482,6 +525,8 @@ public class HrisListPositionsRequest {
         private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
 
         private JsonNullable<? extends QueryParamStatus> status = JsonNullable.undefined();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -684,13 +729,34 @@ public class HrisListPositionsRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public HrisListPositionsRequest build() {
 
             return new HrisListPositionsRequest(
                 xAccountId, raw, proxy,
                 fields, filter, page,
                 pageSize, next, updatedAfter,
-                status);
+                status, prefer);
         }
 
     }

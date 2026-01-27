@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class MessagingSendMessageRequest {
@@ -19,6 +20,13 @@ public class MessagingSendMessageRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private MessagingMessageSendRequestDto messagingMessageSendRequestDto;
@@ -26,11 +34,20 @@ public class MessagingSendMessageRequest {
     @JsonCreator
     public MessagingSendMessageRequest(
             String xAccountId,
+            Optional<String> prefer,
             MessagingMessageSendRequestDto messagingMessageSendRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(messagingMessageSendRequestDto, "messagingMessageSendRequestDto");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.messagingMessageSendRequestDto = messagingMessageSendRequestDto;
+    }
+    
+    public MessagingSendMessageRequest(
+            String xAccountId,
+            MessagingMessageSendRequestDto messagingMessageSendRequestDto) {
+        this(xAccountId, Optional.empty(), messagingMessageSendRequestDto);
     }
 
     /**
@@ -39,6 +56,15 @@ public class MessagingSendMessageRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -60,6 +86,27 @@ public class MessagingSendMessageRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public MessagingSendMessageRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public MessagingSendMessageRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public MessagingSendMessageRequest withMessagingMessageSendRequestDto(MessagingMessageSendRequestDto messagingMessageSendRequestDto) {
         Utils.checkNotNull(messagingMessageSendRequestDto, "messagingMessageSendRequestDto");
         this.messagingMessageSendRequestDto = messagingMessageSendRequestDto;
@@ -77,19 +124,21 @@ public class MessagingSendMessageRequest {
         MessagingSendMessageRequest other = (MessagingSendMessageRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.messagingMessageSendRequestDto, other.messagingMessageSendRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, messagingMessageSendRequestDto);
+            xAccountId, prefer, messagingMessageSendRequestDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(MessagingSendMessageRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "messagingMessageSendRequestDto", messagingMessageSendRequestDto);
     }
 
@@ -97,6 +146,8 @@ public class MessagingSendMessageRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private MessagingMessageSendRequestDto messagingMessageSendRequestDto;
 
@@ -115,6 +166,27 @@ public class MessagingSendMessageRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder messagingMessageSendRequestDto(MessagingMessageSendRequestDto messagingMessageSendRequestDto) {
             Utils.checkNotNull(messagingMessageSendRequestDto, "messagingMessageSendRequestDto");
             this.messagingMessageSendRequestDto = messagingMessageSendRequestDto;
@@ -124,7 +196,7 @@ public class MessagingSendMessageRequest {
         public MessagingSendMessageRequest build() {
 
             return new MessagingSendMessageRequest(
-                xAccountId, messagingMessageSendRequestDto);
+                xAccountId, prefer, messagingMessageSendRequestDto);
         }
 
     }

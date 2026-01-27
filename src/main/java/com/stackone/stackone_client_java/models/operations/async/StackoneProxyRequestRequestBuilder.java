@@ -20,6 +20,7 @@ import java.util.concurrent.CompletableFuture;
 public class StackoneProxyRequestRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private ProxyRequestBody proxyRequestBody;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -32,6 +33,18 @@ public class StackoneProxyRequestRequestBuilder {
     public StackoneProxyRequestRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public StackoneProxyRequestRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public StackoneProxyRequestRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -57,6 +70,7 @@ public class StackoneProxyRequestRequestBuilder {
     private StackoneProxyRequestRequest buildRequest() {
 
         StackoneProxyRequestRequest request = new StackoneProxyRequestRequest(xAccountId,
+            prefer,
             proxyRequestBody);
 
         return request;

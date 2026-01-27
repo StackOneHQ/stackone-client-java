@@ -1,5 +1,4 @@
 # Messaging
-(*messaging()*)
 
 ## Overview
 
@@ -51,6 +50,7 @@ public class Application {
                 .filter(MessagingListConversationsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -122,6 +122,7 @@ public class Application {
 
         MessagingCreateConversationResponse res = sdk.messaging().createConversation()
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .messagingCreateConversationRequestDto(MessagingCreateConversationRequestDto.builder()
                     .participants(List.of(
                         "c28xIQ1",
@@ -140,10 +141,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
-| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                              | *String*                                                                                                  | :heavy_check_mark:                                                                                        | The account identifier                                                                                    |
-| `messagingCreateConversationRequestDto`                                                                   | [MessagingCreateConversationRequestDto](../../models/components/MessagingCreateConversationRequestDto.md) | :heavy_check_mark:                                                                                        | N/A                                                                                                       |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `messagingCreateConversationRequestDto`                                                                                                                                  | [MessagingCreateConversationRequestDto](../../models/components/MessagingCreateConversationRequestDto.md)                                                                | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -199,6 +201,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,participants,name,private,created_at,last_message_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         MessagingGetConversationResponse res = sdk.messaging().getConversation()
@@ -274,6 +277,7 @@ public class Application {
                 .subResourceId("<id>")
                 .format("base64")
                 .exportFormat("text/plain")
+                .prefer("heartbeat")
                 .build();
 
         MessagingDownloadMessagingAttachmentResponse res = sdk.messaging().downloadMessagingAttachment()
@@ -350,6 +354,7 @@ public class Application {
                 .filter(MessagingListAttachmentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -424,6 +429,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .fields("id,remote_id,file_name,file_size,file_type,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         MessagingGetAttachmentResponse res = sdk.messaging().getAttachment()
@@ -499,6 +505,7 @@ public class Application {
                 .filter(MessagingListUsersQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -572,6 +579,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,email,username,name,first_name,last_name,bot,active,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         MessagingGetUserResponse res = sdk.messaging().getUser()
@@ -648,6 +656,7 @@ public class Application {
                 .filter(MessagingListConversationMessagesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -721,6 +730,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         MessagingGetMessageResponse res = sdk.messaging().getMessage()
@@ -792,6 +802,7 @@ public class Application {
 
         MessagingSendMessageResponse res = sdk.messaging().sendMessage()
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .messagingMessageSendRequestDto(MessagingMessageSendRequestDto.builder()
                     .content("Hello, world!")
                     .recipient("c28xyrc55866bvuv")
@@ -808,10 +819,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                | *String*                                                                                    | :heavy_check_mark:                                                                          | The account identifier                                                                      |
-| `messagingMessageSendRequestDto`                                                            | [MessagingMessageSendRequestDto](../../models/components/MessagingMessageSendRequestDto.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `messagingMessageSendRequestDto`                                                                                                                                         | [MessagingMessageSendRequestDto](../../models/components/MessagingMessageSendRequestDto.md)                                                                              | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 

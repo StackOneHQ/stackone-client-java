@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class HrisCreateEmployeeSkillRequest {
@@ -23,6 +24,13 @@ public class HrisCreateEmployeeSkillRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private EntitySkillsCreateRequestDto entitySkillsCreateRequestDto;
@@ -31,13 +39,24 @@ public class HrisCreateEmployeeSkillRequest {
     public HrisCreateEmployeeSkillRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             EntitySkillsCreateRequestDto entitySkillsCreateRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(entitySkillsCreateRequestDto, "entitySkillsCreateRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.entitySkillsCreateRequestDto = entitySkillsCreateRequestDto;
+    }
+    
+    public HrisCreateEmployeeSkillRequest(
+            String xAccountId,
+            String id,
+            EntitySkillsCreateRequestDto entitySkillsCreateRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            entitySkillsCreateRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class HrisCreateEmployeeSkillRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class HrisCreateEmployeeSkillRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisCreateEmployeeSkillRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisCreateEmployeeSkillRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public HrisCreateEmployeeSkillRequest withEntitySkillsCreateRequestDto(EntitySkillsCreateRequestDto entitySkillsCreateRequestDto) {
         Utils.checkNotNull(entitySkillsCreateRequestDto, "entitySkillsCreateRequestDto");
         this.entitySkillsCreateRequestDto = entitySkillsCreateRequestDto;
@@ -96,13 +145,15 @@ public class HrisCreateEmployeeSkillRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.entitySkillsCreateRequestDto, other.entitySkillsCreateRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, entitySkillsCreateRequestDto);
+            xAccountId, id, prefer,
+            entitySkillsCreateRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class HrisCreateEmployeeSkillRequest {
         return Utils.toString(HrisCreateEmployeeSkillRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "entitySkillsCreateRequestDto", entitySkillsCreateRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class HrisCreateEmployeeSkillRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private EntitySkillsCreateRequestDto entitySkillsCreateRequestDto;
 
@@ -144,6 +198,27 @@ public class HrisCreateEmployeeSkillRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder entitySkillsCreateRequestDto(EntitySkillsCreateRequestDto entitySkillsCreateRequestDto) {
             Utils.checkNotNull(entitySkillsCreateRequestDto, "entitySkillsCreateRequestDto");
             this.entitySkillsCreateRequestDto = entitySkillsCreateRequestDto;
@@ -153,7 +228,8 @@ public class HrisCreateEmployeeSkillRequest {
         public HrisCreateEmployeeSkillRequest build() {
 
             return new HrisCreateEmployeeSkillRequest(
-                xAccountId, id, entitySkillsCreateRequestDto);
+                xAccountId, id, prefer,
+                entitySkillsCreateRequestDto);
         }
 
     }

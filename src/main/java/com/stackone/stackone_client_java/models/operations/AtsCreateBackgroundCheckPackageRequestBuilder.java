@@ -18,6 +18,7 @@ import java.util.Optional;
 public class AtsCreateBackgroundCheckPackageRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -30,6 +31,18 @@ public class AtsCreateBackgroundCheckPackageRequestBuilder {
     public AtsCreateBackgroundCheckPackageRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public AtsCreateBackgroundCheckPackageRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public AtsCreateBackgroundCheckPackageRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -55,6 +68,7 @@ public class AtsCreateBackgroundCheckPackageRequestBuilder {
     private AtsCreateBackgroundCheckPackageRequest buildRequest() {
 
         AtsCreateBackgroundCheckPackageRequest request = new AtsCreateBackgroundCheckPackageRequest(xAccountId,
+            prefer,
             atsCreateBackgroundCheckPackagesRequestDto);
 
         return request;

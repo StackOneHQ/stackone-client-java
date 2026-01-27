@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class MarketingCreatePushTemplateRequest {
@@ -19,6 +20,13 @@ public class MarketingCreatePushTemplateRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto;
@@ -26,11 +34,20 @@ public class MarketingCreatePushTemplateRequest {
     @JsonCreator
     public MarketingCreatePushTemplateRequest(
             String xAccountId,
+            Optional<String> prefer,
             MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(marketingCreatePushTemplateRequestDto, "marketingCreatePushTemplateRequestDto");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.marketingCreatePushTemplateRequestDto = marketingCreatePushTemplateRequestDto;
+    }
+    
+    public MarketingCreatePushTemplateRequest(
+            String xAccountId,
+            MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto) {
+        this(xAccountId, Optional.empty(), marketingCreatePushTemplateRequestDto);
     }
 
     /**
@@ -39,6 +56,15 @@ public class MarketingCreatePushTemplateRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -60,6 +86,27 @@ public class MarketingCreatePushTemplateRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public MarketingCreatePushTemplateRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public MarketingCreatePushTemplateRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public MarketingCreatePushTemplateRequest withMarketingCreatePushTemplateRequestDto(MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto) {
         Utils.checkNotNull(marketingCreatePushTemplateRequestDto, "marketingCreatePushTemplateRequestDto");
         this.marketingCreatePushTemplateRequestDto = marketingCreatePushTemplateRequestDto;
@@ -77,19 +124,21 @@ public class MarketingCreatePushTemplateRequest {
         MarketingCreatePushTemplateRequest other = (MarketingCreatePushTemplateRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.marketingCreatePushTemplateRequestDto, other.marketingCreatePushTemplateRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, marketingCreatePushTemplateRequestDto);
+            xAccountId, prefer, marketingCreatePushTemplateRequestDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(MarketingCreatePushTemplateRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "marketingCreatePushTemplateRequestDto", marketingCreatePushTemplateRequestDto);
     }
 
@@ -97,6 +146,8 @@ public class MarketingCreatePushTemplateRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto;
 
@@ -115,6 +166,27 @@ public class MarketingCreatePushTemplateRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder marketingCreatePushTemplateRequestDto(MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto) {
             Utils.checkNotNull(marketingCreatePushTemplateRequestDto, "marketingCreatePushTemplateRequestDto");
             this.marketingCreatePushTemplateRequestDto = marketingCreatePushTemplateRequestDto;
@@ -124,7 +196,7 @@ public class MarketingCreatePushTemplateRequest {
         public MarketingCreatePushTemplateRequest build() {
 
             return new MarketingCreatePushTemplateRequest(
-                xAccountId, marketingCreatePushTemplateRequestDto);
+                xAccountId, prefer, marketingCreatePushTemplateRequestDto);
         }
 
     }

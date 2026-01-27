@@ -79,8 +79,8 @@ public class Draft {
 
         public _Deserializer() {
             super(Draft.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<Draft2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Draft2>() {}, JsonShape.DEFAULT));
         }
     }
     

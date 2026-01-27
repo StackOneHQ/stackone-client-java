@@ -84,8 +84,8 @@ public class TicketingUserActive {
 
         public _Deserializer() {
             super(TicketingUserActive.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<TicketingUserActive2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<TicketingUserActive2>() {}, JsonShape.DEFAULT));
         }
     }
     

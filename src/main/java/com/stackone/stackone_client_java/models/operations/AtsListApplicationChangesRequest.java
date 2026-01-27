@@ -13,6 +13,7 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -66,6 +67,13 @@ public class AtsListApplicationChangesRequest {
     @SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=filter")
     private JsonNullable<? extends AtsListApplicationChangesQueryParamFilter> filter;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public AtsListApplicationChangesRequest(
             String xAccountId,
@@ -75,7 +83,8 @@ public class AtsListApplicationChangesRequest {
             JsonNullable<String> fields,
             JsonNullable<String> pageSize,
             JsonNullable<String> next,
-            JsonNullable<? extends AtsListApplicationChangesQueryParamFilter> filter) {
+            JsonNullable<? extends AtsListApplicationChangesQueryParamFilter> filter,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(raw, "raw");
@@ -84,6 +93,7 @@ public class AtsListApplicationChangesRequest {
         Utils.checkNotNull(pageSize, "pageSize");
         Utils.checkNotNull(next, "next");
         Utils.checkNotNull(filter, "filter");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.id = id;
         this.raw = raw;
@@ -92,6 +102,7 @@ public class AtsListApplicationChangesRequest {
         this.pageSize = pageSize;
         this.next = next;
         this.filter = filter;
+        this.prefer = prefer;
     }
     
     public AtsListApplicationChangesRequest(
@@ -99,7 +110,7 @@ public class AtsListApplicationChangesRequest {
             String id) {
         this(xAccountId, id, JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty());
     }
 
     /**
@@ -166,6 +177,15 @@ public class AtsListApplicationChangesRequest {
     @JsonIgnore
     public JsonNullable<AtsListApplicationChangesQueryParamFilter> filter() {
         return (JsonNullable<AtsListApplicationChangesQueryParamFilter>) filter;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -302,6 +322,27 @@ public class AtsListApplicationChangesRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsListApplicationChangesRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsListApplicationChangesRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -319,7 +360,8 @@ public class AtsListApplicationChangesRequest {
             Utils.enhancedDeepEquals(this.fields, other.fields) &&
             Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
             Utils.enhancedDeepEquals(this.next, other.next) &&
-            Utils.enhancedDeepEquals(this.filter, other.filter);
+            Utils.enhancedDeepEquals(this.filter, other.filter) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
@@ -327,7 +369,7 @@ public class AtsListApplicationChangesRequest {
         return Utils.enhancedHash(
             xAccountId, id, raw,
             proxy, fields, pageSize,
-            next, filter);
+            next, filter, prefer);
     }
     
     @Override
@@ -340,7 +382,8 @@ public class AtsListApplicationChangesRequest {
                 "fields", fields,
                 "pageSize", pageSize,
                 "next", next,
-                "filter", filter);
+                "filter", filter,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -361,6 +404,8 @@ public class AtsListApplicationChangesRequest {
         private JsonNullable<String> next = JsonNullable.undefined();
 
         private JsonNullable<? extends AtsListApplicationChangesQueryParamFilter> filter = JsonNullable.undefined();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -503,12 +548,33 @@ public class AtsListApplicationChangesRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public AtsListApplicationChangesRequest build() {
 
             return new AtsListApplicationChangesRequest(
                 xAccountId, id, raw,
                 proxy, fields, pageSize,
-                next, filter);
+                next, filter, prefer);
         }
 
     }

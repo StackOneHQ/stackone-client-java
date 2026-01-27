@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class AtsCreateApplicationNoteRequest {
@@ -23,6 +24,13 @@ public class AtsCreateApplicationNoteRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsCreateNotesRequestDto atsCreateNotesRequestDto;
@@ -31,13 +39,24 @@ public class AtsCreateApplicationNoteRequest {
     public AtsCreateApplicationNoteRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(atsCreateNotesRequestDto, "atsCreateNotesRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.atsCreateNotesRequestDto = atsCreateNotesRequestDto;
+    }
+    
+    public AtsCreateApplicationNoteRequest(
+            String xAccountId,
+            String id,
+            AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            atsCreateNotesRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class AtsCreateApplicationNoteRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class AtsCreateApplicationNoteRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsCreateApplicationNoteRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsCreateApplicationNoteRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public AtsCreateApplicationNoteRequest withAtsCreateNotesRequestDto(AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
         Utils.checkNotNull(atsCreateNotesRequestDto, "atsCreateNotesRequestDto");
         this.atsCreateNotesRequestDto = atsCreateNotesRequestDto;
@@ -96,13 +145,15 @@ public class AtsCreateApplicationNoteRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.atsCreateNotesRequestDto, other.atsCreateNotesRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, atsCreateNotesRequestDto);
+            xAccountId, id, prefer,
+            atsCreateNotesRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class AtsCreateApplicationNoteRequest {
         return Utils.toString(AtsCreateApplicationNoteRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "atsCreateNotesRequestDto", atsCreateNotesRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class AtsCreateApplicationNoteRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private AtsCreateNotesRequestDto atsCreateNotesRequestDto;
 
@@ -144,6 +198,27 @@ public class AtsCreateApplicationNoteRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder atsCreateNotesRequestDto(AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
             Utils.checkNotNull(atsCreateNotesRequestDto, "atsCreateNotesRequestDto");
             this.atsCreateNotesRequestDto = atsCreateNotesRequestDto;
@@ -153,7 +228,8 @@ public class AtsCreateApplicationNoteRequest {
         public AtsCreateApplicationNoteRequest build() {
 
             return new AtsCreateApplicationNoteRequest(
-                xAccountId, id, atsCreateNotesRequestDto);
+                xAccountId, id, prefer,
+                atsCreateNotesRequestDto);
         }
 
     }

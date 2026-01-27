@@ -84,8 +84,8 @@ public class AccountingTaxRateResultActive {
 
         public _Deserializer() {
             super(AccountingTaxRateResultActive.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<AccountingTaxRateResultActive2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<AccountingTaxRateResultActive2>() {}, JsonShape.DEFAULT));
         }
     }
     

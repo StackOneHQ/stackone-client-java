@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class AtsUpdateBackgroundCheckResultRequest {
@@ -23,6 +24,13 @@ public class AtsUpdateBackgroundCheckResultRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto;
@@ -31,13 +39,24 @@ public class AtsUpdateBackgroundCheckResultRequest {
     public AtsUpdateBackgroundCheckResultRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(atsUpdateBackgroundCheckResultRequestDto, "atsUpdateBackgroundCheckResultRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.atsUpdateBackgroundCheckResultRequestDto = atsUpdateBackgroundCheckResultRequestDto;
+    }
+    
+    public AtsUpdateBackgroundCheckResultRequest(
+            String xAccountId,
+            String id,
+            AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            atsUpdateBackgroundCheckResultRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class AtsUpdateBackgroundCheckResultRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class AtsUpdateBackgroundCheckResultRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsUpdateBackgroundCheckResultRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsUpdateBackgroundCheckResultRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public AtsUpdateBackgroundCheckResultRequest withAtsUpdateBackgroundCheckResultRequestDto(AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto) {
         Utils.checkNotNull(atsUpdateBackgroundCheckResultRequestDto, "atsUpdateBackgroundCheckResultRequestDto");
         this.atsUpdateBackgroundCheckResultRequestDto = atsUpdateBackgroundCheckResultRequestDto;
@@ -96,13 +145,15 @@ public class AtsUpdateBackgroundCheckResultRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.atsUpdateBackgroundCheckResultRequestDto, other.atsUpdateBackgroundCheckResultRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, atsUpdateBackgroundCheckResultRequestDto);
+            xAccountId, id, prefer,
+            atsUpdateBackgroundCheckResultRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class AtsUpdateBackgroundCheckResultRequest {
         return Utils.toString(AtsUpdateBackgroundCheckResultRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "atsUpdateBackgroundCheckResultRequestDto", atsUpdateBackgroundCheckResultRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class AtsUpdateBackgroundCheckResultRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto;
 
@@ -144,6 +198,27 @@ public class AtsUpdateBackgroundCheckResultRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder atsUpdateBackgroundCheckResultRequestDto(AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto) {
             Utils.checkNotNull(atsUpdateBackgroundCheckResultRequestDto, "atsUpdateBackgroundCheckResultRequestDto");
             this.atsUpdateBackgroundCheckResultRequestDto = atsUpdateBackgroundCheckResultRequestDto;
@@ -153,7 +228,8 @@ public class AtsUpdateBackgroundCheckResultRequest {
         public AtsUpdateBackgroundCheckResultRequest build() {
 
             return new AtsUpdateBackgroundCheckResultRequest(
-                xAccountId, id, atsUpdateBackgroundCheckResultRequestDto);
+                xAccountId, id, prefer,
+                atsUpdateBackgroundCheckResultRequestDto);
         }
 
     }

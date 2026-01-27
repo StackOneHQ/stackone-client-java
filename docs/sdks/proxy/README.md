@@ -1,5 +1,4 @@
 # Proxy
-(*proxy()*)
 
 ## Overview
 
@@ -40,6 +39,7 @@ public class Application {
 
         StackoneProxyRequestResponse res = sdk.proxy().proxyRequest()
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .proxyRequestBody(ProxyRequestBody.builder()
                     .url("https://api.sample-integration.com/v1")
                     .path("/employees/directory")
@@ -57,10 +57,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `xAccountId`                                                    | *String*                                                        | :heavy_check_mark:                                              | The account identifier                                          |
-| `proxyRequestBody`                                              | [ProxyRequestBody](../../models/components/ProxyRequestBody.md) | :heavy_check_mark:                                              | The request body                                                |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `proxyRequestBody`                                                                                                                                                       | [ProxyRequestBody](../../models/components/ProxyRequestBody.md)                                                                                                          | :heavy_check_mark:                                                                                                                                                       | The request body                                                                                                                                                         |                                                                                                                                                                          |
 
 ### Response
 
