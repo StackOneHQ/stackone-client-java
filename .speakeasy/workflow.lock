@@ -1,21 +1,21 @@
-speakeasyVersion: 1.700.0
+speakeasyVersion: 1.709.0
 sources:
     StackOne-OAS:
         sourceNamespace: stackone-oas
-        sourceRevisionDigest: sha256:471a26eff9f4a41f030232a52cae44d0d156406cfeecd5fc47baba9f8d21aec4
-        sourceBlobDigest: sha256:1957b5243846cdfd73ffbd17ebdc4d1673dbb95efcd676f4eb369a91c4f7b550
+        sourceRevisionDigest: sha256:d2921c8d9bb771eec8c6c78397f98e56ff4a06e1e2c828e430d50d3bb21ce6ad
+        sourceBlobDigest: sha256:e78c042dc85efb074fe2055c1d6d7a4a7a029c3d442f35a4f0f1d37f46c37c68
         tags:
             - latest
-            - speakeasy-sdk-regen-1764893188
+            - speakeasy-sdk-regen-1769645320
             - 1.0.0
 targets:
     stackone:
         source: StackOne-OAS
         sourceNamespace: stackone-oas
-        sourceRevisionDigest: sha256:471a26eff9f4a41f030232a52cae44d0d156406cfeecd5fc47baba9f8d21aec4
-        sourceBlobDigest: sha256:1957b5243846cdfd73ffbd17ebdc4d1673dbb95efcd676f4eb369a91c4f7b550
+        sourceRevisionDigest: sha256:d2921c8d9bb771eec8c6c78397f98e56ff4a06e1e2c828e430d50d3bb21ce6ad
+        sourceBlobDigest: sha256:e78c042dc85efb074fe2055c1d6d7a4a7a029c3d442f35a4f0f1d37f46c37c68
         codeSamplesNamespace: stack-one-oas-java-code-samples
-        codeSamplesRevisionDigest: sha256:2e7a8c23d4761c3be5c08fa9ebfd52ce566ff07e0eed72b2adb5010079cd926f
+        codeSamplesRevisionDigest: sha256:8627bd2455b96e44b7e24edcde9936a240c96568c0a3299283cdc7fffaae319d
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

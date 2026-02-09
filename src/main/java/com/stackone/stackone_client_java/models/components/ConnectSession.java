@@ -25,7 +25,7 @@ public class ConnectSession {
 
 
     @JsonProperty("organization_id")
-    private ConnectSessionOrganizationId organizationId;
+    private String organizationId;
 
 
     @JsonProperty("project_id")
@@ -100,7 +100,7 @@ public class ConnectSession {
     @JsonCreator
     public ConnectSession(
             @JsonProperty("id") double id,
-            @JsonProperty("organization_id") ConnectSessionOrganizationId organizationId,
+            @JsonProperty("organization_id") String organizationId,
             @JsonProperty("project_id") String projectId,
             @JsonProperty("categories") JsonNullable<? extends List<ConnectSessionCategories>> categories,
             @JsonProperty("provider") JsonNullable<String> provider,
@@ -148,7 +148,7 @@ public class ConnectSession {
     
     public ConnectSession(
             double id,
-            ConnectSessionOrganizationId organizationId,
+            String organizationId,
             String projectId,
             String originOwnerId,
             String originOwnerName,
@@ -166,7 +166,7 @@ public class ConnectSession {
     }
 
     @JsonIgnore
-    public ConnectSessionOrganizationId organizationId() {
+    public String organizationId() {
         return organizationId;
     }
 
@@ -262,7 +262,7 @@ public class ConnectSession {
         return this;
     }
 
-    public ConnectSession withOrganizationId(ConnectSessionOrganizationId organizationId) {
+    public ConnectSession withOrganizationId(String organizationId) {
         Utils.checkNotNull(organizationId, "organizationId");
         this.organizationId = organizationId;
         return this;
@@ -488,7 +488,7 @@ public class ConnectSession {
 
         private Double id;
 
-        private ConnectSessionOrganizationId organizationId;
+        private String organizationId;
 
         private String projectId;
 
@@ -528,7 +528,7 @@ public class ConnectSession {
         }
 
 
-        public Builder organizationId(ConnectSessionOrganizationId organizationId) {
+        public Builder organizationId(String organizationId) {
             Utils.checkNotNull(organizationId, "organizationId");
             this.organizationId = organizationId;
             return this;

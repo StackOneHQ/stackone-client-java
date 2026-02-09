@@ -9,7 +9,8 @@ import java.util.Objects;
 import java.util.Optional;
 
 public enum StackoneListActionsMetaQueryParamInclude {
-    ACTION_DETAILS("action_details");
+    ACTION_DETAILS("action_details"),
+    AUTHENTICATION_GUIDES("authentication_guides");
 
     @JsonValue
     private final String value;
