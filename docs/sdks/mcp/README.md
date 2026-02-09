@@ -84,9 +84,9 @@ public class Application {
 
 Send JSON-RPC request to the MCP server over HTTP streaming transport
 
-### Example Usage
+### Example Usage: initialize
 
-<!-- UsageSnippet language="java" operationID="stackone_mcp_post" method="post" path="/mcp" -->
+<!-- UsageSnippet language="java" operationID="stackone_mcp_post" method="post" path="/mcp" example="initialize" -->
 ```java
 package hello.world;
 
@@ -115,6 +115,90 @@ public class Application {
                 .jsonRpcMessageDto(JsonRpcMessageDto.builder()
                     .jsonrpc("2.0")
                     .method("initialize")
+                    .params(Params.builder()
+                        .build())
+                    .id(Id.builder()
+                        .build())
+                    .build())
+                .call();
+
+        // handle response
+    }
+}
+```
+### Example Usage: toolsCall
+
+<!-- UsageSnippet language="java" operationID="stackone_mcp_post" method="post" path="/mcp" example="toolsCall" -->
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.StackoneMcpPostResponse;
+import com.stackone.stackone_client_java.models.operations.StackoneMcpPostSecurity;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+            .build();
+
+        StackoneMcpPostResponse res = sdk.mcp().mcpPost()
+                .security(StackoneMcpPostSecurity.builder()
+                    .basic(SchemeBasic.builder()
+                        .username("")
+                        .password("")
+                        .build())
+                    .build())
+                .xAccountId("<id>")
+                .jsonRpcMessageDto(JsonRpcMessageDto.builder()
+                    .jsonrpc("2.0")
+                    .method("tools/call")
+                    .params(Params.builder()
+                        .build())
+                    .id(Id.builder()
+                        .build())
+                    .build())
+                .call();
+
+        // handle response
+    }
+}
+```
+### Example Usage: toolsList
+
+<!-- UsageSnippet language="java" operationID="stackone_mcp_post" method="post" path="/mcp" example="toolsList" -->
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.StackoneMcpPostResponse;
+import com.stackone.stackone_client_java.models.operations.StackoneMcpPostSecurity;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+            .build();
+
+        StackoneMcpPostResponse res = sdk.mcp().mcpPost()
+                .security(StackoneMcpPostSecurity.builder()
+                    .basic(SchemeBasic.builder()
+                        .username("")
+                        .password("")
+                        .build())
+                    .build())
+                .xAccountId("<id>")
+                .jsonRpcMessageDto(JsonRpcMessageDto.builder()
+                    .jsonrpc("2.0")
+                    .method("tools/list")
                     .params(Params.builder()
                         .build())
                     .id(Id.builder()

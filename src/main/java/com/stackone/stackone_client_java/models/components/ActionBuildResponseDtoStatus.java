@@ -14,6 +14,7 @@ import java.util.Optional;
  * <p>Build status
  */
 public enum ActionBuildResponseDtoStatus {
+    ACCEPTED("accepted"),
     SUCCESS("success"),
     ERROR("error");
 

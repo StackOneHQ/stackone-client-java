@@ -21,13 +21,14 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  versioningStrategy: automatic
   persistentEdits: {}
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 java:
-  version: 0.19.1
+  version: 0.19.2
   additionalDependencies: []
   additionalPlugins: []
   artifactID: stackone-client-java
@@ -69,5 +70,6 @@ java:
   operationScopedParams: true
   outputModelSuffix: output
   projectName: stackone-client-java
+  respectTitlesForPrimitiveUnionMembers: false
   templateVersion: v2
   unionStrategy: populated-fields

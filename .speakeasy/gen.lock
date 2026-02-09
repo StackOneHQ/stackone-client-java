@@ -1,40 +1,40 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: d8076e1e1c56097fc688aef4fd49e64d
+  docChecksum: f9668499d9603a6d164611fc568632ff
   docVersion: 1.0.0
-  speakeasyVersion: 1.700.0
-  generationVersion: 2.801.0
-  releaseVersion: 0.19.1
-  configChecksum: 42a8ec8cba689bc04c9e6a76d066747a
+  speakeasyVersion: 1.709.0
+  generationVersion: 2.811.4
+  releaseVersion: 0.19.2
+  configChecksum: c9da49a8a73a55b4cbb812830c7b2c0c
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 persistentEdits:
-  generation_id: 0d6c2cf4-3a33-4afa-a46d-764fd0e1210c
-  pristine_commit_hash: 6ca3263a4c59e192e02d7ecdcdc4787af7f28e3b
-  pristine_tree_hash: 06773117a17643b605512c1831e7177efd090053
+  generation_id: 259c783a-888b-4c50-a225-6f2955cfec3a
+  pristine_commit_hash: 56954b76fb60cbedcef180357f74caca323f9deb
+  pristine_tree_hash: a22fcbc21188b3077e4393a67311d5b3f761c1d3
 features:
   java:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
-    constsAndDefaults: 0.1.1
-    core: 3.55.8
+    constsAndDefaults: 0.1.2
+    core: 3.55.10
     deprecations: 2.81.2
     examples: 2.81.6
     flattening: 2.81.1
-    globalSecurity: 2.83.1
+    globalSecurity: 2.83.2
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.83.0
     groups: 2.81.3
-    methodSecurity: 2.82.2
+    methodSecurity: 2.82.3
     nameOverrides: 2.81.3
     nullables: 0.1.0
     openEnums: 0.2.0
     pagination: 1.0.1
     retries: 0.1.1
     sdkHooks: 1.2.0
-    unions: 0.3.1
+    unions: 0.3.2
 trackedFiles:
   .gitattributes:
     id: 24139dae6567
@@ -330,12 +330,12 @@ trackedFiles:
     pristine_git_object: 9ee41a94196ca62d6895e0be66f279d32001c0ed
   docs/models/components/ActionBuildResponseDto.md:
     id: 2b4c36db952f
-    last_write_checksum: sha1:202d426fabe2afad64254de69e750cb5e91e1341
-    pristine_git_object: 3a892a9e90f8f9ca6841304c8e047781b62b5c3d
+    last_write_checksum: sha1:60e07e1b4764992a987a09483d04e7604756f592
+    pristine_git_object: d9471b3d46644f4c557d5be623d0c630984de6d4
   docs/models/components/ActionBuildResponseDtoStatus.md:
     id: ffe8c320361b
-    last_write_checksum: sha1:da924016cfe1adac8711a9c0c09532bb7d769987
-    pristine_git_object: ecb06bc63d7a3e95375a833687491a41a3b2e659
+    last_write_checksum: sha1:b2041ca5486b6ef754ff9fd6f6b36d9f7c63b78d
+    pristine_git_object: bd655c6c99429b78d4c5169ca2dd0d38aad28d20
   docs/models/components/ActionMetaItem.md:
     id: 9a3f59184d8e
     last_write_checksum: sha1:a78eb42fad44aec8d79bdd96edf71996b19105d9
@@ -1066,8 +1066,8 @@ trackedFiles:
     pristine_git_object: 4a8d972ac7ca6c423e6723977ab04fb12aa84e65
   docs/models/components/AuthenticationMetaItem.md:
     id: dee373532b0d
-    last_write_checksum: sha1:bf5626e410d88d73e6064a4dd5857257f356cfe0
-    pristine_git_object: d941a4a79acd72ce618f81b3686e5ce1e7fc7498
+    last_write_checksum: sha1:2bacca490da1fbb48a9aeab9419224f31c1c8d47
+    pristine_git_object: dedd126db99f10214433aff03818b7020aeb4758
   docs/models/components/Author.md:
     id: bec7d1836f2e
     last_write_checksum: sha1:8891235290a8bf20e81d0d4258e5d6ca383541c0
@@ -1348,10 +1348,14 @@ trackedFiles:
     id: 8f15afe8beb0
     last_write_checksum: sha1:72c8a3f4019a2a83e49482768d7def5ff53c891a
     pristine_git_object: 25227471e3f8d59ca0f8242da203bcd94db9af0c
+  docs/models/components/Config.md:
+    id: f8304ea8b612
+    last_write_checksum: sha1:a30ebc5e1ca33b0ae946a18ba2e7540c0eee7bae
+    pristine_git_object: a532395bee69b85fdd9b7cac92ff0270908f97b6
   docs/models/components/ConnectSession.md:
     id: 4d1ebd692a19
-    last_write_checksum: sha1:07fa02c8fc54410009e142dde54c277c44cb0b70
-    pristine_git_object: 6471d8caeb43b92b842b6eb7db2c71ab91639c4c
+    last_write_checksum: sha1:94f65e8b976a5fb72f21f4b47e8fd8f23babb631
+    pristine_git_object: e26bce4f53ccd7995743e972395b53cea4894351
   docs/models/components/ConnectSessionAuthenticate.md:
     id: 52c1e9fee621
     last_write_checksum: sha1:46931a50316ec9120e82d0d1ef122d4899566692
@@ -1368,14 +1372,10 @@ trackedFiles:
     id: 7257beef0ef3
     last_write_checksum: sha1:61864582c467e0cbf55ccaa47c61b04e48b64a4a
     pristine_git_object: 7f685fcedead9c64f4d7697888a447425fbdfa05
-  docs/models/components/ConnectSessionOrganizationId.md:
-    id: d9d216051cd1
-    last_write_checksum: sha1:b245f5704ffc3ba45e5ef41fd1262c2454fa3896
-    pristine_git_object: 32b864e55d1aad38b226c25d6d408128d4f1fa44
   docs/models/components/ConnectSessionTokenAuthLink.md:
     id: e3a5e254990e
-    last_write_checksum: sha1:3aa45f5ddad350fb78f90b4d22ba923eb9cacbd4
-    pristine_git_object: bbbc46290a22a47851d20205606af0b37b570584
+    last_write_checksum: sha1:38990f22c9e296fc0f1dd310e2af88df6f33d0b7
+    pristine_git_object: 70e19de3d366d06ea262a7d896de9e9c6a47fc7d
   docs/models/components/ConnectSessionTokenAuthLinkCategories.md:
     id: e259ac322c3f
     last_write_checksum: sha1:bae2c9c0836de0f11085b0709b2c98488ef87862
@@ -2632,6 +2632,18 @@ trackedFiles:
     id: 309e7f43a9be
     last_write_checksum: sha1:309fc4d3a1bb999cccf441f2912440192ffc5877
     pristine_git_object: 829582961ae88186bb188c7de952d1db69fef604
+  docs/models/components/GuideSectionMeta.md:
+    id: d7b2180b49a7
+    last_write_checksum: sha1:693191ff1da6c87bf1a05292f82a165a31e720e1
+    pristine_git_object: 946d9b60b4a21bd946db6d6602c9020f374b18e0
+  docs/models/components/GuideStepMeta.md:
+    id: 810afb5810f9
+    last_write_checksum: sha1:5e8150d7cf6e53df5082a5dc3e08746bfc859858
+    pristine_git_object: 4999654fa9351608a9d013d29b8c8b985b6f8484
+  docs/models/components/Guides.md:
+    id: a433144632c9
+    last_write_checksum: sha1:84f062f96fba2aa53af0ea2f143238d3a535e3c5
+    pristine_git_object: a4af07b403e121ad3f084985b5be7ce19bd96ba0
   docs/models/components/HRISBankDetails.md:
     id: 484b1c29d9d9
     last_write_checksum: sha1:f9c82a499310e20a5f9e1e6f9d7fc95fd755ce44
@@ -5332,10 +5344,6 @@ trackedFiles:
     id: 63e359b91c0e
     last_write_checksum: sha1:22203e955bd8fa120ae8bc0aabaf2a3d810aeb25
     pristine_git_object: ea9625a01dc8d669b5058563fb902de89cf18a3a
-  docs/models/components/OrganizationId.md:
-    id: ee3a02ae3133
-    last_write_checksum: sha1:ca14c80d3e824e1f76a711354d2dbc183e515860
-    pristine_git_object: 4742a9bf98d29aebc9aa73bea5ff70defa2bba4a
   docs/models/components/OverallRecommendation.md:
     id: 6421716bb05f
     last_write_checksum: sha1:1babc6c2c134cdf24e451be88a33bf7ee25f7023
@@ -5772,6 +5780,10 @@ trackedFiles:
     id: 3878f0f84029
     last_write_checksum: sha1:2838cc04b60d8c0ca5f7f1f54048a94231db1b72
     pristine_git_object: 4cbe01b9e3e96fb3aefb924a05f32eae2abb4d98
+  docs/models/components/Setup.md:
+    id: 0bbcc5124bca
+    last_write_checksum: sha1:dd17ba4b8b4eedd074675dda031b593112c32b69
+    pristine_git_object: 06d10214d880cc2abd23ab7200c5f13e38f541fa
   docs/models/components/SetupInformation.md:
     id: 618e49361fcc
     last_write_checksum: sha1:bb8eb0518580984a6e67baa76fea02e576d04e3b
@@ -5948,6 +5960,10 @@ trackedFiles:
     id: 8a09926064f0
     last_write_checksum: sha1:090d4b2db3a9acaa224100e7c0dd4439615a26ed
     pristine_git_object: 7bf796d3d941069a1aaf1b268e315236e1258c60
+  docs/models/components/Support.md:
+    id: 04eee9e1ed3f
+    last_write_checksum: sha1:3ad85bc45440b5383c4193a6b7bb9536a16acc28
+    pristine_git_object: 6f7b58b8facc45cf588b30994843326b66fbacef
   docs/models/components/Tag.md:
     id: 166074ce50b0
     last_write_checksum: sha1:2c31f715fb0b4e4e904b20e78690c5367672c9a2
@@ -9450,12 +9466,12 @@ trackedFiles:
     pristine_git_object: 09dbf0a5010adc7be8dc48ba951a85c286cfd6ac
   docs/models/operations/StackoneListActionsMetaQueryParamInclude.md:
     id: 3b9929a15dca
-    last_write_checksum: sha1:d9472703564b16fd79759bfbff675c6206048227
-    pristine_git_object: 8bf6febf41d01177f3be64de1c8aef3ae8303970
+    last_write_checksum: sha1:6845072a8f3675f67c3dcf691f81797e0ccd986a
+    pristine_git_object: 30d2e7253e17e29d761c0c941e8c8cb16f4afb92
   docs/models/operations/StackoneListActionsMetaRequest.md:
     id: 90aab6d5aa39
-    last_write_checksum: sha1:9c28c6091894947add52ba86020c7e553d59a0d1
-    pristine_git_object: d8fff8dba990e306cfea403cb961ffe2e6313eb0
+    last_write_checksum: sha1:9ebfa9f249fa1f4c7a709642fdd1781696130ac2
+    pristine_git_object: b284d1137cc52359cd3577f37db95ec217259b31
   docs/models/operations/StackoneListActionsMetaResponse.md:
     id: d12a5351ab78
     last_write_checksum: sha1:b3aa08948b4a11d51bafe2a944e7615d51fe1860
@@ -9834,8 +9850,8 @@ trackedFiles:
     pristine_git_object: 21895627411c5ecfd028b502471da60539e5faf5
   docs/sdks/mcp/README.md:
     id: fb362f76f7be
-    last_write_checksum: sha1:11e06edced07ebdd143bc026fc3a5c31b96eef6d
-    pristine_git_object: f1d51e242abce301393270b1ca9966a47059ac7e
+    last_write_checksum: sha1:cc182d9e98428e9c4749b6f57b5a6b22101a5fab
+    pristine_git_object: 0b9dd3ce850b751030d20e16a1e2e0d49444d64c
   docs/sdks/messaging/README.md:
     id: 827f9d81a390
     last_write_checksum: sha1:5e27b649ea19e2e6b678d235cb9fe44a43d0e207
@@ -9862,8 +9878,8 @@ trackedFiles:
     pristine_git_object: c2c7d97090a7ed6ff36ce329fa98d32610c062c5
   gradle.properties:
     id: 2afbb999f001
-    last_write_checksum: sha1:0cd854dc2846b354bd4de871ac6da3cdb6455911
-    pristine_git_object: 504ec02b463188f085c2610db9bd735c8645b010
+    last_write_checksum: sha1:7f6ef066174de7929dd2ac2dac7fc9b148aa5e32
+    pristine_git_object: 1a643adce5192d24ef6e8283c7240ae8a380009c
   gradle/wrapper/gradle-wrapper.jar:
     id: ec27dae6e852
     last_write_checksum: sha1:f725fb1467084142d74fd7cd8eab691ab3442611
@@ -10058,8 +10074,8 @@ trackedFiles:
     pristine_git_object: e707b926ae1a6d0d96656304416d8484dcbff97b
   src/main/java/com/stackone/stackone_client_java/SDKConfiguration.java:
     id: 988c4a42ddb2
-    last_write_checksum: sha1:30a5f19eddbb4df19e7df35286c9f5e091fcdbb1
-    pristine_git_object: fd701d92886da6db7b4adeee96d15963fb749740
+    last_write_checksum: sha1:cd72fe328bc52218a7bf3bcd678b1be633767177
+    pristine_git_object: 8bb0e3c145744740e2c93562ecf9b60023cb0bee
   src/main/java/com/stackone/stackone_client_java/Screening.java:
     id: 0ddaf6ce0fa0
     last_write_checksum: sha1:8aec79776a5b9be7398770557f4eed73950c82e4
@@ -10358,12 +10374,12 @@ trackedFiles:
     pristine_git_object: e3a8613c666318662f64910ebf10efe2f695ff17
   src/main/java/com/stackone/stackone_client_java/models/components/ActionBuildResponseDto.java:
     id: fbf751ee26ca
-    last_write_checksum: sha1:9f6bc6456673876ce04807c0e61a10098ec4772e
-    pristine_git_object: 0f79f9338ba605c826fcb637904f3bc8fac2cf6d
+    last_write_checksum: sha1:a73c57b12ebc3ce5c2a0a01780f152cc6a71d26d
+    pristine_git_object: c199245659df47c26593cb0ab4080cf038859960
   src/main/java/com/stackone/stackone_client_java/models/components/ActionBuildResponseDtoStatus.java:
     id: 73f5676b9448
-    last_write_checksum: sha1:128939732f51584052f3045aac665e9e9d6c5a8d
-    pristine_git_object: 8b6bd0341b381169fa219ec55225e56768d2983f
+    last_write_checksum: sha1:9f5277fdd7d7991f2cb3b66e27b818b4ef164b9f
+    pristine_git_object: 9682a574257c873db6aa3c11e4bf799877cc9da1
   src/main/java/com/stackone/stackone_client_java/models/components/ActionMetaItem.java:
     id: c4b1ebf8ee5e
     last_write_checksum: sha1:8ebcabb1b5be2e8fe7053610aa4db5b2b8071520
@@ -11094,8 +11110,8 @@ trackedFiles:
     pristine_git_object: ed2bd4bee9acb9aef60a3f40680ee062e7e53750
   src/main/java/com/stackone/stackone_client_java/models/components/AuthenticationMetaItem.java:
     id: 49a5ef5514aa
-    last_write_checksum: sha1:0ec346f89b6af5b1f15880b729479b3049e42364
-    pristine_git_object: 910d0ea8e4fa3e2478f5eb973e0099a6c18b6b5a
+    last_write_checksum: sha1:ef761f6a63bb222dd2575fd9b66949408f036fe4
+    pristine_git_object: dbb2adfdd689bdf099fa0af43e4d54cf3a90136f
   src/main/java/com/stackone/stackone_client_java/models/components/Author.java:
     id: 409242af7a54
     last_write_checksum: sha1:19c23bd1aef69a31ff55710bea67d7f46980f902
@@ -11376,10 +11392,14 @@ trackedFiles:
     id: ee4143bd49e5
     last_write_checksum: sha1:d6d388675d5e2e1e16f37edf874a7c003c5bfd94
     pristine_git_object: d96d1a8643a8989766ffbd6351c1e2c2a6fa31dc
+  src/main/java/com/stackone/stackone_client_java/models/components/Config.java:
+    id: 8d1099d7bf09
+    last_write_checksum: sha1:e2a3054f74e197266c82dfa3d5f8b062b7f67a1b
+    pristine_git_object: 0d0ddf353737d42bdac1c466d2c74a946bee74c9
   src/main/java/com/stackone/stackone_client_java/models/components/ConnectSession.java:
     id: 1d5581f0eba6
-    last_write_checksum: sha1:eae978cd0f958047bdcecc5e977e708c0c08a7a7
-    pristine_git_object: c165cfed7927c4dc67740297d0b2123ecb5e8f31
+    last_write_checksum: sha1:de12486d1ed69f72b97d38e0c1ae765553f0e735
+    pristine_git_object: b96bb252af4ee7a4db1639ce1c3d645c950f0dd3
   src/main/java/com/stackone/stackone_client_java/models/components/ConnectSessionAuthenticate.java:
     id: 41aae27f011c
     last_write_checksum: sha1:d769e608575b85fb6394f73e1c8aaad6b11edfe9
@@ -11396,14 +11416,10 @@ trackedFiles:
     id: faf92b4d047f
     last_write_checksum: sha1:8e7450cec2f7ec2831f191c370a203c266d8f80f
     pristine_git_object: 3cb64d47486c877663d04b05178259fee8a1159a
-  src/main/java/com/stackone/stackone_client_java/models/components/ConnectSessionOrganizationId.java:
-    id: adfdd16a1c51
-    last_write_checksum: sha1:04adbb21d595eb4439b9ed3a9d2d179a923dc48a
-    pristine_git_object: 3375a8db4d398ec06fd097a5ba53866d6349a976
   src/main/java/com/stackone/stackone_client_java/models/components/ConnectSessionTokenAuthLink.java:
     id: 8d00147d73a0
-    last_write_checksum: sha1:23f4a428aa08494436a71ea657acadce979f3825
-    pristine_git_object: 56cfdd19231fd8cd762f1c3b542503a935c35345
+    last_write_checksum: sha1:f2b98c46329c27d6d5a0c86e1ec4ff053f4cd2b5
+    pristine_git_object: 48d63e8b3601f013c18616096dfbb75f9a8e3237
   src/main/java/com/stackone/stackone_client_java/models/components/ConnectSessionTokenAuthLinkCategories.java:
     id: 0af38b44be35
     last_write_checksum: sha1:63f1c81a379dbe7ab2d362af93c487fefb8dbe46
@@ -12660,6 +12676,18 @@ trackedFiles:
     id: e46e2402ab8c
     last_write_checksum: sha1:e166f6fadb0534c2baf7c6c838eebce058867738
     pristine_git_object: fb31dbab82c205fc08c61a85610c1902493c4344
+  src/main/java/com/stackone/stackone_client_java/models/components/GuideSectionMeta.java:
+    id: f7e3b81f264f
+    last_write_checksum: sha1:db36e8c7f9006b4bcce113b82672b08508527cfd
+    pristine_git_object: 0df95c61057b8472b3e8b7a0fe41ce5f793ff676
+  src/main/java/com/stackone/stackone_client_java/models/components/GuideStepMeta.java:
+    id: bb401250f995
+    last_write_checksum: sha1:3f5f81b093861b052c03cc6facbd4f59a0f812eb
+    pristine_git_object: bb52321e51171e8e475f2425789d8d6806092b29
+  src/main/java/com/stackone/stackone_client_java/models/components/Guides.java:
+    id: f2079fadaa06
+    last_write_checksum: sha1:4bd43146eae34b8dc27738542fab44b9dba1864d
+    pristine_git_object: 21b18f6db4b32b3730449d6205f402337185a3bf
   src/main/java/com/stackone/stackone_client_java/models/components/HRISBankDetails.java:
     id: ff27d837ae28
     last_write_checksum: sha1:98e33323fc96da3f9ae06a7ae9ed5f2606317fd7
@@ -15360,10 +15388,6 @@ trackedFiles:
     id: 5dc7b9754a8c
     last_write_checksum: sha1:109e9c60052112c16a4fedfd326e4496047cd314
     pristine_git_object: 99236eda96a6a1a890c9fdaa381f8a51c7fda33a
-  src/main/java/com/stackone/stackone_client_java/models/components/OrganizationId.java:
-    id: 1113cd7837c6
-    last_write_checksum: sha1:afe928162488cf546f886977f93ae8ee567165fe
-    pristine_git_object: 43703487ae828a9190fdf576b4450f55441c5d9d
   src/main/java/com/stackone/stackone_client_java/models/components/OverallRecommendation.java:
     id: 06e922dd232c
     last_write_checksum: sha1:11f7a9d9248e661254006afb16a416fb8d76638e
@@ -15800,6 +15824,10 @@ trackedFiles:
     id: 8b912839ea87
     last_write_checksum: sha1:1c6368efacf519019ce41a19a77746c9cf000668
     pristine_git_object: b96d89b43b2a4cc637f2d7782d1c44d0fa91123e
+  src/main/java/com/stackone/stackone_client_java/models/components/Setup.java:
+    id: 907a3216e2ed
+    last_write_checksum: sha1:501632d9e0175a5a0e1fbb3146b0fd2c60b20562
+    pristine_git_object: 5f0878d42286d3217edb246e38c8ea05bd5ad467
   src/main/java/com/stackone/stackone_client_java/models/components/SetupInformation.java:
     id: c755e5629ca6
     last_write_checksum: sha1:97509481b37a5090d0393a8da0e3cd3749c33921
@@ -15976,6 +16004,10 @@ trackedFiles:
     id: 3414f4ffaee4
     last_write_checksum: sha1:31b3e104d6ff06bc74fc7e5fc44a7c3fd14c43ac
     pristine_git_object: 32d5800f4f53588c129eef38bae48029cb02cc6b
+  src/main/java/com/stackone/stackone_client_java/models/components/Support.java:
+    id: b1110403c696
+    last_write_checksum: sha1:1419a34cfd98ad89f8fd9ce70cac89777f58ddc9
+    pristine_git_object: ccda680a62dbb72600e828f7a946d5085ea7292d
   src/main/java/com/stackone/stackone_client_java/models/components/Tag.java:
     id: d7007276e548
     last_write_checksum: sha1:a8923ee6bf2f8279b7040630f51a02280446e890
@@ -21702,8 +21734,8 @@ trackedFiles:
     pristine_git_object: d56edb0cd54e4c09ddb2ac2b05b5761e1cd4c6c3
   src/main/java/com/stackone/stackone_client_java/models/operations/StackoneListActionsMetaQueryParamInclude.java:
     id: c3dfdae89f2b
-    last_write_checksum: sha1:b9770656baa4ccdf4505c82cc283d01c56246b8e
-    pristine_git_object: 89c6d01d279c32b413b943bb1d41a7c8f57bcbb8
+    last_write_checksum: sha1:315fcb5fe80725f561d6ae406ae6329951181dfa
+    pristine_git_object: dc883444e161a6dbeba3c1c04e3710dbe485ce44
   src/main/java/com/stackone/stackone_client_java/models/operations/StackoneListActionsMetaRequest.java:
     id: c23f28567b2f
     last_write_checksum: sha1:a82a3d4ec690f7eecc22c727e84ae43a808fbfd9
@@ -24558,12 +24590,12 @@ trackedFiles:
     pristine_git_object: 9e099264533e739834fa8290010aebeb78e63304
   src/main/java/com/stackone/stackone_client_java/utils/EventStream.java:
     id: 08158c8e2bb7
-    last_write_checksum: sha1:96a9754827b322a5ccde293cf3756f3b47b87627
-    pristine_git_object: 0ca7892b22e8dc8ed6ab281c4477696b063debd1
+    last_write_checksum: sha1:0855599505e2915e2402f8dbb7d1d9edb321ac06
+    pristine_git_object: 6fa4e05352a5b7e716a317bffb5ce44eb8393368
   src/main/java/com/stackone/stackone_client_java/utils/EventStreamMessage.java:
     id: 028e0535f67e
-    last_write_checksum: sha1:2f6b4f3a64a38a89a5775cd8ae4edbcf0443bcf9
-    pristine_git_object: 31e57555c549535b5690f0c8727035dec11ce77d
+    last_write_checksum: sha1:196205ef4b1431540c2dd5d7cf592a51c794bcc4
+    pristine_git_object: 92d10fc9c72f252f2741821956341443ecb80b6a
   src/main/java/com/stackone/stackone_client_java/utils/Exceptions.java:
     id: db408d52bb68
     last_write_checksum: sha1:5e72469d8bf060189e4f8581afc5521d6053e0d5
@@ -24710,8 +24742,8 @@ trackedFiles:
     pristine_git_object: 0946cd1bb892201a99c740da136e9878929f2a64
   src/main/java/com/stackone/stackone_client_java/utils/Security.java:
     id: 8536c2c10a96
-    last_write_checksum: sha1:902537e077080b11507bfc3b5e6ff4015d45bb3c
-    pristine_git_object: fe0b4583a5b04ee6977d4056fc12498ee1c42baa
+    last_write_checksum: sha1:e2797f7a9c004cfe600f8289d92218c031c6bed6
+    pristine_git_object: bf103b0c953a34e710869e950c22f1fbdc955776
   src/main/java/com/stackone/stackone_client_java/utils/SecurityMetadata.java:
     id: 63acf03b4cd8
     last_write_checksum: sha1:af7ffa279019953ec4aa850103b26ca57fde646d
@@ -24726,8 +24758,8 @@ trackedFiles:
     pristine_git_object: 5f0efa8e252ee18389a3abdc1893d05acfd93d53
   src/main/java/com/stackone/stackone_client_java/utils/SpeakeasyHTTPClient.java:
     id: 0c2b6011f192
-    last_write_checksum: sha1:fdfef5808b76fbe6d6b15d9d4f7abc29effba241
-    pristine_git_object: cf202d0d2a3d96cd7d56f0f9c5476e8b912fa12b
+    last_write_checksum: sha1:96676c7c645c54eaff449a983461e7f11cf1dbc5
+    pristine_git_object: 7f6952e86a1a21f36f2359bf96884bfef27633e5
   src/main/java/com/stackone/stackone_client_java/utils/SpeakeasyLogger.java:
     id: efa78dd4a367
     last_write_checksum: sha1:67521567aba3eea323b1e6ddb08cfad3237ed6e9
@@ -24738,8 +24770,8 @@ trackedFiles:
     pristine_git_object: 16dceff8fadde266d95294033394c3bc86b9af30
   src/main/java/com/stackone/stackone_client_java/utils/StreamingParser.java:
     id: 8a11bec07e39
-    last_write_checksum: sha1:7c30a8e5b3c630ff949662aed48f6d542d48334d
-    pristine_git_object: e771e88d0a0b1f85799c45cddb88e2d9c9a8932f
+    last_write_checksum: sha1:81c873728111bb24a27e2b4e96a8fd5a41896d88
+    pristine_git_object: 35537d3cde6760afc82c6312bf9d0aa078e4a989
   src/main/java/com/stackone/stackone_client_java/utils/TypedObject.java:
     id: dddd58f13e5d
     last_write_checksum: sha1:a0ed5ec1495bc7f0d95467e4d06ffa6b2ab7df8b
@@ -24758,8 +24790,8 @@ trackedFiles:
     pristine_git_object: d45cd7002fd86fb37d9b744e35b17e30efbdf38b
   src/main/java/com/stackone/stackone_client_java/utils/Utils.java:
     id: 2a1f17209262
-    last_write_checksum: sha1:ea4eb42587b3ce06bbfec7102916f6ff2efb6d2e
-    pristine_git_object: 1816f4a15999841010e7773ab0ecbe163e542534
+    last_write_checksum: sha1:45b452347c2bc9a75a91d0fa8d8cf1c0cc6529e3
+    pristine_git_object: 1ac6ceef6f2deb3935630a85a9bc707dcca08eb7
   src/main/java/com/stackone/stackone_client_java/utils/pagination/AsyncPaginator.java:
     id: c9ea80eeb1ef
     last_write_checksum: sha1:bf7a4c1b50faadfa54b26fca6ee59d40e6679299
@@ -24790,8 +24822,8 @@ trackedFiles:
     pristine_git_object: e5f0ad3123cc50b9da4342db7bb6f878891ce523
   src/main/java/com/stackone/stackone_client_java/utils/reactive/EventStream.java:
     id: 63860da4c64a
-    last_write_checksum: sha1:8433a5105e7f9c24ff73b2576e34a81bc947bc4e
-    pristine_git_object: 8e6ea4bc469970918cdcda79852ad02d3370f196
+    last_write_checksum: sha1:fe2d229cf93783917e8f146df47b82920bf7374d
+    pristine_git_object: 78881ac3d201a5bceaf3135638bb2e42ec20251a
   src/main/java/com/stackone/stackone_client_java/utils/reactive/ReactiveUtils.java:
     id: b4e3638b30fd
     last_write_checksum: sha1:a1f0d557db77c134e93997f2a32e5d7cfdbad812
@@ -24803,7 +24835,7 @@ examples:
         application/json: {"categories": ["ats", "hris", "documents", "crm", "iam", "marketing", "lms", "iam", "documents", "ticketing", "screening", "messaging", "accounting", "scheduling"], "origin_owner_id": "<id>", "origin_owner_name": "<value>", "expires_in": 1800, "multiple": false, "type": "test"}
       responses:
         "201":
-          application/json: {"id": 480.39, "organization_id": 203.83, "project_id": "<id>", "categories": ["ats", "hris", "messaging", "crm", "iam", "marketing", "lms", "hris-legacy", "documents", "ticketing", "screening", "messaging", "accounting", "scheduling"], "origin_owner_id": "<id>", "origin_owner_name": "<value>", "created_at": "2023-11-10T21:31:46.697Z", "external_trigger_token": "f0bc3d88-2178-5423-8c81-b81d6c9da824", "type": "test", "token": "<value>", "auth_link_url": "https://medium-story.biz/"}
+          application/json: {"id": 480.39, "organization_id": "203.83", "project_id": "<id>", "categories": ["ats", "hris", "messaging", "crm", "iam", "marketing", "lms", "hris-legacy", "documents", "ticketing", "screening", "messaging", "accounting", "scheduling"], "origin_owner_id": "<id>", "origin_owner_name": "<value>", "created_at": "2023-11-10T21:31:46.697Z", "external_trigger_token": "f0bc3d88-2178-5423-8c81-b81d6c9da824", "type": "test", "token": "<value>", "auth_link_url": "https://medium-story.biz/"}
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": null, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
         "401":
@@ -24832,7 +24864,7 @@ examples:
         application/json: {"token": "<value>"}
       responses:
         "201":
-          application/json: {"id": 8422.01, "organization_id": 9188.03, "project_id": "<id>", "categories": ["ats", "hris", "messaging", "crm", "iam", "marketing", "lms", "lms", "documents", "ticketing", "screening", "messaging", "accounting", "scheduling"], "origin_owner_id": "<id>", "origin_owner_name": "<value>", "created_at": "2024-10-01T04:59:29.242Z", "external_trigger_token": "f0bc3d88-2178-5423-8c81-b81d6c9da824", "type": "unmapped_value"}
+          application/json: {"id": 8422.01, "organization_id": "9188.03", "project_id": "<id>", "categories": ["ats", "hris", "messaging", "crm", "iam", "marketing", "lms", "lms", "documents", "ticketing", "screening", "messaging", "accounting", "scheduling"], "origin_owner_id": "<id>", "origin_owner_name": "<value>", "created_at": "2024-10-01T04:59:29.242Z", "external_trigger_token": "f0bc3d88-2178-5423-8c81-b81d6c9da824", "type": "unmapped_value"}
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
         "401":
@@ -35941,7 +35973,7 @@ examples:
         application/json: {"connector_key": "slack", "force_refresh": false}
       responses:
         "200":
-          application/json: {"status": "success", "actions_indexed": 2058.53}
+          application/json: {"status": "success"}
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
         "401":
@@ -35966,7 +35998,7 @@ examples:
           application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Java SDK Changes:\n* `stackone.hris.updateEmployeeEmployment()`:  `request` **Changed** **Breaking** ⚠️\n* `stackone.connectSessions.authenticateConnectSession()`:  `response.organizationId` **Changed** **Breaking** ⚠️\n* `stackone.actions.listActionsMeta()`: \n  *  `request` **Changed** **Breaking** ⚠️\n  *  `response.data[]` **Changed** **Breaking** ⚠️\n* `stackone.hris.updateEmployeeTimeOffRequest()`:  `request` **Changed** **Breaking** ⚠️\n* `stackone.hris.updateEmployeeWorkEligibilityRequest()`:  `request` **Changed** **Breaking** ⚠️\n* `stackone.connectSessions.createConnectSession()`:  `response.organizationId` **Changed** **Breaking** ⚠️\n* `stackone.ats.updateInterviewNote()`:  `request` **Changed** **Breaking** ⚠️\n* `stackone.ats.updateApplicationNote()`:  `request` **Changed** **Breaking** ⚠️\n* `stackone.hris.updateEmployeeTask()`:  `request` **Changed** **Breaking** ⚠️\n* `stackone.ats.listJobPostings()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.createUserAssignment()`:  `request.prefer` **Added**\n* `stackone.hris.getEmployeeCustomFieldDefinition()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listEmployees()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.createEmployee()`:  `request.prefer` **Added**\n* `stackone.hris.getEmployee()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.updateEmployee()`:  `request.prefer` **Added**\n* `stackone.hris.inviteEmployee()`:  `request.prefer` **Added**\n* `stackone.hris.listEmployeeShifts()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getEmployeeShift()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listEmployeeTimeOffRequests()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.createEmployeeTimeOffRequest()`:  `request.prefer` **Added**\n* `stackone.hris.getEmployeesTimeOffRequest()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.cancelEmployeeTimeOffRequest()`:  `request.prefer` **Added**\n* `stackone.hris.batchUploadEmployeeDocument()`:  `request.prefer` **Added**\n* `stackone.hris.uploadEmployeeDocument()`:  `request.prefer` **Added**\n* `stackone.hris.downloadEmployeeDocument()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listEmployeeDocuments()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getEmployeeDocument()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listEmployeeCategories()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getEmployeeDocumentCategory()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listEmployeeWorkEligibility()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.createEmployeeWorkEligibilityRequest()`:  `request.prefer` **Added**\n* `stackone.hris.getEmployeesWorkEligibility()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listEmployeeTimeOffBalances()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getEmployeeTimeOffBalance()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listEmployments()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getEmployment()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listEmployeeEmployments()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.createEmployeeEmployment()`:  `request.prefer` **Added**\n* `stackone.hris.getEmployeeEmployment()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getCompany()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listGroups()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listDepartmentGroups()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listCostCenterGroups()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listTeamGroups()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listDivisionGroups()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listCompaniesGroups()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getGroup()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getDepartmentGroup()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getCostCenterGroup()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getTeamGroup()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getDivisionGroup()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getCompanyGroup()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listJobs()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getJob()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listLocations()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getLocation()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listPositions()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getPosition()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listTimeEntries()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getTimeEntries()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listTimeOffRequests()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getTimeOffRequest()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listShifts()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getShift()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listTimeOffTypes()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getTimeOffType()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listTimeOffPolicies()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getTimeOffPolicy()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listEmployeeTimeOffPolicies()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listBenefits()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getBenefit()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listEmployeeSkills()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.createEmployeeSkill()`:  `request.prefer` **Added**\n* `stackone.hris.getEmployeeSkill()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listEmployeeTasks()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getEmployeeTask()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listCompanies()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listTasks()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.getTask()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listApplications()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.createApplication()`:  `request.prefer` **Added**\n* `stackone.ats.getApplication()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.updateApplication()`:  `request.prefer` **Added**\n* `stackone.ats.listApplicationsOffers()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.moveApplication()`:  `request.prefer` **Added**\n* `stackone.ats.rejectApplication()`:  `request.prefer` **Added**\n* `stackone.ats.getApplicationOffer()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listApplicationScorecards()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getApplicationScorecard()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listApplicationChanges()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listApplicationNotes()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.createApplicationNote()`:  `request.prefer` **Added**\n* `stackone.ats.getApplicationNote()`: \n  *  `request.prefer` **Added**\n* `stackone.proxy.proxyRequest()`:  `request.prefer` **Added**\n* `stackone.ats.listApplicationsScheduledInterviews()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listAssessmentsPackages()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.uploadApplicationDocument()`:  `request.prefer` **Added**\n* `stackone.ats.downloadApplicationDocument()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listApplicationDocuments()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getApplicationDocument()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listCandidates()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.createCandidate()`:  `request.prefer` **Added**\n* `stackone.ats.getCandidate()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.updateCandidate()`:  `request.prefer` **Added**\n* `stackone.ats.listCandidateNotes()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.createCandidateNote()`:  `request.prefer` **Added**\n* `stackone.ats.getCandidateNote()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listApplicationCustomFieldDefinitions()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getApplicationCustomFieldDefinition()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listCandidateCustomFieldDefinitions()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getCandidateCustomFieldDefinition()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listJobCustomFieldDefinitions()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getJobCustomFieldDefinition()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listDepartments()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getDepartment()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listInterviewStages()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getInterviewStage()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listApplicationStages()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getApplicationStage()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listInterviews()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getInterview()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.createInterviewNote()`:  `request.prefer` **Added**\n* `stackone.actions.buildActionEmbeddings()`: **Added**\n* `stackone.ats.listJobs()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.createJob()`:  `request.prefer` **Added**\n* `stackone.ats.listJobApplicationStages()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getJob()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.updateJob()`:  `request.prefer` **Added**\n* `stackone.ats.getJobApplicationStage()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listLists()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getList()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listLocations()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getLocation()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listRejectedReasons()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getRejectedReason()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listUsers()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getUser()`: \n  *  `request.prefer` **Added**\n* `stackone.actions.searchActions()`: **Added**\n* `stackone.ats.getJobPosting()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.listOffers()`: \n  *  `request.prefer` **Added**\n* `stackone.marketing.getContentBlock()`: \n  *  `request.prefer` **Added**\n* `stackone.hris.listEmployeeCustomFieldDefinitions()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getApplicationScheduledInterview()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getAssessmentsPackage()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.orderAssessmentsRequest()`:  `request.prefer` **Added**\n* `stackone.ats.updateAssessmentsResult()`:  `request.prefer` **Added**\n* `stackone.ats.listBackgroundCheckPackages()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.createBackgroundCheckPackage()`:  `request.prefer` **Added**\n* `stackone.ats.getBackgroundCheckPackage()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.deleteBackgroundCheckPackage()`:  `request.prefer` **Added**\n* `stackone.ats.updateBackgroundCheckPackage()`:  `request.prefer` **Added**\n* `stackone.ats.orderBackgroundCheckRequest()`:  `request.prefer` **Added**\n* `stackone.ats.updateBackgroundCheckResult()`:  `request.prefer` **Added**\n* `stackone.ats.listApplicationDocumentCategories()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getApplicationDocumentCategory()`: \n  *  `request.prefer` **Added**\n* `stackone.crm.listContacts()`: \n  *  `request.prefer` **Added**\n* `stackone.crm.createContact()`:  `request.prefer` **Added**\n* `stackone.crm.getContact()`: \n  *  `request.prefer` **Added**\n* `stackone.crm.updateContact()`:  `request.prefer` **Added**\n* `stackone.crm.listAccounts()`: \n  *  `request.prefer` **Added**\n* `stackone.crm.getAccount()`: \n  *  `request.prefer` **Added**\n* `stackone.crm.listLists()`: \n  *  `request.prefer` **Added**\n* `stackone.crm.getList()`: \n  *  `request.prefer` **Added**\n* `stackone.crm.listContactCustomFieldDefinitions()`: \n  *  `request.prefer` **Added**\n* `stackone.crm.getContactCustomFieldDefinition()`: \n  *  `request.prefer` **Added**\n* `stackone.iam.listUsers()`: \n  *  `request.prefer` **Added**\n* `stackone.iam.getUser()`: \n  *  `request.prefer` **Added**\n* `stackone.iam.deleteUser()`:  `request.prefer` **Added**\n* `stackone.iam.updateUser()`:  `request.prefer` **Added**\n* `stackone.iam.listRoles()`: \n  *  `request.prefer` **Added**\n* `stackone.iam.getRole()`: \n  *  `request.prefer` **Added**\n* `stackone.iam.listGroups()`: \n  *  `request.prefer` **Added**\n* `stackone.iam.getGroup()`: \n  *  `request.prefer` **Added**\n* `stackone.iam.listPolicies()`: \n  *  `request.prefer` **Added**\n* `stackone.iam.getPolicy()`: \n  *  `request.prefer` **Added**\n* `stackone.marketing.listEmailTemplates()`: \n  *  `request.prefer` **Added**\n* `stackone.marketing.createEmailTemplate()`:  `request.prefer` **Added**\n* `stackone.marketing.getEmailTemplate()`: \n  *  `request.prefer` **Added**\n* `stackone.marketing.updateEmailTemplate()`:  `request.prefer` **Added**\n* `stackone.marketing.listInAppTemplates()`: \n  *  `request.prefer` **Added**\n* `stackone.marketing.createInAppTemplate()`:  `request.prefer` **Added**\n* `stackone.marketing.getInAppTemplate()`: \n  *  `request.prefer` **Added**\n* `stackone.marketing.updateInAppTemplate()`:  `request.prefer` **Added**\n* `stackone.marketing.listSmsTemplates()`: \n  *  `request.prefer` **Added**\n* `stackone.marketing.createSmsTemplate()`:  `request.prefer` **Added**\n* `stackone.marketing.getSmsTemplate()`: \n  *  `request.prefer` **Added**\n* `stackone.marketing.updateSmsTemplate()`:  `request.prefer` **Added**\n* `stackone.marketing.listOmniChannelTemplates()`: \n  *  `request.prefer` **Added**\n* `stackone.marketing.createOmniChannelTemplate()`:  `request.prefer` **Added**\n* `stackone.marketing.getOmniChannelTemplate()`: \n  *  `request.prefer` **Added**\n* `stackone.marketing.updateOmniChannelTemplate()`:  `request.prefer` **Added**\n* `stackone.marketing.listPushTemplates()`: \n  *  `request.prefer` **Added**\n* `stackone.marketing.createPushTemplate()`:  `request.prefer` **Added**\n* `stackone.marketing.getPushTemplate()`: \n  *  `request.prefer` **Added**\n* `stackone.marketing.updatePushTemplate()`:  `request.prefer` **Added**\n* `stackone.marketing.listCampaigns()`: \n  *  `request.prefer` **Added**\n* `stackone.marketing.getCampaign()`: \n  *  `request.prefer` **Added**\n* `stackone.marketing.listContentBlocks()`: \n  *  `request.prefer` **Added**\n* `stackone.marketing.createContentBlock()`:  `request.prefer` **Added**\n* `stackone.ats.createOffer()`:  `request.prefer` **Added**\n* `stackone.marketing.updateContentBlock()`:  `request.prefer` **Added**\n* `stackone.lms.listCourses()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.getCourse()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.listUserAssignments()`: \n  *  `request.prefer` **Added**\n* `stackone.ats.getOffer()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.getUserAssignment()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.batchUpsertContent()`:  `request` **Changed**\n* `stackone.lms.listContent()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.upsertContent()`:  `request` **Changed**\n* `stackone.lms.getContent()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.listUserCompletions()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.createUserCompletion()`:  `request.prefer` **Added**\n* `stackone.lms.getUserCompletion()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.deleteUserCompletion()`:  `request.prefer` **Added**\n* `stackone.lms.listCompletions()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.getCompletion()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.getCategory()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.listCategories()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.listUsers()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.getUser()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.getSkill()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.listSkills()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.listAssignments()`: \n  *  `request.prefer` **Added**\n* `stackone.lms.getAssignment()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.listTickets()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.createTicket()`:  `request.prefer` **Added**\n* `stackone.ticketing.getTicket()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.updateTicket()`:  `request.prefer` **Added**\n* `stackone.ticketing.listUsers()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.getUser()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.listComments()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.getComment()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.downloadTicketingAttachment()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.listAttachments()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.getAttachment()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.listTicketTypes()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.getTicketType()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.listProjects()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.getProject()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.listProjectComponents()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.getProjectComponent()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.listProjectTicketTypes()`: \n  *  `request.prefer` **Added**\n* `stackone.ticketing.listTicketStatuses()`: \n  *  `request.prefer` **Added**\n* `stackone.documents.downloadFile()`: \n  *  `request.prefer` **Added**\n* `stackone.documents.uploadFile()`:  `request.prefer` **Added**\n* `stackone.documents.listFiles()`: \n  *  `request.prefer` **Added**\n* `stackone.documents.getFile()`: \n  *  `request.prefer` **Added**\n* `stackone.documents.listFolders()`: \n  *  `request.prefer` **Added**\n* `stackone.documents.getFolder()`: \n  *  `request.prefer` **Added**\n* `stackone.documents.listDrives()`: \n  *  `request.prefer` **Added**\n* `stackone.documents.getDrive()`: \n  *  `request.prefer` **Added**\n* `stackone.screening.listScreeningPackages()`: \n  *  `request.prefer` **Added**\n* `stackone.screening.getScreeningPackage()`: \n  *  `request.prefer` **Added**\n* `stackone.screening.webhookScreeningResult()`:  `request.prefer` **Added**\n* `stackone.screening.createScreeningOrder()`:  `request.prefer` **Added**\n* `stackone.messaging.listConversations()`: \n  *  `request.prefer` **Added**\n* `stackone.messaging.createConversation()`:  `request.prefer` **Added**\n* `stackone.messaging.getConversation()`: \n  *  `request.prefer` **Added**\n* `stackone.messaging.downloadMessagingAttachment()`: \n  *  `request.prefer` **Added**\n* `stackone.messaging.listAttachments()`: \n  *  `request.prefer` **Added**\n* `stackone.messaging.getAttachment()`: \n  *  `request.prefer` **Added**\n* `stackone.messaging.listUsers()`: \n  *  `request.prefer` **Added**\n* `stackone.messaging.getUser()`: \n  *  `request.prefer` **Added**\n* `stackone.messaging.listConversationMessages()`: \n  *  `request.prefer` **Added**\n* `stackone.messaging.getMessage()`: \n  *  `request.prefer` **Added**\n* `stackone.messaging.sendMessage()`:  `request.prefer` **Added**\n* `stackone.accounting.listCompanies()`: \n  *  `request.prefer` **Added**\n* `stackone.accounting.getCompany()`: \n  *  `request.prefer` **Added**\n* `stackone.accounting.listCompanyAccounts()`: \n  *  `request.prefer` **Added**\n* `stackone.accounting.getCompanyAccount()`: \n  *  `request.prefer` **Added**\n* `stackone.accounting.listCompanyTaxRates()`: \n  *  `request.prefer` **Added**\n* `stackone.accounting.getCompanyTaxRate()`: \n  *  `request.prefer` **Added**\n* `stackone.accounting.batchCreateCompanyJournals()`:  `request.prefer` **Added**\n* `stackone.accounting.listCompanyJournals()`: \n  *  `request.prefer` **Added**\n* `stackone.accounting.createCompanyJournal()`:  `request.prefer` **Added**\n* `stackone.accounting.getCompanyJournal()`: \n  *  `request.prefer` **Added**\n"
+releaseNotes: "## Java SDK Changes:\n* `stackone.connectSessions.createConnectSession()`:  `response.organizationId` **Changed** (Breaking ⚠️)\n* `stackone.connectSessions.authenticateConnectSession()`:  `response.organizationId` **Changed** (Breaking ⚠️)\n* `stackone.actions.buildActionEmbeddings()`:  `response` **Changed** (Breaking ⚠️)\n* `stackone.actions.listActionsMeta()`: \n  *  `request.include` **Changed**\n  *  `response.data[].authentication[].support` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md

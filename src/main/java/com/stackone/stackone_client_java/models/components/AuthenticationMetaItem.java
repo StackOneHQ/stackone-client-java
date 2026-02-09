@@ -45,25 +45,36 @@ public class AuthenticationMetaItem {
     @JsonProperty("required_scopes")
     private JsonNullable<? extends List<String>> requiredScopes;
 
+    /**
+     * The support information for this authentication method, including configuration and account linking
+     * guides
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("support")
+    private JsonNullable<? extends Support> support;
+
     @JsonCreator
     public AuthenticationMetaItem(
             @JsonProperty("type") JsonNullable<String> type,
             @JsonProperty("label") JsonNullable<String> label,
             @JsonProperty("key") JsonNullable<String> key,
-            @JsonProperty("required_scopes") JsonNullable<? extends List<String>> requiredScopes) {
+            @JsonProperty("required_scopes") JsonNullable<? extends List<String>> requiredScopes,
+            @JsonProperty("support") JsonNullable<? extends Support> support) {
         Utils.checkNotNull(type, "type");
         Utils.checkNotNull(label, "label");
         Utils.checkNotNull(key, "key");
         Utils.checkNotNull(requiredScopes, "requiredScopes");
+        Utils.checkNotNull(support, "support");
         this.type = type;
         this.label = label;
         this.key = key;
         this.requiredScopes = requiredScopes;
+        this.support = support;
     }
     
     public AuthenticationMetaItem() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -97,6 +108,16 @@ public class AuthenticationMetaItem {
     @JsonIgnore
     public JsonNullable<List<String>> requiredScopes() {
         return (JsonNullable<List<String>>) requiredScopes;
+    }
+
+    /**
+     * The support information for this authentication method, including configuration and account linking
+     * guides
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<Support> support() {
+        return (JsonNullable<Support>) support;
     }
 
     public static Builder builder() {
@@ -176,6 +197,26 @@ public class AuthenticationMetaItem {
         return this;
     }
 
+    /**
+     * The support information for this authentication method, including configuration and account linking
+     * guides
+     */
+    public AuthenticationMetaItem withSupport(Support support) {
+        Utils.checkNotNull(support, "support");
+        this.support = JsonNullable.of(support);
+        return this;
+    }
+
+    /**
+     * The support information for this authentication method, including configuration and account linking
+     * guides
+     */
+    public AuthenticationMetaItem withSupport(JsonNullable<? extends Support> support) {
+        Utils.checkNotNull(support, "support");
+        this.support = support;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -189,14 +230,15 @@ public class AuthenticationMetaItem {
             Utils.enhancedDeepEquals(this.type, other.type) &&
             Utils.enhancedDeepEquals(this.label, other.label) &&
             Utils.enhancedDeepEquals(this.key, other.key) &&
-            Utils.enhancedDeepEquals(this.requiredScopes, other.requiredScopes);
+            Utils.enhancedDeepEquals(this.requiredScopes, other.requiredScopes) &&
+            Utils.enhancedDeepEquals(this.support, other.support);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
             type, label, key,
-            requiredScopes);
+            requiredScopes, support);
     }
     
     @Override
@@ -205,7 +247,8 @@ public class AuthenticationMetaItem {
                 "type", type,
                 "label", label,
                 "key", key,
-                "requiredScopes", requiredScopes);
+                "requiredScopes", requiredScopes,
+                "support", support);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -218,6 +261,8 @@ public class AuthenticationMetaItem {
         private JsonNullable<String> key = JsonNullable.undefined();
 
         private JsonNullable<? extends List<String>> requiredScopes = JsonNullable.undefined();
+
+        private JsonNullable<? extends Support> support = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -299,11 +344,32 @@ public class AuthenticationMetaItem {
             return this;
         }
 
+
+        /**
+         * The support information for this authentication method, including configuration and account linking
+         * guides
+         */
+        public Builder support(Support support) {
+            Utils.checkNotNull(support, "support");
+            this.support = JsonNullable.of(support);
+            return this;
+        }
+
+        /**
+         * The support information for this authentication method, including configuration and account linking
+         * guides
+         */
+        public Builder support(JsonNullable<? extends Support> support) {
+            Utils.checkNotNull(support, "support");
+            this.support = support;
+            return this;
+        }
+
         public AuthenticationMetaItem build() {
 
             return new AuthenticationMetaItem(
                 type, label, key,
-                requiredScopes);
+                requiredScopes, support);
         }
 
     }

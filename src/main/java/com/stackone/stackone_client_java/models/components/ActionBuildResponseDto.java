@@ -23,10 +23,18 @@ public class ActionBuildResponseDto {
     private ActionBuildResponseDtoStatus status;
 
     /**
-     * Number of actions indexed
+     * Status message
      */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("message")
+    private Optional<String> message;
+
+    /**
+     * Number of actions indexed (only for synchronous builds)
+     */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("actions_indexed")
-    private double actionsIndexed;
+    private Optional<Double> actionsIndexed;
 
     /**
      * Connector filter applied
@@ -45,24 +53,26 @@ public class ActionBuildResponseDto {
     @JsonCreator
     public ActionBuildResponseDto(
             @JsonProperty("status") ActionBuildResponseDtoStatus status,
-            @JsonProperty("actions_indexed") double actionsIndexed,
+            @JsonProperty("message") Optional<String> message,
+            @JsonProperty("actions_indexed") Optional<Double> actionsIndexed,
             @JsonProperty("connector_filter") Optional<String> connectorFilter,
             @JsonProperty("error") Optional<String> error) {
         Utils.checkNotNull(status, "status");
+        Utils.checkNotNull(message, "message");
         Utils.checkNotNull(actionsIndexed, "actionsIndexed");
         Utils.checkNotNull(connectorFilter, "connectorFilter");
         Utils.checkNotNull(error, "error");
         this.status = status;
+        this.message = message;
         this.actionsIndexed = actionsIndexed;
         this.connectorFilter = connectorFilter;
         this.error = error;
     }
     
     public ActionBuildResponseDto(
-            ActionBuildResponseDtoStatus status,
-            double actionsIndexed) {
-        this(status, actionsIndexed, Optional.empty(),
-            Optional.empty());
+            ActionBuildResponseDtoStatus status) {
+        this(status, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -74,10 +84,18 @@ public class ActionBuildResponseDto {
     }
 
     /**
-     * Number of actions indexed
+     * Status message
      */
     @JsonIgnore
-    public double actionsIndexed() {
+    public Optional<String> message() {
+        return message;
+    }
+
+    /**
+     * Number of actions indexed (only for synchronous builds)
+     */
+    @JsonIgnore
+    public Optional<Double> actionsIndexed() {
         return actionsIndexed;
     }
 
@@ -112,9 +130,38 @@ public class ActionBuildResponseDto {
     }
 
     /**
-     * Number of actions indexed
+     * Status message
+     */
+    public ActionBuildResponseDto withMessage(String message) {
+        Utils.checkNotNull(message, "message");
+        this.message = Optional.ofNullable(message);
+        return this;
+    }
+
+
+    /**
+     * Status message
+     */
+    public ActionBuildResponseDto withMessage(Optional<String> message) {
+        Utils.checkNotNull(message, "message");
+        this.message = message;
+        return this;
+    }
+
+    /**
+     * Number of actions indexed (only for synchronous builds)
      */
     public ActionBuildResponseDto withActionsIndexed(double actionsIndexed) {
+        Utils.checkNotNull(actionsIndexed, "actionsIndexed");
+        this.actionsIndexed = Optional.ofNullable(actionsIndexed);
+        return this;
+    }
+
+
+    /**
+     * Number of actions indexed (only for synchronous builds)
+     */
+    public ActionBuildResponseDto withActionsIndexed(Optional<Double> actionsIndexed) {
         Utils.checkNotNull(actionsIndexed, "actionsIndexed");
         this.actionsIndexed = actionsIndexed;
         return this;
@@ -169,6 +216,7 @@ public class ActionBuildResponseDto {
         ActionBuildResponseDto other = (ActionBuildResponseDto) o;
         return 
             Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.message, other.message) &&
             Utils.enhancedDeepEquals(this.actionsIndexed, other.actionsIndexed) &&
             Utils.enhancedDeepEquals(this.connectorFilter, other.connectorFilter) &&
             Utils.enhancedDeepEquals(this.error, other.error);
@@ -177,14 +225,15 @@ public class ActionBuildResponseDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            status, actionsIndexed, connectorFilter,
-            error);
+            status, message, actionsIndexed,
+            connectorFilter, error);
     }
     
     @Override
     public String toString() {
         return Utils.toString(ActionBuildResponseDto.class,
                 "status", status,
+                "message", message,
                 "actionsIndexed", actionsIndexed,
                 "connectorFilter", connectorFilter,
                 "error", error);
@@ -195,7 +244,9 @@ public class ActionBuildResponseDto {
 
         private ActionBuildResponseDtoStatus status;
 
-        private Double actionsIndexed;
+        private Optional<String> message = Optional.empty();
+
+        private Optional<Double> actionsIndexed = Optional.empty();
 
         private Optional<String> connectorFilter = Optional.empty();
 
@@ -217,9 +268,37 @@ public class ActionBuildResponseDto {
 
 
         /**
-         * Number of actions indexed
+         * Status message
+         */
+        public Builder message(String message) {
+            Utils.checkNotNull(message, "message");
+            this.message = Optional.ofNullable(message);
+            return this;
+        }
+
+        /**
+         * Status message
+         */
+        public Builder message(Optional<String> message) {
+            Utils.checkNotNull(message, "message");
+            this.message = message;
+            return this;
+        }
+
+
+        /**
+         * Number of actions indexed (only for synchronous builds)
          */
         public Builder actionsIndexed(double actionsIndexed) {
+            Utils.checkNotNull(actionsIndexed, "actionsIndexed");
+            this.actionsIndexed = Optional.ofNullable(actionsIndexed);
+            return this;
+        }
+
+        /**
+         * Number of actions indexed (only for synchronous builds)
+         */
+        public Builder actionsIndexed(Optional<Double> actionsIndexed) {
             Utils.checkNotNull(actionsIndexed, "actionsIndexed");
             this.actionsIndexed = actionsIndexed;
             return this;
@@ -266,8 +345,8 @@ public class ActionBuildResponseDto {
         public ActionBuildResponseDto build() {
 
             return new ActionBuildResponseDto(
-                status, actionsIndexed, connectorFilter,
-                error);
+                status, message, actionsIndexed,
+                connectorFilter, error);
         }
 
     }
