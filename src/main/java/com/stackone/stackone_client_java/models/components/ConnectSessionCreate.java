@@ -112,6 +112,28 @@ public class ConnectSessionCreate {
     @JsonProperty("integration_id")
     private JsonNullable<String> integrationId;
 
+    /**
+     * Whether the account created from this connect session should be shared or limited to just the
+     * calling end_user_id
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("shared")
+    private JsonNullable<Boolean> shared;
+
+    /**
+     * Whether to relink to an existing account if one exists with the same tenant id and provider
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("relink")
+    private JsonNullable<Boolean> relink;
+
+    /**
+     * The scopes restrictions, if any, for the token generated from this connect session
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("scopes")
+    private JsonNullable<? extends Scopes> scopes;
+
     @JsonCreator
     public ConnectSessionCreate(
             @JsonProperty("categories") JsonNullable<? extends List<Categories>> categories,
@@ -126,7 +148,10 @@ public class ConnectSessionCreate {
             @JsonProperty("multiple") JsonNullable<Boolean> multiple,
             @JsonProperty("label") JsonNullable<String> label,
             @JsonProperty("type") JsonNullable<? extends Type> type,
-            @JsonProperty("integration_id") JsonNullable<String> integrationId) {
+            @JsonProperty("integration_id") JsonNullable<String> integrationId,
+            @JsonProperty("shared") JsonNullable<Boolean> shared,
+            @JsonProperty("relink") JsonNullable<Boolean> relink,
+            @JsonProperty("scopes") JsonNullable<? extends Scopes> scopes) {
         Utils.checkNotNull(categories, "categories");
         Utils.checkNotNull(provider, "provider");
         Utils.checkNotNull(providerVersion, "providerVersion");
@@ -140,6 +165,9 @@ public class ConnectSessionCreate {
         Utils.checkNotNull(label, "label");
         Utils.checkNotNull(type, "type");
         Utils.checkNotNull(integrationId, "integrationId");
+        Utils.checkNotNull(shared, "shared");
+        Utils.checkNotNull(relink, "relink");
+        Utils.checkNotNull(scopes, "scopes");
         this.categories = categories;
         this.provider = provider;
         this.providerVersion = providerVersion;
@@ -153,6 +181,9 @@ public class ConnectSessionCreate {
         this.label = label;
         this.type = type;
         this.integrationId = integrationId;
+        this.shared = shared;
+        this.relink = relink;
+        this.scopes = scopes;
     }
     
     public ConnectSessionCreate(
@@ -160,6 +191,7 @@ public class ConnectSessionCreate {
             String originOwnerName) {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             originOwnerId, originOwnerName, JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined());
@@ -272,6 +304,32 @@ public class ConnectSessionCreate {
     @JsonIgnore
     public JsonNullable<String> integrationId() {
         return integrationId;
+    }
+
+    /**
+     * Whether the account created from this connect session should be shared or limited to just the
+     * calling end_user_id
+     */
+    @JsonIgnore
+    public JsonNullable<Boolean> shared() {
+        return shared;
+    }
+
+    /**
+     * Whether to relink to an existing account if one exists with the same tenant id and provider
+     */
+    @JsonIgnore
+    public JsonNullable<Boolean> relink() {
+        return relink;
+    }
+
+    /**
+     * The scopes restrictions, if any, for the token generated from this connect session
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<Scopes> scopes() {
+        return (JsonNullable<Scopes>) scopes;
     }
 
     public static Builder builder() {
@@ -499,6 +557,62 @@ public class ConnectSessionCreate {
         return this;
     }
 
+    /**
+     * Whether the account created from this connect session should be shared or limited to just the
+     * calling end_user_id
+     */
+    public ConnectSessionCreate withShared(boolean shared) {
+        Utils.checkNotNull(shared, "shared");
+        this.shared = JsonNullable.of(shared);
+        return this;
+    }
+
+    /**
+     * Whether the account created from this connect session should be shared or limited to just the
+     * calling end_user_id
+     */
+    public ConnectSessionCreate withShared(JsonNullable<Boolean> shared) {
+        Utils.checkNotNull(shared, "shared");
+        this.shared = shared;
+        return this;
+    }
+
+    /**
+     * Whether to relink to an existing account if one exists with the same tenant id and provider
+     */
+    public ConnectSessionCreate withRelink(boolean relink) {
+        Utils.checkNotNull(relink, "relink");
+        this.relink = JsonNullable.of(relink);
+        return this;
+    }
+
+    /**
+     * Whether to relink to an existing account if one exists with the same tenant id and provider
+     */
+    public ConnectSessionCreate withRelink(JsonNullable<Boolean> relink) {
+        Utils.checkNotNull(relink, "relink");
+        this.relink = relink;
+        return this;
+    }
+
+    /**
+     * The scopes restrictions, if any, for the token generated from this connect session
+     */
+    public ConnectSessionCreate withScopes(Scopes scopes) {
+        Utils.checkNotNull(scopes, "scopes");
+        this.scopes = JsonNullable.of(scopes);
+        return this;
+    }
+
+    /**
+     * The scopes restrictions, if any, for the token generated from this connect session
+     */
+    public ConnectSessionCreate withScopes(JsonNullable<? extends Scopes> scopes) {
+        Utils.checkNotNull(scopes, "scopes");
+        this.scopes = scopes;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -521,7 +635,10 @@ public class ConnectSessionCreate {
             Utils.enhancedDeepEquals(this.multiple, other.multiple) &&
             Utils.enhancedDeepEquals(this.label, other.label) &&
             Utils.enhancedDeepEquals(this.type, other.type) &&
-            Utils.enhancedDeepEquals(this.integrationId, other.integrationId);
+            Utils.enhancedDeepEquals(this.integrationId, other.integrationId) &&
+            Utils.enhancedDeepEquals(this.shared, other.shared) &&
+            Utils.enhancedDeepEquals(this.relink, other.relink) &&
+            Utils.enhancedDeepEquals(this.scopes, other.scopes);
     }
     
     @Override
@@ -531,7 +648,8 @@ public class ConnectSessionCreate {
             originOwnerId, originOwnerName, originUsername,
             accountId, expiresIn, metadata,
             multiple, label, type,
-            integrationId);
+            integrationId, shared, relink,
+            scopes);
     }
     
     @Override
@@ -549,7 +667,10 @@ public class ConnectSessionCreate {
                 "multiple", multiple,
                 "label", label,
                 "type", type,
-                "integrationId", integrationId);
+                "integrationId", integrationId,
+                "shared", shared,
+                "relink", relink,
+                "scopes", scopes);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -580,6 +701,12 @@ public class ConnectSessionCreate {
         private JsonNullable<? extends Type> type;
 
         private JsonNullable<String> integrationId = JsonNullable.undefined();
+
+        private JsonNullable<Boolean> shared;
+
+        private JsonNullable<Boolean> relink;
+
+        private JsonNullable<? extends Scopes> scopes = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -818,6 +945,65 @@ public class ConnectSessionCreate {
             return this;
         }
 
+
+        /**
+         * Whether the account created from this connect session should be shared or limited to just the
+         * calling end_user_id
+         */
+        public Builder shared(boolean shared) {
+            Utils.checkNotNull(shared, "shared");
+            this.shared = JsonNullable.of(shared);
+            return this;
+        }
+
+        /**
+         * Whether the account created from this connect session should be shared or limited to just the
+         * calling end_user_id
+         */
+        public Builder shared(JsonNullable<Boolean> shared) {
+            Utils.checkNotNull(shared, "shared");
+            this.shared = shared;
+            return this;
+        }
+
+
+        /**
+         * Whether to relink to an existing account if one exists with the same tenant id and provider
+         */
+        public Builder relink(boolean relink) {
+            Utils.checkNotNull(relink, "relink");
+            this.relink = JsonNullable.of(relink);
+            return this;
+        }
+
+        /**
+         * Whether to relink to an existing account if one exists with the same tenant id and provider
+         */
+        public Builder relink(JsonNullable<Boolean> relink) {
+            Utils.checkNotNull(relink, "relink");
+            this.relink = relink;
+            return this;
+        }
+
+
+        /**
+         * The scopes restrictions, if any, for the token generated from this connect session
+         */
+        public Builder scopes(Scopes scopes) {
+            Utils.checkNotNull(scopes, "scopes");
+            this.scopes = JsonNullable.of(scopes);
+            return this;
+        }
+
+        /**
+         * The scopes restrictions, if any, for the token generated from this connect session
+         */
+        public Builder scopes(JsonNullable<? extends Scopes> scopes) {
+            Utils.checkNotNull(scopes, "scopes");
+            this.scopes = scopes;
+            return this;
+        }
+
         public ConnectSessionCreate build() {
             if (expiresIn == null) {
                 expiresIn = _SINGLETON_VALUE_ExpiresIn.value();
@@ -828,13 +1014,20 @@ public class ConnectSessionCreate {
             if (type == null) {
                 type = _SINGLETON_VALUE_Type.value();
             }
+            if (shared == null) {
+                shared = _SINGLETON_VALUE_Shared.value();
+            }
+            if (relink == null) {
+                relink = _SINGLETON_VALUE_Relink.value();
+            }
 
             return new ConnectSessionCreate(
                 categories, provider, providerVersion,
                 originOwnerId, originOwnerName, originUsername,
                 accountId, expiresIn, metadata,
                 multiple, label, type,
-                integrationId);
+                integrationId, shared, relink,
+                scopes);
         }
 
 
@@ -855,5 +1048,17 @@ public class ConnectSessionCreate {
                         "type",
                         "\"production\"",
                         new TypeReference<JsonNullable<? extends Type>>() {});
+
+        private static final LazySingletonValue<JsonNullable<Boolean>> _SINGLETON_VALUE_Shared =
+                new LazySingletonValue<>(
+                        "shared",
+                        "true",
+                        new TypeReference<JsonNullable<Boolean>>() {});
+
+        private static final LazySingletonValue<JsonNullable<Boolean>> _SINGLETON_VALUE_Relink =
+                new LazySingletonValue<>(
+                        "relink",
+                        "true",
+                        new TypeReference<JsonNullable<Boolean>>() {});
     }
 }

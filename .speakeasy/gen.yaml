@@ -28,7 +28,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 java:
-  version: 0.19.2
+  version: 0.19.3
   additionalDependencies: []
   additionalPlugins: []
   artifactID: stackone-client-java
@@ -44,6 +44,7 @@ java:
   enableStreamingUploads: false
   flattenGlobalSecurity: true
   forwardCompatibleEnumsByDefault: false
+  forwardCompatibleUnionsByDefault: "false"
   generateOptionalUnionAccessors: false
   generateSpringBootStarter: true
   githubURL: github.com/owner/repo
@@ -66,7 +67,6 @@ java:
   maxMethodParams: 4
   multipartArrayFormat: legacy
   nullFriendlyParameters: false
-  openUnions: true
   operationScopedParams: true
   outputModelSuffix: output
   projectName: stackone-client-java

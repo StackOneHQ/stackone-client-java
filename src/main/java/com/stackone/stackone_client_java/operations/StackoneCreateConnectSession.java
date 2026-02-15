@@ -133,7 +133,7 @@ public class StackoneCreateConnectSession {
                     typeReference);
             SerializedBody serializedRequestBody = Utils.serializeRequestBody(
                     convertedRequest,
-                    "request",
+                    "",
                     "json",
                     false);
             if (serializedRequestBody == null) {
