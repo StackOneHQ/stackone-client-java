@@ -46,7 +46,6 @@ public class Application {
                 .id("<id>")
                 .format("base64")
                 .exportFormat("text/plain")
-                .prefer("heartbeat")
                 .build();
 
         DocumentsDownloadFileResponse res = sdk.documents().downloadFile()
@@ -117,7 +116,6 @@ public class Application {
 
         DocumentsUploadFileResponse res = sdk.documents().uploadFile()
                 .xAccountId("<id>")
-                .prefer("heartbeat")
                 .unifiedUploadRequestDto(UnifiedUploadRequestDto.builder()
                     .name("weather-forecast")
                     .fileFormat(UnifiedUploadRequestDtoFileFormat.builder()
@@ -147,12 +145,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
-| `xStackoneApiSessionToken`                                                                                                                                               | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | The session token                                                                                                                                                        |                                                                                                                                                                          |
-| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
-| `unifiedUploadRequestDto`                                                                                                                                                | [UnifiedUploadRequestDto](../../models/components/UnifiedUploadRequestDto.md)                                                                                            | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `xAccountId`                                                                  | *String*                                                                      | :heavy_check_mark:                                                            | The account identifier                                                        |
+| `xStackoneApiSessionToken`                                                    | *Optional\<String>*                                                           | :heavy_minus_sign:                                                            | The session token                                                             |
+| `unifiedUploadRequestDto`                                                     | [UnifiedUploadRequestDto](../../models/components/UnifiedUploadRequestDto.md) | :heavy_check_mark:                                                            | N/A                                                                           |
 
 ### Response
 
@@ -368,6 +365,7 @@ public class Application {
                 .fields("id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields")
                 .filter(DocumentsListFoldersQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
+                    .name("Engineering")
                     .driveId("1234567890")
                     .folderId("1234567890")
                     .build())
