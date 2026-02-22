@@ -277,7 +277,6 @@ public class Application {
                 .subResourceId("<id>")
                 .format("base64")
                 .exportFormat("text/plain")
-                .prefer("heartbeat")
                 .build();
 
         MessagingDownloadMessagingAttachmentResponse res = sdk.messaging().downloadMessagingAttachment()

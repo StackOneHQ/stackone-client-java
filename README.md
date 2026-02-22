@@ -11,7 +11,18 @@
 <!-- Start Summary [summary] -->
 ## Summary
 
-Accounting: The documentation for the StackOne Unified API - ACCOUNTING
+Accounting: The documentation for the StackOne API
+The documentation for the StackOne Unified API - HRIS
+The documentation for the StackOne Unified API - ATS
+The documentation for the StackOne Unified API - CRM
+The documentation for the StackOne Unified API - IAM
+The documentation for the StackOne Unified API - MARKETING
+The documentation for the StackOne Unified API - LMS
+The documentation for the StackOne Unified API - TICKETING
+The documentation for the StackOne Unified API - DOCUMENTS
+The documentation for the StackOne Unified API - SCREENING
+The documentation for the StackOne Unified API - MESSAGING
+The documentation for the StackOne Unified API - ACCOUNTING
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -46,7 +57,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.19.2'
+implementation 'com.stackone:stackone-client-java:0.19.3'
 ```
 
 Maven:
@@ -54,7 +65,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.19.2</version>
+    <version>0.19.3</version>
 </dependency>
 ```
 

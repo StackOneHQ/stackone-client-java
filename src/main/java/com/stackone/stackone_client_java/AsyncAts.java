@@ -1081,8 +1081,8 @@ public class AsyncAts {
             String xAccountId, String id,
             AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto) {
         return uploadApplicationDocument(
-                xAccountId, id, Optional.empty(),
-                atsDocumentsUploadRequestDto, Optional.empty());
+                xAccountId, id, atsDocumentsUploadRequestDto,
+                Optional.empty());
     }
 
     /**
@@ -1090,21 +1090,18 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param id 
-     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsDocumentsUploadRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AtsUploadApplicationDocumentResponse>} - The async response
      */
     public CompletableFuture<AtsUploadApplicationDocumentResponse> uploadApplicationDocument(
             String xAccountId, String id,
-            Optional<String> prefer, AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto,
-            Optional<Options> options) {
+            AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto, Optional<Options> options) {
         AtsUploadApplicationDocumentRequest request =
             AtsUploadApplicationDocumentRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
-                .prefer(prefer)
                 .atsDocumentsUploadRequestDto(atsDocumentsUploadRequestDto)
                 .build();
         AsyncRequestOperation<AtsUploadApplicationDocumentRequest, AtsUploadApplicationDocumentResponse> operation
