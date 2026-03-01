@@ -1,37 +1,38 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: f9668499d9603a6d164611fc568632ff
+  docChecksum: c74abf82d8906218b3cda34fdf6bc8ba
   docVersion: 1.0.0
-  speakeasyVersion: 1.709.0
-  generationVersion: 2.811.4
-  releaseVersion: 0.19.2
-  configChecksum: c9da49a8a73a55b4cbb812830c7b2c0c
+  speakeasyVersion: 1.736.1
+  generationVersion: 2.845.15
+  releaseVersion: 0.19.3
+  configChecksum: f0acfc8c2c7627115fa660e47031f236
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
+  installationURL: https://github.com/StackOneHQ/stackone-client-java
   published: true
 persistentEdits:
-  generation_id: 259c783a-888b-4c50-a225-6f2955cfec3a
-  pristine_commit_hash: 56954b76fb60cbedcef180357f74caca323f9deb
-  pristine_tree_hash: a22fcbc21188b3077e4393a67311d5b3f761c1d3
+  generation_id: eeec12b2-0eb3-4997-91de-49b7cb3ce64e
+  pristine_commit_hash: 5f7ecf642715125b2f1da0ca65e8de0699052654
+  pristine_tree_hash: 62fa37b0e6e675c75eb5c9fd25ce2cbb54fa3564
 features:
   java:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
-    constsAndDefaults: 0.1.2
-    core: 3.55.10
+    constsAndDefaults: 0.1.3
+    core: 3.55.17
     deprecations: 2.81.2
-    examples: 2.81.6
+    examples: 2.81.7
     flattening: 2.81.1
     globalSecurity: 2.83.2
     globalSecurityCallbacks: 0.1.0
-    globalServerURLs: 2.83.0
+    globalServerURLs: 2.83.1
     groups: 2.81.3
     methodSecurity: 2.82.3
-    nameOverrides: 2.81.3
+    nameOverrides: 2.81.5
     nullables: 0.1.0
     openEnums: 0.2.0
-    pagination: 1.0.1
+    pagination: 1.0.2
     retries: 0.1.1
     sdkHooks: 1.2.0
     unions: 0.3.2
@@ -342,8 +343,8 @@ trackedFiles:
     pristine_git_object: 2873a391c8072c92ab57ba124de4f8a4c1352f16
   docs/models/components/ActionSearchDto.md:
     id: 580a3d6d4f11
-    last_write_checksum: sha1:eb187e803ebf28377abbdcdfad8b5bca1654dc58
-    pristine_git_object: 175801ec2053a1b929e3d8daa68075492d20544c
+    last_write_checksum: sha1:306faf6c1dca03d1401bda760218526d73c6c9a7
+    pristine_git_object: 737bdffb89388db7c121fb8fd812d8efe5ea4c79
   docs/models/components/ActionSearchResponseDto.md:
     id: fde7b514adc9
     last_write_checksum: sha1:f852aedb9090928c3a3faebdadf9ee5749486ba2
@@ -4834,8 +4835,8 @@ trackedFiles:
     pristine_git_object: 3d0f19a8ee0068eda56007a6113bde09e6d1bd1a
   docs/models/components/LinkedAccount.md:
     id: abef3db07a5f
-    last_write_checksum: sha1:0f59390aaada155fbe0de7503680ac5e7292fb20
-    pristine_git_object: 67a12d259d3f5a0fe658e11ca2532c5e844de9d1
+    last_write_checksum: sha1:2c4e87e1cbbc724dfa5ae2d1f13c84c581fcfdb8
+    pristine_git_object: d809185a332cd1adcec56c5a44bb08ada743b1ea
   docs/models/components/LinkedAccountMeta.md:
     id: 8c42a8cab663
     last_write_checksum: sha1:9941fb41859379d48a009ee514a19627bcfac990
@@ -5362,8 +5363,8 @@ trackedFiles:
     pristine_git_object: 6a4108330ee81ea15fe2e6ede1978d6b097463b2
   docs/models/components/PatchAccountExternalDto.md:
     id: f8d649cc1f81
-    last_write_checksum: sha1:9e4de0d0e835ecb75e948ad947bfaee7bd150014
-    pristine_git_object: 5f9106ebeac42a1323de29654ef73aac5ed0a4d2
+    last_write_checksum: sha1:27564dc14d7d526fc40c4ae0ab1bd3575c83d66f
+    pristine_git_object: f93297e1b9963cf8c6a55a8f85fd0c9ef0500915
   docs/models/components/PatchAccountExternalDtoCredentials.md:
     id: 65d96840d782
     last_write_checksum: sha1:2ce065671980f7a036785f00c7c69b6bcea920a0
@@ -7094,8 +7095,8 @@ trackedFiles:
     pristine_git_object: 922d074d7efb333655fb8f675e6e6c8637613185
   docs/models/operations/AtsDownloadApplicationDocumentRequest.md:
     id: 450af845c038
-    last_write_checksum: sha1:b7bcc64ef87745bd152f401cb81bbf0c37762c10
-    pristine_git_object: b3a03bf6e91454a66515aa2694417a583b90a7b8
+    last_write_checksum: sha1:375d1979da67e8166d5757aeaae8ab17f4b0ba60
+    pristine_git_object: dd4cc2227e681985fc92e15d993503054a8d5eba
   docs/models/operations/AtsDownloadApplicationDocumentResponse.md:
     id: 61ab80c5c1ba
     last_write_checksum: sha1:7fe11a810c72d71c957a4286212d631125e35fed
@@ -7746,8 +7747,8 @@ trackedFiles:
     pristine_git_object: 449ed0dd8053c791d058ba90ac8b064b41672da7
   docs/models/operations/AtsUploadApplicationDocumentRequest.md:
     id: a3008cceff17
-    last_write_checksum: sha1:dcc0b3b2ff23aa4c2a36ddb76914fc3350df3f75
-    pristine_git_object: fc79e475e6cb194966e224fd95559d202964ec5e
+    last_write_checksum: sha1:f904ef02d247cd2b664603e8d34a9e5685b38898
+    pristine_git_object: 5f615ac3f128dbe6044dcc541dcddf85f7676deb
   docs/models/operations/AtsUploadApplicationDocumentResponse.md:
     id: 2a00703b46a9
     last_write_checksum: sha1:164b4ec21e385c03da257d57923ca63457ed6fa0
@@ -7858,8 +7859,8 @@ trackedFiles:
     pristine_git_object: 6ccf77d9a9e67affc9fcea91579ac8e5d8de68c2
   docs/models/operations/DocumentsDownloadFileRequest.md:
     id: bc5ea187d970
-    last_write_checksum: sha1:dc768827b77759f88a8524d6a8ff6e046fd27451
-    pristine_git_object: 6b0462e792a6c168c52f2534da113de40f5821fa
+    last_write_checksum: sha1:8dedc65452dfbbf71aa6bfe126c3d4476e91ab55
+    pristine_git_object: 3e7707a7d13c635951c7ddb605fb791fba95d9ab
   docs/models/operations/DocumentsDownloadFileResponse.md:
     id: 5c8bf3a4f940
     last_write_checksum: sha1:3e6cc5f8a942dbb6173b90c63eccc1a4d8a8040a
@@ -7914,8 +7915,8 @@ trackedFiles:
     pristine_git_object: 2f82d22ed3c6eac2b5c6e06159194024adac8324
   docs/models/operations/DocumentsListFoldersQueryParamFilter.md:
     id: a9b9a340695c
-    last_write_checksum: sha1:21aa36fe44ec37a88cf15d96c54db5f0acde118a
-    pristine_git_object: 87297349c594253b181bea81910578e8c8318647
+    last_write_checksum: sha1:cf81bfd84caa0ed21e39387328dc04ebefcaad27
+    pristine_git_object: 91a69c4fdfeb7f07fb822e01e86ac4fd8253197d
   docs/models/operations/DocumentsListFoldersRequest.md:
     id: 63e836bfbe8a
     last_write_checksum: sha1:f783f05851b75948418f18ba79e9816f7d73362a
@@ -7926,8 +7927,8 @@ trackedFiles:
     pristine_git_object: 8488ed386c51227bac1e7384a47e9b08c425ffc6
   docs/models/operations/DocumentsUploadFileRequest.md:
     id: cd75457b0570
-    last_write_checksum: sha1:f2076585c657dac796cd21396f785f5bdc92d18b
-    pristine_git_object: b2e8e9be47bdb1d9f2bdce7cbc2ac508408c4afd
+    last_write_checksum: sha1:9a8ed67fc91631430e62366a1c4318bffc94a1fc
+    pristine_git_object: 8953d1dcf6d0c156603e58626694d56b0861129b
   docs/models/operations/DocumentsUploadFileResponse.md:
     id: 956b1000f283
     last_write_checksum: sha1:45d47b68476dbb989a7ffd7208b24d4c430dad40
@@ -7942,8 +7943,8 @@ trackedFiles:
     pristine_git_object: cbc807729310dc5f171b131fd1e3370708bfe707
   docs/models/operations/HrisBatchUploadEmployeeDocumentRequest.md:
     id: c6f75cae751f
-    last_write_checksum: sha1:2ad4f7ce6ea5b1e41e1b19f3b4529c2fa5e87e32
-    pristine_git_object: fc8cbb7d896d1cfe5cf16c292b490a9170440e29
+    last_write_checksum: sha1:307319300090e7d8ee0752eb2b747cb86ffeef30
+    pristine_git_object: 8a3b2f31f28667fd9b7201b9a69e189e00eae4cc
   docs/models/operations/HrisBatchUploadEmployeeDocumentResponse.md:
     id: a86dc49390e7
     last_write_checksum: sha1:fb14a61962cf28be72bbed5179dd6e480b841ab9
@@ -7998,8 +7999,8 @@ trackedFiles:
     pristine_git_object: ee8a8d982c03ac6c6bb2b60966adcefac77473a7
   docs/models/operations/HrisDownloadEmployeeDocumentRequest.md:
     id: fd27954aaa44
-    last_write_checksum: sha1:302200ff7a5890405260ffa3ae939bcf26e90b40
-    pristine_git_object: 5a2d4a2d59a4415da237ebe4c54c9642cf11c8a0
+    last_write_checksum: sha1:4eeefbb9e0368a3242132ddd6b823df9530d27f2
+    pristine_git_object: 351c42d0a0a1490fe1d9f4a23068609f2f34e0a3
   docs/models/operations/HrisDownloadEmployeeDocumentResponse.md:
     id: 9b004e84bdf7
     last_write_checksum: sha1:71b8560971a8fdc8c2ec7df31be6e8434e7f5816
@@ -8654,8 +8655,8 @@ trackedFiles:
     pristine_git_object: e4e8c1b5dbabd9d961b99b1f6a2b70e039bbf4f4
   docs/models/operations/HrisUploadEmployeeDocumentRequest.md:
     id: 1c4c35a1a174
-    last_write_checksum: sha1:894d6bb781136c0b1a1a6eb116660e3f69353405
-    pristine_git_object: 2cdff1c12160280a9262b8e5b9260c103ba845f6
+    last_write_checksum: sha1:ef51e49ad5fb21988e5c0052a63861c79cb16bf1
+    pristine_git_object: 228a63df66a7a67a5979f50c8068cb7d81be0d16
   docs/models/operations/HrisUploadEmployeeDocumentResponse.md:
     id: 204bfa5710cb
     last_write_checksum: sha1:840c2c5d02260746191b935f0b8029bd6c1a8822
@@ -9238,8 +9239,8 @@ trackedFiles:
     pristine_git_object: 2fc61676f06afb466f6c1bb171f1abf63b28e7e8
   docs/models/operations/MessagingDownloadMessagingAttachmentRequest.md:
     id: ef850c959142
-    last_write_checksum: sha1:d74668738da621d9af7387b26c0629025b192308
-    pristine_git_object: 0d3b0e3f399f50c51f6641592209ee1481b7cfcf
+    last_write_checksum: sha1:77700cb59c4abcc82c90ac42d88a418553814b38
+    pristine_git_object: 7b86df9c028649d3a155ab9182d7fe95e30dbb6c
   docs/models/operations/MessagingDownloadMessagingAttachmentResponse.md:
     id: aa42b43fc3e1
     last_write_checksum: sha1:4185f5246856bc1f5bbdbdfd5a21b1f63c8295a0
@@ -9618,8 +9619,8 @@ trackedFiles:
     pristine_git_object: 0e14c8e4f38b2e5db321754e7c95123895c09ee3
   docs/models/operations/TicketingDownloadTicketingAttachmentRequest.md:
     id: 9ccdd44f391d
-    last_write_checksum: sha1:1314b0e80b1d7b5b939212e08f07c8d40a6e58e1
-    pristine_git_object: b9e6de6c244609207d27cc51f85c8b95402f0300
+    last_write_checksum: sha1:e9ce632ef3d73a64ea9c6cbcc23b3fd9a9003c9f
+    pristine_git_object: 66ed1a55bf8a651f876758163ec662740134f880
   docs/models/operations/TicketingDownloadTicketingAttachmentResponse.md:
     id: 31a145c9b6b4
     last_write_checksum: sha1:ee13512b496dafeee02fad8c074525d96c17063e
@@ -9814,8 +9815,8 @@ trackedFiles:
     pristine_git_object: db3759c280b878ffdd053c369c9c5648d6eb8ea1
   docs/sdks/ats/README.md:
     id: 24fafa267f6c
-    last_write_checksum: sha1:2bffcde7df437eed4e635aed388c1471313c8d39
-    pristine_git_object: 001f30a11a518082f16b68575a32164d38b64427
+    last_write_checksum: sha1:904731d4cecbf34119bcadf93f76e890cacc3748
+    pristine_git_object: 37bfe5edb56961d92a1cbf2145c82ceb7e6acc80
   docs/sdks/connectors/README.md:
     id: 7633a87d946d
     last_write_checksum: sha1:854f5b9d4d07d5119ec00c3932241b6960485daf
@@ -9830,12 +9831,12 @@ trackedFiles:
     pristine_git_object: 907f8a33b27febf3b396e389ac20b1762e71b9a5
   docs/sdks/documents/README.md:
     id: 9758e88a0a9d
-    last_write_checksum: sha1:a48edebac08584b777c38ea1a63ee1cb13fdfd53
-    pristine_git_object: 0e901e37d8cc5b9a80917b75e335dedd5a34c831
+    last_write_checksum: sha1:0d9d577430abe668fa2866080a7e07b0b0531bdd
+    pristine_git_object: 5d7546c5597d592766e09337b8bb7635e7f58f88
   docs/sdks/hris/README.md:
     id: 0baa868a038c
-    last_write_checksum: sha1:1ab35f6805e75516c9476209b11fc8467924cd4d
-    pristine_git_object: 81656ea1f7d9fab35976ebdf1bf5865158d33c6a
+    last_write_checksum: sha1:f6abd631cb96c2c5d7d5b5a86f93ada574aa29de
+    pristine_git_object: 315314d46c30320dfc6427d705cc685a5160a8ae
   docs/sdks/iam/README.md:
     id: 3925b876b53f
     last_write_checksum: sha1:6cf829eb5987b7350297c0cc425ae8d08aebb208
@@ -9854,8 +9855,8 @@ trackedFiles:
     pristine_git_object: 0b9dd3ce850b751030d20e16a1e2e0d49444d64c
   docs/sdks/messaging/README.md:
     id: 827f9d81a390
-    last_write_checksum: sha1:5e27b649ea19e2e6b678d235cb9fe44a43d0e207
-    pristine_git_object: 1b47d5ec3db397ec1de51971918a6fae1d3b6526
+    last_write_checksum: sha1:8417e0ab8dd74580cd60591237b10d30a16ca077
+    pristine_git_object: fe7139f7759511b873bd704c4519527e82aa258f
   docs/sdks/proxy/README.md:
     id: 2c72b780f1d0
     last_write_checksum: sha1:7a0f5e8f001451aef933eba8da1e9796070745be
@@ -9870,16 +9871,16 @@ trackedFiles:
     pristine_git_object: 048ac7a89709453d9626de29aa729245e7b51a32
   docs/sdks/ticketing/README.md:
     id: ce4537ebe46f
-    last_write_checksum: sha1:ede0f519ff87abd85766a0da3967eeff84410444
-    pristine_git_object: 1700d166909ca0e23e9bc21a2d48477df2fbd503
+    last_write_checksum: sha1:500f48217b91aacaeb52bbcc0223ff98169b7b7f
+    pristine_git_object: 6d4f81313098a3a8698208082202d142aacb8272
   docs/utils/Blob.md:
     id: 3d9a7c4ad67a
     last_write_checksum: sha1:8cdf23422256330852fcd0596a5e27d2151495d6
     pristine_git_object: c2c7d97090a7ed6ff36ce329fa98d32610c062c5
   gradle.properties:
     id: 2afbb999f001
-    last_write_checksum: sha1:7f6ef066174de7929dd2ac2dac7fc9b148aa5e32
-    pristine_git_object: 1a643adce5192d24ef6e8283c7240ae8a380009c
+    last_write_checksum: sha1:b3aea007f6c9a3fec31ead9497af6a4d4221b194
+    pristine_git_object: 7a334dc4119f7ed9443ae7330b94cdae0a6291c9
   gradle/wrapper/gradle-wrapper.jar:
     id: ec27dae6e852
     last_write_checksum: sha1:f725fb1467084142d74fd7cd8eab691ab3442611
@@ -9958,8 +9959,8 @@ trackedFiles:
     pristine_git_object: dd40f6ad3b5763faec633f064d1774ff8c8ed40f
   src/main/java/com/stackone/stackone_client_java/AsyncAts.java:
     id: 2fa341c0c7d7
-    last_write_checksum: sha1:5e0f14c366828252bd8077e9a23dfca09bbe52bb
-    pristine_git_object: 16d87bac9df3d1ace7065d7816520cb3b8e0b121
+    last_write_checksum: sha1:1f0dbabe9a564a885ac7cc7fe3081e6d218988e0
+    pristine_git_object: 3f1462c67b105018621d479665dc12e28bf4d7a5
   src/main/java/com/stackone/stackone_client_java/AsyncConnectSessions.java:
     id: 2c604ca038b7
     last_write_checksum: sha1:c899c687f57a393b97e2b90a84896ef6d4df546c
@@ -9974,12 +9975,12 @@ trackedFiles:
     pristine_git_object: 581381110be820579e8a91f6852473a2682833ae
   src/main/java/com/stackone/stackone_client_java/AsyncDocuments.java:
     id: dbbbcf25da9e
-    last_write_checksum: sha1:48055b35f6131946f5a8f87b11deb2ed6dd65613
-    pristine_git_object: f9b3a92cb8d7b5b428e61c56811064fe146580a2
+    last_write_checksum: sha1:a474e157a3dc65087525480c9e3b421ad8118262
+    pristine_git_object: 2e6e50eaebd733426c12a4db3f34e358f5611553
   src/main/java/com/stackone/stackone_client_java/AsyncHris.java:
     id: e8a9ac1ca501
-    last_write_checksum: sha1:bfea533db04fb939ed46c812aca29215032f4b5a
-    pristine_git_object: 93980c8dd779d7cd14a57fe851a2ded259b34461
+    last_write_checksum: sha1:b8b3190530594dba4504a90473664ea9eb37723e
+    pristine_git_object: 7c1f1afe850a754ffb936d931e3975b0f3dd4a8d
   src/main/java/com/stackone/stackone_client_java/AsyncIam.java:
     id: 94b490b6f83b
     last_write_checksum: sha1:064b19f582ade6e9cb775a561b3b926e6b773f7a
@@ -10014,16 +10015,16 @@ trackedFiles:
     pristine_git_object: 40fd57963454e0b06a9699a9b84549a1b8838db4
   src/main/java/com/stackone/stackone_client_java/AsyncStackOne.java:
     id: 37bf68178b23
-    last_write_checksum: sha1:9f36f0cc80c1717b54fa518e391cb43f5b208a65
-    pristine_git_object: 910e8e12a87a916daf6de27918bb535fcfa56085
+    last_write_checksum: sha1:7eceb88c44282e5c2618b84983fcd7599ffa2624
+    pristine_git_object: 2b364a722da971e5ddf7b5060061632ea8ef5743
   src/main/java/com/stackone/stackone_client_java/AsyncTicketing.java:
     id: 1101ce57edcd
     last_write_checksum: sha1:13003a9ca0319aad4e7a9ad96c91b6a867f712c3
     pristine_git_object: 91369aef87381d57a5ef974f8827ddb49733783b
   src/main/java/com/stackone/stackone_client_java/Ats.java:
     id: b5f215a06757
-    last_write_checksum: sha1:9a070daa363fe902714d099955f462524d4eaf8b
-    pristine_git_object: d32baf5107b58dbddb8b290b8980c493b7479192
+    last_write_checksum: sha1:3f01c2c80027d497f6436367e73194e8d299b580
+    pristine_git_object: 1596d9dbc697455d7218f16bdb33677733c93b67
   src/main/java/com/stackone/stackone_client_java/ConnectSessions.java:
     id: 382c949c9626
     last_write_checksum: sha1:0e4ed8d60d4113ccf2f555fc55bd62c0564b11d8
@@ -10038,12 +10039,12 @@ trackedFiles:
     pristine_git_object: 69a31d5c5100c9f0ae85ef12af73147d5835cd8f
   src/main/java/com/stackone/stackone_client_java/Documents.java:
     id: db2877d1b330
-    last_write_checksum: sha1:168b35ed45841d295393e8bce9ebc5b0856b0249
-    pristine_git_object: 665ef6f91f6ac1ce53b6a8ac582e195a442d7c0d
+    last_write_checksum: sha1:ce924f80f8d067a48342fd8ff51158dd34d5c07b
+    pristine_git_object: 1282a0c39c60f9750ba77f5d2f96851e64f873d7
   src/main/java/com/stackone/stackone_client_java/Hris.java:
     id: b7292078314a
-    last_write_checksum: sha1:cc977492ca72af29ced4d9d29fb3d5a7cc39db92
-    pristine_git_object: 59989aaef20a6207c402e7d79076735a8c555f00
+    last_write_checksum: sha1:4295853bae8f96521aa4566aa445c86f7de6d9a8
+    pristine_git_object: 08dffeeae7782bc5b8bd73d1fd883ac2024e4a60
   src/main/java/com/stackone/stackone_client_java/Iam.java:
     id: 345f730b52f2
     last_write_checksum: sha1:581892858d299ff0e2d793f2dd8287e0babd9b11
@@ -10074,8 +10075,8 @@ trackedFiles:
     pristine_git_object: e707b926ae1a6d0d96656304416d8484dcbff97b
   src/main/java/com/stackone/stackone_client_java/SDKConfiguration.java:
     id: 988c4a42ddb2
-    last_write_checksum: sha1:cd72fe328bc52218a7bf3bcd678b1be633767177
-    pristine_git_object: 8bb0e3c145744740e2c93562ecf9b60023cb0bee
+    last_write_checksum: sha1:5b5a55a6ca0fed6727fccdf3f54f60459fe1c75d
+    pristine_git_object: 997741a3c66ccc0f7b0bbe5cf8bb1fa8a7b8cf78
   src/main/java/com/stackone/stackone_client_java/Screening.java:
     id: 0ddaf6ce0fa0
     last_write_checksum: sha1:8aec79776a5b9be7398770557f4eed73950c82e4
@@ -10086,8 +10087,8 @@ trackedFiles:
     pristine_git_object: 438333042f91af078dcf544469e62b57770cb630
   src/main/java/com/stackone/stackone_client_java/StackOne.java:
     id: 1c7b8c957709
-    last_write_checksum: sha1:871a71c450a1b990bec03eadb66c8e148ba9ae96
-    pristine_git_object: 45ef6eda9fa1ab0ff0db0de3de1d5c93aa6c1e37
+    last_write_checksum: sha1:8fa458ab3ccad875151978d99dc502201ed55c9c
+    pristine_git_object: 8904634fdc6cabef54cebddb0971ac2c61299d60
   src/main/java/com/stackone/stackone_client_java/Ticketing.java:
     id: f1670128354d
     last_write_checksum: sha1:b0b9e6368cc3d83156ec54046ffa3b044e002559
@@ -10386,8 +10387,8 @@ trackedFiles:
     pristine_git_object: dc442c94c6db428fd98720f980125500e910da43
   src/main/java/com/stackone/stackone_client_java/models/components/ActionSearchDto.java:
     id: 9db57d317527
-    last_write_checksum: sha1:b156d74c7a0a9f80a3f0206570f4b88219f85942
-    pristine_git_object: 00dbfb8987d9c26e667b83f346127c879909b043
+    last_write_checksum: sha1:1d23613cfbb790fe0cf6d0b49507f9c5c333468f
+    pristine_git_object: fd6c1746b33247ace5942ee8e6d3e41c5a49338f
   src/main/java/com/stackone/stackone_client_java/models/components/ActionSearchResponseDto.java:
     id: 520a937ee73f
     last_write_checksum: sha1:fb436ae3e6707a33663bedf01ffd057f80b68950
@@ -14878,8 +14879,8 @@ trackedFiles:
     pristine_git_object: 5cbdcd2e6f6233bebc8e070293b65ad540c175e3
   src/main/java/com/stackone/stackone_client_java/models/components/LinkedAccount.java:
     id: 5c037fe26121
-    last_write_checksum: sha1:4385087716a5969d21b43d01539239493322e32d
-    pristine_git_object: 42770d3dea44c1d397d69628a830305b26cee574
+    last_write_checksum: sha1:d8a78558dd6445f2aa7200d33d203e695e06ff6a
+    pristine_git_object: 789e530fb6f9969e8a659a7d49dfc5ba2a42a4ca
   src/main/java/com/stackone/stackone_client_java/models/components/LinkedAccountMeta.java:
     id: c9304f86a71f
     last_write_checksum: sha1:41ba23ced355e4015a4cd8130e8c94f12edfdb6b
@@ -15406,8 +15407,8 @@ trackedFiles:
     pristine_git_object: b239c5df4ec4e7a6ea853a97a579afff76a93ebd
   src/main/java/com/stackone/stackone_client_java/models/components/PatchAccountExternalDto.java:
     id: f0cffe8a58b4
-    last_write_checksum: sha1:b78810fb5a19073e65317732a9db6dc5469b368b
-    pristine_git_object: e0a97b30433e399314c8ccbbb6a856859d67da97
+    last_write_checksum: sha1:6319d26f0a871c22d2f205ad8c942c7e26bd60a8
+    pristine_git_object: aec84124a79f5a1b9b20b04a408a7b4281dc331f
   src/main/java/com/stackone/stackone_client_java/models/components/PatchAccountExternalDtoCredentials.java:
     id: 930bf4e3ca6e
     last_write_checksum: sha1:1cc441dabaed0fb73c13e4a32d8f3839e0bbd19b
@@ -17322,8 +17323,8 @@ trackedFiles:
     pristine_git_object: 65202e89a84bb89230e5146862075a9eabe68678
   src/main/java/com/stackone/stackone_client_java/models/operations//async/AtsUploadApplicationDocumentRequestBuilder.java:
     id: 77f2c94143f7
-    last_write_checksum: sha1:37791c5bea46c204d641d04c91e83ed0d983fe61
-    pristine_git_object: c6ef8e9c60ed8fe881b4137ce72865c79a43f128
+    last_write_checksum: sha1:c894496055dfb975f85bf8a5ad90c63dd6f238b8
+    pristine_git_object: 2f0a80d3f3766b935197a387b58d18f1dc56f356
   src/main/java/com/stackone/stackone_client_java/models/operations//async/CrmCreateContactRequestBuilder.java:
     id: 516e7d4f6c7f
     last_write_checksum: sha1:936f28ebcd96b38f029bc7c3606a68bff51b0fac
@@ -17394,12 +17395,12 @@ trackedFiles:
     pristine_git_object: f8112c8d6382031cd7d48bec726699b186dedaea
   src/main/java/com/stackone/stackone_client_java/models/operations//async/DocumentsUploadFileRequestBuilder.java:
     id: "596611783240"
-    last_write_checksum: sha1:77e8cab1e1d189aae531b3a95326f4e6c2f70ab4
-    pristine_git_object: 6b2ae78f7902eb58b2cea6a183f32d02fbf77033
+    last_write_checksum: sha1:b19058b255a83fa8b18f9e40e51caed84af8980e
+    pristine_git_object: bbba2a2eb906effaccd5bda008f04aad8ab09810
   src/main/java/com/stackone/stackone_client_java/models/operations//async/HrisBatchUploadEmployeeDocumentRequestBuilder.java:
     id: ea0f7ff26c36
-    last_write_checksum: sha1:2bde9c47d463a29f9fb121657a66a876c1fa4609
-    pristine_git_object: 714e9fa7cea91d836fd360dca931c158bb274900
+    last_write_checksum: sha1:067eacf2e602d10017df14813533500436ba5234
+    pristine_git_object: 1eb90edee3f875f66dfcb0cf82ce3ee0a82a3426
   src/main/java/com/stackone/stackone_client_java/models/operations//async/HrisCancelEmployeeTimeOffRequestRequestBuilder.java:
     id: fb734f65b04c
     last_write_checksum: sha1:f7b5230322d355ae75424b8a2b71cfa997a2191a
@@ -17690,8 +17691,8 @@ trackedFiles:
     pristine_git_object: be1e1d6c5927f03c85801f96c62a00e01053cb54
   src/main/java/com/stackone/stackone_client_java/models/operations//async/HrisUploadEmployeeDocumentRequestBuilder.java:
     id: a03ca876307a
-    last_write_checksum: sha1:8cb0567b73c43409fad4d613d76909d1bc5181d0
-    pristine_git_object: 19d16d317d6b96d49b8d7c7fe3029a92c7c641a4
+    last_write_checksum: sha1:5d434aea5193a16e52534a191dad5582b38da8b1
+    pristine_git_object: 02ccd6fd62cdeaecb8ffb4cc266fabe626154508
   src/main/java/com/stackone/stackone_client_java/models/operations//async/IamDeleteUserRequestBuilder.java:
     id: 0a846aeeaa62
     last_write_checksum: sha1:7308dce9373ee7a754e522d227de24915b729df9
@@ -18398,8 +18399,8 @@ trackedFiles:
     pristine_git_object: 2f73af01606a606d36c6c5fdf314f7ba89c9754c
   src/main/java/com/stackone/stackone_client_java/models/operations/AtsDownloadApplicationDocumentRequest.java:
     id: aad8d42afc69
-    last_write_checksum: sha1:ebed341aa9257a65eed6c73f1079853ffe95e422
-    pristine_git_object: 949cd0089fd22874b13c748c1d1436e6454fe984
+    last_write_checksum: sha1:bccf718a62735122bbb305c88bffc65df7d23abc
+    pristine_git_object: 83835eea9ea3513472ffb71c232c7d417bc766f9
   src/main/java/com/stackone/stackone_client_java/models/operations/AtsDownloadApplicationDocumentRequestBuilder.java:
     id: 31841905219d
     last_write_checksum: sha1:446070aa6a130708103fa0e91172423f99603c04
@@ -19314,12 +19315,12 @@ trackedFiles:
     pristine_git_object: 8b7dac1d220ed19bf8bace784c6ca5fe19e94d83
   src/main/java/com/stackone/stackone_client_java/models/operations/AtsUploadApplicationDocumentRequest.java:
     id: 2e6047c1dfcf
-    last_write_checksum: sha1:29c793d5432c9564c68ee6a44581f8c2b4a723e1
-    pristine_git_object: b72993f1918f7de07b693998a14b22a3e15f4cf7
+    last_write_checksum: sha1:85e2e98432b9cc2b97a74e00fbfacd4331c8cd3f
+    pristine_git_object: 2842b254b9ff440d203b05e36fba2642a8748062
   src/main/java/com/stackone/stackone_client_java/models/operations/AtsUploadApplicationDocumentRequestBuilder.java:
     id: a3112547ad11
-    last_write_checksum: sha1:b6c7d5ad569d955bf9c96f2ed6e7a60224a47b30
-    pristine_git_object: d9ff8bf533a1bf4f6402dadb092c77e0be0c264f
+    last_write_checksum: sha1:fd01102c894dfa743ea9314d404e9e329e467ed4
+    pristine_git_object: 85dea60f8d4c295d752e2881b9766e61eac9359e
   src/main/java/com/stackone/stackone_client_java/models/operations/AtsUploadApplicationDocumentResponse.java:
     id: 2f940578ee52
     last_write_checksum: sha1:f32558acd08c1a020a4505b2e73d3b4947668c7c
@@ -19470,8 +19471,8 @@ trackedFiles:
     pristine_git_object: fa9b08fe31c080907fce37f824584a947646228d
   src/main/java/com/stackone/stackone_client_java/models/operations/DocumentsDownloadFileRequest.java:
     id: 2ab57894f950
-    last_write_checksum: sha1:6308b02175fd551dec5dea61e8867ee4c6a8b16a
-    pristine_git_object: cbee3a2cfec60b5e33f392e15dbc350cf9c4a26d
+    last_write_checksum: sha1:304fe3a332a4034008f3eab68c1de071aef9bd63
+    pristine_git_object: f8c6d4abbc0f8b27ca52c97ad20243baccc095d9
   src/main/java/com/stackone/stackone_client_java/models/operations/DocumentsDownloadFileRequestBuilder.java:
     id: 6d986ac42e77
     last_write_checksum: sha1:da4c29ba031c978675a6c69f6468e2802412394d
@@ -19550,8 +19551,8 @@ trackedFiles:
     pristine_git_object: 45ff3bc75946496f947ac3dbef5e8d64593e7dda
   src/main/java/com/stackone/stackone_client_java/models/operations/DocumentsListFoldersQueryParamFilter.java:
     id: 0a5362abf94f
-    last_write_checksum: sha1:bc175a5893df5f99f1ad9c331dd5398d46e751f9
-    pristine_git_object: 0125cd38906f3e44004b0c40b7704f2b94c06d9c
+    last_write_checksum: sha1:6779e2a6a1688b5f46ef3eb6f0e199307d569810
+    pristine_git_object: f5944a42a2cfd418a2899da993dbb7aa0f3dea73
   src/main/java/com/stackone/stackone_client_java/models/operations/DocumentsListFoldersRequest.java:
     id: e7e82cfb4fb0
     last_write_checksum: sha1:aec781371476a368bd37b3f10c401ef74b31a203
@@ -19566,12 +19567,12 @@ trackedFiles:
     pristine_git_object: ce0498de5704ad19e1a3b492b5f738f6333f4cd2
   src/main/java/com/stackone/stackone_client_java/models/operations/DocumentsUploadFileRequest.java:
     id: 21bbe1ef5c30
-    last_write_checksum: sha1:66e8d8cdb826fef124992a66003d8539e7584688
-    pristine_git_object: bb65fb9585b676b9f57fea23bedf7c3246633cf7
+    last_write_checksum: sha1:a7d74cd8d30188dc701753f83b2e9a6f59202fcb
+    pristine_git_object: c5eeca1894d12491523719cb1a6563c485073425
   src/main/java/com/stackone/stackone_client_java/models/operations/DocumentsUploadFileRequestBuilder.java:
     id: e2587f29ce78
-    last_write_checksum: sha1:dc710d54f05f2aa287e589fc40e0234359817d87
-    pristine_git_object: ba7ff8238a9860951e51aba27a9fbff931849ab1
+    last_write_checksum: sha1:ad54c24031469a04b348709de03257fcf3b15d26
+    pristine_git_object: 34624ce14ab89e7836d5fff01d3e3e8eea5178d6
   src/main/java/com/stackone/stackone_client_java/models/operations/DocumentsUploadFileResponse.java:
     id: f72cbc067f8e
     last_write_checksum: sha1:1d90d43fc1f1e5be30671ef6afdba4ebd2872a6a
@@ -19586,12 +19587,12 @@ trackedFiles:
     pristine_git_object: 1cc87da983b433b8c979c5a374d88963f96ca042
   src/main/java/com/stackone/stackone_client_java/models/operations/HrisBatchUploadEmployeeDocumentRequest.java:
     id: 97f3abc09f7d
-    last_write_checksum: sha1:2a4462d31e7d95e1fe084fc9f06a63c8624bdd02
-    pristine_git_object: 48b11389dd03e86ffe0053343603ef374e108bea
+    last_write_checksum: sha1:65c98f09cfe873dacc87cbfe2d0a6abf4267f803
+    pristine_git_object: dd26c5c7f3f7c4c0b82070121e09b0215c1a6533
   src/main/java/com/stackone/stackone_client_java/models/operations/HrisBatchUploadEmployeeDocumentRequestBuilder.java:
     id: f0db9d475f0e
-    last_write_checksum: sha1:05bc2ea098b9af6ca39eab58a6b749c17c01ef93
-    pristine_git_object: 728c83b6e0147a621c68305325d56913cfa58115
+    last_write_checksum: sha1:811c7cf80b8c754985b463f82db68bb2a985e412
+    pristine_git_object: 6aaa7840073576829029377ecc41947082d76a40
   src/main/java/com/stackone/stackone_client_java/models/operations/HrisBatchUploadEmployeeDocumentResponse.java:
     id: 34d86cbea23f
     last_write_checksum: sha1:f2c6d4d67a51bc4fd85fcc1455afd5b43d6d320d
@@ -19670,8 +19671,8 @@ trackedFiles:
     pristine_git_object: e13473955fcae0499b54313424dc8b65879aa969
   src/main/java/com/stackone/stackone_client_java/models/operations/HrisDownloadEmployeeDocumentRequest.java:
     id: 570cd9390a20
-    last_write_checksum: sha1:9b78e04ce7977016d3a83c52fbaed32965d255e4
-    pristine_git_object: 3e9d8923222aeb0b459be8791f0aabfbed1c94e0
+    last_write_checksum: sha1:cf5d04ff2426cdde44ebf0b1dc18f14b3b9ee01c
+    pristine_git_object: 8bb72bab4c0387370d88d3c3bdf140b9fa8b6db4
   src/main/java/com/stackone/stackone_client_java/models/operations/HrisDownloadEmployeeDocumentRequestBuilder.java:
     id: 88d445a55a98
     last_write_checksum: sha1:9d40c0639c0326d02040158548bbc7009ad4842f
@@ -20590,12 +20591,12 @@ trackedFiles:
     pristine_git_object: ef899205ceea73bb762b21c7cffe36fc0c09996f
   src/main/java/com/stackone/stackone_client_java/models/operations/HrisUploadEmployeeDocumentRequest.java:
     id: d93aaa20f9bf
-    last_write_checksum: sha1:68e31c16157141327774917a725f2567c6f4e17d
-    pristine_git_object: d24f0b24610f37eccea3f30ca0e42f9dc3d143f1
+    last_write_checksum: sha1:b5e85480d463eaf141142bf3128dc196406d3c10
+    pristine_git_object: 1f3bb93dac24700f650549b7431d93acf9282e9e
   src/main/java/com/stackone/stackone_client_java/models/operations/HrisUploadEmployeeDocumentRequestBuilder.java:
     id: 56a6f5911612
-    last_write_checksum: sha1:ce479bd54209989c938f6182bbfd37d4c66eeac2
-    pristine_git_object: b7d8bcc5763775f6f1591797eeb8b1284c009177
+    last_write_checksum: sha1:31042b0bb5ffc91d99700ba6bcdd530256ec05ed
+    pristine_git_object: 561f6b007a3fb2430044f9e77cbbf1ec36080891
   src/main/java/com/stackone/stackone_client_java/models/operations/HrisUploadEmployeeDocumentResponse.java:
     id: 4643891a681e
     last_write_checksum: sha1:c54b61d46efb4d6e3daaa639c37c94b1453c9a29
@@ -21418,8 +21419,8 @@ trackedFiles:
     pristine_git_object: 2202e49b39a9c484366be943dd43246054458c84
   src/main/java/com/stackone/stackone_client_java/models/operations/MessagingDownloadMessagingAttachmentRequest.java:
     id: 9f021f16e3cf
-    last_write_checksum: sha1:4dcfbe7d30743f40733e09892dc35e235a4e1d52
-    pristine_git_object: 23463723ed1c44c81fe010acd81d201e8d88ea61
+    last_write_checksum: sha1:9e11583e44c321bccec94992f134ee78748eb68f
+    pristine_git_object: 51089f42d99099470b8831fc8ae179c7508ecc4b
   src/main/java/com/stackone/stackone_client_java/models/operations/MessagingDownloadMessagingAttachmentRequestBuilder.java:
     id: 3acd0fb98d04
     last_write_checksum: sha1:e6f72b845a935a58a80827e17b2db39510019504
@@ -21942,8 +21943,8 @@ trackedFiles:
     pristine_git_object: 40dcf7b67522876192a175d7a6d06d086c64e67d
   src/main/java/com/stackone/stackone_client_java/models/operations/TicketingDownloadTicketingAttachmentRequest.java:
     id: 80b5b23f5028
-    last_write_checksum: sha1:79498ca5713be1001456ebeee297737fcdbf97d6
-    pristine_git_object: 3e770b56b30b0b7e97d878f3b913a98530a1cdb1
+    last_write_checksum: sha1:1026cdf43011084f720b8e6e91883dab57d8cf6c
+    pristine_git_object: cd576fd382fc32894b562cc41fcedf6d216f4984
   src/main/java/com/stackone/stackone_client_java/models/operations/TicketingDownloadTicketingAttachmentRequestBuilder.java:
     id: f4a23f94a7b4
     last_write_checksum: sha1:f7891130a20788f1eb1cad002948686225546d4c
@@ -24378,16 +24379,16 @@ trackedFiles:
     pristine_git_object: bf6d9053a8a42fb3d6d57f085e3f13480faa10ca
   src/main/java/com/stackone/stackone_client_java/operations/StackoneAuthenticateConnectSession.java:
     id: 9a0bb62000af
-    last_write_checksum: sha1:aa7114e98d8b32a1d29dd5c552cf10c1711ae552
-    pristine_git_object: 20e6b23db9eefa815bf622ba0fca2907f4315518
+    last_write_checksum: sha1:79e614ec2169e32f30240d2372b7e93689e1d266
+    pristine_git_object: 888e3edb7cf1d67e5c213eb1a645089bc43e296c
   src/main/java/com/stackone/stackone_client_java/operations/StackoneBuildActionEmbeddings.java:
     id: 05d9e1770666
-    last_write_checksum: sha1:a373e30ed90e46a867de919f274450228612fef4
-    pristine_git_object: 30cad11084dde9ccf37e3728bb68a87f83e14164
+    last_write_checksum: sha1:4ed9b9c793046e26232929fff1100dd118d57a15
+    pristine_git_object: 88a685bbe7799c92547a9643d05d949d3d644b81
   src/main/java/com/stackone/stackone_client_java/operations/StackoneCreateConnectSession.java:
     id: 5ec0aeec5668
-    last_write_checksum: sha1:149a8b8250bd36e0f3e07d257ab677e075c9c970
-    pristine_git_object: 92456718cf57aa348fad101aac861fc1ca70ae40
+    last_write_checksum: sha1:78f0891eb2be4c941e5b10ca7b6b1baff8033638
+    pristine_git_object: de5e53b543bb08dd0390ab856385c76783de28df
   src/main/java/com/stackone/stackone_client_java/operations/StackoneDeleteAccount.java:
     id: c82657b442a9
     last_write_checksum: sha1:7eece05ceb3b2c202e708e0a876857f1a4078c5d
@@ -24450,12 +24451,12 @@ trackedFiles:
     pristine_git_object: 9497673c8b97985420636d3b5857399ea3cc9024
   src/main/java/com/stackone/stackone_client_java/operations/StackoneRpcAction.java:
     id: 2278c162d3c5
-    last_write_checksum: sha1:6919380b0a83d262ebd2c40ff7055608f3815af8
-    pristine_git_object: e74113418fcbac782d02ea3dc6615ae54ca1a701
+    last_write_checksum: sha1:3dffea0d5f00129bd82754f0be932d6c5b607fbc
+    pristine_git_object: cc8c9df1f37eb76b2fb591811ec60a86e36fe8e9
   src/main/java/com/stackone/stackone_client_java/operations/StackoneSearchActions.java:
     id: 61ee13356c38
-    last_write_checksum: sha1:876da64966420ba20ea0b1d2f6d360a7059a5ab0
-    pristine_git_object: 15f0b3fc50dbc8ac93c7d67ad083ec53b1c5d7be
+    last_write_checksum: sha1:481b2dbe3bcceecfa7d310cbf64e8d63f4840fef
+    pristine_git_object: 0db37035a470be154df0239756f08b66f662c918
   src/main/java/com/stackone/stackone_client_java/operations/StackoneUpdateAccount.java:
     id: dcd0e9cef313
     last_write_checksum: sha1:6698b9f9a86e243d7785677b1834e320ba33a620
@@ -24714,8 +24715,8 @@ trackedFiles:
     pristine_git_object: bdb9e20ff8b3cc151c796f27e1464aeeb5c53816
   src/main/java/com/stackone/stackone_client_java/utils/RequestBody.java:
     id: bd74a4f52bfa
-    last_write_checksum: sha1:a5ed19032e2441082ae8cf67ac75d8efc29ea7a3
-    pristine_git_object: bbf5e9084fd0712f8e779e26236c0d654a6e8c9f
+    last_write_checksum: sha1:c7953c27cfc2762e44a1d077c8b10e59107d2af9
+    pristine_git_object: b85c984943aeb5aa2df3b9c774854ba852de11f4
   src/main/java/com/stackone/stackone_client_java/utils/RequestMetadata.java:
     id: 76ce8d3dfeb6
     last_write_checksum: sha1:57e69836faa146b678fea9f72b1e49081fe71215
@@ -34297,7 +34298,7 @@ examples:
       parameters:
         query:
           fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields"
-          filter: {"updated_after": "2020-01-01T00:00:00.000Z", "drive_id": "1234567890", "folder_id": "1234567890"}
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z", "name": "Engineering", "drive_id": "1234567890", "folder_id": "1234567890"}
           folder_id: "1234567890"
           nested_items: "true"
           include: "all_parent_folder_ids"
@@ -35941,7 +35942,7 @@ examples:
   stackone_search_actions:
     speakeasy-default-stackone-search-actions:
       requestBody:
-        application/json: {"query": "send a message", "connector": "slack", "top_k": 100}
+        application/json: {"query": "send a message", "connector": "slack", "top_k": 100, "min_similarity": 0.4}
       responses:
         "200":
           application/json: {"results": [{"action_name": "<value>", "connector_key": "<value>", "similarity_score": 1341.06, "label": "<value>", "description": "uh-huh amidst apud dreamily", "project_id": "<id>"}], "total_count": 7184.27, "query": "<value>"}
@@ -35998,7 +35999,7 @@ examples:
           application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Java SDK Changes:\n* `stackone.connectSessions.createConnectSession()`:  `response.organizationId` **Changed** (Breaking ⚠️)\n* `stackone.connectSessions.authenticateConnectSession()`:  `response.organizationId` **Changed** (Breaking ⚠️)\n* `stackone.actions.buildActionEmbeddings()`:  `response` **Changed** (Breaking ⚠️)\n* `stackone.actions.listActionsMeta()`: \n  *  `request.include` **Changed**\n  *  `response.data[].authentication[].support` **Added**\n"
+releaseNotes: "## Java SDK Changes:\n* `stackone.ats.downloadApplicationDocument()`: \n  *  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.hris.downloadEmployeeDocument()`: \n  *  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.messaging.downloadMessagingAttachment()`: \n  *  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.documents.uploadFile()`:  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.documents.downloadFile()`: \n  *  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.hris.batchUploadEmployeeDocument()`:  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.ats.uploadApplicationDocument()`:  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.ticketing.downloadTicketingAttachment()`: \n  *  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.hris.uploadEmployeeDocument()`:  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.accounts.listLinkedAccounts()`:  `response.[].shared` **Added**\n* `stackone.accounts.getAccount()`:  `response.shared` **Added**\n* `stackone.actions.searchActions()`: \n  *  `request.minSimilarity` **Added**\n* `stackone.accounts.updateAccount()`: \n  *  `request.patchAccountExternalDto.shared` **Added**\n  *  `response.shared` **Added**\n* `stackone.documents.listFolders()`: \n  *  `request.filter` **Changed**\n* `stackone.accounts.deleteAccount()`:  `response.shared` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md

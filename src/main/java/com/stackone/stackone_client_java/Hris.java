@@ -990,8 +990,8 @@ public class Hris {
     public HrisBatchUploadEmployeeDocumentResponse batchUploadEmployeeDocument(
             String xAccountId, String id,
             HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto) {
-        return batchUploadEmployeeDocument(xAccountId, id, Optional.empty(),
-            hrisBatchDocumentUploadRequestDto, Optional.empty());
+        return batchUploadEmployeeDocument(xAccountId, id, hrisBatchDocumentUploadRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -999,7 +999,6 @@ public class Hris {
      * 
      * @param xAccountId The account identifier
      * @param id 
-     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisBatchDocumentUploadRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -1007,14 +1006,12 @@ public class Hris {
      */
     public HrisBatchUploadEmployeeDocumentResponse batchUploadEmployeeDocument(
             String xAccountId, String id,
-            Optional<String> prefer, HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto,
-            Optional<Options> options) {
+            HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto, Optional<Options> options) {
         HrisBatchUploadEmployeeDocumentRequest request =
             HrisBatchUploadEmployeeDocumentRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
-                .prefer(prefer)
                 .hrisBatchDocumentUploadRequestDto(hrisBatchDocumentUploadRequestDto)
                 .build();
         RequestOperation<HrisBatchUploadEmployeeDocumentRequest, HrisBatchUploadEmployeeDocumentResponse> operation
@@ -1043,8 +1040,8 @@ public class Hris {
     public HrisUploadEmployeeDocumentResponse uploadEmployeeDocument(
             String xAccountId, String id,
             HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto) {
-        return uploadEmployeeDocument(xAccountId, id, Optional.empty(),
-            hrisDocumentsUploadRequestDto, Optional.empty());
+        return uploadEmployeeDocument(xAccountId, id, hrisDocumentsUploadRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -1052,7 +1049,6 @@ public class Hris {
      * 
      * @param xAccountId The account identifier
      * @param id 
-     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisDocumentsUploadRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -1060,14 +1056,12 @@ public class Hris {
      */
     public HrisUploadEmployeeDocumentResponse uploadEmployeeDocument(
             String xAccountId, String id,
-            Optional<String> prefer, HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto,
-            Optional<Options> options) {
+            HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto, Optional<Options> options) {
         HrisUploadEmployeeDocumentRequest request =
             HrisUploadEmployeeDocumentRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
-                .prefer(prefer)
                 .hrisDocumentsUploadRequestDto(hrisDocumentsUploadRequestDto)
                 .build();
         RequestOperation<HrisUploadEmployeeDocumentRequest, HrisUploadEmployeeDocumentResponse> operation

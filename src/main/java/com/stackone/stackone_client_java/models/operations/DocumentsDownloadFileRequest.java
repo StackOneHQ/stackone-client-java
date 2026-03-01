@@ -42,40 +42,30 @@ public class DocumentsDownloadFileRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=export_format")
     private JsonNullable<String> exportFormat;
 
-    /**
-     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-     */
-    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
-    private Optional<String> prefer;
-
     @JsonCreator
     public DocumentsDownloadFileRequest(
             String xAccountId,
             Optional<String> xStackoneApiSessionToken,
             String id,
             JsonNullable<String> format,
-            JsonNullable<String> exportFormat,
-            Optional<String> prefer) {
+            JsonNullable<String> exportFormat) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(xStackoneApiSessionToken, "xStackoneApiSessionToken");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(format, "format");
         Utils.checkNotNull(exportFormat, "exportFormat");
-        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.xStackoneApiSessionToken = xStackoneApiSessionToken;
         this.id = id;
         this.format = format;
         this.exportFormat = exportFormat;
-        this.prefer = prefer;
     }
     
     public DocumentsDownloadFileRequest(
             String xAccountId,
             String id) {
         this(xAccountId, Optional.empty(), id,
-            JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty());
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -113,15 +103,6 @@ public class DocumentsDownloadFileRequest {
     @JsonIgnore
     public JsonNullable<String> exportFormat() {
         return exportFormat;
-    }
-
-    /**
-     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-     */
-    @JsonIgnore
-    public Optional<String> prefer() {
-        return prefer;
     }
 
     public static Builder builder() {
@@ -199,27 +180,6 @@ public class DocumentsDownloadFileRequest {
         return this;
     }
 
-    /**
-     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-     */
-    public DocumentsDownloadFileRequest withPrefer(String prefer) {
-        Utils.checkNotNull(prefer, "prefer");
-        this.prefer = Optional.ofNullable(prefer);
-        return this;
-    }
-
-
-    /**
-     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-     */
-    public DocumentsDownloadFileRequest withPrefer(Optional<String> prefer) {
-        Utils.checkNotNull(prefer, "prefer");
-        this.prefer = prefer;
-        return this;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -234,15 +194,14 @@ public class DocumentsDownloadFileRequest {
             Utils.enhancedDeepEquals(this.xStackoneApiSessionToken, other.xStackoneApiSessionToken) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
             Utils.enhancedDeepEquals(this.format, other.format) &&
-            Utils.enhancedDeepEquals(this.exportFormat, other.exportFormat) &&
-            Utils.enhancedDeepEquals(this.prefer, other.prefer);
+            Utils.enhancedDeepEquals(this.exportFormat, other.exportFormat);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
             xAccountId, xStackoneApiSessionToken, id,
-            format, exportFormat, prefer);
+            format, exportFormat);
     }
     
     @Override
@@ -252,8 +211,7 @@ public class DocumentsDownloadFileRequest {
                 "xStackoneApiSessionToken", xStackoneApiSessionToken,
                 "id", id,
                 "format", format,
-                "exportFormat", exportFormat,
-                "prefer", prefer);
+                "exportFormat", exportFormat);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -268,8 +226,6 @@ public class DocumentsDownloadFileRequest {
         private JsonNullable<String> format = JsonNullable.undefined();
 
         private JsonNullable<String> exportFormat = JsonNullable.undefined();
-
-        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -349,32 +305,11 @@ public class DocumentsDownloadFileRequest {
             return this;
         }
 
-
-        /**
-         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-         */
-        public Builder prefer(String prefer) {
-            Utils.checkNotNull(prefer, "prefer");
-            this.prefer = Optional.ofNullable(prefer);
-            return this;
-        }
-
-        /**
-         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-         */
-        public Builder prefer(Optional<String> prefer) {
-            Utils.checkNotNull(prefer, "prefer");
-            this.prefer = prefer;
-            return this;
-        }
-
         public DocumentsDownloadFileRequest build() {
 
             return new DocumentsDownloadFileRequest(
                 xAccountId, xStackoneApiSessionToken, id,
-                format, exportFormat, prefer);
+                format, exportFormat);
         }
 
     }

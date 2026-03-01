@@ -721,7 +721,6 @@ public class Application {
                 .subResourceId("<id>")
                 .format("base64")
                 .exportFormat("text/plain")
-                .prefer("heartbeat")
                 .build();
 
         TicketingDownloadTicketingAttachmentResponse res = sdk.ticketing().downloadTicketingAttachment()
