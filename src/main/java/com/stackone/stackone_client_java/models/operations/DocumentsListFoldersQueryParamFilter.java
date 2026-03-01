@@ -25,6 +25,12 @@ public class DocumentsListFoldersQueryParamFilter {
     private JsonNullable<OffsetDateTime> updatedAfter;
 
     /**
+     * Search if the name of the folder contains the string
+     */
+    @SpeakeasyMetadata("queryParam:name=name")
+    private JsonNullable<String> name;
+
+    /**
      * Use to only include Folders within the specified Drive
      */
     @SpeakeasyMetadata("queryParam:name=drive_id")
@@ -39,18 +45,22 @@ public class DocumentsListFoldersQueryParamFilter {
     @JsonCreator
     public DocumentsListFoldersQueryParamFilter(
             JsonNullable<OffsetDateTime> updatedAfter,
+            JsonNullable<String> name,
             JsonNullable<String> driveId,
             JsonNullable<String> folderId) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
+        Utils.checkNotNull(name, "name");
         Utils.checkNotNull(driveId, "driveId");
         Utils.checkNotNull(folderId, "folderId");
         this.updatedAfter = updatedAfter;
+        this.name = name;
         this.driveId = driveId;
         this.folderId = folderId;
     }
     
     public DocumentsListFoldersQueryParamFilter() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -59,6 +69,14 @@ public class DocumentsListFoldersQueryParamFilter {
     @JsonIgnore
     public JsonNullable<OffsetDateTime> updatedAfter() {
         return updatedAfter;
+    }
+
+    /**
+     * Search if the name of the folder contains the string
+     */
+    @JsonIgnore
+    public JsonNullable<String> name() {
+        return name;
     }
 
     /**
@@ -97,6 +115,24 @@ public class DocumentsListFoldersQueryParamFilter {
     public DocumentsListFoldersQueryParamFilter withUpdatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = updatedAfter;
+        return this;
+    }
+
+    /**
+     * Search if the name of the folder contains the string
+     */
+    public DocumentsListFoldersQueryParamFilter withName(String name) {
+        Utils.checkNotNull(name, "name");
+        this.name = JsonNullable.of(name);
+        return this;
+    }
+
+    /**
+     * Search if the name of the folder contains the string
+     */
+    public DocumentsListFoldersQueryParamFilter withName(JsonNullable<String> name) {
+        Utils.checkNotNull(name, "name");
+        this.name = name;
         return this;
     }
 
@@ -147,6 +183,7 @@ public class DocumentsListFoldersQueryParamFilter {
         DocumentsListFoldersQueryParamFilter other = (DocumentsListFoldersQueryParamFilter) o;
         return 
             Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
             Utils.enhancedDeepEquals(this.driveId, other.driveId) &&
             Utils.enhancedDeepEquals(this.folderId, other.folderId);
     }
@@ -154,13 +191,15 @@ public class DocumentsListFoldersQueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter, driveId, folderId);
+            updatedAfter, name, driveId,
+            folderId);
     }
     
     @Override
     public String toString() {
         return Utils.toString(DocumentsListFoldersQueryParamFilter.class,
                 "updatedAfter", updatedAfter,
+                "name", name,
                 "driveId", driveId,
                 "folderId", folderId);
     }
@@ -169,6 +208,8 @@ public class DocumentsListFoldersQueryParamFilter {
     public final static class Builder {
 
         private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
+
+        private JsonNullable<String> name = JsonNullable.undefined();
 
         private JsonNullable<String> driveId = JsonNullable.undefined();
 
@@ -194,6 +235,25 @@ public class DocumentsListFoldersQueryParamFilter {
         public Builder updatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = updatedAfter;
+            return this;
+        }
+
+
+        /**
+         * Search if the name of the folder contains the string
+         */
+        public Builder name(String name) {
+            Utils.checkNotNull(name, "name");
+            this.name = JsonNullable.of(name);
+            return this;
+        }
+
+        /**
+         * Search if the name of the folder contains the string
+         */
+        public Builder name(JsonNullable<String> name) {
+            Utils.checkNotNull(name, "name");
+            this.name = name;
             return this;
         }
 
@@ -238,7 +298,8 @@ public class DocumentsListFoldersQueryParamFilter {
         public DocumentsListFoldersQueryParamFilter build() {
 
             return new DocumentsListFoldersQueryParamFilter(
-                updatedAfter, driveId, folderId);
+                updatedAfter, name, driveId,
+                folderId);
         }
 
     }

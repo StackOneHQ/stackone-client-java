@@ -1029,8 +1029,8 @@ public class AsyncHris {
             String xAccountId, String id,
             HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto) {
         return batchUploadEmployeeDocument(
-                xAccountId, id, Optional.empty(),
-                hrisBatchDocumentUploadRequestDto, Optional.empty());
+                xAccountId, id, hrisBatchDocumentUploadRequestDto,
+                Optional.empty());
     }
 
     /**
@@ -1038,21 +1038,18 @@ public class AsyncHris {
      * 
      * @param xAccountId The account identifier
      * @param id 
-     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisBatchDocumentUploadRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<HrisBatchUploadEmployeeDocumentResponse>} - The async response
      */
     public CompletableFuture<HrisBatchUploadEmployeeDocumentResponse> batchUploadEmployeeDocument(
             String xAccountId, String id,
-            Optional<String> prefer, HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto,
-            Optional<Options> options) {
+            HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto, Optional<Options> options) {
         HrisBatchUploadEmployeeDocumentRequest request =
             HrisBatchUploadEmployeeDocumentRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
-                .prefer(prefer)
                 .hrisBatchDocumentUploadRequestDto(hrisBatchDocumentUploadRequestDto)
                 .build();
         AsyncRequestOperation<HrisBatchUploadEmployeeDocumentRequest, HrisBatchUploadEmployeeDocumentResponse> operation
@@ -1085,8 +1082,8 @@ public class AsyncHris {
             String xAccountId, String id,
             HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto) {
         return uploadEmployeeDocument(
-                xAccountId, id, Optional.empty(),
-                hrisDocumentsUploadRequestDto, Optional.empty());
+                xAccountId, id, hrisDocumentsUploadRequestDto,
+                Optional.empty());
     }
 
     /**
@@ -1094,21 +1091,18 @@ public class AsyncHris {
      * 
      * @param xAccountId The account identifier
      * @param id 
-     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisDocumentsUploadRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<HrisUploadEmployeeDocumentResponse>} - The async response
      */
     public CompletableFuture<HrisUploadEmployeeDocumentResponse> uploadEmployeeDocument(
             String xAccountId, String id,
-            Optional<String> prefer, HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto,
-            Optional<Options> options) {
+            HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto, Optional<Options> options) {
         HrisUploadEmployeeDocumentRequest request =
             HrisUploadEmployeeDocumentRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
-                .prefer(prefer)
                 .hrisDocumentsUploadRequestDto(hrisDocumentsUploadRequestDto)
                 .build();
         AsyncRequestOperation<HrisUploadEmployeeDocumentRequest, HrisUploadEmployeeDocumentResponse> operation
