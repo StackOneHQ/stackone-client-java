@@ -2,6 +2,17 @@
 
 The status of the application.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.AtsCreateCandidatesAssessmentsRequestDtoValue;
+
+AtsCreateCandidatesAssessmentsRequestDtoValue value = AtsCreateCandidatesAssessmentsRequestDtoValue.ACTIVE;
+
+// Open enum: use .of() to create instances from custom string values
+AtsCreateCandidatesAssessmentsRequestDtoValue custom = AtsCreateCandidatesAssessmentsRequestDtoValue.of("custom_value");
+```
+
 
 ## Values
 

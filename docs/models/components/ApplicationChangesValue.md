@@ -2,6 +2,17 @@
 
 The type of change that occurred to the application
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.ApplicationChangesValue;
+
+ApplicationChangesValue value = ApplicationChangesValue.APPLICATION_STATUS;
+
+// Open enum: use .of() to create instances from custom string values
+ApplicationChangesValue custom = ApplicationChangesValue.of("custom_value");
+```
+
 
 ## Values
 

@@ -129,7 +129,7 @@ public class Application {
                 .call();
 
         if (res.actionSearchResponseDto().isPresent()) {
-            // handle response
+            System.out.println(res.actionSearchResponseDto().get());
         }
     }
 }
@@ -199,7 +199,7 @@ public class Application {
                 .call();
 
         if (res.actionBuildResponseDto().isPresent()) {
-            // handle response
+            System.out.println(res.actionBuildResponseDto().get());
         }
     }
 }
@@ -271,6 +271,7 @@ public class Application {
                     Map.entry("Content-Type", "application/json")))
                 .body(Map.ofEntries(
                     Map.entry("data", "example")))
+                .defenderEnabled(true)
                 .build();
 
         StackoneRpcActionResponse res = sdk.actions().rpcAction()
@@ -278,7 +279,7 @@ public class Application {
                 .call();
 
         if (res.actionsRpcResponse().isPresent()) {
-            // handle response
+            System.out.println(res.actionsRpcResponse().get());
         }
     }
 }

@@ -9,7 +9,6 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -40,33 +39,23 @@ public class MessagingDownloadMessagingAttachmentRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=export_format")
     private JsonNullable<String> exportFormat;
 
-    /**
-     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-     */
-    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
-    private Optional<String> prefer;
-
     @JsonCreator
     public MessagingDownloadMessagingAttachmentRequest(
             String xAccountId,
             String id,
             String subResourceId,
             JsonNullable<String> format,
-            JsonNullable<String> exportFormat,
-            Optional<String> prefer) {
+            JsonNullable<String> exportFormat) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(subResourceId, "subResourceId");
         Utils.checkNotNull(format, "format");
         Utils.checkNotNull(exportFormat, "exportFormat");
-        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.id = id;
         this.subResourceId = subResourceId;
         this.format = format;
         this.exportFormat = exportFormat;
-        this.prefer = prefer;
     }
     
     public MessagingDownloadMessagingAttachmentRequest(
@@ -74,7 +63,7 @@ public class MessagingDownloadMessagingAttachmentRequest {
             String id,
             String subResourceId) {
         this(xAccountId, id, subResourceId,
-            JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty());
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -109,15 +98,6 @@ public class MessagingDownloadMessagingAttachmentRequest {
     @JsonIgnore
     public JsonNullable<String> exportFormat() {
         return exportFormat;
-    }
-
-    /**
-     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-     */
-    @JsonIgnore
-    public Optional<String> prefer() {
-        return prefer;
     }
 
     public static Builder builder() {
@@ -182,27 +162,6 @@ public class MessagingDownloadMessagingAttachmentRequest {
         return this;
     }
 
-    /**
-     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-     */
-    public MessagingDownloadMessagingAttachmentRequest withPrefer(String prefer) {
-        Utils.checkNotNull(prefer, "prefer");
-        this.prefer = Optional.ofNullable(prefer);
-        return this;
-    }
-
-
-    /**
-     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-     */
-    public MessagingDownloadMessagingAttachmentRequest withPrefer(Optional<String> prefer) {
-        Utils.checkNotNull(prefer, "prefer");
-        this.prefer = prefer;
-        return this;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -217,15 +176,14 @@ public class MessagingDownloadMessagingAttachmentRequest {
             Utils.enhancedDeepEquals(this.id, other.id) &&
             Utils.enhancedDeepEquals(this.subResourceId, other.subResourceId) &&
             Utils.enhancedDeepEquals(this.format, other.format) &&
-            Utils.enhancedDeepEquals(this.exportFormat, other.exportFormat) &&
-            Utils.enhancedDeepEquals(this.prefer, other.prefer);
+            Utils.enhancedDeepEquals(this.exportFormat, other.exportFormat);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
             xAccountId, id, subResourceId,
-            format, exportFormat, prefer);
+            format, exportFormat);
     }
     
     @Override
@@ -235,8 +193,7 @@ public class MessagingDownloadMessagingAttachmentRequest {
                 "id", id,
                 "subResourceId", subResourceId,
                 "format", format,
-                "exportFormat", exportFormat,
-                "prefer", prefer);
+                "exportFormat", exportFormat);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -251,8 +208,6 @@ public class MessagingDownloadMessagingAttachmentRequest {
         private JsonNullable<String> format = JsonNullable.undefined();
 
         private JsonNullable<String> exportFormat = JsonNullable.undefined();
-
-        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -320,32 +275,11 @@ public class MessagingDownloadMessagingAttachmentRequest {
             return this;
         }
 
-
-        /**
-         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-         */
-        public Builder prefer(String prefer) {
-            Utils.checkNotNull(prefer, "prefer");
-            this.prefer = Optional.ofNullable(prefer);
-            return this;
-        }
-
-        /**
-         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-         */
-        public Builder prefer(Optional<String> prefer) {
-            Utils.checkNotNull(prefer, "prefer");
-            this.prefer = prefer;
-            return this;
-        }
-
         public MessagingDownloadMessagingAttachmentRequest build() {
 
             return new MessagingDownloadMessagingAttachmentRequest(
                 xAccountId, id, subResourceId,
-                format, exportFormat, prefer);
+                format, exportFormat);
         }
 
     }

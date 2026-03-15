@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -83,6 +84,11 @@ public class PatchAccountExternalDto {
     @JsonProperty("integration_id")
     private JsonNullable<String> integrationId;
 
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("shared")
+    private JsonNullable<Boolean> shared;
+
     @JsonCreator
     public PatchAccountExternalDto(
             @JsonProperty("provider") JsonNullable<String> provider,
@@ -97,7 +103,8 @@ public class PatchAccountExternalDto {
             @JsonProperty("label") JsonNullable<? extends Label> label,
             @JsonProperty("metadata") JsonNullable<? extends PatchAccountExternalDtoMetadata> metadata,
             @JsonProperty("type") JsonNullable<? extends PatchAccountExternalDtoType> type,
-            @JsonProperty("integration_id") JsonNullable<String> integrationId) {
+            @JsonProperty("integration_id") JsonNullable<String> integrationId,
+            @JsonProperty("shared") JsonNullable<Boolean> shared) {
         Utils.checkNotNull(provider, "provider");
         Utils.checkNotNull(originOwnerId, "originOwnerId");
         Utils.checkNotNull(originOwnerName, "originOwnerName");
@@ -111,6 +118,7 @@ public class PatchAccountExternalDto {
         Utils.checkNotNull(metadata, "metadata");
         Utils.checkNotNull(type, "type");
         Utils.checkNotNull(integrationId, "integrationId");
+        Utils.checkNotNull(shared, "shared");
         this.provider = provider;
         this.originOwnerId = originOwnerId;
         this.originOwnerName = originOwnerName;
@@ -124,6 +132,7 @@ public class PatchAccountExternalDto {
         this.metadata = metadata;
         this.type = type;
         this.integrationId = integrationId;
+        this.shared = shared;
     }
     
     public PatchAccountExternalDto() {
@@ -131,7 +140,7 @@ public class PatchAccountExternalDto {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -206,6 +215,11 @@ public class PatchAccountExternalDto {
     @JsonIgnore
     public JsonNullable<String> integrationId() {
         return integrationId;
+    }
+
+    @JsonIgnore
+    public JsonNullable<Boolean> shared() {
+        return shared;
     }
 
     public static Builder builder() {
@@ -375,6 +389,18 @@ public class PatchAccountExternalDto {
         return this;
     }
 
+    public PatchAccountExternalDto withShared(boolean shared) {
+        Utils.checkNotNull(shared, "shared");
+        this.shared = JsonNullable.of(shared);
+        return this;
+    }
+
+    public PatchAccountExternalDto withShared(JsonNullable<Boolean> shared) {
+        Utils.checkNotNull(shared, "shared");
+        this.shared = shared;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -397,7 +423,8 @@ public class PatchAccountExternalDto {
             Utils.enhancedDeepEquals(this.label, other.label) &&
             Utils.enhancedDeepEquals(this.metadata, other.metadata) &&
             Utils.enhancedDeepEquals(this.type, other.type) &&
-            Utils.enhancedDeepEquals(this.integrationId, other.integrationId);
+            Utils.enhancedDeepEquals(this.integrationId, other.integrationId) &&
+            Utils.enhancedDeepEquals(this.shared, other.shared);
     }
     
     @Override
@@ -407,7 +434,7 @@ public class PatchAccountExternalDto {
             originUsername, credentials, setupInformation,
             secrets, authenticationConfigKey, environment,
             label, metadata, type,
-            integrationId);
+            integrationId, shared);
     }
     
     @Override
@@ -425,7 +452,8 @@ public class PatchAccountExternalDto {
                 "label", label,
                 "metadata", metadata,
                 "type", type,
-                "integrationId", integrationId);
+                "integrationId", integrationId,
+                "shared", shared);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -456,6 +484,8 @@ public class PatchAccountExternalDto {
         private JsonNullable<? extends PatchAccountExternalDtoType> type = JsonNullable.undefined();
 
         private JsonNullable<String> integrationId = JsonNullable.undefined();
+
+        private JsonNullable<Boolean> shared = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -636,6 +666,19 @@ public class PatchAccountExternalDto {
             return this;
         }
 
+
+        public Builder shared(boolean shared) {
+            Utils.checkNotNull(shared, "shared");
+            this.shared = JsonNullable.of(shared);
+            return this;
+        }
+
+        public Builder shared(JsonNullable<Boolean> shared) {
+            Utils.checkNotNull(shared, "shared");
+            this.shared = shared;
+            return this;
+        }
+
         public PatchAccountExternalDto build() {
 
             return new PatchAccountExternalDto(
@@ -643,7 +686,7 @@ public class PatchAccountExternalDto {
                 originUsername, credentials, setupInformation,
                 secrets, authenticationConfigKey, environment,
                 label, metadata, type,
-                integrationId);
+                integrationId, shared);
         }
 
     }

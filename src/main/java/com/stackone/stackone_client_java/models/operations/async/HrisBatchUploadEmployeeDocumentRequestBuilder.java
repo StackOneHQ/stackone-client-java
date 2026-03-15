@@ -21,7 +21,6 @@ public class HrisBatchUploadEmployeeDocumentRequestBuilder {
 
     private String xAccountId;
     private String id;
-    private Optional<String> prefer = Optional.empty();
     private HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -40,18 +39,6 @@ public class HrisBatchUploadEmployeeDocumentRequestBuilder {
     public HrisBatchUploadEmployeeDocumentRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
-        return this;
-    }
-                
-    public HrisBatchUploadEmployeeDocumentRequestBuilder prefer(String prefer) {
-        Utils.checkNotNull(prefer, "prefer");
-        this.prefer = Optional.of(prefer);
-        return this;
-    }
-
-    public HrisBatchUploadEmployeeDocumentRequestBuilder prefer(Optional<String> prefer) {
-        Utils.checkNotNull(prefer, "prefer");
-        this.prefer = prefer;
         return this;
     }
 
@@ -78,7 +65,6 @@ public class HrisBatchUploadEmployeeDocumentRequestBuilder {
 
         HrisBatchUploadEmployeeDocumentRequest request = new HrisBatchUploadEmployeeDocumentRequest(xAccountId,
             id,
-            prefer,
             hrisBatchDocumentUploadRequestDto);
 
         return request;

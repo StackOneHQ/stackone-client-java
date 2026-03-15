@@ -2,6 +2,17 @@
 
 The type of this status
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.TicketingTicketStatusValue;
+
+TicketingTicketStatusValue value = TicketingTicketStatusValue.TO_DO;
+
+// Open enum: use .of() to create instances from custom string values
+TicketingTicketStatusValue custom = TicketingTicketStatusValue.of("custom_value");
+```
+
 
 ## Values
 

@@ -1,5 +1,16 @@
 # HRISDivisionValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HRISDivisionValue;
+
+HRISDivisionValue value = HRISDivisionValue.DEPARTMENT;
+
+// Open enum: use .of() to create instances from custom string values
+HRISDivisionValue custom = HRISDivisionValue.of("custom_value");
+```
+
 
 ## Values
 

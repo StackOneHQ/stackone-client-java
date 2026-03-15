@@ -1,5 +1,16 @@
 # EntitySkillsMinimumProficiencyValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.EntitySkillsMinimumProficiencyValue;
+
+EntitySkillsMinimumProficiencyValue value = EntitySkillsMinimumProficiencyValue.ONE;
+
+// Open enum: use .of() to create instances from custom string values
+EntitySkillsMinimumProficiencyValue custom = EntitySkillsMinimumProficiencyValue.of("custom_value");
+```
+
 
 ## Values
 

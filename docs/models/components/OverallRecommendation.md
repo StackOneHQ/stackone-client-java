@@ -2,6 +2,17 @@
 
 The overall recommendation
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.OverallRecommendation;
+
+OverallRecommendation value = OverallRecommendation.STRONG_YES;
+
+// Open enum: use .of() to create instances from custom string values
+OverallRecommendation custom = OverallRecommendation.of("custom_value");
+```
+
 
 ## Values
 

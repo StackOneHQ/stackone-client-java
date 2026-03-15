@@ -1,5 +1,16 @@
 # EmploymentTypeValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.EmploymentTypeValue;
+
+EmploymentTypeValue value = EmploymentTypeValue.CONTRACTOR;
+
+// Open enum: use .of() to create instances from custom string values
+EmploymentTypeValue custom = EmploymentTypeValue.of("custom_value");
+```
+
 
 ## Values
 

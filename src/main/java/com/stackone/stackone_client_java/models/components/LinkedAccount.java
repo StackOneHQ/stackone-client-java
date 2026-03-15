@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -85,6 +86,11 @@ public class LinkedAccount {
     @JsonProperty("type")
     private JsonNullable<? extends LinkedAccountType> type;
 
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("shared")
+    private JsonNullable<Boolean> shared;
+
     @JsonCreator
     public LinkedAccount(
             @JsonProperty("id") String id,
@@ -100,7 +106,8 @@ public class LinkedAccount {
             @JsonProperty("label") JsonNullable<String> label,
             @JsonProperty("created_at") OffsetDateTime createdAt,
             @JsonProperty("updated_at") OffsetDateTime updatedAt,
-            @JsonProperty("type") JsonNullable<? extends LinkedAccountType> type) {
+            @JsonProperty("type") JsonNullable<? extends LinkedAccountType> type,
+            @JsonProperty("shared") JsonNullable<Boolean> shared) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(provider, "provider");
         Utils.checkNotNull(providerName, "providerName");
@@ -115,6 +122,7 @@ public class LinkedAccount {
         Utils.checkNotNull(createdAt, "createdAt");
         Utils.checkNotNull(updatedAt, "updatedAt");
         Utils.checkNotNull(type, "type");
+        Utils.checkNotNull(shared, "shared");
         this.id = id;
         this.provider = provider;
         this.providerName = providerName;
@@ -129,6 +137,7 @@ public class LinkedAccount {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.type = type;
+        this.shared = shared;
     }
     
     public LinkedAccount(
@@ -143,7 +152,7 @@ public class LinkedAccount {
             status, JsonNullable.undefined(), originOwnerId,
             originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), createdAt,
-            updatedAt, JsonNullable.undefined());
+            updatedAt, JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -221,6 +230,11 @@ public class LinkedAccount {
     @JsonIgnore
     public JsonNullable<LinkedAccountType> type() {
         return (JsonNullable<LinkedAccountType>) type;
+    }
+
+    @JsonIgnore
+    public JsonNullable<Boolean> shared() {
+        return shared;
     }
 
     public static Builder builder() {
@@ -360,6 +374,18 @@ public class LinkedAccount {
         return this;
     }
 
+    public LinkedAccount withShared(boolean shared) {
+        Utils.checkNotNull(shared, "shared");
+        this.shared = JsonNullable.of(shared);
+        return this;
+    }
+
+    public LinkedAccount withShared(JsonNullable<Boolean> shared) {
+        Utils.checkNotNull(shared, "shared");
+        this.shared = shared;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -383,7 +409,8 @@ public class LinkedAccount {
             Utils.enhancedDeepEquals(this.label, other.label) &&
             Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
             Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt) &&
-            Utils.enhancedDeepEquals(this.type, other.type);
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.shared, other.shared);
     }
     
     @Override
@@ -393,7 +420,7 @@ public class LinkedAccount {
             status, statusReasons, originOwnerId,
             originOwnerName, originUsername, credentials,
             setupInformation, label, createdAt,
-            updatedAt, type);
+            updatedAt, type, shared);
     }
     
     @Override
@@ -412,7 +439,8 @@ public class LinkedAccount {
                 "label", label,
                 "createdAt", createdAt,
                 "updatedAt", updatedAt,
-                "type", type);
+                "type", type,
+                "shared", shared);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -445,6 +473,8 @@ public class LinkedAccount {
         private OffsetDateTime updatedAt;
 
         private JsonNullable<? extends LinkedAccountType> type = JsonNullable.undefined();
+
+        private JsonNullable<Boolean> shared = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -596,6 +626,19 @@ public class LinkedAccount {
             return this;
         }
 
+
+        public Builder shared(boolean shared) {
+            Utils.checkNotNull(shared, "shared");
+            this.shared = JsonNullable.of(shared);
+            return this;
+        }
+
+        public Builder shared(JsonNullable<Boolean> shared) {
+            Utils.checkNotNull(shared, "shared");
+            this.shared = shared;
+            return this;
+        }
+
         public LinkedAccount build() {
 
             return new LinkedAccount(
@@ -603,7 +646,7 @@ public class LinkedAccount {
                 status, statusReasons, originOwnerId,
                 originOwnerName, originUsername, credentials,
                 setupInformation, label, createdAt,
-                updatedAt, type);
+                updatedAt, type, shared);
         }
 
     }

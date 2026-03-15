@@ -1,5 +1,16 @@
 # EmploymentDivisionValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.EmploymentDivisionValue;
+
+EmploymentDivisionValue value = EmploymentDivisionValue.WORKSPACE;
+
+// Open enum: use .of() to create instances from custom string values
+EmploymentDivisionValue custom = EmploymentDivisionValue.of("custom_value");
+```
+
 
 ## Values
 

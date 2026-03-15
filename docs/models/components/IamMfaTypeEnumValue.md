@@ -2,6 +2,17 @@
 
 The unified value for the type of multi-factor authentication. If the provider does not send back a type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.IamMfaTypeEnumValue;
+
+IamMfaTypeEnumValue value = IamMfaTypeEnumValue.SMS;
+
+// Open enum: use .of() to create instances from custom string values
+IamMfaTypeEnumValue custom = IamMfaTypeEnumValue.of("custom_value");
+```
+
 
 ## Values
 

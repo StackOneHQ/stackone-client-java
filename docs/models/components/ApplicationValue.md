@@ -2,6 +2,17 @@
 
 The status of the application.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.ApplicationValue;
+
+ApplicationValue value = ApplicationValue.ACTIVE;
+
+// Open enum: use .of() to create instances from custom string values
+ApplicationValue custom = ApplicationValue.of("custom_value");
+```
+
 
 ## Values
 
