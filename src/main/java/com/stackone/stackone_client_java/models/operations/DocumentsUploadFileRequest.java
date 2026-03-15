@@ -26,13 +26,6 @@ public class DocumentsUploadFileRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-stackone-api-session-token")
     private Optional<String> xStackoneApiSessionToken;
 
-    /**
-     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-     */
-    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
-    private Optional<String> prefer;
-
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private UnifiedUploadRequestDto unifiedUploadRequestDto;
@@ -41,23 +34,19 @@ public class DocumentsUploadFileRequest {
     public DocumentsUploadFileRequest(
             String xAccountId,
             Optional<String> xStackoneApiSessionToken,
-            Optional<String> prefer,
             UnifiedUploadRequestDto unifiedUploadRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(xStackoneApiSessionToken, "xStackoneApiSessionToken");
-        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(unifiedUploadRequestDto, "unifiedUploadRequestDto");
         this.xAccountId = xAccountId;
         this.xStackoneApiSessionToken = xStackoneApiSessionToken;
-        this.prefer = prefer;
         this.unifiedUploadRequestDto = unifiedUploadRequestDto;
     }
     
     public DocumentsUploadFileRequest(
             String xAccountId,
             UnifiedUploadRequestDto unifiedUploadRequestDto) {
-        this(xAccountId, Optional.empty(), Optional.empty(),
-            unifiedUploadRequestDto);
+        this(xAccountId, Optional.empty(), unifiedUploadRequestDto);
     }
 
     /**
@@ -74,15 +63,6 @@ public class DocumentsUploadFileRequest {
     @JsonIgnore
     public Optional<String> xStackoneApiSessionToken() {
         return xStackoneApiSessionToken;
-    }
-
-    /**
-     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-     */
-    @JsonIgnore
-    public Optional<String> prefer() {
-        return prefer;
     }
 
     @JsonIgnore
@@ -123,27 +103,6 @@ public class DocumentsUploadFileRequest {
         return this;
     }
 
-    /**
-     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-     */
-    public DocumentsUploadFileRequest withPrefer(String prefer) {
-        Utils.checkNotNull(prefer, "prefer");
-        this.prefer = Optional.ofNullable(prefer);
-        return this;
-    }
-
-
-    /**
-     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-     */
-    public DocumentsUploadFileRequest withPrefer(Optional<String> prefer) {
-        Utils.checkNotNull(prefer, "prefer");
-        this.prefer = prefer;
-        return this;
-    }
-
     public DocumentsUploadFileRequest withUnifiedUploadRequestDto(UnifiedUploadRequestDto unifiedUploadRequestDto) {
         Utils.checkNotNull(unifiedUploadRequestDto, "unifiedUploadRequestDto");
         this.unifiedUploadRequestDto = unifiedUploadRequestDto;
@@ -162,15 +121,13 @@ public class DocumentsUploadFileRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.xStackoneApiSessionToken, other.xStackoneApiSessionToken) &&
-            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.unifiedUploadRequestDto, other.unifiedUploadRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, xStackoneApiSessionToken, prefer,
-            unifiedUploadRequestDto);
+            xAccountId, xStackoneApiSessionToken, unifiedUploadRequestDto);
     }
     
     @Override
@@ -178,7 +135,6 @@ public class DocumentsUploadFileRequest {
         return Utils.toString(DocumentsUploadFileRequest.class,
                 "xAccountId", xAccountId,
                 "xStackoneApiSessionToken", xStackoneApiSessionToken,
-                "prefer", prefer,
                 "unifiedUploadRequestDto", unifiedUploadRequestDto);
     }
 
@@ -188,8 +144,6 @@ public class DocumentsUploadFileRequest {
         private String xAccountId;
 
         private Optional<String> xStackoneApiSessionToken = Optional.empty();
-
-        private Optional<String> prefer = Optional.empty();
 
         private UnifiedUploadRequestDto unifiedUploadRequestDto;
 
@@ -227,27 +181,6 @@ public class DocumentsUploadFileRequest {
         }
 
 
-        /**
-         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-         */
-        public Builder prefer(String prefer) {
-            Utils.checkNotNull(prefer, "prefer");
-            this.prefer = Optional.ofNullable(prefer);
-            return this;
-        }
-
-        /**
-         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
-         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-         */
-        public Builder prefer(Optional<String> prefer) {
-            Utils.checkNotNull(prefer, "prefer");
-            this.prefer = prefer;
-            return this;
-        }
-
-
         public Builder unifiedUploadRequestDto(UnifiedUploadRequestDto unifiedUploadRequestDto) {
             Utils.checkNotNull(unifiedUploadRequestDto, "unifiedUploadRequestDto");
             this.unifiedUploadRequestDto = unifiedUploadRequestDto;
@@ -257,8 +190,7 @@ public class DocumentsUploadFileRequest {
         public DocumentsUploadFileRequest build() {
 
             return new DocumentsUploadFileRequest(
-                xAccountId, xStackoneApiSessionToken, prefer,
-                unifiedUploadRequestDto);
+                xAccountId, xStackoneApiSessionToken, unifiedUploadRequestDto);
         }
 
     }

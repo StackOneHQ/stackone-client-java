@@ -2,6 +2,17 @@
 
 Default currency for the company
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.JournalLineCurrencyCodeValue;
+
+JournalLineCurrencyCodeValue value = JournalLineCurrencyCodeValue.AED;
+
+// Open enum: use .of() to create instances from custom string values
+JournalLineCurrencyCodeValue custom = JournalLineCurrencyCodeValue.of("custom_value");
+```
+
 
 ## Values
 

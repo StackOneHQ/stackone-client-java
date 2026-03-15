@@ -1,5 +1,16 @@
 # IamGroupValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.IamGroupValue;
+
+IamGroupValue value = IamGroupValue.WORKSPACE;
+
+// Open enum: use .of() to create instances from custom string values
+IamGroupValue custom = IamGroupValue.of("custom_value");
+```
+
 
 ## Values
 

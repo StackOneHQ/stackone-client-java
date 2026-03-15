@@ -95,8 +95,10 @@ public class HrisListJobsRequestBuilder {
         Flow.Publisher<HttpResponse<Blob>> asyncPaginator = new AsyncPaginator<>(
             request,
             new CursorTracker<>("$.next", String.class),
-                    HrisListJobsRequest::withNext,
-            operation::doRequest);
+            (req, pos) -> {
+                var modifiedReq = pos == null ? req : req.withNext(pos);
+                return operation.doRequest(modifiedReq);
+            });
 
         Flow.Publisher<HrisListJobsResponse> flowPublisher = mapAsync(asyncPaginator, operation::handleResponse);
 

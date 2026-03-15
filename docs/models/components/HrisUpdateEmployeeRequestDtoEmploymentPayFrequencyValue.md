@@ -2,6 +2,17 @@
 
 The pay frequency of the job postings.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentPayFrequencyValue;
+
+HrisUpdateEmployeeRequestDtoEmploymentPayFrequencyValue value = HrisUpdateEmployeeRequestDtoEmploymentPayFrequencyValue.HOURLY;
+
+// Open enum: use .of() to create instances from custom string values
+HrisUpdateEmployeeRequestDtoEmploymentPayFrequencyValue custom = HrisUpdateEmployeeRequestDtoEmploymentPayFrequencyValue.of("custom_value");
+```
+
 
 ## Values
 

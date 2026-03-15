@@ -2,6 +2,14 @@
 
 The field to order the results by.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.operations.QueryParamOrderBy;
+
+QueryParamOrderBy value = QueryParamOrderBy.PROVIDER;
+```
+
 
 ## Values
 

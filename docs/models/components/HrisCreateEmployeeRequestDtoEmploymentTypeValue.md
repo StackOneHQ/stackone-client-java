@@ -2,6 +2,17 @@
 
 The type of the employment.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentTypeValue;
+
+HrisCreateEmployeeRequestDtoEmploymentTypeValue value = HrisCreateEmployeeRequestDtoEmploymentTypeValue.CONTRACTOR;
+
+// Open enum: use .of() to create instances from custom string values
+HrisCreateEmployeeRequestDtoEmploymentTypeValue custom = HrisCreateEmployeeRequestDtoEmploymentTypeValue.of("custom_value");
+```
+
 
 ## Values
 

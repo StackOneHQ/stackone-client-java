@@ -153,7 +153,7 @@ public class Application {
                 .call();
 
         if (res.contactResult().isPresent()) {
-            // handle response
+            System.out.println(res.contactResult().get());
         }
     }
 }
@@ -230,7 +230,7 @@ public class Application {
                 .call();
 
         if (res.contactResult().isPresent()) {
-            // handle response
+            System.out.println(res.contactResult().get());
         }
     }
 }
@@ -326,7 +326,7 @@ public class Application {
                 .call();
 
         if (res.contactResult().isPresent()) {
-            // handle response
+            System.out.println(res.contactResult().get());
         }
     }
 }
@@ -479,7 +479,7 @@ public class Application {
                 .call();
 
         if (res.accountResult().isPresent()) {
-            // handle response
+            System.out.println(res.accountResult().get());
         }
     }
 }
@@ -629,7 +629,7 @@ public class Application {
                 .call();
 
         if (res.listResult().isPresent()) {
-            // handle response
+            System.out.println(res.listResult().get());
         }
     }
 }
@@ -782,7 +782,7 @@ public class Application {
                 .call();
 
         if (res.customFieldDefinitionResultApiModel().isPresent()) {
-            // handle response
+            System.out.println(res.customFieldDefinitionResultApiModel().get());
         }
     }
 }

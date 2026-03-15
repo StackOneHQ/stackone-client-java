@@ -95,8 +95,10 @@ public class CrmListContactCustomFieldDefinitionsRequestBuilder {
         Flow.Publisher<HttpResponse<Blob>> asyncPaginator = new AsyncPaginator<>(
             request,
             new CursorTracker<>("$.next", String.class),
-                    CrmListContactCustomFieldDefinitionsRequest::withNext,
-            operation::doRequest);
+            (req, pos) -> {
+                var modifiedReq = pos == null ? req : req.withNext(pos);
+                return operation.doRequest(modifiedReq);
+            });
 
         Flow.Publisher<CrmListContactCustomFieldDefinitionsResponse> flowPublisher = mapAsync(asyncPaginator, operation::handleResponse);
 

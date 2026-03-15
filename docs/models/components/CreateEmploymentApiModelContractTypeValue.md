@@ -1,5 +1,16 @@
 # CreateEmploymentApiModelContractTypeValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelContractTypeValue;
+
+CreateEmploymentApiModelContractTypeValue value = CreateEmploymentApiModelContractTypeValue.FULL_TIME;
+
+// Open enum: use .of() to create instances from custom string values
+CreateEmploymentApiModelContractTypeValue custom = CreateEmploymentApiModelContractTypeValue.of("custom_value");
+```
+
 
 ## Values
 
