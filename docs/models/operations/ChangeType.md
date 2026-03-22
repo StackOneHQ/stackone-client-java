@@ -2,6 +2,14 @@
 
 Filter by the type of change that occurred to the application
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.operations.ChangeType;
+
+ChangeType value = ChangeType.APPLICATION_STATUS;
+```
+
 
 ## Values
 

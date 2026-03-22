@@ -49,7 +49,7 @@ public class Application {
                 .call();
 
         if (res.proxyResponseApiModel().isPresent()) {
-            // handle response
+            System.out.println(res.proxyResponseApiModel().get());
         }
     }
 }

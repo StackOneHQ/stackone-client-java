@@ -41,7 +41,7 @@ public class Application {
                 .call();
 
         if (res.connectorsMetas().isPresent()) {
-            // handle response
+            System.out.println(res.connectorsMetas().get());
         }
     }
 }
@@ -107,7 +107,7 @@ public class Application {
                 .call();
 
         if (res.connectorsMeta().isPresent()) {
-            // handle response
+            System.out.println(res.connectorsMeta().get());
         }
     }
 }

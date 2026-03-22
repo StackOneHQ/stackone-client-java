@@ -63,7 +63,7 @@ public class Application {
                 .call();
 
         if (res.connectSessionTokenAuthLink().isPresent()) {
-            // handle response
+            System.out.println(res.connectSessionTokenAuthLink().get());
         }
     }
 }
@@ -133,7 +133,7 @@ public class Application {
                 .call();
 
         if (res.connectSession().isPresent()) {
-            // handle response
+            System.out.println(res.connectSession().get());
         }
     }
 }

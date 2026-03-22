@@ -125,7 +125,7 @@ public class Application {
                 .call();
 
         if (res.screeningPackageResult().isPresent()) {
-            // handle response
+            System.out.println(res.screeningPackageResult().get());
         }
     }
 }
@@ -216,7 +216,7 @@ public class Application {
                 .call();
 
         if (res.screeningResultWebhook().isPresent()) {
-            // handle response
+            System.out.println(res.screeningResultWebhook().get());
         }
     }
 }
@@ -299,7 +299,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }

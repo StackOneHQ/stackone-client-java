@@ -38,22 +38,33 @@ public class ActionSearchDto {
     @JsonProperty("top_k")
     private Optional<Double> topK;
 
+    /**
+     * Minimum similarity score threshold (0-1). Results below this score are filtered out.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("min_similarity")
+    private Optional<Double> minSimilarity;
+
     @JsonCreator
     public ActionSearchDto(
             @JsonProperty("query") String query,
             @JsonProperty("connector") Optional<String> connector,
-            @JsonProperty("top_k") Optional<Double> topK) {
+            @JsonProperty("top_k") Optional<Double> topK,
+            @JsonProperty("min_similarity") Optional<Double> minSimilarity) {
         Utils.checkNotNull(query, "query");
         Utils.checkNotNull(connector, "connector");
         Utils.checkNotNull(topK, "topK");
+        Utils.checkNotNull(minSimilarity, "minSimilarity");
         this.query = query;
         this.connector = connector;
         this.topK = topK;
+        this.minSimilarity = minSimilarity;
     }
     
     public ActionSearchDto(
             String query) {
-        this(query, Optional.empty(), Optional.empty());
+        this(query, Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -78,6 +89,14 @@ public class ActionSearchDto {
     @JsonIgnore
     public Optional<Double> topK() {
         return topK;
+    }
+
+    /**
+     * Minimum similarity score threshold (0-1). Results below this score are filtered out.
+     */
+    @JsonIgnore
+    public Optional<Double> minSimilarity() {
+        return minSimilarity;
     }
 
     public static Builder builder() {
@@ -132,6 +151,25 @@ public class ActionSearchDto {
         return this;
     }
 
+    /**
+     * Minimum similarity score threshold (0-1). Results below this score are filtered out.
+     */
+    public ActionSearchDto withMinSimilarity(double minSimilarity) {
+        Utils.checkNotNull(minSimilarity, "minSimilarity");
+        this.minSimilarity = Optional.ofNullable(minSimilarity);
+        return this;
+    }
+
+
+    /**
+     * Minimum similarity score threshold (0-1). Results below this score are filtered out.
+     */
+    public ActionSearchDto withMinSimilarity(Optional<Double> minSimilarity) {
+        Utils.checkNotNull(minSimilarity, "minSimilarity");
+        this.minSimilarity = minSimilarity;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -144,13 +182,15 @@ public class ActionSearchDto {
         return 
             Utils.enhancedDeepEquals(this.query, other.query) &&
             Utils.enhancedDeepEquals(this.connector, other.connector) &&
-            Utils.enhancedDeepEquals(this.topK, other.topK);
+            Utils.enhancedDeepEquals(this.topK, other.topK) &&
+            Utils.enhancedDeepEquals(this.minSimilarity, other.minSimilarity);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            query, connector, topK);
+            query, connector, topK,
+            minSimilarity);
     }
     
     @Override
@@ -158,7 +198,8 @@ public class ActionSearchDto {
         return Utils.toString(ActionSearchDto.class,
                 "query", query,
                 "connector", connector,
-                "topK", topK);
+                "topK", topK,
+                "minSimilarity", minSimilarity);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -169,6 +210,8 @@ public class ActionSearchDto {
         private Optional<String> connector = Optional.empty();
 
         private Optional<Double> topK;
+
+        private Optional<Double> minSimilarity;
 
         private Builder() {
           // force use of static builder() method
@@ -222,13 +265,36 @@ public class ActionSearchDto {
             return this;
         }
 
+
+        /**
+         * Minimum similarity score threshold (0-1). Results below this score are filtered out.
+         */
+        public Builder minSimilarity(double minSimilarity) {
+            Utils.checkNotNull(minSimilarity, "minSimilarity");
+            this.minSimilarity = Optional.ofNullable(minSimilarity);
+            return this;
+        }
+
+        /**
+         * Minimum similarity score threshold (0-1). Results below this score are filtered out.
+         */
+        public Builder minSimilarity(Optional<Double> minSimilarity) {
+            Utils.checkNotNull(minSimilarity, "minSimilarity");
+            this.minSimilarity = minSimilarity;
+            return this;
+        }
+
         public ActionSearchDto build() {
             if (topK == null) {
                 topK = _SINGLETON_VALUE_TopK.value();
             }
+            if (minSimilarity == null) {
+                minSimilarity = _SINGLETON_VALUE_MinSimilarity.value();
+            }
 
             return new ActionSearchDto(
-                query, connector, topK);
+                query, connector, topK,
+                minSimilarity);
         }
 
 
@@ -236,6 +302,12 @@ public class ActionSearchDto {
                 new LazySingletonValue<>(
                         "top_k",
                         "100",
+                        new TypeReference<Optional<Double>>() {});
+
+        private static final LazySingletonValue<Optional<Double>> _SINGLETON_VALUE_MinSimilarity =
+                new LazySingletonValue<>(
+                        "min_similarity",
+                        "0.4",
                         new TypeReference<Optional<Double>>() {});
     }
 }

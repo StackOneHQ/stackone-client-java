@@ -2,6 +2,17 @@
 
 The result of the test.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.AtsUpdateCandidatesAssessmentsResultsRequestDtoValue;
+
+AtsUpdateCandidatesAssessmentsResultsRequestDtoValue value = AtsUpdateCandidatesAssessmentsResultsRequestDtoValue.INITIATED;
+
+// Open enum: use .of() to create instances from custom string values
+AtsUpdateCandidatesAssessmentsResultsRequestDtoValue custom = AtsUpdateCandidatesAssessmentsResultsRequestDtoValue.of("custom_value");
+```
+
 
 ## Values
 

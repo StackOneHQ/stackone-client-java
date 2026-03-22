@@ -2,6 +2,17 @@
 
 The category of the file
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HrisDocumentApiModelTypeValue;
+
+HrisDocumentApiModelTypeValue value = HrisDocumentApiModelTypeValue.APPLICATION;
+
+// Open enum: use .of() to create instances from custom string values
+HrisDocumentApiModelTypeValue custom = HrisDocumentApiModelTypeValue.of("custom_value");
+```
+
 
 ## Values
 

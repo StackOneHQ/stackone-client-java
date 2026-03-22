@@ -95,8 +95,10 @@ public class DocumentsListFoldersRequestBuilder {
         Flow.Publisher<HttpResponse<Blob>> asyncPaginator = new AsyncPaginator<>(
             request,
             new CursorTracker<>("$.next", String.class),
-                    DocumentsListFoldersRequest::withNext,
-            operation::doRequest);
+            (req, pos) -> {
+                var modifiedReq = pos == null ? req : req.withNext(pos);
+                return operation.doRequest(modifiedReq);
+            });
 
         Flow.Publisher<DocumentsListFoldersResponse> flowPublisher = mapAsync(asyncPaginator, operation::handleResponse);
 

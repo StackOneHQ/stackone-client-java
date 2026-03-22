@@ -2,6 +2,17 @@
 
 The type of the questions.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.QuestionValue;
+
+QuestionValue value = QuestionValue.SHORT_TEXT;
+
+// Open enum: use .of() to create instances from custom string values
+QuestionValue custom = QuestionValue.of("custom_value");
+```
+
 
 ## Values
 

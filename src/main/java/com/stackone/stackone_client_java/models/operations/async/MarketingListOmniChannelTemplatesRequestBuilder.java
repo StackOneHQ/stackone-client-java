@@ -95,8 +95,10 @@ public class MarketingListOmniChannelTemplatesRequestBuilder {
         Flow.Publisher<HttpResponse<Blob>> asyncPaginator = new AsyncPaginator<>(
             request,
             new CursorTracker<>("$.next", String.class),
-                    MarketingListOmniChannelTemplatesRequest::withNext,
-            operation::doRequest);
+            (req, pos) -> {
+                var modifiedReq = pos == null ? req : req.withNext(pos);
+                return operation.doRequest(modifiedReq);
+            });
 
         Flow.Publisher<MarketingListOmniChannelTemplatesResponse> flowPublisher = mapAsync(asyncPaginator, operation::handleResponse);
 

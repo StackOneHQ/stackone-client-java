@@ -258,7 +258,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -336,7 +336,7 @@ public class Application {
                 .call();
 
         if (res.applicationResult().isPresent()) {
-            // handle response
+            System.out.println(res.applicationResult().get());
         }
     }
 }
@@ -427,7 +427,7 @@ public class Application {
                 .call();
 
         if (res.updateResult().isPresent()) {
-            // handle response
+            System.out.println(res.updateResult().get());
         }
     }
 }
@@ -582,7 +582,7 @@ public class Application {
                 .call();
 
         if (res.moveApplicationResult().isPresent()) {
-            // handle response
+            System.out.println(res.moveApplicationResult().get());
         }
     }
 }
@@ -660,7 +660,7 @@ public class Application {
                 .call();
 
         if (res.rejectApplicationResult().isPresent()) {
-            // handle response
+            System.out.println(res.rejectApplicationResult().get());
         }
     }
 }
@@ -738,7 +738,7 @@ public class Application {
                 .call();
 
         if (res.offersResult().isPresent()) {
-            // handle response
+            System.out.println(res.offersResult().get());
         }
     }
 }
@@ -890,7 +890,7 @@ public class Application {
                 .call();
 
         if (res.scorecardsResult().isPresent()) {
-            // handle response
+            System.out.println(res.scorecardsResult().get());
         }
     }
 }
@@ -1127,7 +1127,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -1205,7 +1205,7 @@ public class Application {
                 .call();
 
         if (res.noteResult().isPresent()) {
-            // handle response
+            System.out.println(res.noteResult().get());
         }
     }
 }
@@ -1294,7 +1294,7 @@ public class Application {
                 .call();
 
         if (res.updateResult().isPresent()) {
-            // handle response
+            System.out.println(res.updateResult().get());
         }
     }
 }
@@ -1446,7 +1446,7 @@ public class Application {
                 .call();
 
         if (res.scheduledInterviewsResult().isPresent()) {
-            // handle response
+            System.out.println(res.scheduledInterviewsResult().get());
         }
     }
 }
@@ -1511,7 +1511,6 @@ public class Application {
         AtsUploadApplicationDocumentResponse res = sdk.ats().uploadApplicationDocument()
                 .xAccountId("<id>")
                 .id("<id>")
-                .prefer("heartbeat")
                 .atsDocumentsUploadRequestDto(AtsDocumentsUploadRequestDto.builder()
                     .name("weather-forecast")
                     .fileFormat(JsonNullable.of(null))
@@ -1528,7 +1527,7 @@ public class Application {
                 .call();
 
         if (res.writeResultApiModel().isPresent()) {
-            // handle response
+            System.out.println(res.writeResultApiModel().get());
         }
     }
 }
@@ -1536,12 +1535,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
-| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
-| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
-| `atsDocumentsUploadRequestDto`                                                                                                                                           | [AtsDocumentsUploadRequestDto](../../models/components/AtsDocumentsUploadRequestDto.md)                                                                                  | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `xAccountId`                                                                            | *String*                                                                                | :heavy_check_mark:                                                                      | The account identifier                                                                  |
+| `id`                                                                                    | *String*                                                                                | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `atsDocumentsUploadRequestDto`                                                          | [AtsDocumentsUploadRequestDto](../../models/components/AtsDocumentsUploadRequestDto.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
 
 ### Response
 
@@ -1599,7 +1597,6 @@ public class Application {
                 .subResourceId("<id>")
                 .format("base64")
                 .exportFormat("text/plain")
-                .prefer("heartbeat")
                 .build();
 
         AtsDownloadApplicationDocumentResponse res = sdk.ats().downloadApplicationDocument()
@@ -1607,7 +1604,7 @@ public class Application {
                 .call();
 
         if (res.body().isPresent()) {
-            // handle response
+            System.out.println(res.body().get());
         }
     }
 }
@@ -1759,7 +1756,7 @@ public class Application {
                 .call();
 
         if (res.atsDocumentResult().isPresent()) {
-            // handle response
+            System.out.println(res.atsDocumentResult().get());
         }
     }
 }
@@ -1940,7 +1937,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -2017,7 +2014,7 @@ public class Application {
                 .call();
 
         if (res.candidateResult().isPresent()) {
-            // handle response
+            System.out.println(res.candidateResult().get());
         }
     }
 }
@@ -2122,7 +2119,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -2285,7 +2282,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -2363,7 +2360,7 @@ public class Application {
                 .call();
 
         if (res.noteResult().isPresent()) {
-            // handle response
+            System.out.println(res.noteResult().get());
         }
     }
 }
@@ -2514,7 +2511,7 @@ public class Application {
                 .call();
 
         if (res.customFieldDefinitionResultApiModel().isPresent()) {
-            // handle response
+            System.out.println(res.customFieldDefinitionResultApiModel().get());
         }
     }
 }
@@ -2667,7 +2664,7 @@ public class Application {
                 .call();
 
         if (res.customFieldDefinitionResultApiModel().isPresent()) {
-            // handle response
+            System.out.println(res.customFieldDefinitionResultApiModel().get());
         }
     }
 }
@@ -2820,7 +2817,7 @@ public class Application {
                 .call();
 
         if (res.customFieldDefinitionResultApiModel().isPresent()) {
-            // handle response
+            System.out.println(res.customFieldDefinitionResultApiModel().get());
         }
     }
 }
@@ -2970,7 +2967,7 @@ public class Application {
                 .call();
 
         if (res.departmentResult().isPresent()) {
-            // handle response
+            System.out.println(res.departmentResult().get());
         }
     }
 }
@@ -3124,7 +3121,7 @@ public class Application {
                 .call();
 
         if (res.interviewStageResult().isPresent()) {
-            // handle response
+            System.out.println(res.interviewStageResult().get());
         }
     }
 }
@@ -3274,7 +3271,7 @@ public class Application {
                 .call();
 
         if (res.interviewStageResult().isPresent()) {
-            // handle response
+            System.out.println(res.interviewStageResult().get());
         }
     }
 }
@@ -3425,7 +3422,7 @@ public class Application {
                 .call();
 
         if (res.interviewsResult().isPresent()) {
-            // handle response
+            System.out.println(res.interviewsResult().get());
         }
     }
 }
@@ -3508,7 +3505,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -3600,7 +3597,7 @@ public class Application {
                 .call();
 
         if (res.updateResult().isPresent()) {
-            // handle response
+            System.out.println(res.updateResult().get());
         }
     }
 }
@@ -3799,7 +3796,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -3954,7 +3951,7 @@ public class Application {
                 .call();
 
         if (res.atsJobResult().isPresent()) {
-            // handle response
+            System.out.println(res.atsJobResult().get());
         }
     }
 }
@@ -4058,7 +4055,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -4136,7 +4133,7 @@ public class Application {
                 .call();
 
         if (res.applicationStageResult().isPresent()) {
-            // handle response
+            System.out.println(res.applicationStageResult().get());
         }
     }
 }
@@ -4285,7 +4282,7 @@ public class Application {
                 .call();
 
         if (res.listResult().isPresent()) {
-            // handle response
+            System.out.println(res.listResult().get());
         }
     }
 }
@@ -4435,7 +4432,7 @@ public class Application {
                 .call();
 
         if (res.atsLocationResult().isPresent()) {
-            // handle response
+            System.out.println(res.atsLocationResult().get());
         }
     }
 }
@@ -4585,7 +4582,7 @@ public class Application {
                 .call();
 
         if (res.rejectedReasonResult().isPresent()) {
-            // handle response
+            System.out.println(res.rejectedReasonResult().get());
         }
     }
 }
@@ -4734,7 +4731,7 @@ public class Application {
                 .call();
 
         if (res.userResult().isPresent()) {
-            // handle response
+            System.out.println(res.userResult().get());
         }
     }
 }
@@ -4887,7 +4884,7 @@ public class Application {
                 .call();
 
         if (res.jobPostingResult().isPresent()) {
-            // handle response
+            System.out.println(res.jobPostingResult().get());
         }
     }
 }
@@ -5048,7 +5045,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -5124,7 +5121,7 @@ public class Application {
                 .call();
 
         if (res.offersResult().isPresent()) {
-            // handle response
+            System.out.println(res.offersResult().get());
         }
     }
 }
@@ -5272,7 +5269,7 @@ public class Application {
                 .call();
 
         if (res.assessmentPackageResult().isPresent()) {
-            // handle response
+            System.out.println(res.assessmentPackageResult().get());
         }
     }
 }
@@ -5401,7 +5398,7 @@ public class Application {
                 .call();
 
         if (res.createAssessmentOrderResult().isPresent()) {
-            // handle response
+            System.out.println(res.createAssessmentOrderResult().get());
         }
     }
 }
@@ -5500,7 +5497,7 @@ public class Application {
                 .call();
 
         if (res.updateResult().isPresent()) {
-            // handle response
+            System.out.println(res.updateResult().get());
         }
     }
 }
@@ -5659,7 +5656,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -5735,7 +5732,7 @@ public class Application {
                 .call();
 
         if (res.backgroundCheckPackageResult().isPresent()) {
-            // handle response
+            System.out.println(res.backgroundCheckPackageResult().get());
         }
     }
 }
@@ -5817,7 +5814,7 @@ public class Application {
                 .call();
 
         if (res.updateResult().isPresent()) {
-            // handle response
+            System.out.println(res.updateResult().get());
         }
     }
 }
@@ -5888,7 +5885,7 @@ public class Application {
                 .call();
 
         if (res.deleteResult().isPresent()) {
-            // handle response
+            System.out.println(res.deleteResult().get());
         }
     }
 }
@@ -6014,7 +6011,7 @@ public class Application {
                 .call();
 
         if (res.createBackgroundCheckOrderResult().isPresent()) {
-            // handle response
+            System.out.println(res.createBackgroundCheckOrderResult().get());
         }
     }
 }
@@ -6117,7 +6114,7 @@ public class Application {
                 .call();
 
         if (res.updateResult().isPresent()) {
-            // handle response
+            System.out.println(res.updateResult().get());
         }
     }
 }
@@ -6270,7 +6267,7 @@ public class Application {
                 .call();
 
         if (res.referenceResult().isPresent()) {
-            // handle response
+            System.out.println(res.referenceResult().get());
         }
     }
 }

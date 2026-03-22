@@ -95,8 +95,10 @@ public class AtsListApplicationDocumentCategoriesRequestBuilder {
         Flow.Publisher<HttpResponse<Blob>> asyncPaginator = new AsyncPaginator<>(
             request,
             new CursorTracker<>("$.next", String.class),
-                    AtsListApplicationDocumentCategoriesRequest::withNext,
-            operation::doRequest);
+            (req, pos) -> {
+                var modifiedReq = pos == null ? req : req.withNext(pos);
+                return operation.doRequest(modifiedReq);
+            });
 
         Flow.Publisher<AtsListApplicationDocumentCategoriesResponse> flowPublisher = mapAsync(asyncPaginator, operation::handleResponse);
 

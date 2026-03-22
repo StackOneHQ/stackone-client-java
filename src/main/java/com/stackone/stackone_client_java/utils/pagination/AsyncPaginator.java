@@ -10,7 +10,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 import com.stackone.stackone_client_java.utils.ResponseWithBody;
 import com.stackone.stackone_client_java.utils.Blob;
@@ -38,12 +37,12 @@ import com.jayway.jsonpath.spi.mapper.JacksonMappingProvider;
  * 4. Pages are emitted to the subscriber until pagination is exhausted or cancelled
  *
  * @param <ReqT>           The type of the request object
- * @param <ProgressParamT> The type of the progression parameter (e.g., page number, offset, cursor)
+ * @param <ProgressParamT> The type of the progression parameter (e.g., page number, offset, cursor, URL)
  */
 public class AsyncPaginator<ReqT, ProgressParamT> implements Flow.Publisher<HttpResponse<Blob>> {
 
     private static final SpeakeasyLogger logger = SpeakeasyLogger.getLogger(AsyncPaginator.class);
-    
+
     /**
      * The initial request containing pagination parameters.
      */
@@ -53,13 +52,10 @@ public class AsyncPaginator<ReqT, ProgressParamT> implements Flow.Publisher<Http
      */
     private final ProgressTrackerStrategy<ProgressParamT> progressTracker;
     /**
-     * Function that sets the value for pagination.
+     * Function that takes (request, position) and returns the response future.
+     * On the initial request, position is null.
      */
-    private final BiFunction<ReqT, ProgressParamT, ReqT> requestModifier;
-    /**
-     * Function that fetches the next page of data asynchronously.
-     */
-    private final Function<ReqT, CompletableFuture<HttpResponse<Blob>>> asyncDataFetcher;
+    private final BiFunction<ReqT, ProgressParamT, CompletableFuture<HttpResponse<Blob>>> pageFetcher;
 
     private static final Configuration JSON_PATH_CONFIG = Configuration.defaultConfiguration()
             .jsonProvider(new JacksonJsonProvider())
@@ -69,19 +65,17 @@ public class AsyncPaginator<ReqT, ProgressParamT> implements Flow.Publisher<Http
     /**
      * Creates a new AsyncPaginator instance.
      *
-     * @param initialRequest     The initial request to use for the first page
-     * @param progressTracker    The handler that processes pagination metadata from responses
-     * @param requestModifier    Function that sets the pagination value in the request
-     * @param asyncDataFetcher   Function that fetches the response for a given request asynchronously
+     * @param initialRequest  The initial request to use for the first page
+     * @param progressTracker The handler that processes pagination metadata from responses
+     * @param pageFetcher     Function that takes (request, position) and returns the response future;
+     *                        position is null on the initial request
      */
     public AsyncPaginator(ReqT initialRequest,
                          ProgressTrackerStrategy<ProgressParamT> progressTracker,
-                         BiFunction<ReqT, ProgressParamT, ReqT> requestModifier,
-                         Function<ReqT, CompletableFuture<HttpResponse<Blob>>> asyncDataFetcher) {
+                         BiFunction<ReqT, ProgressParamT, CompletableFuture<HttpResponse<Blob>>> pageFetcher) {
         this.initialRequest = initialRequest;
         this.progressTracker = progressTracker;
-        this.requestModifier = requestModifier;
-        this.asyncDataFetcher = asyncDataFetcher;
+        this.pageFetcher = pageFetcher;
     }
 
     @Override
@@ -124,7 +118,7 @@ public class AsyncPaginator<ReqT, ProgressParamT> implements Flow.Publisher<Http
 
         private void fetchNextIfNeeded() {
             if (cancelled.get()) return;
-            
+
             if (demand.get() <= 0 || state.get() == PaginationState.EXHAUSTED) {
                 return;
             }
@@ -136,7 +130,8 @@ public class AsyncPaginator<ReqT, ProgressParamT> implements Flow.Publisher<Http
 
         private CompletableFuture<HttpResponse<Blob>> fetchNextPage() {
             PaginationState currentState = state.get();
-            ProgressParamT currentValue = progressTracker.getPosition();
+            ProgressParamT currentValue = currentState == PaginationState.INITIAL ?
+                    null : progressTracker.getPosition();
 
             if (currentState == PaginationState.INITIAL) {
                 logger.debug("Async fetching initial page");
@@ -144,11 +139,7 @@ public class AsyncPaginator<ReqT, ProgressParamT> implements Flow.Publisher<Http
                 logger.debug("Async fetching next page with position: {}", currentValue);
             }
 
-            ReqT request = currentState == PaginationState.INITIAL ?
-                    initialRequest :
-                    requestModifier.apply(initialRequest, currentValue);
-
-            return asyncDataFetcher.apply(request);
+            return pageFetcher.apply(initialRequest, currentValue);
         }
 
         private void handleResponse(HttpResponse<Blob> response) {
@@ -186,7 +177,7 @@ public class AsyncPaginator<ReqT, ProgressParamT> implements Flow.Publisher<Http
                         }
                     })
                     .exceptionally(this::handleError);
-                    
+
             } catch (Exception e) {
                 handleError(e);
             }

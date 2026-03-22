@@ -1,5 +1,16 @@
 # EmploymentContractTypeValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.EmploymentContractTypeValue;
+
+EmploymentContractTypeValue value = EmploymentContractTypeValue.FULL_TIME;
+
+// Open enum: use .of() to create instances from custom string values
+EmploymentContractTypeValue custom = EmploymentContractTypeValue.of("custom_value");
+```
+
 
 ## Values
 

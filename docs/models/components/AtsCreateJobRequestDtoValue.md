@@ -2,6 +2,17 @@
 
 The status of the job.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.AtsCreateJobRequestDtoValue;
+
+AtsCreateJobRequestDtoValue value = AtsCreateJobRequestDtoValue.PUBLISHED;
+
+// Open enum: use .of() to create instances from custom string values
+AtsCreateJobRequestDtoValue custom = AtsCreateJobRequestDtoValue.of("custom_value");
+```
+
 
 ## Values
 

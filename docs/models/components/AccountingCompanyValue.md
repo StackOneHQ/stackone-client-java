@@ -2,6 +2,17 @@
 
 Default currency for the company
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.AccountingCompanyValue;
+
+AccountingCompanyValue value = AccountingCompanyValue.AED;
+
+// Open enum: use .of() to create instances from custom string values
+AccountingCompanyValue custom = AccountingCompanyValue.of("custom_value");
+```
+
 
 ## Values
 

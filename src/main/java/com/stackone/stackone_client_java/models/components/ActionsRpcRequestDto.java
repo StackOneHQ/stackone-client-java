@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -52,29 +53,39 @@ public class ActionsRpcRequestDto {
     @JsonProperty("body")
     private JsonNullable<? extends Map<String, Object>> body;
 
+    /**
+     * Override the account-level defender setting for this request
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("defender_enabled")
+    private JsonNullable<Boolean> defenderEnabled;
+
     @JsonCreator
     public ActionsRpcRequestDto(
             @JsonProperty("action") String action,
             @JsonProperty("path") JsonNullable<? extends Map<String, Object>> path,
             @JsonProperty("query") JsonNullable<? extends Query> query,
             @JsonProperty("headers") JsonNullable<? extends Map<String, Object>> headers,
-            @JsonProperty("body") JsonNullable<? extends Map<String, Object>> body) {
+            @JsonProperty("body") JsonNullable<? extends Map<String, Object>> body,
+            @JsonProperty("defender_enabled") JsonNullable<Boolean> defenderEnabled) {
         Utils.checkNotNull(action, "action");
         Utils.checkNotNull(path, "path");
         Utils.checkNotNull(query, "query");
         Utils.checkNotNull(headers, "headers");
         Utils.checkNotNull(body, "body");
+        Utils.checkNotNull(defenderEnabled, "defenderEnabled");
         this.action = action;
         this.path = path;
         this.query = query;
         this.headers = headers;
         this.body = body;
+        this.defenderEnabled = defenderEnabled;
     }
     
     public ActionsRpcRequestDto(
             String action) {
         this(action, JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -119,6 +130,14 @@ public class ActionsRpcRequestDto {
     @JsonIgnore
     public JsonNullable<Map<String, Object>> body() {
         return (JsonNullable<Map<String, Object>>) body;
+    }
+
+    /**
+     * Override the account-level defender setting for this request
+     */
+    @JsonIgnore
+    public JsonNullable<Boolean> defenderEnabled() {
+        return defenderEnabled;
     }
 
     public static Builder builder() {
@@ -207,6 +226,24 @@ public class ActionsRpcRequestDto {
         return this;
     }
 
+    /**
+     * Override the account-level defender setting for this request
+     */
+    public ActionsRpcRequestDto withDefenderEnabled(boolean defenderEnabled) {
+        Utils.checkNotNull(defenderEnabled, "defenderEnabled");
+        this.defenderEnabled = JsonNullable.of(defenderEnabled);
+        return this;
+    }
+
+    /**
+     * Override the account-level defender setting for this request
+     */
+    public ActionsRpcRequestDto withDefenderEnabled(JsonNullable<Boolean> defenderEnabled) {
+        Utils.checkNotNull(defenderEnabled, "defenderEnabled");
+        this.defenderEnabled = defenderEnabled;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -221,14 +258,15 @@ public class ActionsRpcRequestDto {
             Utils.enhancedDeepEquals(this.path, other.path) &&
             Utils.enhancedDeepEquals(this.query, other.query) &&
             Utils.enhancedDeepEquals(this.headers, other.headers) &&
-            Utils.enhancedDeepEquals(this.body, other.body);
+            Utils.enhancedDeepEquals(this.body, other.body) &&
+            Utils.enhancedDeepEquals(this.defenderEnabled, other.defenderEnabled);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
             action, path, query,
-            headers, body);
+            headers, body, defenderEnabled);
     }
     
     @Override
@@ -238,7 +276,8 @@ public class ActionsRpcRequestDto {
                 "path", path,
                 "query", query,
                 "headers", headers,
-                "body", body);
+                "body", body,
+                "defenderEnabled", defenderEnabled);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -253,6 +292,8 @@ public class ActionsRpcRequestDto {
         private JsonNullable<? extends Map<String, Object>> headers = JsonNullable.undefined();
 
         private JsonNullable<? extends Map<String, Object>> body = JsonNullable.undefined();
+
+        private JsonNullable<Boolean> defenderEnabled = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -344,11 +385,30 @@ public class ActionsRpcRequestDto {
             return this;
         }
 
+
+        /**
+         * Override the account-level defender setting for this request
+         */
+        public Builder defenderEnabled(boolean defenderEnabled) {
+            Utils.checkNotNull(defenderEnabled, "defenderEnabled");
+            this.defenderEnabled = JsonNullable.of(defenderEnabled);
+            return this;
+        }
+
+        /**
+         * Override the account-level defender setting for this request
+         */
+        public Builder defenderEnabled(JsonNullable<Boolean> defenderEnabled) {
+            Utils.checkNotNull(defenderEnabled, "defenderEnabled");
+            this.defenderEnabled = defenderEnabled;
+            return this;
+        }
+
         public ActionsRpcRequestDto build() {
 
             return new ActionsRpcRequestDto(
                 action, path, query,
-                headers, body);
+                headers, body, defenderEnabled);
         }
 
     }

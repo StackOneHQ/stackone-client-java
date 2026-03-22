@@ -2,6 +2,17 @@
 
 The category name to associate with the file
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDtoCategoryValue;
+
+HrisDocumentsUploadRequestDtoCategoryValue value = HrisDocumentsUploadRequestDtoCategoryValue.APPLICATION;
+
+// Open enum: use .of() to create instances from custom string values
+HrisDocumentsUploadRequestDtoCategoryValue custom = HrisDocumentsUploadRequestDtoCategoryValue.of("custom_value");
+```
+
 
 ## Values
 

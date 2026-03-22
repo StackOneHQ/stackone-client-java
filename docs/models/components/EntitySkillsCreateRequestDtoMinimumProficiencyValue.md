@@ -1,5 +1,16 @@
 # EntitySkillsCreateRequestDtoMinimumProficiencyValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.EntitySkillsCreateRequestDtoMinimumProficiencyValue;
+
+EntitySkillsCreateRequestDtoMinimumProficiencyValue value = EntitySkillsCreateRequestDtoMinimumProficiencyValue.ONE;
+
+// Open enum: use .of() to create instances from custom string values
+EntitySkillsCreateRequestDtoMinimumProficiencyValue custom = EntitySkillsCreateRequestDtoMinimumProficiencyValue.of("custom_value");
+```
+
 
 ## Values
 
