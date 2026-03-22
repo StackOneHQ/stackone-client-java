@@ -195,7 +195,7 @@ public class Application {
                 .call();
 
         if (res.companyResult().isPresent()) {
-            // handle response
+            System.out.println(res.companyResult().get());
         }
     }
 }
@@ -348,7 +348,7 @@ public class Application {
                 .call();
 
         if (res.customFieldDefinitionResultApiModel().isPresent()) {
-            // handle response
+            System.out.println(res.customFieldDefinitionResultApiModel().get());
         }
     }
 }
@@ -592,7 +592,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -670,7 +670,7 @@ public class Application {
                 .call();
 
         if (res.employeeResult().isPresent()) {
-            // handle response
+            System.out.println(res.employeeResult().get());
         }
     }
 }
@@ -838,7 +838,7 @@ public class Application {
                 .call();
 
         if (res.updateResult().isPresent()) {
-            // handle response
+            System.out.println(res.updateResult().get());
         }
     }
 }
@@ -915,7 +915,7 @@ public class Application {
                 .call();
 
         if (res.inviteEmployeeResult().isPresent()) {
-            // handle response
+            System.out.println(res.inviteEmployeeResult().get());
         }
     }
 }
@@ -1070,7 +1070,7 @@ public class Application {
                 .call();
 
         if (res.hrisShiftResult().isPresent()) {
-            // handle response
+            System.out.println(res.hrisShiftResult().get());
         }
     }
 }
@@ -1234,7 +1234,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -1313,7 +1313,7 @@ public class Application {
                 .call();
 
         if (res.timeOffResult().isPresent()) {
-            // handle response
+            System.out.println(res.timeOffResult().get());
         }
     }
 }
@@ -1403,7 +1403,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -1472,7 +1472,7 @@ public class Application {
                 .call();
 
         if (res.deleteResult().isPresent()) {
-            // handle response
+            System.out.println(res.deleteResult().get());
         }
     }
 }
@@ -1540,7 +1540,6 @@ public class Application {
         HrisBatchUploadEmployeeDocumentResponse res = sdk.hris().batchUploadEmployeeDocument()
                 .xAccountId("<id>")
                 .id("<id>")
-                .prefer("heartbeat")
                 .hrisBatchDocumentUploadRequestDto(HrisBatchDocumentUploadRequestDto.builder()
                     .items(List.of(
                         HrisDocumentsUploadRequestDto.builder()
@@ -1563,7 +1562,7 @@ public class Application {
                 .call();
 
         if (res.batchResultApiModel().isPresent()) {
-            // handle response
+            System.out.println(res.batchResultApiModel().get());
         }
     }
 }
@@ -1571,12 +1570,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
-| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
-| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
-| `hrisBatchDocumentUploadRequestDto`                                                                                                                                      | [HrisBatchDocumentUploadRequestDto](../../models/components/HrisBatchDocumentUploadRequestDto.md)                                                                        | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `xAccountId`                                                                                      | *String*                                                                                          | :heavy_check_mark:                                                                                | The account identifier                                                                            |
+| `id`                                                                                              | *String*                                                                                          | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `hrisBatchDocumentUploadRequestDto`                                                               | [HrisBatchDocumentUploadRequestDto](../../models/components/HrisBatchDocumentUploadRequestDto.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |
 
 ### Response
 
@@ -1630,7 +1628,6 @@ public class Application {
         HrisUploadEmployeeDocumentResponse res = sdk.hris().uploadEmployeeDocument()
                 .xAccountId("<id>")
                 .id("<id>")
-                .prefer("heartbeat")
                 .hrisDocumentsUploadRequestDto(HrisDocumentsUploadRequestDto.builder()
                     .name("weather-forecast")
                     .fileFormat(FileFormat.builder()
@@ -1650,7 +1647,7 @@ public class Application {
                 .call();
 
         if (res.writeResultApiModel().isPresent()) {
-            // handle response
+            System.out.println(res.writeResultApiModel().get());
         }
     }
 }
@@ -1658,12 +1655,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
-| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
-| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
-| `hrisDocumentsUploadRequestDto`                                                                                                                                          | [HrisDocumentsUploadRequestDto](../../models/components/HrisDocumentsUploadRequestDto.md)                                                                                | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `xAccountId`                                                                              | *String*                                                                                  | :heavy_check_mark:                                                                        | The account identifier                                                                    |
+| `id`                                                                                      | *String*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `hrisDocumentsUploadRequestDto`                                                           | [HrisDocumentsUploadRequestDto](../../models/components/HrisDocumentsUploadRequestDto.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
 
 ### Response
 
@@ -1721,7 +1717,6 @@ public class Application {
                 .subResourceId("<id>")
                 .format("base64")
                 .exportFormat("text/plain")
-                .prefer("heartbeat")
                 .build();
 
         HrisDownloadEmployeeDocumentResponse res = sdk.hris().downloadEmployeeDocument()
@@ -1729,7 +1724,7 @@ public class Application {
                 .call();
 
         if (res.body().isPresent()) {
-            // handle response
+            System.out.println(res.body().get());
         }
     }
 }
@@ -1881,7 +1876,7 @@ public class Application {
                 .call();
 
         if (res.hrisDocumentResult().isPresent()) {
-            // handle response
+            System.out.println(res.hrisDocumentResult().get());
         }
     }
 }
@@ -2031,7 +2026,7 @@ public class Application {
                 .call();
 
         if (res.referenceResult().isPresent()) {
-            // handle response
+            System.out.println(res.referenceResult().get());
         }
     }
 }
@@ -2204,7 +2199,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -2282,7 +2277,7 @@ public class Application {
                 .call();
 
         if (res.workEligibilityResult().isPresent()) {
-            // handle response
+            System.out.println(res.workEligibilityResult().get());
         }
     }
 }
@@ -2538,7 +2533,7 @@ public class Application {
                 .call();
 
         if (res.timeOffBalanceResult().isPresent()) {
-            // handle response
+            System.out.println(res.timeOffBalanceResult().get());
         }
     }
 }
@@ -2690,7 +2685,7 @@ public class Application {
                 .call();
 
         if (res.employmentResult().isPresent()) {
-            // handle response
+            System.out.println(res.employmentResult().get());
         }
     }
 }
@@ -2886,7 +2881,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -2965,7 +2960,7 @@ public class Application {
                 .call();
 
         if (res.employmentResult().isPresent()) {
-            // handle response
+            System.out.println(res.employmentResult().get());
         }
     }
 }
@@ -3088,7 +3083,7 @@ public class Application {
                 .call();
 
         if (res.updateResult().isPresent()) {
-            // handle response
+            System.out.println(res.updateResult().get());
         }
     }
 }
@@ -3618,7 +3613,7 @@ public class Application {
                 .call();
 
         if (res.hrisGroupsResult().isPresent()) {
-            // handle response
+            System.out.println(res.hrisGroupsResult().get());
         }
     }
 }
@@ -3692,7 +3687,7 @@ public class Application {
                 .call();
 
         if (res.hrisDepartmentsResult().isPresent()) {
-            // handle response
+            System.out.println(res.hrisDepartmentsResult().get());
         }
     }
 }
@@ -3766,7 +3761,7 @@ public class Application {
                 .call();
 
         if (res.hrisCostCenterResult().isPresent()) {
-            // handle response
+            System.out.println(res.hrisCostCenterResult().get());
         }
     }
 }
@@ -3840,7 +3835,7 @@ public class Application {
                 .call();
 
         if (res.hrisTeamsResult().isPresent()) {
-            // handle response
+            System.out.println(res.hrisTeamsResult().get());
         }
     }
 }
@@ -3914,7 +3909,7 @@ public class Application {
                 .call();
 
         if (res.hrisDivisionsResult().isPresent()) {
-            // handle response
+            System.out.println(res.hrisDivisionsResult().get());
         }
     }
 }
@@ -3988,7 +3983,7 @@ public class Application {
                 .call();
 
         if (res.companyResult().isPresent()) {
-            // handle response
+            System.out.println(res.companyResult().get());
         }
     }
 }
@@ -4138,7 +4133,7 @@ public class Application {
                 .call();
 
         if (res.hrisJobResult().isPresent()) {
-            // handle response
+            System.out.println(res.hrisJobResult().get());
         }
     }
 }
@@ -4288,7 +4283,7 @@ public class Application {
                 .call();
 
         if (res.hrisLocationResult().isPresent()) {
-            // handle response
+            System.out.println(res.hrisLocationResult().get());
         }
     }
 }
@@ -4437,7 +4432,7 @@ public class Application {
                 .call();
 
         if (res.positionResult().isPresent()) {
-            // handle response
+            System.out.println(res.positionResult().get());
         }
     }
 }
@@ -4589,7 +4584,7 @@ public class Application {
                 .call();
 
         if (res.timeEntriesResult().isPresent()) {
-            // handle response
+            System.out.println(res.timeEntriesResult().get());
         }
     }
 }
@@ -4740,7 +4735,7 @@ public class Application {
                 .call();
 
         if (res.timeOffResult().isPresent()) {
-            // handle response
+            System.out.println(res.timeOffResult().get());
         }
     }
 }
@@ -4890,7 +4885,7 @@ public class Application {
                 .call();
 
         if (res.hrisShiftResult().isPresent()) {
-            // handle response
+            System.out.println(res.hrisShiftResult().get());
         }
     }
 }
@@ -5044,7 +5039,7 @@ public class Application {
                 .call();
 
         if (res.referenceResult().isPresent()) {
-            // handle response
+            System.out.println(res.referenceResult().get());
         }
     }
 }
@@ -5194,7 +5189,7 @@ public class Application {
                 .call();
 
         if (res.timeOffPolicyResult().isPresent()) {
-            // handle response
+            System.out.println(res.timeOffPolicyResult().get());
         }
     }
 }
@@ -5421,7 +5416,7 @@ public class Application {
                 .call();
 
         if (res.hrisBenefitResult().isPresent()) {
-            // handle response
+            System.out.println(res.hrisBenefitResult().get());
         }
     }
 }
@@ -5577,7 +5572,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -5655,7 +5650,7 @@ public class Application {
                 .call();
 
         if (res.entitySkillResult().isPresent()) {
-            // handle response
+            System.out.println(res.entitySkillResult().get());
         }
     }
 }
@@ -5810,7 +5805,7 @@ public class Application {
                 .call();
 
         if (res.taskResult().isPresent()) {
-            // handle response
+            System.out.println(res.taskResult().get());
         }
     }
 }
@@ -5890,7 +5885,7 @@ public class Application {
                 .call();
 
         if (res.updateResult().isPresent()) {
-            // handle response
+            System.out.println(res.updateResult().get());
         }
     }
 }
@@ -6043,7 +6038,7 @@ public class Application {
                 .call();
 
         if (res.taskResult().isPresent()) {
-            // handle response
+            System.out.println(res.taskResult().get());
         }
     }
 }

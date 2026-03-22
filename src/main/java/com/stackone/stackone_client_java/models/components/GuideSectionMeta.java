@@ -43,27 +43,47 @@ public class GuideSectionMeta {
     @JsonProperty("steps")
     private JsonNullable<? extends List<GuideStepMeta>> steps;
 
+    /**
+     * The scopes for which this section is applicable
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("applicableScopes")
+    private JsonNullable<? extends List<String>> applicableScopes;
+
+    /**
+     * An image for the section
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("image")
+    private JsonNullable<? extends GuideSectionMetaImage> image;
+
     @JsonCreator
     public GuideSectionMeta(
             @JsonProperty("title") String title,
             @JsonProperty("content") String content,
             @JsonProperty("list") JsonNullable<? extends List<String>> list,
-            @JsonProperty("steps") JsonNullable<? extends List<GuideStepMeta>> steps) {
+            @JsonProperty("steps") JsonNullable<? extends List<GuideStepMeta>> steps,
+            @JsonProperty("applicableScopes") JsonNullable<? extends List<String>> applicableScopes,
+            @JsonProperty("image") JsonNullable<? extends GuideSectionMetaImage> image) {
         Utils.checkNotNull(title, "title");
         Utils.checkNotNull(content, "content");
         Utils.checkNotNull(list, "list");
         Utils.checkNotNull(steps, "steps");
+        Utils.checkNotNull(applicableScopes, "applicableScopes");
+        Utils.checkNotNull(image, "image");
         this.title = title;
         this.content = content;
         this.list = list;
         this.steps = steps;
+        this.applicableScopes = applicableScopes;
+        this.image = image;
     }
     
     public GuideSectionMeta(
             String title,
             String content) {
         this(title, content, JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -98,6 +118,24 @@ public class GuideSectionMeta {
     @JsonIgnore
     public JsonNullable<List<GuideStepMeta>> steps() {
         return (JsonNullable<List<GuideStepMeta>>) steps;
+    }
+
+    /**
+     * The scopes for which this section is applicable
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<String>> applicableScopes() {
+        return (JsonNullable<List<String>>) applicableScopes;
+    }
+
+    /**
+     * An image for the section
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<GuideSectionMetaImage> image() {
+        return (JsonNullable<GuideSectionMetaImage>) image;
     }
 
     public static Builder builder() {
@@ -159,6 +197,42 @@ public class GuideSectionMeta {
         return this;
     }
 
+    /**
+     * The scopes for which this section is applicable
+     */
+    public GuideSectionMeta withApplicableScopes(List<String> applicableScopes) {
+        Utils.checkNotNull(applicableScopes, "applicableScopes");
+        this.applicableScopes = JsonNullable.of(applicableScopes);
+        return this;
+    }
+
+    /**
+     * The scopes for which this section is applicable
+     */
+    public GuideSectionMeta withApplicableScopes(JsonNullable<? extends List<String>> applicableScopes) {
+        Utils.checkNotNull(applicableScopes, "applicableScopes");
+        this.applicableScopes = applicableScopes;
+        return this;
+    }
+
+    /**
+     * An image for the section
+     */
+    public GuideSectionMeta withImage(GuideSectionMetaImage image) {
+        Utils.checkNotNull(image, "image");
+        this.image = JsonNullable.of(image);
+        return this;
+    }
+
+    /**
+     * An image for the section
+     */
+    public GuideSectionMeta withImage(JsonNullable<? extends GuideSectionMetaImage> image) {
+        Utils.checkNotNull(image, "image");
+        this.image = image;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -172,14 +246,16 @@ public class GuideSectionMeta {
             Utils.enhancedDeepEquals(this.title, other.title) &&
             Utils.enhancedDeepEquals(this.content, other.content) &&
             Utils.enhancedDeepEquals(this.list, other.list) &&
-            Utils.enhancedDeepEquals(this.steps, other.steps);
+            Utils.enhancedDeepEquals(this.steps, other.steps) &&
+            Utils.enhancedDeepEquals(this.applicableScopes, other.applicableScopes) &&
+            Utils.enhancedDeepEquals(this.image, other.image);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
             title, content, list,
-            steps);
+            steps, applicableScopes, image);
     }
     
     @Override
@@ -188,7 +264,9 @@ public class GuideSectionMeta {
                 "title", title,
                 "content", content,
                 "list", list,
-                "steps", steps);
+                "steps", steps,
+                "applicableScopes", applicableScopes,
+                "image", image);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -201,6 +279,10 @@ public class GuideSectionMeta {
         private JsonNullable<? extends List<String>> list = JsonNullable.undefined();
 
         private JsonNullable<? extends List<GuideStepMeta>> steps = JsonNullable.undefined();
+
+        private JsonNullable<? extends List<String>> applicableScopes = JsonNullable.undefined();
+
+        private JsonNullable<? extends GuideSectionMetaImage> image = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -264,11 +346,49 @@ public class GuideSectionMeta {
             return this;
         }
 
+
+        /**
+         * The scopes for which this section is applicable
+         */
+        public Builder applicableScopes(List<String> applicableScopes) {
+            Utils.checkNotNull(applicableScopes, "applicableScopes");
+            this.applicableScopes = JsonNullable.of(applicableScopes);
+            return this;
+        }
+
+        /**
+         * The scopes for which this section is applicable
+         */
+        public Builder applicableScopes(JsonNullable<? extends List<String>> applicableScopes) {
+            Utils.checkNotNull(applicableScopes, "applicableScopes");
+            this.applicableScopes = applicableScopes;
+            return this;
+        }
+
+
+        /**
+         * An image for the section
+         */
+        public Builder image(GuideSectionMetaImage image) {
+            Utils.checkNotNull(image, "image");
+            this.image = JsonNullable.of(image);
+            return this;
+        }
+
+        /**
+         * An image for the section
+         */
+        public Builder image(JsonNullable<? extends GuideSectionMetaImage> image) {
+            Utils.checkNotNull(image, "image");
+            this.image = image;
+            return this;
+        }
+
         public GuideSectionMeta build() {
 
             return new GuideSectionMeta(
                 title, content, list,
-                steps);
+                steps, applicableScopes, image);
         }
 
     }

@@ -2,6 +2,17 @@
 
 The type of bank account
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HRISBankDetailsAccountTypeValue;
+
+HRISBankDetailsAccountTypeValue value = HRISBankDetailsAccountTypeValue.SAVINGS;
+
+// Open enum: use .of() to create instances from custom string values
+HRISBankDetailsAccountTypeValue custom = HRISBankDetailsAccountTypeValue.of("custom_value");
+```
+
 
 ## Values
 

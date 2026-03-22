@@ -133,7 +133,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -209,7 +209,7 @@ public class Application {
                 .call();
 
         if (res.messagingConversationResult().isPresent()) {
-            // handle response
+            System.out.println(res.messagingConversationResult().get());
         }
     }
 }
@@ -277,7 +277,6 @@ public class Application {
                 .subResourceId("<id>")
                 .format("base64")
                 .exportFormat("text/plain")
-                .prefer("heartbeat")
                 .build();
 
         MessagingDownloadMessagingAttachmentResponse res = sdk.messaging().downloadMessagingAttachment()
@@ -285,7 +284,7 @@ public class Application {
                 .call();
 
         if (res.body().isPresent()) {
-            // handle response
+            System.out.println(res.body().get());
         }
     }
 }
@@ -437,7 +436,7 @@ public class Application {
                 .call();
 
         if (res.messagingAttachmentResult().isPresent()) {
-            // handle response
+            System.out.println(res.messagingAttachmentResult().get());
         }
     }
 }
@@ -587,7 +586,7 @@ public class Application {
                 .call();
 
         if (res.messagingUserResult().isPresent()) {
-            // handle response
+            System.out.println(res.messagingUserResult().get());
         }
     }
 }
@@ -738,7 +737,7 @@ public class Application {
                 .call();
 
         if (res.messagingMessageResult().isPresent()) {
-            // handle response
+            System.out.println(res.messagingMessageResult().get());
         }
     }
 }
@@ -811,7 +810,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }

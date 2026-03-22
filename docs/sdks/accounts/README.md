@@ -48,7 +48,7 @@ public class Application {
                 .call();
 
         if (res.linkedAccounts().isPresent()) {
-            // handle response
+            System.out.println(res.linkedAccounts().get());
         }
     }
 }
@@ -113,7 +113,7 @@ public class Application {
                 .call();
 
         if (res.linkedAccount().isPresent()) {
-            // handle response
+            System.out.println(res.linkedAccount().get());
         }
     }
 }
@@ -178,7 +178,7 @@ public class Application {
                 .call();
 
         if (res.linkedAccount().isPresent()) {
-            // handle response
+            System.out.println(res.linkedAccount().get());
         }
     }
 }
@@ -246,7 +246,7 @@ public class Application {
                 .call();
 
         if (res.linkedAccount().isPresent()) {
-            // handle response
+            System.out.println(res.linkedAccount().get());
         }
     }
 }
@@ -312,7 +312,7 @@ public class Application {
                 .call();
 
         if (res.linkedAccountMeta().isPresent()) {
-            // handle response
+            System.out.println(res.linkedAccountMeta().get());
         }
     }
 }

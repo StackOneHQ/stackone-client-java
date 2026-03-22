@@ -95,8 +95,10 @@ public class HrisListEmployeeTimeOffRequestsRequestBuilder {
         Flow.Publisher<HttpResponse<Blob>> asyncPaginator = new AsyncPaginator<>(
             request,
             new CursorTracker<>("$.next", String.class),
-                    HrisListEmployeeTimeOffRequestsRequest::withNext,
-            operation::doRequest);
+            (req, pos) -> {
+                var modifiedReq = pos == null ? req : req.withNext(pos);
+                return operation.doRequest(modifiedReq);
+            });
 
         Flow.Publisher<HrisListEmployeeTimeOffRequestsResponse> flowPublisher = mapAsync(asyncPaginator, operation::handleResponse);
 

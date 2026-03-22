@@ -2,6 +2,17 @@
 
 The unified message type.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.MessageValue;
+
+MessageValue value = MessageValue.EMAIL;
+
+// Open enum: use .of() to create instances from custom string values
+MessageValue custom = MessageValue.of("custom_value");
+```
+
 
 ## Values
 

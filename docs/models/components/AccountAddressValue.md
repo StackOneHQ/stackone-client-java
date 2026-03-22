@@ -2,6 +2,17 @@
 
 The ISO 3166-1 alpha-2 code of the country.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.AccountAddressValue;
+
+AccountAddressValue value = AccountAddressValue.AF;
+
+// Open enum: use .of() to create instances from custom string values
+AccountAddressValue custom = AccountAddressValue.of("custom_value");
+```
+
 
 ## Values
 

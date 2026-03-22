@@ -1,5 +1,16 @@
 # HrisUpdateEmployeeRequestDtoMaritalStatusValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoMaritalStatusValue;
+
+HrisUpdateEmployeeRequestDtoMaritalStatusValue value = HrisUpdateEmployeeRequestDtoMaritalStatusValue.SINGLE;
+
+// Open enum: use .of() to create instances from custom string values
+HrisUpdateEmployeeRequestDtoMaritalStatusValue custom = HrisUpdateEmployeeRequestDtoMaritalStatusValue.of("custom_value");
+```
+
 
 ## Values
 

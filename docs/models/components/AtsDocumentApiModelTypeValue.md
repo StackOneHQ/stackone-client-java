@@ -2,6 +2,17 @@
 
 The category of the file
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.AtsDocumentApiModelTypeValue;
+
+AtsDocumentApiModelTypeValue value = AtsDocumentApiModelTypeValue.RESUME;
+
+// Open enum: use .of() to create instances from custom string values
+AtsDocumentApiModelTypeValue custom = AtsDocumentApiModelTypeValue.of("custom_value");
+```
+
 
 ## Values
 

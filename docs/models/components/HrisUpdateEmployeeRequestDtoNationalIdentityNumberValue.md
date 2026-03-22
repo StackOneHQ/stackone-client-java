@@ -2,6 +2,17 @@
 
 The type of the national identity number
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoNationalIdentityNumberValue;
+
+HrisUpdateEmployeeRequestDtoNationalIdentityNumberValue value = HrisUpdateEmployeeRequestDtoNationalIdentityNumberValue.SSN;
+
+// Open enum: use .of() to create instances from custom string values
+HrisUpdateEmployeeRequestDtoNationalIdentityNumberValue custom = HrisUpdateEmployeeRequestDtoNationalIdentityNumberValue.of("custom_value");
+```
+
 
 ## Values
 

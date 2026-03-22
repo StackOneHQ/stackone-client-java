@@ -64,7 +64,7 @@ public class Application {
                 .call();
 
         if (res.stepLogsPaginated().isPresent()) {
-            // handle response
+            System.out.println(res.stepLogsPaginated().get());
         }
     }
 }
@@ -131,7 +131,7 @@ public class Application {
                 .call();
 
         if (res.unifiedLogResult().isPresent()) {
-            // handle response
+            System.out.println(res.unifiedLogResult().get());
         }
     }
 }
@@ -222,7 +222,7 @@ public class Application {
                 .call();
 
         if (res.unifiedLogsPaginated().isPresent()) {
-            // handle response
+            System.out.println(res.unifiedLogsPaginated().get());
         }
     }
 }
@@ -308,7 +308,7 @@ public class Application {
                 .call();
 
         if (res.platformLogsPaginated().isPresent()) {
-            // handle response
+            System.out.println(res.platformLogsPaginated().get());
         }
     }
 }

@@ -2,6 +2,17 @@
 
 ISO 4217 currency code
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HRISBankDetailsCurrencyCodeValue;
+
+HRISBankDetailsCurrencyCodeValue value = HRISBankDetailsCurrencyCodeValue.AED;
+
+// Open enum: use .of() to create instances from custom string values
+HRISBankDetailsCurrencyCodeValue custom = HRISBankDetailsCurrencyCodeValue.of("custom_value");
+```
+
 
 ## Values
 

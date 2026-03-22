@@ -2,6 +2,17 @@
 
 The pay period of the job postings.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoValue;
+
+HrisCreateEmploymentRequestDtoValue value = HrisCreateEmploymentRequestDtoValue.HOUR;
+
+// Open enum: use .of() to create instances from custom string values
+HrisCreateEmploymentRequestDtoValue custom = HrisCreateEmploymentRequestDtoValue.of("custom_value");
+```
+
 
 ## Values
 

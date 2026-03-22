@@ -2,6 +2,17 @@
 
 The type of the field
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.FieldType;
+
+FieldType value = FieldType.SHORT_TEXT;
+
+// Open enum: use .of() to create instances from custom string values
+FieldType custom = FieldType.of("custom_value");
+```
+
 
 ## Values
 

@@ -2,6 +2,17 @@
 
 The event type
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.Event;
+
+Event value = Event.SCREENING_RESULTS_CREATED;
+
+// Open enum: use .of() to create instances from custom string values
+Event custom = Event.of("custom_value");
+```
+
 
 ## Values
 

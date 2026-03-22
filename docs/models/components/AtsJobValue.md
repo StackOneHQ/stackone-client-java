@@ -2,6 +2,17 @@
 
 The status of the job.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.AtsJobValue;
+
+AtsJobValue value = AtsJobValue.PUBLISHED;
+
+// Open enum: use .of() to create instances from custom string values
+AtsJobValue custom = AtsJobValue.of("custom_value");
+```
+
 
 ## Values
 
