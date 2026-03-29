@@ -2,6 +2,17 @@
 
 The ISO639-2 Code of the language
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoPreferredLanguageValue;
+
+HrisUpdateEmployeeRequestDtoPreferredLanguageValue value = HrisUpdateEmployeeRequestDtoPreferredLanguageValue.AAR;
+
+// Open enum: use .of() to create instances from custom string values
+HrisUpdateEmployeeRequestDtoPreferredLanguageValue custom = HrisUpdateEmployeeRequestDtoPreferredLanguageValue.of("custom_value");
+```
+
 
 ## Values
 

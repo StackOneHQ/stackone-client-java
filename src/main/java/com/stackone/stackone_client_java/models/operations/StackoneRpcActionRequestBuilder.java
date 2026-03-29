@@ -12,11 +12,13 @@ import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.String;
 import java.util.Optional;
 
 public class StackoneRpcActionRequestBuilder {
 
-    private ActionsRpcRequestDto request;
+    private String xAccountId;
+    private ActionsRpcRequestDto actionsRpcRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
@@ -25,9 +27,15 @@ public class StackoneRpcActionRequestBuilder {
         this.sdkConfiguration = sdkConfiguration;
     }
 
-    public StackoneRpcActionRequestBuilder request(ActionsRpcRequestDto request) {
-        Utils.checkNotNull(request, "request");
-        this.request = request;
+    public StackoneRpcActionRequestBuilder xAccountId(String xAccountId) {
+        Utils.checkNotNull(xAccountId, "xAccountId");
+        this.xAccountId = xAccountId;
+        return this;
+    }
+
+    public StackoneRpcActionRequestBuilder actionsRpcRequestDto(ActionsRpcRequestDto actionsRpcRequestDto) {
+        Utils.checkNotNull(actionsRpcRequestDto, "actionsRpcRequestDto");
+        this.actionsRpcRequestDto = actionsRpcRequestDto;
         return this;
     }
                 
@@ -43,13 +51,23 @@ public class StackoneRpcActionRequestBuilder {
         return this;
     }
 
+
+    private StackoneRpcActionRequest buildRequest() {
+
+        StackoneRpcActionRequest request = new StackoneRpcActionRequest(xAccountId,
+            actionsRpcRequestDto);
+
+        return request;
+    }
+
     public StackoneRpcActionResponse call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());
 
-        RequestOperation<ActionsRpcRequestDto, StackoneRpcActionResponse> operation
+        RequestOperation<StackoneRpcActionRequest, StackoneRpcActionResponse> operation
               = new StackoneRpcAction.Sync(sdkConfiguration, options, _headers);
+        StackoneRpcActionRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));
     }

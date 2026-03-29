@@ -6,7 +6,18 @@ package com.stackone.stackone_client_java;
 import com.stackone.stackone_client_java.utils.Headers;
 
 /**
- * Accounting: The documentation for the StackOne Unified API - ACCOUNTING
+ * Accounting: The documentation for the StackOne API
+ * The documentation for the StackOne Unified API - HRIS
+ * The documentation for the StackOne Unified API - ATS
+ * The documentation for the StackOne Unified API - CRM
+ * The documentation for the StackOne Unified API - IAM
+ * The documentation for the StackOne Unified API - MARKETING
+ * The documentation for the StackOne Unified API - LMS
+ * The documentation for the StackOne Unified API - TICKETING
+ * The documentation for the StackOne Unified API - DOCUMENTS
+ * The documentation for the StackOne Unified API - SCREENING
+ * The documentation for the StackOne Unified API - MESSAGING
+ * The documentation for the StackOne Unified API - ACCOUNTING
  */
 public class AsyncStackOne {
     private static final Headers _headers = Headers.EMPTY;
@@ -31,13 +42,13 @@ public class AsyncStackOne {
      */
     private final AsyncMcp mcp;
     /**
-     * Routing API requests through StackOne directly to the underlying provider.
-     */
-    private final AsyncProxy proxy;
-    /**
      * Retrieve Actions metadata and definitions.
      */
     private final AsyncActions actions;
+    /**
+     * Routing API requests through StackOne directly to the underlying provider.
+     */
+    private final AsyncProxy proxy;
 
     private final AsyncHris hris;
 
@@ -91,16 +102,16 @@ public class AsyncStackOne {
         return mcp;
     }
     /**
-     * Routing API requests through StackOne directly to the underlying provider.
-     */
-    public AsyncProxy proxy() {
-        return proxy;
-    }
-    /**
      * Retrieve Actions metadata and definitions.
      */
     public AsyncActions actions() {
         return actions;
+    }
+    /**
+     * Routing API requests through StackOne directly to the underlying provider.
+     */
+    public AsyncProxy proxy() {
+        return proxy;
     }
 
     public AsyncHris hris() {
@@ -158,8 +169,8 @@ public class AsyncStackOne {
         this.requestLogs = new AsyncRequestLogs(syncSDK.requestLogs(), sdkConfiguration);
         this.connectors = new AsyncConnectors(syncSDK.connectors(), sdkConfiguration);
         this.mcp = new AsyncMcp(syncSDK.mcp(), sdkConfiguration);
-        this.proxy = new AsyncProxy(syncSDK.proxy(), sdkConfiguration);
         this.actions = new AsyncActions(syncSDK.actions(), sdkConfiguration);
+        this.proxy = new AsyncProxy(syncSDK.proxy(), sdkConfiguration);
         this.hris = new AsyncHris(syncSDK.hris(), sdkConfiguration);
         this.ats = new AsyncAts(syncSDK.ats(), sdkConfiguration);
         this.crm = new AsyncCrm(syncSDK.crm(), sdkConfiguration);

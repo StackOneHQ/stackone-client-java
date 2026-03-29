@@ -2,6 +2,17 @@
 
 The pay period of the job postings.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.JobPostingCompensationPayPeriodValue;
+
+JobPostingCompensationPayPeriodValue value = JobPostingCompensationPayPeriodValue.HOUR;
+
+// Open enum: use .of() to create instances from custom string values
+JobPostingCompensationPayPeriodValue custom = JobPostingCompensationPayPeriodValue.of("custom_value");
+```
+
 
 ## Values
 

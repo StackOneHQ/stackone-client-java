@@ -1,5 +1,13 @@
 # ConnectSessionCategories
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.ConnectSessionCategories;
+
+ConnectSessionCategories value = ConnectSessionCategories.ATS;
+```
+
 
 ## Values
 

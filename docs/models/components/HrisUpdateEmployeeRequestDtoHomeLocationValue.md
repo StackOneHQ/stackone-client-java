@@ -2,6 +2,17 @@
 
 The ISO3166-1 Alpha2 Code of the Country
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoHomeLocationValue;
+
+HrisUpdateEmployeeRequestDtoHomeLocationValue value = HrisUpdateEmployeeRequestDtoHomeLocationValue.AF;
+
+// Open enum: use .of() to create instances from custom string values
+HrisUpdateEmployeeRequestDtoHomeLocationValue custom = HrisUpdateEmployeeRequestDtoHomeLocationValue.of("custom_value");
+```
+
 
 ## Values
 

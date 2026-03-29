@@ -11,8 +11,6 @@ import com.stackone.stackone_client_java.utils.TypedObject;
 import com.stackone.stackone_client_java.utils.Utils.JsonShape;
 import com.stackone.stackone_client_java.utils.Utils.TypeReferenceWithShape;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -23,7 +21,7 @@ import java.util.Map;
 /**
  * Data
  * 
- * <p>The response data from the provider. Can be an object, array, or primitive value.
+ * <p>The response data from the action RPC call
  */
 @JsonDeserialize(using = Data._Deserializer.class)
 public class Data {
@@ -44,28 +42,12 @@ public class Data {
         Utils.checkNotNull(value, "value");
         return new Data(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
-
-    public static Data of(String value) {
-        Utils.checkNotNull(value, "value");
-        return new Data(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
-    }
-
-    public static Data of(double value) {
-        return new Data(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
-    }
-
-    public static Data of(boolean value) {
-        return new Data(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
-    }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code java.util.Map<java.lang.String, java.lang.Object>}</li>
      * <li>{@code java.util.List<java.util.Map<java.lang.String, java.lang.Object>>}</li>
-     * <li>{@code java.lang.String}</li>
-     * <li>{@code double}</li>
-     * <li>{@code boolean}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -106,10 +88,7 @@ public class Data {
         public _Deserializer() {
             super(Data.class, false,
                   TypeReferenceWithShape.of(new TypeReference<Map<String, Object>>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<List<Map<String, Object>>>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<String>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Double>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<List<Map<String, Object>>>() {}, JsonShape.DEFAULT));
         }
     }
     

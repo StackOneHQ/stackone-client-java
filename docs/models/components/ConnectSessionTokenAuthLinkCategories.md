@@ -1,5 +1,13 @@
 # ConnectSessionTokenAuthLinkCategories
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.ConnectSessionTokenAuthLinkCategories;
+
+ConnectSessionTokenAuthLinkCategories value = ConnectSessionTokenAuthLinkCategories.ATS;
+```
+
 
 ## Values
 

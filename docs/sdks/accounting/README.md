@@ -131,7 +131,7 @@ public class Application {
                 .call();
 
         if (res.accountingCompanyResult().isPresent()) {
-            // handle response
+            System.out.println(res.accountingCompanyResult().get());
         }
     }
 }
@@ -282,7 +282,7 @@ public class Application {
                 .call();
 
         if (res.accountingAccountResult().isPresent()) {
-            // handle response
+            System.out.println(res.accountingAccountResult().get());
         }
     }
 }
@@ -434,7 +434,7 @@ public class Application {
                 .call();
 
         if (res.accountingTaxRateResult().isPresent()) {
-            // handle response
+            System.out.println(res.accountingTaxRateResult().get());
         }
     }
 }
@@ -507,7 +507,7 @@ public class Application {
                 .call();
 
         if (res.batchResultApiModel().isPresent()) {
-            // handle response
+            System.out.println(res.batchResultApiModel().get());
         }
     }
 }
@@ -674,7 +674,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -752,7 +752,7 @@ public class Application {
                 .call();
 
         if (res.accountingJournalResult().isPresent()) {
-            // handle response
+            System.out.println(res.accountingJournalResult().get());
         }
     }
 }

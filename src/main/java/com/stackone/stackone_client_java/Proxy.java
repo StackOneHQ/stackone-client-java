@@ -12,6 +12,7 @@ import com.stackone.stackone_client_java.models.operations.StackoneProxyRequestR
 import com.stackone.stackone_client_java.operations.StackoneProxyRequest;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
+import java.lang.Deprecated;
 import java.lang.String;
 import java.util.Optional;
 
@@ -38,29 +39,33 @@ public class Proxy {
     }
 
     /**
-     * Proxy Request
+     * Proxy Request (Legacy)
      * 
      * @return The call builder
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public StackoneProxyRequestRequestBuilder proxyRequest() {
         return new StackoneProxyRequestRequestBuilder(sdkConfiguration);
     }
 
     /**
-     * Proxy Request
+     * Proxy Request (Legacy)
      * 
      * @param xAccountId The account identifier
      * @param proxyRequestBody 
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public StackoneProxyRequestResponse proxyRequest(String xAccountId, ProxyRequestBody proxyRequestBody) {
         return proxyRequest(xAccountId, Optional.empty(), proxyRequestBody,
             Optional.empty());
     }
 
     /**
-     * Proxy Request
+     * Proxy Request (Legacy)
      * 
      * @param xAccountId The account identifier
      * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
@@ -68,7 +73,9 @@ public class Proxy {
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public StackoneProxyRequestResponse proxyRequest(
             String xAccountId, Optional<String> prefer,
             ProxyRequestBody proxyRequestBody, Optional<Options> options) {

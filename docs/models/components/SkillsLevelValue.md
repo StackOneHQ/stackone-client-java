@@ -2,6 +2,17 @@
 
 The unified skill level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.SkillsLevelValue;
+
+SkillsLevelValue value = SkillsLevelValue.PRIMARY;
+
+// Open enum: use .of() to create instances from custom string values
+SkillsLevelValue custom = SkillsLevelValue.of("custom_value");
+```
+
 
 ## Values
 

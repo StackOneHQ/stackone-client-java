@@ -29,14 +29,16 @@ public class ConnectSessionCreate {
     private JsonNullable<? extends List<Categories>> categories;
 
     /**
-     * The provider to connect to
+     * The provider to connect to. When used with provider_version, ensures the hub renders on the specific
+     * auth config required. Alternatively, use integration_id to target a specific auth config directly.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("provider")
     private JsonNullable<String> provider;
 
     /**
-     * The provider version to connect to
+     * The provider version to connect to. Must be used together with provider to target a specific auth
+     * config. Alternatively, use integration_id to target a specific auth config directly.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("provider_version")
@@ -106,7 +108,9 @@ public class ConnectSessionCreate {
     private JsonNullable<? extends Type> type;
 
     /**
-     * The integration ID associated with this connect session
+     * The ID of the specific Auth Config to use for this connect session. When provided, the hub will
+     * render on this specific auth config. This is an alternative to using provider and provider_version
+     * together.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("integration_id")
@@ -175,7 +179,8 @@ public class ConnectSessionCreate {
     }
 
     /**
-     * The provider to connect to
+     * The provider to connect to. When used with provider_version, ensures the hub renders on the specific
+     * auth config required. Alternatively, use integration_id to target a specific auth config directly.
      */
     @JsonIgnore
     public JsonNullable<String> provider() {
@@ -183,7 +188,8 @@ public class ConnectSessionCreate {
     }
 
     /**
-     * The provider version to connect to
+     * The provider version to connect to. Must be used together with provider to target a specific auth
+     * config. Alternatively, use integration_id to target a specific auth config directly.
      */
     @JsonIgnore
     public JsonNullable<String> providerVersion() {
@@ -267,7 +273,9 @@ public class ConnectSessionCreate {
     }
 
     /**
-     * The integration ID associated with this connect session
+     * The ID of the specific Auth Config to use for this connect session. When provided, the hub will
+     * render on this specific auth config. This is an alternative to using provider and provider_version
+     * together.
      */
     @JsonIgnore
     public JsonNullable<String> integrationId() {
@@ -298,7 +306,8 @@ public class ConnectSessionCreate {
     }
 
     /**
-     * The provider to connect to
+     * The provider to connect to. When used with provider_version, ensures the hub renders on the specific
+     * auth config required. Alternatively, use integration_id to target a specific auth config directly.
      */
     public ConnectSessionCreate withProvider(String provider) {
         Utils.checkNotNull(provider, "provider");
@@ -307,7 +316,8 @@ public class ConnectSessionCreate {
     }
 
     /**
-     * The provider to connect to
+     * The provider to connect to. When used with provider_version, ensures the hub renders on the specific
+     * auth config required. Alternatively, use integration_id to target a specific auth config directly.
      */
     public ConnectSessionCreate withProvider(JsonNullable<String> provider) {
         Utils.checkNotNull(provider, "provider");
@@ -316,7 +326,8 @@ public class ConnectSessionCreate {
     }
 
     /**
-     * The provider version to connect to
+     * The provider version to connect to. Must be used together with provider to target a specific auth
+     * config. Alternatively, use integration_id to target a specific auth config directly.
      */
     public ConnectSessionCreate withProviderVersion(String providerVersion) {
         Utils.checkNotNull(providerVersion, "providerVersion");
@@ -325,7 +336,8 @@ public class ConnectSessionCreate {
     }
 
     /**
-     * The provider version to connect to
+     * The provider version to connect to. Must be used together with provider to target a specific auth
+     * config. Alternatively, use integration_id to target a specific auth config directly.
      */
     public ConnectSessionCreate withProviderVersion(JsonNullable<String> providerVersion) {
         Utils.checkNotNull(providerVersion, "providerVersion");
@@ -482,7 +494,9 @@ public class ConnectSessionCreate {
     }
 
     /**
-     * The integration ID associated with this connect session
+     * The ID of the specific Auth Config to use for this connect session. When provided, the hub will
+     * render on this specific auth config. This is an alternative to using provider and provider_version
+     * together.
      */
     public ConnectSessionCreate withIntegrationId(String integrationId) {
         Utils.checkNotNull(integrationId, "integrationId");
@@ -491,7 +505,9 @@ public class ConnectSessionCreate {
     }
 
     /**
-     * The integration ID associated with this connect session
+     * The ID of the specific Auth Config to use for this connect session. When provided, the hub will
+     * render on this specific auth config. This is an alternative to using provider and provider_version
+     * together.
      */
     public ConnectSessionCreate withIntegrationId(JsonNullable<String> integrationId) {
         Utils.checkNotNull(integrationId, "integrationId");
@@ -606,7 +622,8 @@ public class ConnectSessionCreate {
 
 
         /**
-         * The provider to connect to
+         * The provider to connect to. When used with provider_version, ensures the hub renders on the specific
+         * auth config required. Alternatively, use integration_id to target a specific auth config directly.
          */
         public Builder provider(String provider) {
             Utils.checkNotNull(provider, "provider");
@@ -615,7 +632,8 @@ public class ConnectSessionCreate {
         }
 
         /**
-         * The provider to connect to
+         * The provider to connect to. When used with provider_version, ensures the hub renders on the specific
+         * auth config required. Alternatively, use integration_id to target a specific auth config directly.
          */
         public Builder provider(JsonNullable<String> provider) {
             Utils.checkNotNull(provider, "provider");
@@ -625,7 +643,8 @@ public class ConnectSessionCreate {
 
 
         /**
-         * The provider version to connect to
+         * The provider version to connect to. Must be used together with provider to target a specific auth
+         * config. Alternatively, use integration_id to target a specific auth config directly.
          */
         public Builder providerVersion(String providerVersion) {
             Utils.checkNotNull(providerVersion, "providerVersion");
@@ -634,7 +653,8 @@ public class ConnectSessionCreate {
         }
 
         /**
-         * The provider version to connect to
+         * The provider version to connect to. Must be used together with provider to target a specific auth
+         * config. Alternatively, use integration_id to target a specific auth config directly.
          */
         public Builder providerVersion(JsonNullable<String> providerVersion) {
             Utils.checkNotNull(providerVersion, "providerVersion");
@@ -801,7 +821,9 @@ public class ConnectSessionCreate {
 
 
         /**
-         * The integration ID associated with this connect session
+         * The ID of the specific Auth Config to use for this connect session. When provided, the hub will
+         * render on this specific auth config. This is an alternative to using provider and provider_version
+         * together.
          */
         public Builder integrationId(String integrationId) {
             Utils.checkNotNull(integrationId, "integrationId");
@@ -810,7 +832,9 @@ public class ConnectSessionCreate {
         }
 
         /**
-         * The integration ID associated with this connect session
+         * The ID of the specific Auth Config to use for this connect session. When provided, the hub will
+         * render on this specific auth config. This is an alternative to using provider and provider_version
+         * together.
          */
         public Builder integrationId(JsonNullable<String> integrationId) {
             Utils.checkNotNull(integrationId, "integrationId");

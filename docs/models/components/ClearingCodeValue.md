@@ -2,6 +2,17 @@
 
 The type of clearing code
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.ClearingCodeValue;
+
+ClearingCodeValue value = ClearingCodeValue.SORT_CODE;
+
+// Open enum: use .of() to create instances from custom string values
+ClearingCodeValue custom = ClearingCodeValue.of("custom_value");
+```
+
 
 ## Values
 

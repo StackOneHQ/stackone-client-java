@@ -148,7 +148,7 @@ public class Application {
                 .call();
 
         if (res.courseResult().isPresent()) {
-            // handle response
+            System.out.println(res.courseResult().get());
         }
     }
 }
@@ -317,7 +317,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -398,7 +398,7 @@ public class Application {
                 .call();
 
         if (res.assignmentResult().isPresent()) {
-            // handle response
+            System.out.println(res.assignmentResult().get());
         }
     }
 }
@@ -529,7 +529,7 @@ public class Application {
                 .call();
 
         if (res.batchResultApiModel().isPresent()) {
-            // handle response
+            System.out.println(res.batchResultApiModel().get());
         }
     }
 }
@@ -666,7 +666,7 @@ public class Application {
                 .call();
 
         if (res.upsertResult().isPresent()) {
-            // handle response
+            System.out.println(res.upsertResult().get());
         }
     }
 }
@@ -826,7 +826,7 @@ public class Application {
                 .call();
 
         if (res.contentResult().isPresent()) {
-            // handle response
+            System.out.println(res.contentResult().get());
         }
     }
 }
@@ -989,7 +989,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -1068,7 +1068,7 @@ public class Application {
                 .call();
 
         if (res.completionResult().isPresent()) {
-            // handle response
+            System.out.println(res.completionResult().get());
         }
     }
 }
@@ -1139,7 +1139,7 @@ public class Application {
                 .call();
 
         if (res.deleteResult().isPresent()) {
-            // handle response
+            System.out.println(res.deleteResult().get());
         }
     }
 }
@@ -1291,7 +1291,7 @@ public class Application {
                 .call();
 
         if (res.completionResult().isPresent()) {
-            // handle response
+            System.out.println(res.completionResult().get());
         }
     }
 }
@@ -1365,7 +1365,7 @@ public class Application {
                 .call();
 
         if (res.categoryResult().isPresent()) {
-            // handle response
+            System.out.println(res.categoryResult().get());
         }
     }
 }
@@ -1590,7 +1590,7 @@ public class Application {
                 .call();
 
         if (res.userResult().isPresent()) {
-            // handle response
+            System.out.println(res.userResult().get());
         }
     }
 }
@@ -1664,7 +1664,7 @@ public class Application {
                 .call();
 
         if (res.skillResult().isPresent()) {
-            // handle response
+            System.out.println(res.skillResult().get());
         }
     }
 }
@@ -1899,7 +1899,7 @@ public class Application {
                 .call();
 
         if (res.assignmentResult().isPresent()) {
-            // handle response
+            System.out.println(res.assignmentResult().get());
         }
     }
 }

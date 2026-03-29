@@ -1,5 +1,16 @@
 # HrisCreateEmployeeRequestDtoEthnicityValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEthnicityValue;
+
+HrisCreateEmployeeRequestDtoEthnicityValue value = HrisCreateEmployeeRequestDtoEthnicityValue.WHITE;
+
+// Open enum: use .of() to create instances from custom string values
+HrisCreateEmployeeRequestDtoEthnicityValue custom = HrisCreateEmployeeRequestDtoEthnicityValue.of("custom_value");
+```
+
 
 ## Values
 

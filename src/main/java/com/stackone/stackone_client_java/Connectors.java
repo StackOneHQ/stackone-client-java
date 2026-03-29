@@ -15,6 +15,7 @@ import com.stackone.stackone_client_java.operations.StackoneGetConnectorMeta;
 import com.stackone.stackone_client_java.operations.StackoneListConnectorsMeta;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
+import java.lang.Deprecated;
 import java.lang.String;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -42,32 +43,38 @@ public class Connectors {
     }
 
     /**
-     * List Connector Meta Information
+     * List Connector Meta Information (Legacy)
      * 
      * @return The call builder
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public StackoneListConnectorsMetaRequestBuilder listConnectorsMeta() {
         return new StackoneListConnectorsMetaRequestBuilder(sdkConfiguration);
     }
 
     /**
-     * List Connector Meta Information
+     * List Connector Meta Information (Legacy)
      * 
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public StackoneListConnectorsMetaResponse listConnectorsMetaDirect() {
         return listConnectorsMeta(JsonNullable.undefined(), Optional.empty());
     }
 
     /**
-     * List Connector Meta Information
+     * List Connector Meta Information (Legacy)
      * 
      * @param include The comma separated list of data that will be included in the response
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public StackoneListConnectorsMetaResponse listConnectorsMeta(JsonNullable<String> include, Optional<Options> options) {
         StackoneListConnectorsMetaRequest request =
             StackoneListConnectorsMetaRequest
@@ -80,34 +87,40 @@ public class Connectors {
     }
 
     /**
-     * Get Connector Meta Information
+     * Get Connector Meta Information (Legacy)
      * 
      * @return The call builder
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public StackoneGetConnectorMetaRequestBuilder getConnectorMeta() {
         return new StackoneGetConnectorMetaRequestBuilder(sdkConfiguration);
     }
 
     /**
-     * Get Connector Meta Information
+     * Get Connector Meta Information (Legacy)
      * 
      * @param provider 
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public StackoneGetConnectorMetaResponse getConnectorMeta(String provider) {
         return getConnectorMeta(provider, JsonNullable.undefined(), Optional.empty());
     }
 
     /**
-     * Get Connector Meta Information
+     * Get Connector Meta Information (Legacy)
      * 
      * @param provider 
      * @param include The comma separated list of data that will be included in the response
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public StackoneGetConnectorMetaResponse getConnectorMeta(
             String provider, JsonNullable<String> include,
             Optional<Options> options) {

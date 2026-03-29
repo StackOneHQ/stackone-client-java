@@ -133,7 +133,7 @@ public class Application {
                 .call();
 
         if (res.iamUserResult().isPresent()) {
-            // handle response
+            System.out.println(res.iamUserResult().get());
         }
     }
 }
@@ -215,7 +215,7 @@ public class Application {
                 .call();
 
         if (res.updateResult().isPresent()) {
-            // handle response
+            System.out.println(res.updateResult().get());
         }
     }
 }
@@ -286,7 +286,7 @@ public class Application {
                 .call();
 
         if (res.deleteResult().isPresent()) {
-            // handle response
+            System.out.println(res.deleteResult().get());
         }
     }
 }
@@ -440,7 +440,7 @@ public class Application {
                 .call();
 
         if (res.iamRoleResult().isPresent()) {
-            // handle response
+            System.out.println(res.iamRoleResult().get());
         }
     }
 }
@@ -591,7 +591,7 @@ public class Application {
                 .call();
 
         if (res.iamGroupResult().isPresent()) {
-            // handle response
+            System.out.println(res.iamGroupResult().get());
         }
     }
 }
@@ -742,7 +742,7 @@ public class Application {
                 .call();
 
         if (res.iamPolicyResult().isPresent()) {
-            // handle response
+            System.out.println(res.iamPolicyResult().get());
         }
     }
 }

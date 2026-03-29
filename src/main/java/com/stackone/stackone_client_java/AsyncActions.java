@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.models.components.ActionBuildDto;
 import com.stackone.stackone_client_java.models.components.ActionSearchDto;
 import com.stackone.stackone_client_java.models.components.ActionsRpcRequestDto;
 import com.stackone.stackone_client_java.models.operations.StackoneListActionsMetaRequest;
+import com.stackone.stackone_client_java.models.operations.StackoneRpcActionRequest;
 import com.stackone.stackone_client_java.models.operations.async.StackoneBuildActionEmbeddingsRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.async.StackoneBuildActionEmbeddingsResponse;
 import com.stackone.stackone_client_java.models.operations.async.StackoneListActionsMetaRequestBuilder;
@@ -23,6 +24,7 @@ import com.stackone.stackone_client_java.operations.StackoneRpcAction;
 import com.stackone.stackone_client_java.operations.StackoneSearchActions;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
+import java.lang.String;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
@@ -179,11 +181,12 @@ public class AsyncActions {
      * 
      * <p>Makes a remote procedure call to the specified action
      * 
-     * @param request The request object containing all the parameters for the API call.
+     * @param xAccountId The account identifier
+     * @param actionsRpcRequestDto 
      * @return {@code CompletableFuture<StackoneRpcActionResponse>} - The async response
      */
-    public CompletableFuture<StackoneRpcActionResponse> rpcAction(ActionsRpcRequestDto request) {
-        return rpcAction(request, Optional.empty());
+    public CompletableFuture<StackoneRpcActionResponse> rpcAction(String xAccountId, ActionsRpcRequestDto actionsRpcRequestDto) {
+        return rpcAction(xAccountId, actionsRpcRequestDto, Optional.empty());
     }
 
     /**
@@ -191,12 +194,21 @@ public class AsyncActions {
      * 
      * <p>Makes a remote procedure call to the specified action
      * 
-     * @param request The request object containing all the parameters for the API call.
+     * @param xAccountId The account identifier
+     * @param actionsRpcRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<StackoneRpcActionResponse>} - The async response
      */
-    public CompletableFuture<StackoneRpcActionResponse> rpcAction(ActionsRpcRequestDto request, Optional<Options> options) {
-        AsyncRequestOperation<ActionsRpcRequestDto, StackoneRpcActionResponse> operation
+    public CompletableFuture<StackoneRpcActionResponse> rpcAction(
+            String xAccountId, ActionsRpcRequestDto actionsRpcRequestDto,
+            Optional<Options> options) {
+        StackoneRpcActionRequest request =
+            StackoneRpcActionRequest
+                .builder()
+                .xAccountId(xAccountId)
+                .actionsRpcRequestDto(actionsRpcRequestDto)
+                .build();
+        AsyncRequestOperation<StackoneRpcActionRequest, StackoneRpcActionResponse> operation
               = new StackoneRpcAction.Async(
                                     sdkConfiguration, options, sdkConfiguration.retryScheduler(),
                                     _headers);

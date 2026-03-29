@@ -1,4 +1,7 @@
-# Connectors
+# ~~Connectors~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 
@@ -6,12 +9,14 @@ Retrieve metadata for connectors.
 
 ### Available Operations
 
-* [listConnectorsMeta](#listconnectorsmeta) - List Connector Meta Information
-* [getConnectorMeta](#getconnectormeta) - Get Connector Meta Information
+* [~~listConnectorsMeta~~](#listconnectorsmeta) - List Connector Meta Information (Legacy) :warning: **Deprecated**
+* [~~getConnectorMeta~~](#getconnectormeta) - Get Connector Meta Information (Legacy) :warning: **Deprecated**
 
-## listConnectorsMeta
+## ~~listConnectorsMeta~~
 
-List Connector Meta Information
+List Connector Meta Information (Legacy)
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -41,7 +46,7 @@ public class Application {
                 .call();
 
         if (res.connectorsMetas().isPresent()) {
-            // handle response
+            System.out.println(res.connectorsMetas().get());
         }
     }
 }
@@ -74,9 +79,11 @@ public class Application {
 | models/errors/BadGatewayResponse          | 502                                       | application/json                          |
 | models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
-## getConnectorMeta
+## ~~getConnectorMeta~~
 
-Get Connector Meta Information
+Get Connector Meta Information (Legacy)
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -107,7 +114,7 @@ public class Application {
                 .call();
 
         if (res.connectorsMeta().isPresent()) {
-            // handle response
+            System.out.println(res.connectorsMeta().get());
         }
     }
 }

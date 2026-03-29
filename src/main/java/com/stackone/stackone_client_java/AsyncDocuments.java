@@ -119,8 +119,8 @@ public class AsyncDocuments {
      */
     public CompletableFuture<DocumentsUploadFileResponse> uploadFile(String xAccountId, UnifiedUploadRequestDto unifiedUploadRequestDto) {
         return uploadFile(
-                xAccountId, Optional.empty(), Optional.empty(),
-                unifiedUploadRequestDto, Optional.empty());
+                xAccountId, Optional.empty(), unifiedUploadRequestDto,
+                Optional.empty());
     }
 
     /**
@@ -128,21 +128,18 @@ public class AsyncDocuments {
      * 
      * @param xAccountId The account identifier
      * @param xStackoneApiSessionToken The session token
-     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param unifiedUploadRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<DocumentsUploadFileResponse>} - The async response
      */
     public CompletableFuture<DocumentsUploadFileResponse> uploadFile(
             String xAccountId, Optional<String> xStackoneApiSessionToken,
-            Optional<String> prefer, UnifiedUploadRequestDto unifiedUploadRequestDto,
-            Optional<Options> options) {
+            UnifiedUploadRequestDto unifiedUploadRequestDto, Optional<Options> options) {
         DocumentsUploadFileRequest request =
             DocumentsUploadFileRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .xStackoneApiSessionToken(xStackoneApiSessionToken)
-                .prefer(prefer)
                 .unifiedUploadRequestDto(unifiedUploadRequestDto)
                 .build();
         AsyncRequestOperation<DocumentsUploadFileRequest, DocumentsUploadFileResponse> operation

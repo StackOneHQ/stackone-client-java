@@ -1,5 +1,16 @@
 # EntitySkillsMaximumProficiencyValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.EntitySkillsMaximumProficiencyValue;
+
+EntitySkillsMaximumProficiencyValue value = EntitySkillsMaximumProficiencyValue.ONE;
+
+// Open enum: use .of() to create instances from custom string values
+EntitySkillsMaximumProficiencyValue custom = EntitySkillsMaximumProficiencyValue.of("custom_value");
+```
+
 
 ## Values
 

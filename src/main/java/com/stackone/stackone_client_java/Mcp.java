@@ -5,7 +5,6 @@ package com.stackone.stackone_client_java;
 
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
-import com.stackone.stackone_client_java.models.components.JsonRpcMessageDto;
 import com.stackone.stackone_client_java.models.operations.StackoneMcpDeleteRequest;
 import com.stackone.stackone_client_java.models.operations.StackoneMcpDeleteRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.StackoneMcpDeleteResponse;
@@ -122,14 +121,13 @@ public class Mcp {
      * 
      * <p>Send JSON-RPC request to the MCP server over HTTP streaming transport
      * 
+     * @param request The request object containing all the parameters for the API call.
      * @param security The security details to use for authentication.
-     * @param jsonRpcMessageDto 
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneMcpPostResponse mcpPost(StackoneMcpPostSecurity security, JsonRpcMessageDto jsonRpcMessageDto) {
-        return mcpPost(security, Optional.empty(), Optional.empty(),
-            Optional.empty(), jsonRpcMessageDto, Optional.empty());
+    public StackoneMcpPostResponse mcpPost(StackoneMcpPostRequest request, StackoneMcpPostSecurity security) {
+        return mcpPost(request, security, Optional.empty());
     }
 
     /**
@@ -137,27 +135,15 @@ public class Mcp {
      * 
      * <p>Send JSON-RPC request to the MCP server over HTTP streaming transport
      * 
+     * @param request The request object containing all the parameters for the API call.
      * @param security The security details to use for authentication.
-     * @param xAccountId Account secure id for the target provider account (optional if x-account-id query parameter is provided)
-     * @param xAccountIdQueryParameter Account secure id (alternative to x-account-id header)
-     * @param mcpSessionId Session id; omit for initialize, include for subsequent calls
-     * @param jsonRpcMessageDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public StackoneMcpPostResponse mcpPost(
-            StackoneMcpPostSecurity security, Optional<String> xAccountId,
-            Optional<? extends Object> xAccountIdQueryParameter, Optional<String> mcpSessionId,
-            JsonRpcMessageDto jsonRpcMessageDto, Optional<Options> options) {
-        StackoneMcpPostRequest request =
-            StackoneMcpPostRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .xAccountIdQueryParameter(xAccountIdQueryParameter)
-                .mcpSessionId(mcpSessionId)
-                .jsonRpcMessageDto(jsonRpcMessageDto)
-                .build();
+            StackoneMcpPostRequest request, StackoneMcpPostSecurity security,
+            Optional<Options> options) {
         RequestOperation<StackoneMcpPostRequest, StackoneMcpPostResponse> operation
               = new StackoneMcpPost.Sync(
                                     sdkConfiguration, security, options,

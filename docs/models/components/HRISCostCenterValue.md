@@ -1,5 +1,16 @@
 # HRISCostCenterValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HRISCostCenterValue;
+
+HRISCostCenterValue value = HRISCostCenterValue.WORKSPACE;
+
+// Open enum: use .of() to create instances from custom string values
+HRISCostCenterValue custom = HRISCostCenterValue.of("custom_value");
+```
+
 
 ## Values
 

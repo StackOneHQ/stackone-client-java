@@ -28,12 +28,12 @@ public class ActionsRpcResponse {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("data")
-    private JsonNullable<? extends ActionsRpcResponseData> data;
+    private JsonNullable<? extends Data> data;
 
     @JsonCreator
     public ActionsRpcResponse(
             @JsonProperty("next") JsonNullable<String> next,
-            @JsonProperty("data") JsonNullable<? extends ActionsRpcResponseData> data) {
+            @JsonProperty("data") JsonNullable<? extends Data> data) {
         Utils.checkNotNull(next, "next");
         Utils.checkNotNull(data, "data");
         this.next = next;
@@ -57,8 +57,8 @@ public class ActionsRpcResponse {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<ActionsRpcResponseData> data() {
-        return (JsonNullable<ActionsRpcResponseData>) data;
+    public JsonNullable<Data> data() {
+        return (JsonNullable<Data>) data;
     }
 
     public static Builder builder() {
@@ -87,7 +87,7 @@ public class ActionsRpcResponse {
     /**
      * The response data from the action RPC call
      */
-    public ActionsRpcResponse withData(ActionsRpcResponseData data) {
+    public ActionsRpcResponse withData(Data data) {
         Utils.checkNotNull(data, "data");
         this.data = JsonNullable.of(data);
         return this;
@@ -96,7 +96,7 @@ public class ActionsRpcResponse {
     /**
      * The response data from the action RPC call
      */
-    public ActionsRpcResponse withData(JsonNullable<? extends ActionsRpcResponseData> data) {
+    public ActionsRpcResponse withData(JsonNullable<? extends Data> data) {
         Utils.checkNotNull(data, "data");
         this.data = data;
         return this;
@@ -134,7 +134,7 @@ public class ActionsRpcResponse {
 
         private JsonNullable<String> next = JsonNullable.undefined();
 
-        private JsonNullable<? extends ActionsRpcResponseData> data = JsonNullable.undefined();
+        private JsonNullable<? extends Data> data = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -163,7 +163,7 @@ public class ActionsRpcResponse {
         /**
          * The response data from the action RPC call
          */
-        public Builder data(ActionsRpcResponseData data) {
+        public Builder data(Data data) {
             Utils.checkNotNull(data, "data");
             this.data = JsonNullable.of(data);
             return this;
@@ -172,7 +172,7 @@ public class ActionsRpcResponse {
         /**
          * The response data from the action RPC call
          */
-        public Builder data(JsonNullable<? extends ActionsRpcResponseData> data) {
+        public Builder data(JsonNullable<? extends Data> data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
             return this;

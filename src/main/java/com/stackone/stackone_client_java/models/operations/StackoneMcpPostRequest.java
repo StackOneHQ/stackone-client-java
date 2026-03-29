@@ -24,6 +24,13 @@ public class StackoneMcpPostRequest {
     private Optional<String> xAccountId;
 
     /**
+     * Tool registration mode: "individual" (default) registers each action as a separate tool;
+     * "search_execute" registers two tools for search-and-execute flow
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=tool-mode")
+    private Optional<? extends ToolMode> toolMode;
+
+    /**
      * Account secure id (alternative to x-account-id header)
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=x-account-id")
@@ -44,14 +51,17 @@ public class StackoneMcpPostRequest {
     @JsonCreator
     public StackoneMcpPostRequest(
             Optional<String> xAccountId,
+            Optional<? extends ToolMode> toolMode,
             Optional<? extends Object> xAccountIdQueryParameter,
             Optional<String> mcpSessionId,
             JsonRpcMessageDto jsonRpcMessageDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(toolMode, "toolMode");
         Utils.checkNotNull(xAccountIdQueryParameter, "xAccountIdQueryParameter");
         Utils.checkNotNull(mcpSessionId, "mcpSessionId");
         Utils.checkNotNull(jsonRpcMessageDto, "jsonRpcMessageDto");
         this.xAccountId = xAccountId;
+        this.toolMode = toolMode;
         this.xAccountIdQueryParameter = xAccountIdQueryParameter;
         this.mcpSessionId = mcpSessionId;
         this.jsonRpcMessageDto = jsonRpcMessageDto;
@@ -60,7 +70,7 @@ public class StackoneMcpPostRequest {
     public StackoneMcpPostRequest(
             JsonRpcMessageDto jsonRpcMessageDto) {
         this(Optional.empty(), Optional.empty(), Optional.empty(),
-            jsonRpcMessageDto);
+            Optional.empty(), jsonRpcMessageDto);
     }
 
     /**
@@ -70,6 +80,16 @@ public class StackoneMcpPostRequest {
     @JsonIgnore
     public Optional<String> xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Tool registration mode: "individual" (default) registers each action as a separate tool;
+     * "search_execute" registers two tools for search-and-execute flow
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ToolMode> toolMode() {
+        return (Optional<ToolMode>) toolMode;
     }
 
     /**
@@ -120,6 +140,27 @@ public class StackoneMcpPostRequest {
     public StackoneMcpPostRequest withXAccountId(Optional<String> xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+
+    /**
+     * Tool registration mode: "individual" (default) registers each action as a separate tool;
+     * "search_execute" registers two tools for search-and-execute flow
+     */
+    public StackoneMcpPostRequest withToolMode(ToolMode toolMode) {
+        Utils.checkNotNull(toolMode, "toolMode");
+        this.toolMode = Optional.ofNullable(toolMode);
+        return this;
+    }
+
+
+    /**
+     * Tool registration mode: "individual" (default) registers each action as a separate tool;
+     * "search_execute" registers two tools for search-and-execute flow
+     */
+    public StackoneMcpPostRequest withToolMode(Optional<? extends ToolMode> toolMode) {
+        Utils.checkNotNull(toolMode, "toolMode");
+        this.toolMode = toolMode;
         return this;
     }
 
@@ -181,6 +222,7 @@ public class StackoneMcpPostRequest {
         StackoneMcpPostRequest other = (StackoneMcpPostRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.toolMode, other.toolMode) &&
             Utils.enhancedDeepEquals(this.xAccountIdQueryParameter, other.xAccountIdQueryParameter) &&
             Utils.enhancedDeepEquals(this.mcpSessionId, other.mcpSessionId) &&
             Utils.enhancedDeepEquals(this.jsonRpcMessageDto, other.jsonRpcMessageDto);
@@ -189,14 +231,15 @@ public class StackoneMcpPostRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, xAccountIdQueryParameter, mcpSessionId,
-            jsonRpcMessageDto);
+            xAccountId, toolMode, xAccountIdQueryParameter,
+            mcpSessionId, jsonRpcMessageDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(StackoneMcpPostRequest.class,
                 "xAccountId", xAccountId,
+                "toolMode", toolMode,
                 "xAccountIdQueryParameter", xAccountIdQueryParameter,
                 "mcpSessionId", mcpSessionId,
                 "jsonRpcMessageDto", jsonRpcMessageDto);
@@ -206,6 +249,8 @@ public class StackoneMcpPostRequest {
     public final static class Builder {
 
         private Optional<String> xAccountId = Optional.empty();
+
+        private Optional<? extends ToolMode> toolMode = Optional.empty();
 
         private Optional<? extends Object> xAccountIdQueryParameter = Optional.empty();
 
@@ -235,6 +280,27 @@ public class StackoneMcpPostRequest {
         public Builder xAccountId(Optional<String> xAccountId) {
             Utils.checkNotNull(xAccountId, "xAccountId");
             this.xAccountId = xAccountId;
+            return this;
+        }
+
+
+        /**
+         * Tool registration mode: "individual" (default) registers each action as a separate tool;
+         * "search_execute" registers two tools for search-and-execute flow
+         */
+        public Builder toolMode(ToolMode toolMode) {
+            Utils.checkNotNull(toolMode, "toolMode");
+            this.toolMode = Optional.ofNullable(toolMode);
+            return this;
+        }
+
+        /**
+         * Tool registration mode: "individual" (default) registers each action as a separate tool;
+         * "search_execute" registers two tools for search-and-execute flow
+         */
+        public Builder toolMode(Optional<? extends ToolMode> toolMode) {
+            Utils.checkNotNull(toolMode, "toolMode");
+            this.toolMode = toolMode;
             return this;
         }
 
@@ -289,8 +355,8 @@ public class StackoneMcpPostRequest {
         public StackoneMcpPostRequest build() {
 
             return new StackoneMcpPostRequest(
-                xAccountId, xAccountIdQueryParameter, mcpSessionId,
-                jsonRpcMessageDto);
+                xAccountId, toolMode, xAccountIdQueryParameter,
+                mcpSessionId, jsonRpcMessageDto);
         }
 
     }

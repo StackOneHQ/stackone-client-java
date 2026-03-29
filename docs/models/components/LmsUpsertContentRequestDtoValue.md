@@ -2,6 +2,17 @@
 
 The content type for write operations. Provide one of the listed enum values. If omitted or set to "unmapped_value", the source_value will be sent to the provider instead.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.LmsUpsertContentRequestDtoValue;
+
+LmsUpsertContentRequestDtoValue value = LmsUpsertContentRequestDtoValue.VIDEO;
+
+// Open enum: use .of() to create instances from custom string values
+LmsUpsertContentRequestDtoValue custom = LmsUpsertContentRequestDtoValue.of("custom_value");
+```
+
 
 ## Values
 
