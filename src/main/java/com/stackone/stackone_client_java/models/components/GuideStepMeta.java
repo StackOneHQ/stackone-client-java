@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -36,23 +37,54 @@ public class GuideStepMeta {
     @JsonProperty("list")
     private JsonNullable<? extends List<String>> list;
 
+    /**
+     * When true, the step should display scopes
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("displayScopes")
+    private JsonNullable<Boolean> displayScopes;
+
+    /**
+     * The scopes for which this step is applicable
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("applicableScopes")
+    private JsonNullable<? extends List<String>> applicableScopes;
+
+    /**
+     * An image for the step
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("image")
+    private JsonNullable<? extends Image> image;
+
     @JsonCreator
     public GuideStepMeta(
             @JsonProperty("title") String title,
             @JsonProperty("content") String content,
-            @JsonProperty("list") JsonNullable<? extends List<String>> list) {
+            @JsonProperty("list") JsonNullable<? extends List<String>> list,
+            @JsonProperty("displayScopes") JsonNullable<Boolean> displayScopes,
+            @JsonProperty("applicableScopes") JsonNullable<? extends List<String>> applicableScopes,
+            @JsonProperty("image") JsonNullable<? extends Image> image) {
         Utils.checkNotNull(title, "title");
         Utils.checkNotNull(content, "content");
         Utils.checkNotNull(list, "list");
+        Utils.checkNotNull(displayScopes, "displayScopes");
+        Utils.checkNotNull(applicableScopes, "applicableScopes");
+        Utils.checkNotNull(image, "image");
         this.title = title;
         this.content = content;
         this.list = list;
+        this.displayScopes = displayScopes;
+        this.applicableScopes = applicableScopes;
+        this.image = image;
     }
     
     public GuideStepMeta(
             String title,
             String content) {
-        this(title, content, JsonNullable.undefined());
+        this(title, content, JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -78,6 +110,32 @@ public class GuideStepMeta {
     @JsonIgnore
     public JsonNullable<List<String>> list() {
         return (JsonNullable<List<String>>) list;
+    }
+
+    /**
+     * When true, the step should display scopes
+     */
+    @JsonIgnore
+    public JsonNullable<Boolean> displayScopes() {
+        return displayScopes;
+    }
+
+    /**
+     * The scopes for which this step is applicable
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<String>> applicableScopes() {
+        return (JsonNullable<List<String>>) applicableScopes;
+    }
+
+    /**
+     * An image for the step
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<Image> image() {
+        return (JsonNullable<Image>) image;
     }
 
     public static Builder builder() {
@@ -121,6 +179,60 @@ public class GuideStepMeta {
         return this;
     }
 
+    /**
+     * When true, the step should display scopes
+     */
+    public GuideStepMeta withDisplayScopes(boolean displayScopes) {
+        Utils.checkNotNull(displayScopes, "displayScopes");
+        this.displayScopes = JsonNullable.of(displayScopes);
+        return this;
+    }
+
+    /**
+     * When true, the step should display scopes
+     */
+    public GuideStepMeta withDisplayScopes(JsonNullable<Boolean> displayScopes) {
+        Utils.checkNotNull(displayScopes, "displayScopes");
+        this.displayScopes = displayScopes;
+        return this;
+    }
+
+    /**
+     * The scopes for which this step is applicable
+     */
+    public GuideStepMeta withApplicableScopes(List<String> applicableScopes) {
+        Utils.checkNotNull(applicableScopes, "applicableScopes");
+        this.applicableScopes = JsonNullable.of(applicableScopes);
+        return this;
+    }
+
+    /**
+     * The scopes for which this step is applicable
+     */
+    public GuideStepMeta withApplicableScopes(JsonNullable<? extends List<String>> applicableScopes) {
+        Utils.checkNotNull(applicableScopes, "applicableScopes");
+        this.applicableScopes = applicableScopes;
+        return this;
+    }
+
+    /**
+     * An image for the step
+     */
+    public GuideStepMeta withImage(Image image) {
+        Utils.checkNotNull(image, "image");
+        this.image = JsonNullable.of(image);
+        return this;
+    }
+
+    /**
+     * An image for the step
+     */
+    public GuideStepMeta withImage(JsonNullable<? extends Image> image) {
+        Utils.checkNotNull(image, "image");
+        this.image = image;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -133,13 +245,17 @@ public class GuideStepMeta {
         return 
             Utils.enhancedDeepEquals(this.title, other.title) &&
             Utils.enhancedDeepEquals(this.content, other.content) &&
-            Utils.enhancedDeepEquals(this.list, other.list);
+            Utils.enhancedDeepEquals(this.list, other.list) &&
+            Utils.enhancedDeepEquals(this.displayScopes, other.displayScopes) &&
+            Utils.enhancedDeepEquals(this.applicableScopes, other.applicableScopes) &&
+            Utils.enhancedDeepEquals(this.image, other.image);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            title, content, list);
+            title, content, list,
+            displayScopes, applicableScopes, image);
     }
     
     @Override
@@ -147,7 +263,10 @@ public class GuideStepMeta {
         return Utils.toString(GuideStepMeta.class,
                 "title", title,
                 "content", content,
-                "list", list);
+                "list", list,
+                "displayScopes", displayScopes,
+                "applicableScopes", applicableScopes,
+                "image", image);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -158,6 +277,12 @@ public class GuideStepMeta {
         private String content;
 
         private JsonNullable<? extends List<String>> list = JsonNullable.undefined();
+
+        private JsonNullable<Boolean> displayScopes = JsonNullable.undefined();
+
+        private JsonNullable<? extends List<String>> applicableScopes = JsonNullable.undefined();
+
+        private JsonNullable<? extends Image> image = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -202,10 +327,68 @@ public class GuideStepMeta {
             return this;
         }
 
+
+        /**
+         * When true, the step should display scopes
+         */
+        public Builder displayScopes(boolean displayScopes) {
+            Utils.checkNotNull(displayScopes, "displayScopes");
+            this.displayScopes = JsonNullable.of(displayScopes);
+            return this;
+        }
+
+        /**
+         * When true, the step should display scopes
+         */
+        public Builder displayScopes(JsonNullable<Boolean> displayScopes) {
+            Utils.checkNotNull(displayScopes, "displayScopes");
+            this.displayScopes = displayScopes;
+            return this;
+        }
+
+
+        /**
+         * The scopes for which this step is applicable
+         */
+        public Builder applicableScopes(List<String> applicableScopes) {
+            Utils.checkNotNull(applicableScopes, "applicableScopes");
+            this.applicableScopes = JsonNullable.of(applicableScopes);
+            return this;
+        }
+
+        /**
+         * The scopes for which this step is applicable
+         */
+        public Builder applicableScopes(JsonNullable<? extends List<String>> applicableScopes) {
+            Utils.checkNotNull(applicableScopes, "applicableScopes");
+            this.applicableScopes = applicableScopes;
+            return this;
+        }
+
+
+        /**
+         * An image for the step
+         */
+        public Builder image(Image image) {
+            Utils.checkNotNull(image, "image");
+            this.image = JsonNullable.of(image);
+            return this;
+        }
+
+        /**
+         * An image for the step
+         */
+        public Builder image(JsonNullable<? extends Image> image) {
+            Utils.checkNotNull(image, "image");
+            this.image = image;
+            return this;
+        }
+
         public GuideStepMeta build() {
 
             return new GuideStepMeta(
-                title, content, list);
+                title, content, list,
+                displayScopes, applicableScopes, image);
         }
 
     }

@@ -2,6 +2,14 @@
 
 The direction to order the results by.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.operations.StackoneListPlatformLogsQueryParamRequestLogsOrderDirection;
+
+StackoneListPlatformLogsQueryParamRequestLogsOrderDirection value = StackoneListPlatformLogsQueryParamRequestLogsOrderDirection.ASC;
+```
+
 
 ## Values
 

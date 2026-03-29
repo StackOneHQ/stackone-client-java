@@ -2,6 +2,17 @@
 
 The pay frequency of the job postings.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.JobPostingCompensationPayFrequencyValue;
+
+JobPostingCompensationPayFrequencyValue value = JobPostingCompensationPayFrequencyValue.HOURLY;
+
+// Open enum: use .of() to create instances from custom string values
+JobPostingCompensationPayFrequencyValue custom = JobPostingCompensationPayFrequencyValue.of("custom_value");
+```
+
 
 ## Values
 

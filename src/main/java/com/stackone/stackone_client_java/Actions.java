@@ -13,6 +13,7 @@ import com.stackone.stackone_client_java.models.operations.StackoneBuildActionEm
 import com.stackone.stackone_client_java.models.operations.StackoneListActionsMetaRequest;
 import com.stackone.stackone_client_java.models.operations.StackoneListActionsMetaRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.StackoneListActionsMetaResponse;
+import com.stackone.stackone_client_java.models.operations.StackoneRpcActionRequest;
 import com.stackone.stackone_client_java.models.operations.StackoneRpcActionRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.StackoneRpcActionResponse;
 import com.stackone.stackone_client_java.models.operations.StackoneSearchActionsRequestBuilder;
@@ -23,6 +24,7 @@ import com.stackone.stackone_client_java.operations.StackoneRpcAction;
 import com.stackone.stackone_client_java.operations.StackoneSearchActions;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
+import java.lang.String;
 import java.util.Optional;
 
 /**
@@ -171,12 +173,13 @@ public class Actions {
      * 
      * <p>Makes a remote procedure call to the specified action
      * 
-     * @param request The request object containing all the parameters for the API call.
+     * @param xAccountId The account identifier
+     * @param actionsRpcRequestDto 
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneRpcActionResponse rpcAction(ActionsRpcRequestDto request) {
-        return rpcAction(request, Optional.empty());
+    public StackoneRpcActionResponse rpcAction(String xAccountId, ActionsRpcRequestDto actionsRpcRequestDto) {
+        return rpcAction(xAccountId, actionsRpcRequestDto, Optional.empty());
     }
 
     /**
@@ -184,13 +187,22 @@ public class Actions {
      * 
      * <p>Makes a remote procedure call to the specified action
      * 
-     * @param request The request object containing all the parameters for the API call.
+     * @param xAccountId The account identifier
+     * @param actionsRpcRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneRpcActionResponse rpcAction(ActionsRpcRequestDto request, Optional<Options> options) {
-        RequestOperation<ActionsRpcRequestDto, StackoneRpcActionResponse> operation
+    public StackoneRpcActionResponse rpcAction(
+            String xAccountId, ActionsRpcRequestDto actionsRpcRequestDto,
+            Optional<Options> options) {
+        StackoneRpcActionRequest request =
+            StackoneRpcActionRequest
+                .builder()
+                .xAccountId(xAccountId)
+                .actionsRpcRequestDto(actionsRpcRequestDto)
+                .build();
+        RequestOperation<StackoneRpcActionRequest, StackoneRpcActionResponse> operation
               = new StackoneRpcAction.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }

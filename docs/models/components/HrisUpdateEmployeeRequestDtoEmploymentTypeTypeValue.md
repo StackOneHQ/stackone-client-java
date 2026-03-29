@@ -1,5 +1,16 @@
 # HrisUpdateEmployeeRequestDtoEmploymentTypeTypeValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentTypeTypeValue;
+
+HrisUpdateEmployeeRequestDtoEmploymentTypeTypeValue value = HrisUpdateEmployeeRequestDtoEmploymentTypeTypeValue.CONTRACTOR;
+
+// Open enum: use .of() to create instances from custom string values
+HrisUpdateEmployeeRequestDtoEmploymentTypeTypeValue custom = HrisUpdateEmployeeRequestDtoEmploymentTypeTypeValue.of("custom_value");
+```
+
 
 ## Values
 

@@ -6,23 +6,17 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.models.components.JsonRpcMessageDto;
 import com.stackone.stackone_client_java.operations.StackoneMcpPost;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Object;
-import java.lang.String;
 import java.util.Optional;
 
 public class StackoneMcpPostRequestBuilder {
 
+    private StackoneMcpPostRequest request;
     private StackoneMcpPostSecurity security;
-    private Optional<String> xAccountId = Optional.empty();
-    private Optional<? extends Object> xAccountIdQueryParameter = Optional.empty();
-    private Optional<String> mcpSessionId = Optional.empty();
-    private JsonRpcMessageDto jsonRpcMessageDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
@@ -31,51 +25,15 @@ public class StackoneMcpPostRequestBuilder {
         this.sdkConfiguration = sdkConfiguration;
     }
 
+    public StackoneMcpPostRequestBuilder request(StackoneMcpPostRequest request) {
+        Utils.checkNotNull(request, "request");
+        this.request = request;
+        return this;
+    }
+
     public StackoneMcpPostRequestBuilder security(StackoneMcpPostSecurity security) {
         Utils.checkNotNull(security, "security");
         this.security = security;
-        return this;
-    }
-                
-    public StackoneMcpPostRequestBuilder xAccountId(String xAccountId) {
-        Utils.checkNotNull(xAccountId, "xAccountId");
-        this.xAccountId = Optional.of(xAccountId);
-        return this;
-    }
-
-    public StackoneMcpPostRequestBuilder xAccountId(Optional<String> xAccountId) {
-        Utils.checkNotNull(xAccountId, "xAccountId");
-        this.xAccountId = xAccountId;
-        return this;
-    }
-                
-    public StackoneMcpPostRequestBuilder xAccountIdQueryParameter(Object xAccountIdQueryParameter) {
-        Utils.checkNotNull(xAccountIdQueryParameter, "xAccountIdQueryParameter");
-        this.xAccountIdQueryParameter = Optional.of(xAccountIdQueryParameter);
-        return this;
-    }
-
-    public StackoneMcpPostRequestBuilder xAccountIdQueryParameter(Optional<? extends Object> xAccountIdQueryParameter) {
-        Utils.checkNotNull(xAccountIdQueryParameter, "xAccountIdQueryParameter");
-        this.xAccountIdQueryParameter = xAccountIdQueryParameter;
-        return this;
-    }
-                
-    public StackoneMcpPostRequestBuilder mcpSessionId(String mcpSessionId) {
-        Utils.checkNotNull(mcpSessionId, "mcpSessionId");
-        this.mcpSessionId = Optional.of(mcpSessionId);
-        return this;
-    }
-
-    public StackoneMcpPostRequestBuilder mcpSessionId(Optional<String> mcpSessionId) {
-        Utils.checkNotNull(mcpSessionId, "mcpSessionId");
-        this.mcpSessionId = mcpSessionId;
-        return this;
-    }
-
-    public StackoneMcpPostRequestBuilder jsonRpcMessageDto(JsonRpcMessageDto jsonRpcMessageDto) {
-        Utils.checkNotNull(jsonRpcMessageDto, "jsonRpcMessageDto");
-        this.jsonRpcMessageDto = jsonRpcMessageDto;
         return this;
     }
                 
@@ -91,17 +49,6 @@ public class StackoneMcpPostRequestBuilder {
         return this;
     }
 
-
-    private StackoneMcpPostRequest buildRequest() {
-
-        StackoneMcpPostRequest request = new StackoneMcpPostRequest(xAccountId,
-            xAccountIdQueryParameter,
-            mcpSessionId,
-            jsonRpcMessageDto);
-
-        return request;
-    }
-
     public StackoneMcpPostResponse call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
@@ -111,7 +58,6 @@ public class StackoneMcpPostRequestBuilder {
               = new StackoneMcpPost.Sync(
                                     sdkConfiguration, security, options,
                                     _headers);
-        StackoneMcpPostRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));
     }

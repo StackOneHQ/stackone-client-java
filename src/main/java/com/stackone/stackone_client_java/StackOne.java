@@ -16,7 +16,18 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 /**
- * Accounting: The documentation for the StackOne Unified API - ACCOUNTING
+ * Accounting: The documentation for the StackOne API
+ * The documentation for the StackOne Unified API - HRIS
+ * The documentation for the StackOne Unified API - ATS
+ * The documentation for the StackOne Unified API - CRM
+ * The documentation for the StackOne Unified API - IAM
+ * The documentation for the StackOne Unified API - MARKETING
+ * The documentation for the StackOne Unified API - LMS
+ * The documentation for the StackOne Unified API - TICKETING
+ * The documentation for the StackOne Unified API - DOCUMENTS
+ * The documentation for the StackOne Unified API - SCREENING
+ * The documentation for the StackOne Unified API - MESSAGING
+ * The documentation for the StackOne Unified API - ACCOUNTING
  */
 public class StackOne {
     private static final Headers _headers = Headers.EMPTY;
@@ -56,14 +67,14 @@ public class StackOne {
     private final Mcp mcp;
 
     /**
-     * Routing API requests through StackOne directly to the underlying provider.
-     */
-    private final Proxy proxy;
-
-    /**
      * Retrieve Actions metadata and definitions.
      */
     private final Actions actions;
+
+    /**
+     * Routing API requests through StackOne directly to the underlying provider.
+     */
+    private final Proxy proxy;
 
 
     private final Hris hris;
@@ -134,17 +145,17 @@ public class StackOne {
     }
 
     /**
-     * Routing API requests through StackOne directly to the underlying provider.
-     */
-    public Proxy proxy() {
-        return proxy;
-    }
-
-    /**
      * Retrieve Actions metadata and definitions.
      */
     public Actions actions() {
         return actions;
+    }
+
+    /**
+     * Routing API requests through StackOne directly to the underlying provider.
+     */
+    public Proxy proxy() {
+        return proxy;
     }
 
 
@@ -355,8 +366,8 @@ public class StackOne {
         this.requestLogs = new RequestLogs(sdkConfiguration);
         this.connectors = new Connectors(sdkConfiguration);
         this.mcp = new Mcp(sdkConfiguration);
-        this.proxy = new Proxy(sdkConfiguration);
         this.actions = new Actions(sdkConfiguration);
+        this.proxy = new Proxy(sdkConfiguration);
         this.hris = new Hris(sdkConfiguration);
         this.ats = new Ats(sdkConfiguration);
         this.crm = new Crm(sdkConfiguration);

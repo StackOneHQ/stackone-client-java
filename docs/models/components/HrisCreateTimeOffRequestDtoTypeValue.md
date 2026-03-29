@@ -1,5 +1,16 @@
 # HrisCreateTimeOffRequestDtoTypeValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoTypeValue;
+
+HrisCreateTimeOffRequestDtoTypeValue value = HrisCreateTimeOffRequestDtoTypeValue.SICK;
+
+// Open enum: use .of() to create instances from custom string values
+HrisCreateTimeOffRequestDtoTypeValue custom = HrisCreateTimeOffRequestDtoTypeValue.of("custom_value");
+```
+
 
 ## Values
 

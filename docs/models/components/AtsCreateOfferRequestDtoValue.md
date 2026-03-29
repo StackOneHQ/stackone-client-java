@@ -2,6 +2,17 @@
 
 The status of the offer.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.AtsCreateOfferRequestDtoValue;
+
+AtsCreateOfferRequestDtoValue value = AtsCreateOfferRequestDtoValue.PENDING;
+
+// Open enum: use .of() to create instances from custom string values
+AtsCreateOfferRequestDtoValue custom = AtsCreateOfferRequestDtoValue.of("custom_value");
+```
+
 
 ## Values
 

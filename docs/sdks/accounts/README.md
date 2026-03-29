@@ -10,7 +10,7 @@ Chart of accounts.
 * [getAccount](#getaccount) - Get Account
 * [deleteAccount](#deleteaccount) - Delete Account
 * [updateAccount](#updateaccount) - Update Account
-* [getAccountMetaInfo](#getaccountmetainfo) - Get Account Meta Information
+* [~~getAccountMetaInfo~~](#getaccountmetainfo) - Get Account Meta Information (Legacy) :warning: **Deprecated**
 
 ## listLinkedAccounts
 
@@ -48,7 +48,7 @@ public class Application {
                 .call();
 
         if (res.linkedAccounts().isPresent()) {
-            // handle response
+            System.out.println(res.linkedAccounts().get());
         }
     }
 }
@@ -113,7 +113,7 @@ public class Application {
                 .call();
 
         if (res.linkedAccount().isPresent()) {
-            // handle response
+            System.out.println(res.linkedAccount().get());
         }
     }
 }
@@ -178,7 +178,7 @@ public class Application {
                 .call();
 
         if (res.linkedAccount().isPresent()) {
-            // handle response
+            System.out.println(res.linkedAccount().get());
         }
     }
 }
@@ -246,7 +246,7 @@ public class Application {
                 .call();
 
         if (res.linkedAccount().isPresent()) {
-            // handle response
+            System.out.println(res.linkedAccount().get());
         }
     }
 }
@@ -280,9 +280,11 @@ public class Application {
 | models/errors/BadGatewayResponse          | 502                                       | application/json                          |
 | models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
-## getAccountMetaInfo
+## ~~getAccountMetaInfo~~
 
-Get Account Meta Information
+Get Account Meta Information (Legacy)
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -312,7 +314,7 @@ public class Application {
                 .call();
 
         if (res.linkedAccountMeta().isPresent()) {
-            // handle response
+            System.out.println(res.linkedAccountMeta().get());
         }
     }
 }

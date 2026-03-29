@@ -7,17 +7,20 @@ import static com.stackone.stackone_client_java.operations.Operations.AsyncReque
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.ActionsRpcRequestDto;
+import com.stackone.stackone_client_java.models.operations.StackoneRpcActionRequest;
 import com.stackone.stackone_client_java.operations.StackoneRpcAction;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.String;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class StackoneRpcActionRequestBuilder {
 
-    private ActionsRpcRequestDto request;
+    private String xAccountId;
+    private ActionsRpcRequestDto actionsRpcRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
@@ -26,9 +29,15 @@ public class StackoneRpcActionRequestBuilder {
         this.sdkConfiguration = sdkConfiguration;
     }
 
-    public StackoneRpcActionRequestBuilder request(ActionsRpcRequestDto request) {
-        Utils.checkNotNull(request, "request");
-        this.request = request;
+    public StackoneRpcActionRequestBuilder xAccountId(String xAccountId) {
+        Utils.checkNotNull(xAccountId, "xAccountId");
+        this.xAccountId = xAccountId;
+        return this;
+    }
+
+    public StackoneRpcActionRequestBuilder actionsRpcRequestDto(ActionsRpcRequestDto actionsRpcRequestDto) {
+        Utils.checkNotNull(actionsRpcRequestDto, "actionsRpcRequestDto");
+        this.actionsRpcRequestDto = actionsRpcRequestDto;
         return this;
     }
                 
@@ -44,15 +53,25 @@ public class StackoneRpcActionRequestBuilder {
         return this;
     }
 
+
+    private StackoneRpcActionRequest buildRequest() {
+
+        StackoneRpcActionRequest request = new StackoneRpcActionRequest(xAccountId,
+            actionsRpcRequestDto);
+
+        return request;
+    }
+
     public CompletableFuture<StackoneRpcActionResponse> call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());
 
-        AsyncRequestOperation<ActionsRpcRequestDto, StackoneRpcActionResponse> operation
+        AsyncRequestOperation<StackoneRpcActionRequest, StackoneRpcActionResponse> operation
               = new StackoneRpcAction.Async(
                                     sdkConfiguration, options, sdkConfiguration.retryScheduler(),
                                     _headers);
+        StackoneRpcActionRequest request = buildRequest();
 
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);

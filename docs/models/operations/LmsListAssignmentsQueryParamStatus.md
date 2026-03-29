@@ -2,6 +2,14 @@
 
 Filter to select assignment by status
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.operations.LmsListAssignmentsQueryParamStatus;
+
+LmsListAssignmentsQueryParamStatus value = LmsListAssignmentsQueryParamStatus.PENDING;
+```
+
 
 ## Values
 

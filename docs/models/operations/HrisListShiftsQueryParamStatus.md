@@ -2,6 +2,14 @@
 
 Filter to select shifts by status
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.operations.HrisListShiftsQueryParamStatus;
+
+HrisListShiftsQueryParamStatus value = HrisListShiftsQueryParamStatus.DRAFT;
+```
+
 
 ## Values
 

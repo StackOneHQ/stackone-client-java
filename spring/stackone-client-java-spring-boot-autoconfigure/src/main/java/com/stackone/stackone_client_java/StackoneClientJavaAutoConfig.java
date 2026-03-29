@@ -281,17 +281,6 @@ public class StackoneClientJavaAutoConfig {
         return stackOne.mcp();
     }
     /**
-     * Creates a Proxy sub-SDK bean if none exists.
-     *
-     * @param stackOne the main SDK instance
-     * @return A configured Proxy instance
-     */
-    @Bean
-    @ConditionalOnMissingBean
-    public Proxy proxy(StackOne stackOne) {
-        return stackOne.proxy();
-    }
-    /**
      * Creates a Actions sub-SDK bean if none exists.
      *
      * @param stackOne the main SDK instance
@@ -301,6 +290,17 @@ public class StackoneClientJavaAutoConfig {
     @ConditionalOnMissingBean
     public Actions actions(StackOne stackOne) {
         return stackOne.actions();
+    }
+    /**
+     * Creates a Proxy sub-SDK bean if none exists.
+     *
+     * @param stackOne the main SDK instance
+     * @return A configured Proxy instance
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    public Proxy proxy(StackOne stackOne) {
+        return stackOne.proxy();
     }
     /**
      * Creates a Hris sub-SDK bean if none exists.
@@ -492,17 +492,6 @@ public class StackoneClientJavaAutoConfig {
         return asyncStackOne.mcp();
     }
     /**
-     * Creates an AsyncProxy sub-SDK bean if none exists.
-     *
-     * @param asyncStackOne the async SDK instance
-     * @return A configured AsyncProxy instance
-     */
-    @Bean
-    @ConditionalOnMissingBean
-    public AsyncProxy asyncProxy(AsyncStackOne asyncStackOne) {
-        return asyncStackOne.proxy();
-    }
-    /**
      * Creates an AsyncActions sub-SDK bean if none exists.
      *
      * @param asyncStackOne the async SDK instance
@@ -512,6 +501,17 @@ public class StackoneClientJavaAutoConfig {
     @ConditionalOnMissingBean
     public AsyncActions asyncActions(AsyncStackOne asyncStackOne) {
         return asyncStackOne.actions();
+    }
+    /**
+     * Creates an AsyncProxy sub-SDK bean if none exists.
+     *
+     * @param asyncStackOne the async SDK instance
+     * @return A configured AsyncProxy instance
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    public AsyncProxy asyncProxy(AsyncStackOne asyncStackOne) {
+        return asyncStackOne.proxy();
     }
     /**
      * Creates an AsyncHris sub-SDK bean if none exists.

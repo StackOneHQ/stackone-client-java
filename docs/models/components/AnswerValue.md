@@ -2,6 +2,17 @@
 
 The type of the answer.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.AnswerValue;
+
+AnswerValue value = AnswerValue.SHORT_TEXT;
+
+// Open enum: use .of() to create instances from custom string values
+AnswerValue custom = AnswerValue.of("custom_value");
+```
+
 
 ## Values
 

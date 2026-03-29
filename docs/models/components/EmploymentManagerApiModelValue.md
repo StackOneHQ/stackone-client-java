@@ -1,5 +1,16 @@
 # EmploymentManagerApiModelValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.EmploymentManagerApiModelValue;
+
+EmploymentManagerApiModelValue value = EmploymentManagerApiModelValue.ADMIN;
+
+// Open enum: use .of() to create instances from custom string values
+EmploymentManagerApiModelValue custom = EmploymentManagerApiModelValue.of("custom_value");
+```
+
 
 ## Values
 

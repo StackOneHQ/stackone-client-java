@@ -1,5 +1,16 @@
 # HRISGroupValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HRISGroupValue;
+
+HRISGroupValue value = HRISGroupValue.WORKSPACE;
+
+// Open enum: use .of() to create instances from custom string values
+HRISGroupValue custom = HRISGroupValue.of("custom_value");
+```
+
 
 ## Values
 

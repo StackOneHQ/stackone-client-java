@@ -2,6 +2,17 @@
 
 The unified category level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModelLevelValue;
+
+CreateCategoriesApiModelLevelValue value = CreateCategoriesApiModelLevelValue.PRIMARY;
+
+// Open enum: use .of() to create instances from custom string values
+CreateCategoriesApiModelLevelValue custom = CreateCategoriesApiModelLevelValue.of("custom_value");
+```
+
 
 ## Values
 

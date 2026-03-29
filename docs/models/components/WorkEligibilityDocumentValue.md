@@ -2,6 +2,17 @@
 
 The file format of the file, expressed as a file extension
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.WorkEligibilityDocumentValue;
+
+WorkEligibilityDocumentValue value = WorkEligibilityDocumentValue.UNMAPPED_VALUE;
+
+// Open enum: use .of() to create instances from custom string values
+WorkEligibilityDocumentValue custom = WorkEligibilityDocumentValue.of("custom_value");
+```
+
 
 ## Values
 

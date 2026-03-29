@@ -19,7 +19,6 @@ import java.net.http.HttpResponse;
 import java.util.Iterator;
 import java.util.Optional;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 // Internal API only
 
@@ -31,12 +30,12 @@ import java.util.function.Function;
  * <p>
  * The pagination flow works as follows:
  * 1. hasNext() checks if there's a current response or tries to fetch the next page
- * 2. fetchNext() builds the request using the output handler's current value
+ * 2. fetchNext() uses the page fetcher to modify the request and fetch the next page
  * 3. The response is processed by the progress tracker to update pagination state
  * 4. next() returns the current response and clears it for the next iteration
  *
  * @param <ReqT>           The type of the request object
- * @param <ProgressParamT> The type of the progression parameter (e.g., page number, offset, cursor)
+ * @param <ProgressParamT> The type of the progression parameter (e.g., page number, offset, cursor, URL)
  */
 public class Paginator<ReqT, ProgressParamT> implements Iterator<HttpResponse<InputStream>> {
 
@@ -51,13 +50,10 @@ public class Paginator<ReqT, ProgressParamT> implements Iterator<HttpResponse<In
      */
     private final ProgressTrackerStrategy<ProgressParamT> progressTracker;
     /**
-     * Function that sets the value for pagination.
+     * Function that takes (request, position) and returns the response.
+     * On the initial request, position is null.
      */
-    private final BiFunction<ReqT, ProgressParamT, ReqT> requestModifier;
-    /**
-     * Function that fetches the next page of data.
-     */
-    private final Function<ReqT, HttpResponse<InputStream>> dataFetcher;
+    private final BiFunction<ReqT, ProgressParamT, HttpResponse<InputStream>> pageFetcher;
 
     private static final Configuration JSON_PATH_CONFIG = Configuration.defaultConfiguration()
             .jsonProvider(new JacksonJsonProvider())
@@ -71,17 +67,15 @@ public class Paginator<ReqT, ProgressParamT> implements Iterator<HttpResponse<In
      *
      * @param initialRequest  The initial request to use for the first page
      * @param progressTracker The handler that processes pagination metadata from responses
-     * @param requestModifier Function that sets the pagination value in the request
-     * @param dataFetcher     Function that fetches the response for a given request
+     * @param pageFetcher     Function that takes (request, position) and returns the response;
+     *                        position is null on the initial request
      */
     public Paginator(ReqT initialRequest,
                      ProgressTrackerStrategy<ProgressParamT> progressTracker,
-                     BiFunction<ReqT, ProgressParamT, ReqT> requestModifier,
-                     Function<ReqT, HttpResponse<InputStream>> dataFetcher) {
+                     BiFunction<ReqT, ProgressParamT, HttpResponse<InputStream>> pageFetcher) {
         this.initialRequest = initialRequest;
         this.progressTracker = progressTracker;
-        this.requestModifier = requestModifier;
-        this.dataFetcher = dataFetcher;
+        this.pageFetcher = pageFetcher;
     }
 
     /**
@@ -117,34 +111,32 @@ public class Paginator<ReqT, ProgressParamT> implements Iterator<HttpResponse<In
     /**
      * Fetches the next page of data.
      * This method:
-     * 1. Builds the appropriate request using the output handler's current value
-     * 2. Fetches the data using the provided fetcher function
+     * 1. Gets the current position from the progress tracker (null on initial request)
+     * 2. Calls the page fetcher with the request and position
      * 3. Parses the response using JsonPath
-     * 4. Updates output tracker state
+     * 4. Updates the progress tracker state
      * 5. Updates pagination state based on whether more pages are available
      *
      * @throws RuntimeException if there's an error fetching or parsing the response
      */
     private void fetchNext() {
-        ProgressParamT currentValue = progressTracker.getPosition();
-        ReqT request = state == PaginationState.INITIAL ?
-                initialRequest :
-                requestModifier.apply(initialRequest, currentValue);
-        
+        ProgressParamT currentValue = state == PaginationState.INITIAL ?
+                null : progressTracker.getPosition();
+
         if (state == PaginationState.INITIAL) {
             logger.debug("Fetching initial page");
         } else {
             logger.debug("Fetching next page with position: {}", currentValue);
         }
-        
-        HttpResponse<InputStream> response = dataFetcher.apply(request);
+
+        HttpResponse<InputStream> response = pageFetcher.apply(initialRequest, currentValue);
         try (InputStream body = response.body()) {
             CopiableInputStream copiableInputStream = new CopiableInputStream(body);
             ReadContext respJson = JsonPath.using(JSON_PATH_CONFIG).parse(copiableInputStream.copy());
             currentResponse = new ResponseWithBody<>(response, given -> copiableInputStream.copy());
             boolean hasMorePages = progressTracker.advance(respJson);
             state = hasMorePages ? PaginationState.HAS_MORE_PAGES : PaginationState.EXHAUSTED;
-            
+
             if (logger.isTraceEnabled()) {
                 logger.trace("Page fetched - status: {}, hasMorePages: {}", response.statusCode(), hasMorePages);
             }
