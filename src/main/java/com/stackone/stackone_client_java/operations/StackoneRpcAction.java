@@ -10,7 +10,6 @@ import static com.stackone.stackone_client_java.operations.Operations.AsyncReque
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.SecuritySource;
-import com.stackone.stackone_client_java.models.components.ActionsRpcRequestDto;
 import com.stackone.stackone_client_java.models.components.ActionsRpcResponse;
 import com.stackone.stackone_client_java.models.errors.BadGatewayResponse;
 import com.stackone.stackone_client_java.models.errors.BadRequestResponse;
@@ -24,6 +23,7 @@ import com.stackone.stackone_client_java.models.errors.SDKError;
 import com.stackone.stackone_client_java.models.errors.TooManyRequestsResponse;
 import com.stackone.stackone_client_java.models.errors.UnauthorizedResponse;
 import com.stackone.stackone_client_java.models.errors.UnprocessableEntityResponse;
+import com.stackone.stackone_client_java.models.operations.StackoneRpcActionRequest;
 import com.stackone.stackone_client_java.models.operations.StackoneRpcActionResponse;
 import com.stackone.stackone_client_java.utils.AsyncRetries;
 import com.stackone.stackone_client_java.utils.BackoffStrategy;
@@ -133,7 +133,7 @@ public class StackoneRpcAction {
                     typeReference);
             SerializedBody serializedRequestBody = Utils.serializeRequestBody(
                     convertedRequest,
-                    "request",
+                    "actionsRpcRequestDto",
                     "json",
                     false);
             if (serializedRequestBody == null) {
@@ -143,6 +143,7 @@ public class StackoneRpcAction {
             req.addHeader("Accept", "application/json")
                     .addHeader("user-agent", SDKConfiguration.USER_AGENT);
             _headers.forEach((k, list) -> list.forEach(v -> req.addHeader(k, v)));
+            req.addHeaders(Utils.getHeadersFromMetadata(request, null));
             Utils.configureSecurity(req, this.sdkConfiguration.securitySource().getSecurity());
 
             return req.build();
@@ -150,7 +151,7 @@ public class StackoneRpcAction {
     }
 
     public static class Sync extends Base
-            implements RequestOperation<ActionsRpcRequestDto, StackoneRpcActionResponse> {
+            implements RequestOperation<StackoneRpcActionRequest, StackoneRpcActionResponse> {
         public Sync(
                 SDKConfiguration sdkConfiguration, Optional<Options> options,
                 Headers _headers) {
@@ -159,8 +160,8 @@ public class StackoneRpcAction {
                   _headers);
         }
 
-        private HttpRequest onBuildRequest(ActionsRpcRequestDto request) throws Exception {
-            HttpRequest req = buildRequest(request, new TypeReference<ActionsRpcRequestDto>() {});
+        private HttpRequest onBuildRequest(StackoneRpcActionRequest request) throws Exception {
+            HttpRequest req = buildRequest(request, new TypeReference<StackoneRpcActionRequest>() {});
             return sdkConfiguration.hooks().beforeRequest(createBeforeRequestContext(), req);
         }
 
@@ -176,7 +177,7 @@ public class StackoneRpcAction {
         }
 
         @Override
-        public HttpResponse<InputStream> doRequest(ActionsRpcRequestDto request) {
+        public HttpResponse<InputStream> doRequest(StackoneRpcActionRequest request) {
             Retries retries = Retries.builder()
                     .action(() -> {
                         HttpRequest r;
@@ -314,7 +315,7 @@ public class StackoneRpcAction {
         }
     }
     public static class Async extends Base
-            implements AsyncRequestOperation<ActionsRpcRequestDto, com.stackone.stackone_client_java.models.operations.async.StackoneRpcActionResponse> {
+            implements AsyncRequestOperation<StackoneRpcActionRequest, com.stackone.stackone_client_java.models.operations.async.StackoneRpcActionResponse> {
         private final ScheduledExecutorService retryScheduler;
 
         public Async(
@@ -326,8 +327,8 @@ public class StackoneRpcAction {
             this.retryScheduler = retryScheduler;
         }
 
-        private CompletableFuture<HttpRequest> onBuildRequest(ActionsRpcRequestDto request) throws Exception {
-            HttpRequest req = buildRequest(request, new TypeReference<ActionsRpcRequestDto>() {});
+        private CompletableFuture<HttpRequest> onBuildRequest(StackoneRpcActionRequest request) throws Exception {
+            HttpRequest req = buildRequest(request, new TypeReference<StackoneRpcActionRequest>() {});
             return this.sdkConfiguration.asyncHooks().beforeRequest(createBeforeRequestContext(), req);
         }
 
@@ -340,7 +341,7 @@ public class StackoneRpcAction {
         }
 
         @Override
-        public CompletableFuture<HttpResponse<Blob>> doRequest(ActionsRpcRequestDto request) {
+        public CompletableFuture<HttpResponse<Blob>> doRequest(StackoneRpcActionRequest request) {
             AsyncRetries retries = AsyncRetries.builder()
                     .retryConfig(retryConfig)
                     .statusCodes(retryStatusCodes)

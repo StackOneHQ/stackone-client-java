@@ -76,6 +76,13 @@ public class ActionsMeta {
     private JsonNullable<String> releaseStage;
 
     /**
+     * The categories associated with this provider (e.g., hris, ats, crm)
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("categories")
+    private JsonNullable<? extends List<String>> categories;
+
+    /**
      * The authentication methods supported by the provider
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -106,6 +113,7 @@ public class ActionsMeta {
             @JsonProperty("icon") JsonNullable<String> icon,
             @JsonProperty("description") JsonNullable<String> description,
             @JsonProperty("release_stage") JsonNullable<String> releaseStage,
+            @JsonProperty("categories") JsonNullable<? extends List<String>> categories,
             @JsonProperty("authentication") JsonNullable<? extends List<AuthenticationMetaItem>> authentication,
             @JsonProperty("scope_definitions") JsonNullable<? extends List<ScopeDefinitionMetaItem>> scopeDefinitions,
             @JsonProperty("actions") JsonNullable<? extends List<ActionMetaItem>> actions) {
@@ -117,6 +125,7 @@ public class ActionsMeta {
         Utils.checkNotNull(icon, "icon");
         Utils.checkNotNull(description, "description");
         Utils.checkNotNull(releaseStage, "releaseStage");
+        Utils.checkNotNull(categories, "categories");
         Utils.checkNotNull(authentication, "authentication");
         Utils.checkNotNull(scopeDefinitions, "scopeDefinitions");
         Utils.checkNotNull(actions, "actions");
@@ -128,6 +137,7 @@ public class ActionsMeta {
         this.icon = icon;
         this.description = description;
         this.releaseStage = releaseStage;
+        this.categories = categories;
         this.authentication = authentication;
         this.scopeDefinitions = scopeDefinitions;
         this.actions = actions;
@@ -137,7 +147,7 @@ public class ActionsMeta {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -204,6 +214,15 @@ public class ActionsMeta {
     @JsonIgnore
     public JsonNullable<String> releaseStage() {
         return releaseStage;
+    }
+
+    /**
+     * The categories associated with this provider (e.g., hris, ats, crm)
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<String>> categories() {
+        return (JsonNullable<List<String>>) categories;
     }
 
     /**
@@ -387,6 +406,24 @@ public class ActionsMeta {
     }
 
     /**
+     * The categories associated with this provider (e.g., hris, ats, crm)
+     */
+    public ActionsMeta withCategories(List<String> categories) {
+        Utils.checkNotNull(categories, "categories");
+        this.categories = JsonNullable.of(categories);
+        return this;
+    }
+
+    /**
+     * The categories associated with this provider (e.g., hris, ats, crm)
+     */
+    public ActionsMeta withCategories(JsonNullable<? extends List<String>> categories) {
+        Utils.checkNotNull(categories, "categories");
+        this.categories = categories;
+        return this;
+    }
+
+    /**
      * The authentication methods supported by the provider
      */
     public ActionsMeta withAuthentication(List<AuthenticationMetaItem> authentication) {
@@ -458,6 +495,7 @@ public class ActionsMeta {
             Utils.enhancedDeepEquals(this.icon, other.icon) &&
             Utils.enhancedDeepEquals(this.description, other.description) &&
             Utils.enhancedDeepEquals(this.releaseStage, other.releaseStage) &&
+            Utils.enhancedDeepEquals(this.categories, other.categories) &&
             Utils.enhancedDeepEquals(this.authentication, other.authentication) &&
             Utils.enhancedDeepEquals(this.scopeDefinitions, other.scopeDefinitions) &&
             Utils.enhancedDeepEquals(this.actions, other.actions);
@@ -468,8 +506,8 @@ public class ActionsMeta {
         return Utils.enhancedHash(
             accountId, integrationId, version,
             name, key, icon,
-            description, releaseStage, authentication,
-            scopeDefinitions, actions);
+            description, releaseStage, categories,
+            authentication, scopeDefinitions, actions);
     }
     
     @Override
@@ -483,6 +521,7 @@ public class ActionsMeta {
                 "icon", icon,
                 "description", description,
                 "releaseStage", releaseStage,
+                "categories", categories,
                 "authentication", authentication,
                 "scopeDefinitions", scopeDefinitions,
                 "actions", actions);
@@ -506,6 +545,8 @@ public class ActionsMeta {
         private JsonNullable<String> description = JsonNullable.undefined();
 
         private JsonNullable<String> releaseStage = JsonNullable.undefined();
+
+        private JsonNullable<? extends List<String>> categories = JsonNullable.undefined();
 
         private JsonNullable<? extends List<AuthenticationMetaItem>> authentication = JsonNullable.undefined();
 
@@ -675,6 +716,25 @@ public class ActionsMeta {
 
 
         /**
+         * The categories associated with this provider (e.g., hris, ats, crm)
+         */
+        public Builder categories(List<String> categories) {
+            Utils.checkNotNull(categories, "categories");
+            this.categories = JsonNullable.of(categories);
+            return this;
+        }
+
+        /**
+         * The categories associated with this provider (e.g., hris, ats, crm)
+         */
+        public Builder categories(JsonNullable<? extends List<String>> categories) {
+            Utils.checkNotNull(categories, "categories");
+            this.categories = categories;
+            return this;
+        }
+
+
+        /**
          * The authentication methods supported by the provider
          */
         public Builder authentication(List<AuthenticationMetaItem> authentication) {
@@ -735,8 +795,8 @@ public class ActionsMeta {
             return new ActionsMeta(
                 accountId, integrationId, version,
                 name, key, icon,
-                description, releaseStage, authentication,
-                scopeDefinitions, actions);
+                description, releaseStage, categories,
+                authentication, scopeDefinitions, actions);
         }
 
     }

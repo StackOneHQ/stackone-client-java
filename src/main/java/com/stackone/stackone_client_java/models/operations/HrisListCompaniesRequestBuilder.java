@@ -87,9 +87,11 @@ public class HrisListCompaniesRequestBuilder {
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),
-                HrisListCompaniesRequest::withNext,
-            nextRequest -> unchecked(() -> operation.doRequest(request)).get());
-        
+            (req, pos) -> {
+                var modifiedReq = pos == null ? req : req.withNext(pos);
+                return unchecked(() -> operation.doRequest(modifiedReq)).get();
+            });
+
         return () -> transform(iterator, operation::handleResponse);
     }
 

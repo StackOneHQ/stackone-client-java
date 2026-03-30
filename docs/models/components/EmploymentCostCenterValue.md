@@ -1,5 +1,16 @@
 # EmploymentCostCenterValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.EmploymentCostCenterValue;
+
+EmploymentCostCenterValue value = EmploymentCostCenterValue.WORKSPACE;
+
+// Open enum: use .of() to create instances from custom string values
+EmploymentCostCenterValue custom = EmploymentCostCenterValue.of("custom_value");
+```
+
 
 ## Values
 

@@ -14,16 +14,28 @@ import java.lang.String;
 
 public class ActionSearchResultDto {
     /**
-     * Unique action identifier
+     * Action identifier (e.g. "slack_send_message")
      */
-    @JsonProperty("action_name")
-    private String actionName;
+    @JsonProperty("action_id")
+    private String actionId;
 
     /**
      * Connector key
      */
     @JsonProperty("connector_key")
     private String connectorKey;
+
+    /**
+     * Connector version
+     */
+    @JsonProperty("connector_version")
+    private String connectorVersion;
+
+    /**
+     * Action type (e.g. "custom", "create", "list")
+     */
+    @JsonProperty("action_type")
+    private String actionType;
 
     /**
      * Cosine similarity score (0-1)
@@ -49,34 +61,49 @@ public class ActionSearchResultDto {
     @JsonProperty("project_id")
     private String projectId;
 
+    /**
+     * MCP-compatible JSON Schema describing the action input parameters
+     */
+    @JsonProperty("input_schema")
+    private InputSchema inputSchema;
+
     @JsonCreator
     public ActionSearchResultDto(
-            @JsonProperty("action_name") String actionName,
+            @JsonProperty("action_id") String actionId,
             @JsonProperty("connector_key") String connectorKey,
+            @JsonProperty("connector_version") String connectorVersion,
+            @JsonProperty("action_type") String actionType,
             @JsonProperty("similarity_score") double similarityScore,
             @JsonProperty("label") String label,
             @JsonProperty("description") String description,
-            @JsonProperty("project_id") String projectId) {
-        Utils.checkNotNull(actionName, "actionName");
+            @JsonProperty("project_id") String projectId,
+            @JsonProperty("input_schema") InputSchema inputSchema) {
+        Utils.checkNotNull(actionId, "actionId");
         Utils.checkNotNull(connectorKey, "connectorKey");
+        Utils.checkNotNull(connectorVersion, "connectorVersion");
+        Utils.checkNotNull(actionType, "actionType");
         Utils.checkNotNull(similarityScore, "similarityScore");
         Utils.checkNotNull(label, "label");
         Utils.checkNotNull(description, "description");
         Utils.checkNotNull(projectId, "projectId");
-        this.actionName = actionName;
+        Utils.checkNotNull(inputSchema, "inputSchema");
+        this.actionId = actionId;
         this.connectorKey = connectorKey;
+        this.connectorVersion = connectorVersion;
+        this.actionType = actionType;
         this.similarityScore = similarityScore;
         this.label = label;
         this.description = description;
         this.projectId = projectId;
+        this.inputSchema = inputSchema;
     }
 
     /**
-     * Unique action identifier
+     * Action identifier (e.g. "slack_send_message")
      */
     @JsonIgnore
-    public String actionName() {
-        return actionName;
+    public String actionId() {
+        return actionId;
     }
 
     /**
@@ -85,6 +112,22 @@ public class ActionSearchResultDto {
     @JsonIgnore
     public String connectorKey() {
         return connectorKey;
+    }
+
+    /**
+     * Connector version
+     */
+    @JsonIgnore
+    public String connectorVersion() {
+        return connectorVersion;
+    }
+
+    /**
+     * Action type (e.g. "custom", "create", "list")
+     */
+    @JsonIgnore
+    public String actionType() {
+        return actionType;
     }
 
     /**
@@ -119,17 +162,25 @@ public class ActionSearchResultDto {
         return projectId;
     }
 
+    /**
+     * MCP-compatible JSON Schema describing the action input parameters
+     */
+    @JsonIgnore
+    public InputSchema inputSchema() {
+        return inputSchema;
+    }
+
     public static Builder builder() {
         return new Builder();
     }
 
 
     /**
-     * Unique action identifier
+     * Action identifier (e.g. "slack_send_message")
      */
-    public ActionSearchResultDto withActionName(String actionName) {
-        Utils.checkNotNull(actionName, "actionName");
-        this.actionName = actionName;
+    public ActionSearchResultDto withActionId(String actionId) {
+        Utils.checkNotNull(actionId, "actionId");
+        this.actionId = actionId;
         return this;
     }
 
@@ -139,6 +190,24 @@ public class ActionSearchResultDto {
     public ActionSearchResultDto withConnectorKey(String connectorKey) {
         Utils.checkNotNull(connectorKey, "connectorKey");
         this.connectorKey = connectorKey;
+        return this;
+    }
+
+    /**
+     * Connector version
+     */
+    public ActionSearchResultDto withConnectorVersion(String connectorVersion) {
+        Utils.checkNotNull(connectorVersion, "connectorVersion");
+        this.connectorVersion = connectorVersion;
+        return this;
+    }
+
+    /**
+     * Action type (e.g. "custom", "create", "list")
+     */
+    public ActionSearchResultDto withActionType(String actionType) {
+        Utils.checkNotNull(actionType, "actionType");
+        this.actionType = actionType;
         return this;
     }
 
@@ -178,6 +247,15 @@ public class ActionSearchResultDto {
         return this;
     }
 
+    /**
+     * MCP-compatible JSON Schema describing the action input parameters
+     */
+    public ActionSearchResultDto withInputSchema(InputSchema inputSchema) {
+        Utils.checkNotNull(inputSchema, "inputSchema");
+        this.inputSchema = inputSchema;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -188,38 +266,49 @@ public class ActionSearchResultDto {
         }
         ActionSearchResultDto other = (ActionSearchResultDto) o;
         return 
-            Utils.enhancedDeepEquals(this.actionName, other.actionName) &&
+            Utils.enhancedDeepEquals(this.actionId, other.actionId) &&
             Utils.enhancedDeepEquals(this.connectorKey, other.connectorKey) &&
+            Utils.enhancedDeepEquals(this.connectorVersion, other.connectorVersion) &&
+            Utils.enhancedDeepEquals(this.actionType, other.actionType) &&
             Utils.enhancedDeepEquals(this.similarityScore, other.similarityScore) &&
             Utils.enhancedDeepEquals(this.label, other.label) &&
             Utils.enhancedDeepEquals(this.description, other.description) &&
-            Utils.enhancedDeepEquals(this.projectId, other.projectId);
+            Utils.enhancedDeepEquals(this.projectId, other.projectId) &&
+            Utils.enhancedDeepEquals(this.inputSchema, other.inputSchema);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            actionName, connectorKey, similarityScore,
-            label, description, projectId);
+            actionId, connectorKey, connectorVersion,
+            actionType, similarityScore, label,
+            description, projectId, inputSchema);
     }
     
     @Override
     public String toString() {
         return Utils.toString(ActionSearchResultDto.class,
-                "actionName", actionName,
+                "actionId", actionId,
                 "connectorKey", connectorKey,
+                "connectorVersion", connectorVersion,
+                "actionType", actionType,
                 "similarityScore", similarityScore,
                 "label", label,
                 "description", description,
-                "projectId", projectId);
+                "projectId", projectId,
+                "inputSchema", inputSchema);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private String actionName;
+        private String actionId;
 
         private String connectorKey;
+
+        private String connectorVersion;
+
+        private String actionType;
 
         private Double similarityScore;
 
@@ -229,17 +318,19 @@ public class ActionSearchResultDto {
 
         private String projectId;
 
+        private InputSchema inputSchema;
+
         private Builder() {
           // force use of static builder() method
         }
 
 
         /**
-         * Unique action identifier
+         * Action identifier (e.g. "slack_send_message")
          */
-        public Builder actionName(String actionName) {
-            Utils.checkNotNull(actionName, "actionName");
-            this.actionName = actionName;
+        public Builder actionId(String actionId) {
+            Utils.checkNotNull(actionId, "actionId");
+            this.actionId = actionId;
             return this;
         }
 
@@ -250,6 +341,26 @@ public class ActionSearchResultDto {
         public Builder connectorKey(String connectorKey) {
             Utils.checkNotNull(connectorKey, "connectorKey");
             this.connectorKey = connectorKey;
+            return this;
+        }
+
+
+        /**
+         * Connector version
+         */
+        public Builder connectorVersion(String connectorVersion) {
+            Utils.checkNotNull(connectorVersion, "connectorVersion");
+            this.connectorVersion = connectorVersion;
+            return this;
+        }
+
+
+        /**
+         * Action type (e.g. "custom", "create", "list")
+         */
+        public Builder actionType(String actionType) {
+            Utils.checkNotNull(actionType, "actionType");
+            this.actionType = actionType;
             return this;
         }
 
@@ -293,11 +404,22 @@ public class ActionSearchResultDto {
             return this;
         }
 
+
+        /**
+         * MCP-compatible JSON Schema describing the action input parameters
+         */
+        public Builder inputSchema(InputSchema inputSchema) {
+            Utils.checkNotNull(inputSchema, "inputSchema");
+            this.inputSchema = inputSchema;
+            return this;
+        }
+
         public ActionSearchResultDto build() {
 
             return new ActionSearchResultDto(
-                actionName, connectorKey, similarityScore,
-                label, description, projectId);
+                actionId, connectorKey, connectorVersion,
+                actionType, similarityScore, label,
+                description, projectId, inputSchema);
         }
 
     }

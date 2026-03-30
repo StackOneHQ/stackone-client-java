@@ -2,6 +2,17 @@
 
 The type of the employment.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.JobPostingEmploymentTypeValue;
+
+JobPostingEmploymentTypeValue value = JobPostingEmploymentTypeValue.CONTRACTOR;
+
+// Open enum: use .of() to create instances from custom string values
+JobPostingEmploymentTypeValue custom = JobPostingEmploymentTypeValue.of("custom_value");
+```
+
 
 ## Values
 

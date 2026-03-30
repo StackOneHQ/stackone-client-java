@@ -93,8 +93,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.*;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.StackoneMcpPostResponse;
-import com.stackone.stackone_client_java.models.operations.StackoneMcpPostSecurity;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -104,20 +103,25 @@ public class Application {
         StackOne sdk = StackOne.builder()
             .build();
 
-        StackoneMcpPostResponse res = sdk.mcp().mcpPost()
-                .security(StackoneMcpPostSecurity.builder()
-                    .basic(SchemeBasic.builder()
-                        .username("")
-                        .password("")
-                        .build())
-                    .build())
-                .xAccountId("<id>")
+        StackoneMcpPostRequest req = StackoneMcpPostRequest.builder()
                 .jsonRpcMessageDto(JsonRpcMessageDto.builder()
                     .jsonrpc("2.0")
                     .method("initialize")
                     .params(Params.builder()
                         .build())
                     .id(Id.builder()
+                        .build())
+                    .build())
+                .xAccountId("<id>")
+                .xAccountIdQueryParameter("<id>")
+                .build();
+
+        StackoneMcpPostResponse res = sdk.mcp().mcpPost()
+                .request(req)
+                .security(StackoneMcpPostSecurity.builder()
+                    .basic(SchemeBasic.builder()
+                        .username("")
+                        .password("")
                         .build())
                     .build())
                 .call();
@@ -135,8 +139,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.*;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.StackoneMcpPostResponse;
-import com.stackone.stackone_client_java.models.operations.StackoneMcpPostSecurity;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -146,20 +149,25 @@ public class Application {
         StackOne sdk = StackOne.builder()
             .build();
 
-        StackoneMcpPostResponse res = sdk.mcp().mcpPost()
-                .security(StackoneMcpPostSecurity.builder()
-                    .basic(SchemeBasic.builder()
-                        .username("")
-                        .password("")
-                        .build())
-                    .build())
-                .xAccountId("<id>")
+        StackoneMcpPostRequest req = StackoneMcpPostRequest.builder()
                 .jsonRpcMessageDto(JsonRpcMessageDto.builder()
                     .jsonrpc("2.0")
                     .method("tools/call")
                     .params(Params.builder()
                         .build())
                     .id(Id.builder()
+                        .build())
+                    .build())
+                .xAccountId("<id>")
+                .xAccountIdQueryParameter("<id>")
+                .build();
+
+        StackoneMcpPostResponse res = sdk.mcp().mcpPost()
+                .request(req)
+                .security(StackoneMcpPostSecurity.builder()
+                    .basic(SchemeBasic.builder()
+                        .username("")
+                        .password("")
                         .build())
                     .build())
                 .call();
@@ -177,8 +185,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.*;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.StackoneMcpPostResponse;
-import com.stackone.stackone_client_java.models.operations.StackoneMcpPostSecurity;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -188,20 +195,25 @@ public class Application {
         StackOne sdk = StackOne.builder()
             .build();
 
-        StackoneMcpPostResponse res = sdk.mcp().mcpPost()
-                .security(StackoneMcpPostSecurity.builder()
-                    .basic(SchemeBasic.builder()
-                        .username("")
-                        .password("")
-                        .build())
-                    .build())
-                .xAccountId("<id>")
+        StackoneMcpPostRequest req = StackoneMcpPostRequest.builder()
                 .jsonRpcMessageDto(JsonRpcMessageDto.builder()
                     .jsonrpc("2.0")
                     .method("tools/list")
                     .params(Params.builder()
                         .build())
                     .id(Id.builder()
+                        .build())
+                    .build())
+                .xAccountId("<id>")
+                .xAccountIdQueryParameter("<id>")
+                .build();
+
+        StackoneMcpPostResponse res = sdk.mcp().mcpPost()
+                .request(req)
+                .security(StackoneMcpPostSecurity.builder()
+                    .basic(SchemeBasic.builder()
+                        .username("")
+                        .password("")
                         .build())
                     .build())
                 .call();
@@ -215,11 +227,8 @@ public class Application {
 
 | Parameter                                                                                                                         | Type                                                                                                                              | Required                                                                                                                          | Description                                                                                                                       |
 | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                         | [StackoneMcpPostRequest](../../models/operations/StackoneMcpPostRequest.md)                                                       | :heavy_check_mark:                                                                                                                | The request object to use for the request.                                                                                        |
 | `security`                                                                                                                        | [com.stackone.stackone_client_java.models.operations.StackoneMcpPostSecurity](../../models/operations/StackoneMcpPostSecurity.md) | :heavy_check_mark:                                                                                                                | The security requirements to use for the request.                                                                                 |
-| `xAccountId`                                                                                                                      | *Optional\<String>*                                                                                                               | :heavy_minus_sign:                                                                                                                | Account secure id for the target provider account (optional if x-account-id query parameter is provided)                          |
-| `xAccountIdQueryParameter`                                                                                                        | *Optional\<Object>*                                                                                                               | :heavy_minus_sign:                                                                                                                | Account secure id (alternative to x-account-id header)                                                                            |
-| `mcpSessionId`                                                                                                                    | *Optional\<String>*                                                                                                               | :heavy_minus_sign:                                                                                                                | Session id; omit for initialize, include for subsequent calls                                                                     |
-| `jsonRpcMessageDto`                                                                                                               | [JsonRpcMessageDto](../../models/components/JsonRpcMessageDto.md)                                                                 | :heavy_check_mark:                                                                                                                | JSON-RPC 2.0 message                                                                                                              |
 
 ### Response
 

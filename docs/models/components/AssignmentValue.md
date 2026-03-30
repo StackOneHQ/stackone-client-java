@@ -2,6 +2,17 @@
 
 The StackOne unified assignment status.
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.AssignmentValue;
+
+AssignmentValue value = AssignmentValue.PENDING;
+
+// Open enum: use .of() to create instances from custom string values
+AssignmentValue custom = AssignmentValue.of("custom_value");
+```
+
 
 ## Values
 

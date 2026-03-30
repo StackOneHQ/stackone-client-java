@@ -153,7 +153,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -229,7 +229,7 @@ public class Application {
                 .call();
 
         if (res.emailTemplateResult().isPresent()) {
-            // handle response
+            System.out.println(res.emailTemplateResult().get());
         }
     }
 }
@@ -312,7 +312,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -472,7 +472,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -548,7 +548,7 @@ public class Application {
                 .call();
 
         if (res.inAppTemplateResult().isPresent()) {
-            // handle response
+            System.out.println(res.inAppTemplateResult().get());
         }
     }
 }
@@ -631,7 +631,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -792,7 +792,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -868,7 +868,7 @@ public class Application {
                 .call();
 
         if (res.smsTemplateResult().isPresent()) {
-            // handle response
+            System.out.println(res.smsTemplateResult().get());
         }
     }
 }
@@ -951,7 +951,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -1115,7 +1115,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -1193,7 +1193,7 @@ public class Application {
                 .call();
 
         if (res.templateResult().isPresent()) {
-            // handle response
+            System.out.println(res.templateResult().get());
         }
     }
 }
@@ -1277,7 +1277,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -1438,7 +1438,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -1514,7 +1514,7 @@ public class Application {
                 .call();
 
         if (res.pushTemplateResult().isPresent()) {
-            // handle response
+            System.out.println(res.pushTemplateResult().get());
         }
     }
 }
@@ -1597,7 +1597,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -1750,7 +1750,7 @@ public class Application {
                 .call();
 
         if (res.campaignResult().isPresent()) {
-            // handle response
+            System.out.println(res.campaignResult().get());
         }
     }
 }
@@ -1902,7 +1902,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }
@@ -1978,7 +1978,7 @@ public class Application {
                 .call();
 
         if (res.contentBlockResult().isPresent()) {
-            // handle response
+            System.out.println(res.contentBlockResult().get());
         }
     }
 }
@@ -2055,7 +2055,7 @@ public class Application {
                 .call();
 
         if (res.createResult().isPresent()) {
-            // handle response
+            System.out.println(res.createResult().get());
         }
     }
 }

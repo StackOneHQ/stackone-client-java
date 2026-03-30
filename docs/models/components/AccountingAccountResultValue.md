@@ -2,6 +2,17 @@
 
 Type of account
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.AccountingAccountResultValue;
+
+AccountingAccountResultValue value = AccountingAccountResultValue.ASSET;
+
+// Open enum: use .of() to create instances from custom string values
+AccountingAccountResultValue custom = AccountingAccountResultValue.of("custom_value");
+```
+
 
 ## Values
 

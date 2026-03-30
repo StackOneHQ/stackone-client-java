@@ -28,6 +28,7 @@ import com.stackone.stackone_client_java.operations.StackoneListLinkedAccounts;
 import com.stackone.stackone_client_java.operations.StackoneUpdateAccount;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
+import java.lang.Deprecated;
 import java.lang.String;
 import java.util.Optional;
 
@@ -210,33 +211,39 @@ public class Accounts {
     }
 
     /**
-     * Get Account Meta Information
+     * Get Account Meta Information (Legacy)
      * 
      * @return The call builder
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public StackoneGetAccountMetaInfoRequestBuilder getAccountMetaInfo() {
         return new StackoneGetAccountMetaInfoRequestBuilder(sdkConfiguration);
     }
 
     /**
-     * Get Account Meta Information
+     * Get Account Meta Information (Legacy)
      * 
      * @param id 
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public StackoneGetAccountMetaInfoResponse getAccountMetaInfo(String id) {
         return getAccountMetaInfo(id, Optional.empty());
     }
 
     /**
-     * Get Account Meta Information
+     * Get Account Meta Information (Legacy)
      * 
      * @param id 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public StackoneGetAccountMetaInfoResponse getAccountMetaInfo(String id, Optional<Options> options) {
         StackoneGetAccountMetaInfoRequest request =
             StackoneGetAccountMetaInfoRequest

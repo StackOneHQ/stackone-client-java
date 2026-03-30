@@ -2,6 +2,17 @@
 
 The type of the benefit
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HRISBenefitValue;
+
+HRISBenefitValue value = HRISBenefitValue.RETIREMENT_SAVINGS;
+
+// Open enum: use .of() to create instances from custom string values
+HRISBenefitValue custom = HRISBenefitValue.of("custom_value");
+```
+
 
 ## Values
 

@@ -11,7 +11,18 @@
 <!-- Start Summary [summary] -->
 ## Summary
 
-Accounting: The documentation for the StackOne Unified API - ACCOUNTING
+Accounting: The documentation for the StackOne API
+The documentation for the StackOne Unified API - HRIS
+The documentation for the StackOne Unified API - ATS
+The documentation for the StackOne Unified API - CRM
+The documentation for the StackOne Unified API - IAM
+The documentation for the StackOne Unified API - MARKETING
+The documentation for the StackOne Unified API - LMS
+The documentation for the StackOne Unified API - TICKETING
+The documentation for the StackOne Unified API - DOCUMENTS
+The documentation for the StackOne Unified API - SCREENING
+The documentation for the StackOne Unified API - MESSAGING
+The documentation for the StackOne Unified API - ACCOUNTING
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -29,6 +40,7 @@ Accounting: The documentation for the StackOne Unified API - ACCOUNTING
   * [Authentication](#authentication)
   * [Custom HTTP Client](#custom-http-client)
   * [Debugging](#debugging)
+  * [Jackson Configuration](#jackson-configuration)
 * [Development](#development)
   * [Maturity](#maturity)
   * [Contributions](#contributions)
@@ -46,7 +58,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.19.2'
+implementation 'com.stackone:stackone-client-java:0.19.3'
 ```
 
 Maven:
@@ -54,7 +66,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.19.2</version>
+    <version>0.19.3</version>
 </dependency>
 ```
 
@@ -171,7 +183,7 @@ public class Application {
 
         resFut.thenAccept(res -> {
             if (res.connectSessionTokenAuthLink().isPresent()) {
-            // handle response
+                System.out.println(res.connectSessionTokenAuthLink().get());
             }
         });
     }
@@ -179,6 +191,15 @@ public class Application {
 ```
 
 [comp-fut]: https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html
+
+#### Union Consumption Patterns
+
+When a response field is a union model:
+
+- Discriminated unions: branch on the discriminator (`switch`) and then narrow to the concrete type.
+- Non-discriminated unions: use generated accessors (for example `string()`, `asLong()`, `simpleObject()`) to determine the active variant.
+
+For full model-specific examples (including Java 11/16/21 variants), see each union model's **Supported Types** section in the generated model docs.
 <!-- End SDK Example Usage [usage] -->
 
 <!-- Start Available Resources and Operations [operations] -->
@@ -206,7 +227,7 @@ public class Application {
 * [getAccount](docs/sdks/accounts/README.md#getaccount) - Get Account
 * [deleteAccount](docs/sdks/accounts/README.md#deleteaccount) - Delete Account
 * [updateAccount](docs/sdks/accounts/README.md#updateaccount) - Update Account
-* [getAccountMetaInfo](docs/sdks/accounts/README.md#getaccountmetainfo) - Get Account Meta Information
+* [~~getAccountMetaInfo~~](docs/sdks/accounts/README.md#getaccountmetainfo) - Get Account Meta Information (Legacy) :warning: **Deprecated**
 
 ### [Actions](docs/sdks/actions/README.md)
 
@@ -299,10 +320,10 @@ public class Application {
 * [createConnectSession](docs/sdks/connectsessions/README.md#createconnectsession) - Create Connect Session
 * [authenticateConnectSession](docs/sdks/connectsessions/README.md#authenticateconnectsession) - Authenticate Connect Session
 
-### [Connectors](docs/sdks/connectors/README.md)
+### [~~Connectors~~](docs/sdks/connectors/README.md)
 
-* [listConnectorsMeta](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connector Meta Information
-* [getConnectorMeta](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta Information
+* [~~listConnectorsMeta~~](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connector Meta Information (Legacy) :warning: **Deprecated**
+* [~~getConnectorMeta~~](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta Information (Legacy) :warning: **Deprecated**
 
 ### [Crm](docs/sdks/crm/README.md)
 
@@ -493,9 +514,9 @@ public class Application {
 * [getMessage](docs/sdks/messaging/README.md#getmessage) - Get Message
 * [sendMessage](docs/sdks/messaging/README.md#sendmessage) - Send Message
 
-### [Proxy](docs/sdks/proxy/README.md)
+### [~~Proxy~~](docs/sdks/proxy/README.md)
 
-* [proxyRequest](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
+* [~~proxyRequest~~](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request (Legacy) :warning: **Deprecated**
 
 ### [RequestLogs](docs/sdks/requestlogs/README.md)
 
@@ -725,7 +746,7 @@ public class Application {
                 .call();
 
         if (res.connectSessionTokenAuthLink().isPresent()) {
-            // handle response
+            System.out.println(res.connectSessionTokenAuthLink().get());
         }
     }
 }
@@ -792,7 +813,7 @@ public class Application {
                 .call();
 
         if (res.connectSessionTokenAuthLink().isPresent()) {
-            // handle response
+            System.out.println(res.connectSessionTokenAuthLink().get());
         }
     }
 }
@@ -868,7 +889,7 @@ public class Application {
                     .call();
 
             if (res.connectSessionTokenAuthLink().isPresent()) {
-                // handle response
+                System.out.println(res.connectSessionTokenAuthLink().get());
             }
         } catch (StackOneError ex) { // all SDK exceptions inherit from StackOneError
 
@@ -994,7 +1015,7 @@ public class Application {
                 .call();
 
         if (res.connectSessionTokenAuthLink().isPresent()) {
-            // handle response
+            System.out.println(res.connectSessionTokenAuthLink().get());
         }
     }
 }
@@ -1126,7 +1147,7 @@ public class Application {
                 .call();
 
         if (res.connectSessionTokenAuthLink().isPresent()) {
-            // handle response
+            System.out.println(res.connectSessionTokenAuthLink().get());
         }
     }
 }
@@ -1334,6 +1355,36 @@ __NOTE__: This is a convenience method that calls `HTTPClient.enableDebugLogging
 
 Another option is to set the System property `-Djdk.httpclient.HttpClient.log=all`. However, this second option does not log bodies.
 <!-- End Debugging [debug] -->
+
+<!-- Start Jackson Configuration [jackson] -->
+## Jackson Configuration
+
+The SDK ships with a pre-configured Jackson [`ObjectMapper`][jackson-databind] accessible via
+`JSON.getMapper()`. It is set up with type modules, strict deserializers, and the feature flags
+needed for full SDK compatibility (including ISO-8601 `OffsetDateTime` serialization):
+
+```java
+import com.stackone.stackone_client_java.utils.JSON;
+
+String json = JSON.getMapper().writeValueAsString(response);
+```
+
+To compose with your own `ObjectMapper`, register the provided `StackoneClientJavaJacksonModule`, which
+bundles all the same modules and feature flags as a single plug-and-play module:
+
+```java
+import com.stackone.stackone_client_java.utils.StackoneClientJavaJacksonModule;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+ObjectMapper myMapper = new ObjectMapper()
+    .registerModule(new StackoneClientJavaJacksonModule());
+
+String json = myMapper.writeValueAsString(response);
+```
+
+[jackson-databind]: https://github.com/FasterXML/jackson-databind
+[jackson-jsr310]: https://github.com/FasterXML/jackson-modules-java8/tree/master/datetime
+<!-- End Jackson Configuration [jackson] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

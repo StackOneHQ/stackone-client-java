@@ -11,6 +11,8 @@ import com.stackone.stackone_client_java.utils.TypedObject;
 import com.stackone.stackone_client_java.utils.Utils.JsonShape;
 import com.stackone.stackone_client_java.utils.Utils.TypeReferenceWithShape;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -19,28 +21,41 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ActionsRpcResponseData
+ * ProxyResponseApiModelData
  * 
- * <p>The response data from the action RPC call
+ * <p>The response data from the provider. Can be an object, array, or primitive value.
  */
-@JsonDeserialize(using = ActionsRpcResponseData._Deserializer.class)
-public class ActionsRpcResponseData {
+@JsonDeserialize(using = ProxyResponseApiModelData._Deserializer.class)
+public class ProxyResponseApiModelData {
 
     @JsonValue
     private final TypedObject value;
     
-    private ActionsRpcResponseData(TypedObject value) {
+    private ProxyResponseApiModelData(TypedObject value) {
         this.value = value;
     }
 
-    public static ActionsRpcResponseData of(Map<String, Object> value) {
+    public static ProxyResponseApiModelData of(Map<String, Object> value) {
         Utils.checkNotNull(value, "value");
-        return new ActionsRpcResponseData(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+        return new ProxyResponseApiModelData(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
-    public static ActionsRpcResponseData of(List<Map<String, Object>> value) {
+    public static ProxyResponseApiModelData of(List<Map<String, Object>> value) {
         Utils.checkNotNull(value, "value");
-        return new ActionsRpcResponseData(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+        return new ProxyResponseApiModelData(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static ProxyResponseApiModelData of(String value) {
+        Utils.checkNotNull(value, "value");
+        return new ProxyResponseApiModelData(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static ProxyResponseApiModelData of(double value) {
+        return new ProxyResponseApiModelData(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static ProxyResponseApiModelData of(boolean value) {
+        return new ProxyResponseApiModelData(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -48,6 +63,9 @@ public class ActionsRpcResponseData {
      * <ul>
      * <li>{@code java.util.Map<java.lang.String, java.lang.Object>}</li>
      * <li>{@code java.util.List<java.util.Map<java.lang.String, java.lang.Object>>}</li>
+     * <li>{@code java.lang.String}</li>
+     * <li>{@code double}</li>
+     * <li>{@code boolean}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -73,7 +91,7 @@ public class ActionsRpcResponseData {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ActionsRpcResponseData other = (ActionsRpcResponseData) o;
+        ProxyResponseApiModelData other = (ProxyResponseApiModelData) o;
         return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
@@ -83,18 +101,21 @@ public class ActionsRpcResponseData {
     }
     
     @SuppressWarnings("serial")
-    public static final class _Deserializer extends OneOfDeserializer<ActionsRpcResponseData> {
+    public static final class _Deserializer extends OneOfDeserializer<ProxyResponseApiModelData> {
 
         public _Deserializer() {
-            super(ActionsRpcResponseData.class, false,
+            super(ProxyResponseApiModelData.class, false,
                   TypeReferenceWithShape.of(new TypeReference<Map<String, Object>>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<List<Map<String, Object>>>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<List<Map<String, Object>>>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<String>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Double>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
         }
     }
     
     @Override
     public String toString() {
-        return Utils.toString(ActionsRpcResponseData.class,
+        return Utils.toString(ProxyResponseApiModelData.class,
                 "value", value);
     }
 

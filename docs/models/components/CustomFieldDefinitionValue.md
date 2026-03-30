@@ -1,5 +1,16 @@
 # CustomFieldDefinitionValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.CustomFieldDefinitionValue;
+
+CustomFieldDefinitionValue value = CustomFieldDefinitionValue.DATE;
+
+// Open enum: use .of() to create instances from custom string values
+CustomFieldDefinitionValue custom = CustomFieldDefinitionValue.of("custom_value");
+```
+
 
 ## Values
 

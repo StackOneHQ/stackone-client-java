@@ -38,7 +38,7 @@ public class ProxyResponseApiModel {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("data")
-    private JsonNullable<? extends Data> data;
+    private JsonNullable<? extends ProxyResponseApiModelData> data;
 
     /**
      * Provider-specific errors if any occurred
@@ -51,7 +51,7 @@ public class ProxyResponseApiModel {
     public ProxyResponseApiModel(
             @JsonProperty("status") double status,
             @JsonProperty("headers") JsonNullable<? extends Map<String, Object>> headers,
-            @JsonProperty("data") JsonNullable<? extends Data> data,
+            @JsonProperty("data") JsonNullable<? extends ProxyResponseApiModelData> data,
             @JsonProperty("provider_errors") JsonNullable<? extends List<ProviderErrorApiModel>> providerErrors) {
         Utils.checkNotNull(status, "status");
         Utils.checkNotNull(headers, "headers");
@@ -91,8 +91,8 @@ public class ProxyResponseApiModel {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Data> data() {
-        return (JsonNullable<Data>) data;
+    public JsonNullable<ProxyResponseApiModelData> data() {
+        return (JsonNullable<ProxyResponseApiModelData>) data;
     }
 
     /**
@@ -139,7 +139,7 @@ public class ProxyResponseApiModel {
     /**
      * The response data from the provider. Can be an object, array, or primitive value.
      */
-    public ProxyResponseApiModel withData(Data data) {
+    public ProxyResponseApiModel withData(ProxyResponseApiModelData data) {
         Utils.checkNotNull(data, "data");
         this.data = JsonNullable.of(data);
         return this;
@@ -148,7 +148,7 @@ public class ProxyResponseApiModel {
     /**
      * The response data from the provider. Can be an object, array, or primitive value.
      */
-    public ProxyResponseApiModel withData(JsonNullable<? extends Data> data) {
+    public ProxyResponseApiModel withData(JsonNullable<? extends ProxyResponseApiModelData> data) {
         Utils.checkNotNull(data, "data");
         this.data = data;
         return this;
@@ -211,7 +211,7 @@ public class ProxyResponseApiModel {
 
         private JsonNullable<? extends Map<String, Object>> headers = JsonNullable.undefined();
 
-        private JsonNullable<? extends Data> data = JsonNullable.undefined();
+        private JsonNullable<? extends ProxyResponseApiModelData> data = JsonNullable.undefined();
 
         private JsonNullable<? extends List<ProviderErrorApiModel>> providerErrors = JsonNullable.undefined();
 
@@ -252,7 +252,7 @@ public class ProxyResponseApiModel {
         /**
          * The response data from the provider. Can be an object, array, or primitive value.
          */
-        public Builder data(Data data) {
+        public Builder data(ProxyResponseApiModelData data) {
             Utils.checkNotNull(data, "data");
             this.data = JsonNullable.of(data);
             return this;
@@ -261,7 +261,7 @@ public class ProxyResponseApiModel {
         /**
          * The response data from the provider. Can be an object, array, or primitive value.
          */
-        public Builder data(JsonNullable<? extends Data> data) {
+        public Builder data(JsonNullable<? extends ProxyResponseApiModelData> data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
             return this;

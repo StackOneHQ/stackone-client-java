@@ -2,6 +2,17 @@
 
 Type of phone number
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.PhoneNumberType;
+
+PhoneNumberType value = PhoneNumberType.PERSONAL;
+
+// Open enum: use .of() to create instances from custom string values
+PhoneNumberType custom = PhoneNumberType.of("custom_value");
+```
+
 
 ## Values
 

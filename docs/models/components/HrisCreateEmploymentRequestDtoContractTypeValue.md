@@ -1,5 +1,16 @@
 # HrisCreateEmploymentRequestDtoContractTypeValue
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoContractTypeValue;
+
+HrisCreateEmploymentRequestDtoContractTypeValue value = HrisCreateEmploymentRequestDtoContractTypeValue.FULL_TIME;
+
+// Open enum: use .of() to create instances from custom string values
+HrisCreateEmploymentRequestDtoContractTypeValue custom = HrisCreateEmploymentRequestDtoContractTypeValue.of("custom_value");
+```
+
 
 ## Values
 

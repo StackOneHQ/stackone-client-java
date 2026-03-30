@@ -129,7 +129,7 @@ public class Application {
                 .call();
 
         if (res.actionSearchResponseDto().isPresent()) {
-            // handle response
+            System.out.println(res.actionSearchResponseDto().get());
         }
     }
 }
@@ -199,7 +199,7 @@ public class Application {
                 .call();
 
         if (res.actionBuildResponseDto().isPresent()) {
-            // handle response
+            System.out.println(res.actionBuildResponseDto().get());
         }
     }
 }
@@ -260,25 +260,30 @@ public class Application {
                     .build())
             .build();
 
-        ActionsRpcRequestDto req = ActionsRpcRequestDto.builder()
-                .action("create_employee")
-                .path(Map.ofEntries(
-                    Map.entry("id", "123")))
-                .query(Query.builder()
-                    .debug(false)
-                    .build())
-                .headers(Map.ofEntries(
-                    Map.entry("Content-Type", "application/json")))
-                .body(Map.ofEntries(
-                    Map.entry("data", "example")))
-                .build();
-
         StackoneRpcActionResponse res = sdk.actions().rpcAction()
-                .request(req)
+                .xAccountId("<id>")
+                .actionsRpcRequestDto(ActionsRpcRequestDto.builder()
+                    .action("create_employee")
+                    .path(Map.ofEntries(
+                        Map.entry("id", "123")))
+                    .query(Query.builder()
+                        .debug(false)
+                        .build())
+                    .headers(Map.ofEntries(
+                        Map.entry("Content-Type", "application/json")))
+                    .body(Map.ofEntries(
+                        Map.entry("data", "example")))
+                    .defenderConfig(DefenderConfig.builder()
+                        .enabled(true)
+                        .blockHighRisk(false)
+                        .useTier1Classification(true)
+                        .useTier2Classification(true)
+                        .build())
+                    .build())
                 .call();
 
         if (res.actionsRpcResponse().isPresent()) {
-            // handle response
+            System.out.println(res.actionsRpcResponse().get());
         }
     }
 }
@@ -286,9 +291,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [ActionsRpcRequestDto](../../models/shared/ActionsRpcRequestDto.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `xAccountId`                                                            | *String*                                                                | :heavy_check_mark:                                                      | The account identifier                                                  |
+| `actionsRpcRequestDto`                                                  | [ActionsRpcRequestDto](../../models/components/ActionsRpcRequestDto.md) | :heavy_check_mark:                                                      | N/A                                                                     |
 
 ### Response
 

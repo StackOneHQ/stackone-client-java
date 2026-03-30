@@ -2,6 +2,17 @@
 
 The file format of the file, expressed as a file extension
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.components.TicketingAttachmentResultValue;
+
+TicketingAttachmentResultValue value = TicketingAttachmentResultValue.UNMAPPED_VALUE;
+
+// Open enum: use .of() to create instances from custom string values
+TicketingAttachmentResultValue custom = TicketingAttachmentResultValue.of("custom_value");
+```
+
 
 ## Values
 

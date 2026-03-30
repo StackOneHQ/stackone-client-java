@@ -2,6 +2,14 @@
 
 Filter to select time-off policies by type
 
+## Example Usage
+
+```java
+import com.stackone.stackone_client_java.models.operations.QueryParamType;
+
+QueryParamType value = QueryParamType.SICK;
+```
+
 
 ## Values
 
